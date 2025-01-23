@@ -1,0 +1,14 @@
+- **Jetson Module Specifications and Features**
+  - Processing power, memory, storage, and core parameters.
+- **Custom Carrier Board Features and Interface Description**
+  - GPIO
+  - I2C/SPI/UART
+  - Camera Interface (CSI)
+  - Display Interface (HDMI)
+  - USB Interface
+  - Power Management
+- **Accessories and Their Uses**
+  - Camera modules
+  - Sensor modules
+  - Expansion modules
+  - Mounts and enclosures

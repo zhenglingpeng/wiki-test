@@ -22,8 +22,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Milesight', // Usually your GitHub org/user name.
-  projectName: 'MAIWorks-WiKi', // Usually your repo name.
+  organizationName: 'CamThink', // Usually your GitHub org/user name.
+  projectName: 'CamThink-WiKi', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -66,6 +66,7 @@ const config = {
         logo: {
           alt: 'CamThink',
           src: 'img/logo.svg',
+          srcDark: 'img/logo_dark.svg',
         },
         items: [
           {
