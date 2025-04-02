@@ -36,6 +36,11 @@ const config = {
     locales: ['en'],
   },
 
+  // 添加插件
+  plugins: [
+    'docusaurus-plugin-image-zoom',
+  ],
+
   presets: [
     [
       'classic',
@@ -81,6 +86,24 @@ const config = {
             position: 'right',
           },
         ],
+      },
+      // 图片缩放插件配置
+      zoom: {
+        selector: '.markdown img:not(.no-zoom), article img:not(.no-zoom), .theme-doc-markdown img:not(.no-zoom)',
+        background: {
+          light: 'rgba(255, 255, 255, 0.9)',
+          dark: 'rgba(0, 0, 0, 0.8)'
+        },
+        config: {
+          margin: 24,
+          scrollOffset: 0,
+        }
+      },
+      // 颜色模式配置
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
       },
       footer: {
         style: 'dark',

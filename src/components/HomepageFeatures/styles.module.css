@@ -35,19 +35,19 @@
   padding-right: 1rem;
 }
 
-h2 {
+.featureTitle {
   font-size: 2rem;
   margin-bottom: 2rem;
   color: #2b3137;
 }
 
-h3 {
+.featureSubtitle {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #2b3137;
 }
 
-p {
+.featureText {
   font-size: 1rem;
   color: #666;
 }

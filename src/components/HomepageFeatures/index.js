@@ -66,8 +66,8 @@ function Feature({Svg, title, description}) {
         <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h3 className={styles.featureSubtitle}>{title}</h3>
+        <p className={styles.featureText}>{description}</p>
       </div>
     </div>
   );
@@ -77,7 +77,7 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <h2 className="text--center">为什么选择 CamThink？</h2>
+        <h2 className={`text--center ${styles.featureTitle}`}>为什么选择 CamThink？</h2>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
