@@ -1,63 +1,60 @@
 import Link from "@docusaurus/Link";
 
+
 # Overview
 
-## Product Introduction
-![NE101](../../assets/Overview/NE101/NE101.png)
+## 产品简介
+![NE101](/img/Overview/NE101/NE101.png)
 
-The CamThink NeoEyes NE101 is a low-power camera based on event-triggered capture, featuring hardware modularity and high product flexibility/extensibility. Combined with the hardware design files, developer Wiki, SDK, firmware, accessories and other resources provided by CamThink, developers can quickly expand various definitions like sensors, power supplies, and enclosures according to scenario requirements to DIY event-based image capture cameras for various scenarios. This enables rapid implementation of edge image capture and computing applications.
+NE101是一款基于事件触发抓拍的低功耗相机，具有硬件模块化和产品高度灵活可扩展的特点，结合CamThink提供的硬件设计文件、开发者Wiki、SDK、固件、配件等资源开发者可快速根据场景需求自行拓展传感器、电源、外壳等各种定义DIY各种场景的事件图像采集相机，快速完成应用场景的从0到1商业化落地。
 
-### Key Features
-- **Wireless Installation & Deployment**: Supports battery power and interchangeable communication modules (WiFi, Cat1, WiFi-Halow) for easy installation.
-- **Low-Power Design**: Supports ultra-low-power operation modes. With WiFi communication, the product can achieve over 3 years of battery life at 1 capture per day.
-- **Open-Source Firmware**: All firmware source code is open-source and free for commercial use. Offers out-of-the-box functionality while supporting secondary development to accelerate hardware implementation.
-- **Modular Structural Design**: Easily disassembled into front cover, main body, and rear cover with screw-fastening, supporting DIY modifications.
-- **Outdoor Deployment Support**: IP67-rated for outdoor deployment.
+### 产品特点
+- **无线安装部署**：设备支持电池供电，支持wifi、cat1、wifi-halow各种通讯模式，易于安装和部署。
+- **低功耗设计**：支持低功耗工作模式，wifi通讯下产品1天1拍的寿命长达3年，低功耗且节能。
+- **固件开源开放**：设备固件全部开源开放，支持开发者进行产品功能的二次开发。
+- **模块化结构设计**：整机可方便拆装，结构分为前盖、主体、后盖，螺丝拆装，支持二次DIY。防护等级达到IP67，适合户外部署使用。
 
-### Hardware Modularity
-- **Modular Design**: Front/middle/rear separable modular design for easy expansion and disassembly. Modular hardware includes camera module, communication module, and mainboard for flexible scenario adaptation.
-- **Structural Expandability**: Tempered glass front cover with good light transmission and screw-fastening for easy module replacement. Features: 
-  - Side-mounted capture button for instant snapshots
-  - Bracket mounting holes for enclosure expansion
-  - Bottom 4mm threaded holes for various bracket types
-  - Side rubber grommets for external wiring
 
-<div className="performance-cards" style={{ width: '100%', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
+### 模块化设计
+- **前盖设计**：采用钢化玻璃，透光性好，螺丝便于拆卸，可单独更换通讯模块或相机模组。
+- **操作按钮**：侧面预留拍照按键，点击即可抓拍，同时预留支架安装孔，便于扩展外壳部件。
+- **可定制化设计**：底部有4mm开孔，可安装各种4mm螺孔支架。整机侧面预留包胶开孔，便于引线外接。
+<div className="performance-cards" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
   {[
     {
-      title: 'Modular Structure Design',
-      imageSrc: require('../../assets/Overview/NE101/Module.png').default,
-      altText: 'Modular Structure Design',
+      title: '模块化结构设计',
+      imageSrc: require('/img/Overview/NE101/Module.png').default,
+      altText: '模块化结构设计',
     },
     {
-      title: 'Front Cover Design',
-      imageSrc: require('../../assets/Overview/NE101/ProductTop.png').default,
-      altText: 'Front Cover Design',
+      title: '前盖设计',
+      imageSrc: require('/img/Overview/NE101/ProductTop.png').default,
+      altText: '前盖设计',
     },
     {
-      title: 'Reserved Sensor Ports',
-      imageSrc: require('../../assets/Overview/NE101/ProductL.png').default,
-      altText: 'Reserved Sensor Ports',
+      title: '预留包胶',
+      imageSrc: require('/img/Overview/NE101/ProductL.png').default,
+      altText: '预留包胶',
     },
     {
-      title: 'Function Buttons',
-      imageSrc: require('../../assets/Overview/NE101/ProductR.png').default,
-      altText: 'Function Buttons',
+      title: '功能按键',
+      imageSrc: require('/img/Overview/NE101/ProductR.png').default,
+      altText: '功能按键',
     },
     {
-      title: 'Bracket Mounting Holes',
-      imageSrc: require('../../assets/Overview/NE101/ProductB.png').default,
-      altText: 'Bracket Mounting Holes',
+      title: '支架安装孔',
+      imageSrc: require('/img/Overview/NE101/ProductB.png').default,
+      altText: '支架安装孔',
     }
   ].map((card, index) => (
-    <div key={index} className="card" style={{ border: '1px', borderRadius: '8px', padding: '10px' }}>
-      <h3 style={{ textAlign: 'center' }}>{card.title}</h3>
+    <div key={index} className="card" style={{ border: '1px solid #eaecef', borderRadius: '8px', padding: '10px' }}>
+      <h4 style={{ textAlign: 'center', color: '#2e8555' }}>{card.title}</h4>
       <img
         src={card.imageSrc}
         alt={card.altText}
         style={{
-          height: '150px',
-          objectFit: 'contain',
+          height: '150px', // 设置图片固定高度
+          objectFit: 'cover', // 保持纵横比并填充整个容器
           margin: '15px 0',
           borderRadius: '4px'
         }}
@@ -66,59 +63,69 @@ The CamThink NeoEyes NE101 is a low-power camera based on event-triggered captur
   ))}
 </div>
 
-### Modular PCBA Design
-#### 1. Feature-Rich Expandable Mainboard
-- **Abundant PCBA Interfaces**: Supports plug-and-play communication modules for easy hardware expansion. See [「Hardware Guide」](../0-NeoEyes%20NE101%20Series/2-Hardware%20Guide/0-Components%20Overview.md)
-- **16Pin IO Interface**: Supports various sensor-triggered captures (resource usage depends on communication module and USB camera). See [「IO Resource Table」](../0-NeoEyes%20NE101%20Series/2-Hardware%20Guide/0-Components%20Overview.md)
-- **Power Interface**: Supports battery or Type-C power. See [「Hardware Guide」](../0-NeoEyes%20NE101%20Series/2-Hardware%20Guide/0-Components%20Overview.md)
-- **Micro TF Card Slot**: For storage expansion. See [「Hardware Guide」](../0-NeoEyes%20NE101%20Series/2-Hardware%20Guide/0-Components%20Overview.md)
-- **Debug Interface**: Type-C & UART for development. See [「Hardware Guide」](../0-NeoEyes%20NE101%20Series/2-Hardware%20Guide/0-Components%20Overview.md)
+### 可更换镜头模组
+- **OV5640 Module** (60°角，8cm对焦)：用于近距离图像采集。
+- **OV5640 Module** (60°角，3m对焦)：用于常规距离图像采集。
+- **OV5640 Module** (120°角，15cm对焦)：用于近距离广角图像采集。
+- **OV5640 Module** (120°角，4m对焦)：用于常规距离广角图像采集。
 
-#### 2. Optional Cat-1 Communication Module
-- **Module**: Quectel EG912UGL (LTE FDD/TDD & GSM, global support except North America)
-- **Size**: 60mm x 60mm
+### 可替换的通讯方案
+- **Cat-1通讯模块**：支持全球地区（除北美）。采用Quectel EG912U-GL模块，支持LTE FDD/TDD及GSM。
+  - **模块**: Quectel EG912UGL
+  - **通信接口**: UART
+  - **尺寸**: 60mm x 60mm
+  - **认证**: CE
+- **WiFi HaLow通讯模块**：采用Quectel FGH100M模块，支持IEEE 802.11ah协议，适用于远距离低功耗连接。
+  - **模块**: Quectel FGH100M
+  - **通信接口**: SPI
+  - **操作频率**: Sub-1G: 850–950 MHz
+  - **尺寸**: 60mm x 60mm
+  - **认证**: CE/FCC
 
-#### 3. Optional WiFi HaLow Module
-- **Module**: Quectel FGH100M (IEEE 802.11ah protocol for long-range low-power connectivity)
-- **Size**: 60mm x 60mm
+### 接口扩展支持
+- **16Pin IO接口**：支持接入各种传感器触发图像抓拍，具体资源使用受通讯模块和USB相机模组影响。
+- **电源接口**：支持电池或Type-C电源供电。
+- **Micro TF卡槽**：用于存储和扩展功能。
+- **开发调试接口**：Type-C & UART接口，方便开发与调试。
 
-#### 4. Interchangeable Lens Modules
-- **OV5640 Module** (60° FOV, 8cm focus): Close-range capture
-- **OV5640 Module** (60° FOV, 3m focus): Standard-range capture
-- **OV5640 Module** (120° FOV, 15cm focus): Close-range wide-angle
-- **OV5640 Module** (120° FOV, 4m focus): Standard-range wide-angle
-
-<div className="performance-cards" style={{ width: '100%', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
+### 产品部署支持
+- **扩展支架支持**：提供支架安装孔，支持墙面、桌面安装，以及外壳扩展件安装。
+<div className="performance-cards" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
   {[
     {
-      title: 'Mainboard Front',
-      imageSrc: require('../../assets/Overview/NE101/PCB1.png').default,
-      altText: 'Mainboard Front',
+      title: '座装支架',
+      imageSrc: require('/img/Overview/NE101/Bracket/1.png').default,
+      altText: '座装支架',
     },
     {
-      title: 'Mainboard Back',
-      imageSrc: require('../../assets/Overview/NE101/PCB2.png').default,
-      altText: 'Mainboard Back',
+      title: '水表支架',
+      imageSrc: require('/img/Overview/NE101/Bracket/2.png').default,
+      altText: '水表支架',
     },
     {
-      title: 'Cat-1 PCBA',
-      imageSrc: require('../../assets/Overview/NE101/cat1PCBA.png').default,
-      altText: 'Cat-1 PCBA',
+      title: '壁装支架',
+      imageSrc: require('/img/Overview/NE101/Bracket/3.png').default,
+      altText: '壁装支架',
     },
     {
-      title: 'WiFi HaLow PCBA',
-      imageSrc: require('../../assets/Overview/NE101/wifihalow.png').default,
-      altText: 'WiFi HaLow PCBA',
+      title: '表盘支架',
+      imageSrc: require('/img/Overview/NE101/Bracket/4.png').default,
+      altText: '表盘支架',
+    },
+    {
+      title: '杆件支架',
+      imageSrc: require('/img/Overview/NE101/Bracket/5.png').default,
+      altText: '杆件支架',
     }
   ].map((card, index) => (
-    <div key={index} className="card" style={{ border: '1px', borderRadius: '8px', padding: '10px' }}>
-      <h3 style={{ textAlign: 'center' }}>{card.title}</h3>
+    <div key={index} className="card" style={{ border: '1px solid #eaecef', borderRadius: '8px', padding: '10px' }}>
+      <h4 style={{ textAlign: 'center', color: '#2e8555' }}>{card.title}</h4>
       <img
         src={card.imageSrc}
         alt={card.altText}
         style={{
-          height: '150px',
-          objectFit: 'contain',
+          height: '150px', // 设置图片固定高度
+          objectFit: 'cover', // 保持纵横比并填充整个容器
           margin: '15px 0',
           borderRadius: '4px'
         }}
@@ -127,75 +134,7 @@ The CamThink NeoEyes NE101 is a low-power camera based on event-triggered captur
   ))}
 </div>
 
-### Deployment Support
-- **Expandable Brackets**: Supports wall/desk mounting with various brackets and enclosure extensions.
-<div className="performance-cards" style={{ width: '100%', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
-  {[
-    {
-      title: 'Tabletop Bracket',
-      imageSrc: require('../../assets/Overview/NE101/Bracket/1.png').default,
-      altText: 'Tabletop Bracket',
-    },
-    {
-      title: 'Water Meter Bracket',
-      imageSrc: require('../../assets/Overview/NE101/Bracket/2.png').default,
-      altText: 'Water Meter Bracket',
-    },
-    {
-      title: 'Wall Mount Bracket',
-      imageSrc: require('../../assets/Overview/NE101/Bracket/3.png').default,
-      altText: 'Wall Mount Bracket',
-    },
-    {
-      title: 'Dial Mount Bracket',
-      imageSrc: require('../../assets/Overview/NE101/Bracket/4.png').default,
-      altText: 'Dial Mount Bracket',
-    },
-    {
-      title: 'Pole Mount Bracket',
-      imageSrc: require('../../assets/Overview/NE101/Bracket/5.png').default,
-      altText: 'Pole Mount Bracket',
-    }
-  ].map((card, index) => (
-    <div key={index} className="card" style={{ border: '1px', borderRadius: '8px', padding: '10px' }}>
-      <h3 style={{ textAlign: 'center' }}>{card.title}</h3>
-      <img
-        src={card.imageSrc}
-        alt={card.altText}
-        style={{
-          height: '150px',
-          objectFit: 'contain',
-          margin: '15px 0',
-          borderRadius: '4px'
-        }}
-      />
-    </div>
-  ))}
-</div>
-
-### Open-Source Hardware
-- Provides structural design files for DIY enclosures (3D printable) or custom expansions. See [Product Resources - Structural Design Files](#product-resources)
-- Offers hardware schematics for design extensions or external sensor integration. See [Product Resources - Hardware Schematics](#product-resources)
-- Complete open-source firmware with out-of-the-box features: low-power modes, device wake-up, MQTT data transfer, fill-light control, timed capture, image parameter adjustment, network management. For development and flashing, see [「Software Guide」](../0-NeoEyes%20NE101%20Series/3-Software%20Guide/1-System%20Flashing%20and%20Initialization.md)
-
-<p align="center">
-  <img src={require('../../assets/Overview/NE101/software.png').default} alt="software" style={{ width: '300px' }} />
-</p>
-
-## Application Scenarios
-### Basic Applications  
-Periodic capture for:
-- Utility meter reading (water/industrial meters)  
-- HVAC dust accumulation monitoring for maintenance scheduling  
-
-### Event-Triggered Applications  
-Sensor-activated capture:
-- **PIR/Radar**: Intrusion detection (e.g., farm animal/human monitoring)  
-- **Sound Sensor**: Abnormal noise capture (e.g., elderly care facility alerts)  
-- **Light Sensor**: Variable lighting condition capture (e.g., greenhouse plant monitoring)  
-- **Vibration Sensor**: Equipment status monitoring (e.g., industrial machinery inspection)  
-- **Temperature Sensor**: Thermal event capture (e.g., waste facility anomaly detection)  
-
+## 应用示例
 <div
   style={{
     display: "grid",
@@ -206,20 +145,21 @@ Sensor-activated capture:
   {[  
     { 
       title: "deepseek-r1", 
-      image:require("../../assets/Overview/NG45xx/application/deepseek.png").default, 
+      image:require("/img/Overview/NG45xx/application/deepseek.png").default, 
       description: "As large language models (LLMs) become integral to various applications, efficiently running these models on local devices is crucial for developers. This guide provides a comprehensive walkthrough for deploying the DeepSeek-R1 model on NVIDIA Jetson Orin devices, enabling offline inference and interaction.", 
-      link: "/docs/Edge AI Box/NeoEdge NG45XX Series/Application Guide/Edge Computing Application Examples/Local deepseek-r1 deployment"
+      link: "./Application%20Guide/Edge%20Computing%20Application%20Examples/Local%20deepseek-r1%20deployment.md"
     },
     { 
       title: "yolo", 
-      image:require("../../assets/Overview/NG45xx/application/ultralytice.png").default, 
-      description: "This tutorial will guide you through deploying the YOLOv8 model on the NVIDIA Jetson Orin platform, using TensorRT for inference acceleration. By following this process, you will be able to efficiently run YOLOv8 on Jetson Orin for real-time object detection.", 
-      link: "/docs/Edge AI Box/NeoEdge NG45XX Series/Application Guide/Edge Computing Application Examples/YOLOv8 over TensorRT"
+      image:require("/img/Overview/NG45xx/application/ultralytice.png").default, 
+      description: "本教程将指导您如何在 NVIDIA Jetson Orin 平台上部署 YOLOv8 模型，并利用 TensorRT 进行推理加速。通过此过程，您将能够在 Jetson Orin 上高效地运行 YOLOv8，实现实时的目标检测。", 
+      link: "./Application%20Guide/Edge%20Computing%20Application%20Examples/YOLOv8%20over%20TensorRT.md"
     }
   ].map((item, index) => (
     <Link to={item.link} key={index} style={{ textDecoration: "none", color: "inherit" }}>
       <div
         style={{
+          border: "1px solid #ddd",
           borderRadius: "8px",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           padding: "1rem",
@@ -237,15 +177,15 @@ Sensor-activated capture:
           e.currentTarget.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
         }}
       >
-      <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "0.5rem" }}>{item.title}</h3>
+      <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "1rem" }}>{item.title}</h3>
       <img
-        className="no-zoom"
         src={item.image}
         alt={item.title}
-        style={{ maxWidth: "100%", height: "150px", objectFit: "contain", borderRadius: "5px", margin: "0 auto" }}
+        style={{ maxWidth: "100%", height: "150px", objectFit: "contain", borderRadius: "8px", margin: "0 auto" }}
       />
       <p
         style={{
+          color: "#666",
           marginTop: "0.5rem",
           display: "-webkit-box",
           WebkitBoxOrient: "vertical",
@@ -262,95 +202,154 @@ Sensor-activated capture:
   ))}
 </div>
 
-## Specifications
-| Parameter                | NE101                               |
-|-------------------------|-------------------------------------|
-| MCU                     | ESP32-S3                            |
-| RAM                     | 8MB                                 |
-| Flash                   | 16MB                                |
-| UART                    | By Type-C or Wafer 4Pins            |
-| Storage                 | Micro-TF                            |
-| Sensor                  | OV5640                              |
-| WiFi                    | 802.11b/g/n                         |
-| Bluetooth               | Bluetooth v4.2 BR/EDR, BLE          |
-| Communication           | Cat-1 / WiFi-Halow Module           |
-| Alarm                   | Alarm*1                             |
-| Buttons                 | Boot*1, Reset*1, Snap*1             |
-| Expansion IOs           | Pinheader for UART, I2C, SPI, GPIOs |
-| Illumination            | 3000K LED*1 + Photodiode*1          |
-| Power                   | DC 4-6V (2Pin Wafer/Type-C)         |
-| Operation Temperature   | -20° to 60°                         |
-| Storage Temperature     | -40° to 85°                         |
-| Certifications          | CE/FCC                              |
-| Dimension               | 60mm × 60mm                         |
 
-## Product Resources
+## 产品规格
+| **参数**                | **NE101**                               |
+|-------------------------|--------------------------------------------|
+| **MCU**                 | ESP32-S3                                   |
+| **RAM**                 | 8MB                                        |
+| **Flash**               | 16MB                                       |
+| **UART**                | By Type-C or Wafer 4Pins                  |
+| **Storage**             | Micro-TF                                   |
+| **Sensor**              | OV5640                                     |
+| **WiFi**                | 802.11b/g/n                                |
+| **Bluetooth**           | Bluetooth v4.2 BR/EDR, BLE                 |
+| **Communication**       | Cat-1 / WiFi-Halow Module                 |
+| **Alarm**               | Alarm*1                                    |
+| **Buttons**             | Boot Button*1, Reset Button*1, Snap Button*1 |
+| **Expansion IOs**       | Pinheader for UART, I2C, SPI, GPIOs       |
+| **Illumination**        | 3000K LED*1 and Photodiode*1              |
+| **Power**               | DC 4 - 6V, By 2Pin Wafer or Type-C        |
+| **Operation Temperature** | -20° - 60°                                |
+| **Storage Temperature** | -40° - 85°                                 |
+| **Certifications**      | CE/FCC                                     |
+| **Dimension**           | 60mm*60mm                                  |
 
-### Product Tutorials
-- [Quick Start Guide](./1-Quick%20Start.md)
-- [Hardware User Guide](./2-Hardware%20Guide/0-Components%20Overview.md)  
-- [System & Driver Guide](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)  
-- [FAQ & Support](./6-FAQ%20and%20Support/0-FAQ.md)  
 
-### Download Resources
-| Resource              | Link                                  |
-|-----------------------|---------------------------------------|
-| Hardware Schematics   | [/docs/hardware-schematic](/docs/hardware-schematic) |
-| 3D Design Files       | [/downloads/sdk-toolkit](/downloads/sdk-toolkit)     |
-| Example Code          | [GitHub](https://github.com/your-repo/examples)  |
-| SDK Toolkit           | [/downloads/sdk-toolkit](/downloads/sdk-toolkit)     |
 
-## Technical Support
+## 产品资料
 
-<div style={{
+### 产品教程
+关于如何快速使用NE101可见[「快速使用教程」](./1-Quick%20Start.md)
+
+关于如何使用NE101硬件特性和使用说明可见[「硬件使用指南」](./2-Hardware%20Guide/0-Components%20Overview.md)
+
+关于如何使用NE101系统驱动和开发指引可见[「系统和驱动指南」](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)
+
+常见产品问题可见[「参见问题支持」](./6-FAQ%20and%20Support/0-FAQ.md)
+
+
+### 产品资源
+
+| 资源名称                 | 地址                                                                 |
+|--------------------------|----------------------------------------------------------------------|
+| 硬件原理图               | [/docs/hardware-schematic](/docs/hardware-schematic)                 |
+| 硬件设计指南             | [/docs/hardware-guide](/docs/hardware-guide)                         |
+| 物料清单 (BOM)           | [/docs/bom-list](/docs/bom-list)                                     |
+| 项目工程示例代码         | [GitHub](https://github.com/your-repo/examples)                  |
+| API 参考文档             | [/docs/api-reference](/docs/api-reference)                           |
+| SDK 工具包               | [/downloads/sdk-toolkit](/downloads/sdk-toolkit)                     |
+
+
+## 技术支持与社区
+
+  <div style={{
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
     gap: '25px',
-    margin: '50px 0',
-}}>
+    margin: '50px 0'
+  }}>
+    {/* Discord 卡片 */}
     <a 
-        href="https://discord.gg/your-invite-link"
-        style={{
-            background: 'linear-gradient(135deg, #5865F2 0%, #8146FF 100%)',
-            borderRadius: '16px',
-            padding: '30px',
-            color: 'white',
-            textAlign: 'center',
-            textDecoration: 'none'
-        }}
+      href="https://discord.gg/your-invite-link" 
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        background: 'linear-gradient(135deg, #5865F2 0%, #8146FF 100%)',
+        borderRadius: '16px',
+        padding: '30px',
+        color: 'white',
+        textAlign: 'center',
+        textDecoration: 'none',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        boxShadow: '0 4px 20px rgba(88, 101, 242, 0.3)',
+        ':hover': {
+          transform: 'translateY(-5px)',
+          boxShadow: '0 8px 25px rgba(88, 101, 242, 0.4)'
+        }
+      }}
     >
-        <img 
-            src={require('../../assets/Discord-Logo-White.png').default} 
-            alt="Discord"
-            style={{ height: '50px', marginBottom: '20px' }}
-        />
-        <h2>Developer Community</h2>
-        <p>
-            Real-time developer communication<br/>
-            Latest product updates and tutorials
-        </p>
+      <img 
+        src={require('/img/Discord-Logo-White.png').default} 
+        alt="Discord"
+        style={{
+          height: '50px',
+          marginBottom: '20px',
+          filter: 'brightness(0) invert(1)'
+        }}
+      />
+      <h2 style={{ 
+        margin: '15px 0', 
+        fontSize: '1.5rem',
+        fontWeight: 600
+      }}>
+        加入开发者社区
+      </h2>
+      <p style={{ 
+        margin: 0,
+        opacity: 0.9,
+        lineHeight: 1.6,
+        fontSize: '1rem'
+      }}>
+        与开发者实时交流技术问题<br />
+        获取最新产品动态和教程资源
+      </p>
     </a>
 
+    {/* GitHub 卡片 */}
     <a 
-        href="https://github.com/your-repo"
-        style={{
-            background: 'linear-gradient(135deg, #24292f 0%, #2b3137 100%)',
-            borderRadius: '16px',
-            padding: '30px',
-            color: 'white',
-            textAlign: 'center',
-            textDecoration: 'none'
-        }}
+      href="https://github.com/your-repo" 
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        background: 'linear-gradient(135deg, #24292f 0%, #2b3137 100%)',
+        borderRadius: '16px',
+        padding: '30px',
+        color: 'white',
+        textAlign: 'center',
+        textDecoration: 'none',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        boxShadow: '0 4px 20px rgba(36, 41, 47, 0.3)',
+        ':hover': {
+          transform: 'translateY(-5px)',
+          boxShadow: '0 8px 25px rgba(36, 41, 47, 0.4)'
+        }
+      }}
     >
-        <img 
-            src={require('../../assets/GitHub_Lockup_Light.png').default} 
-            alt="GitHub"
-            style={{ height: '50px', marginBottom: '20px' }}
-        />
-        <h2>GitHub Repository</h2>
-        <p>
-            Submit issues and reports<br/>
-            Access source code and contribute
-        </p>
+      <img 
+        src={require('/img/GitHub_Lockup_Light.png').default} 
+        alt="GitHub"
+        style={{
+          height: '50px',
+          marginBottom: '20px',
+          filter: 'brightness(0) invert(1)'
+        }}
+      />
+      <h2 style={{ 
+        margin: '15px 0', 
+        fontSize: '1.5rem',
+        fontWeight: 600
+      }}>
+        GitHub 仓库
+      </h2>
+      <p style={{ 
+        margin: 0,
+        opacity: 0.9,
+        lineHeight: 1.6,
+        fontSize: '1rem'
+      }}>
+        提交Issue报告问题<br />
+        查看源代码和参与贡献
+      </p>
     </a>
-</div>
+  </div>

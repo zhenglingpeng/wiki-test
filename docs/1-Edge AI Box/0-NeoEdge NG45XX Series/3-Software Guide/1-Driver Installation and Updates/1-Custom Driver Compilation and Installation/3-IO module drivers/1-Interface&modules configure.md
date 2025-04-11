@@ -8,7 +8,7 @@ GPIO资源信息：[Jetson Orin NX Series and Jetson Orin Nano Series Pinmux](ht
 
 - 通过 gpioinfo 指令找到对应的line
 
-![](../../../../../../assets/NG45XX_SOFTWARE/Driver/NG45XX_GPIO.png)
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_GPIO.png)
 
 - 通过gpioset控制GPIO
 
@@ -40,7 +40,7 @@ sudo gpioset --mode=wait gpiochip0 144=0
     - 使用接头1，连接PC
     - 使用接头2，连接Jetson的RS232的`TX\RX`
   
-  ![](../../../../../../assets/NG45XX_SOFTWARE/Driver/NG45XX_RS232.png)
+  ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_RS232.png)
 
 - RS485
   
@@ -66,7 +66,7 @@ sudo gpioset --mode=wait gpiochip0 144=0
   ```
   
   - 测试
-    启动程序，在终端输入`send`切换到发送模式，然后输入要发送的数据，并按回车键，程序会将数据发送到串口；输入`recv` 切换到接收模式，程序会切换到接收模式，并接收打印提示信息；输入`quit` 并按回车键。
+    启动程序，在终端输入`send`切换到发送模式，然后输入要发送的数据，并按回车键，程序会将数据发送到串口；输入`recv` 切换到接收模式，程序会切换到接收模式，并接收打印提示信息；输入`quit` 并按回车键。
   - 代码
 
 ```c

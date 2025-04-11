@@ -25,15 +25,25 @@ const config = {
   organizationName: 'CamThink', // Usually your GitHub org/user name.
   projectName: 'CamThink-WiKi', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans', 'en'],
+    localeConfigs: {
+      'zh-Hans': {
+        htmlLang: 'zh-Hans',
+        label: '中文',
+      },
+      en: {
+        htmlLang: 'en-US',
+        label: 'English',
+      },
+    },
   },
 
   // 添加插件
@@ -52,6 +62,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          routeBasePath: 'docs',
         },
         blog: false, // Blog menu will not be displayed
         theme: {
@@ -83,6 +94,10 @@ const config = {
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            type: 'localeDropdown',
             position: 'right',
           },
         ],
