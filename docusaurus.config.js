@@ -22,19 +22,34 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Milesight', // Usually your GitHub org/user name.
-  projectName: 'MAIWorks-WiKi', // Usually your repo name.
+  organizationName: 'CamThink', // Usually your GitHub org/user name.
+  projectName: 'CamThink-WiKi', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans', 'en'],
+    localeConfigs: {
+      'zh-Hans': {
+        htmlLang: 'zh-Hans',
+        label: '中文',
+      },
+      en: {
+        htmlLang: 'en-US',
+        label: 'English',
+      },
+    },
   },
+
+  // 添加插件
+  plugins: [
+    'docusaurus-plugin-image-zoom',
+  ],
 
   presets: [
     [
@@ -47,6 +62,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          routeBasePath: 'docs',
         },
         blog: false, // Blog menu will not be displayed
         theme: {
@@ -66,6 +82,7 @@ const config = {
         logo: {
           alt: 'CamThink',
           src: 'img/logo.svg',
+          srcDark: 'img/logo_dark.svg',
         },
         items: [
           {
@@ -75,11 +92,33 @@ const config = {
             label: 'Docs',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/camthink-ai',
             label: 'GitHub',
             position: 'right',
           },
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
         ],
+      },
+      // 图片缩放插件配置
+      zoom: {
+        selector: '.markdown img:not(.no-zoom), article img:not(.no-zoom), .theme-doc-markdown img:not(.no-zoom)',
+        background: {
+          light: 'rgba(255, 255, 255, 0.9)',
+          dark: 'rgba(0, 0, 0, 0.8)'
+        },
+        config: {
+          margin: 24,
+          scrollOffset: 0,
+        }
+      },
+      // 颜色模式配置
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
       },
       footer: {
         style: 'dark',
@@ -97,16 +136,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discord.com/invite/6TZb2Y8WKx',
               },
               {
                 label: 'X',
-                href: 'https://x.com/docusaurus',
+                href: 'https://x.com/CamThinkAI',
               },
             ],
           },
@@ -115,12 +150,12 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/camthink-ai',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} CamThink.`,
       },
       prism: {
         theme: prismThemes.github,
