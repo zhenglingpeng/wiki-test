@@ -24,7 +24,7 @@ function HomepageHeader() {
           <Link
             style={{margin:5}}
             className="button button--secondary button--lg"
-            to="https://github.com/CamThink">
+            to="https://github.com/camthink-ai">
             GitHub 
           </Link>
         </div>
