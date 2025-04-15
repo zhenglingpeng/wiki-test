@@ -24,7 +24,7 @@ function HomepageHeader() {
           <Link
             style={{margin:5}}
             className="button button--secondary button--lg"
-            to="/docs/intro">
+            to="https://github.com/camthink-ai">
             GitHub 
           </Link>
         </div>
@@ -37,12 +37,10 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`欢迎来到 ${siteConfig.title}`}
-      description="CamThink 为 AI 开发者提供先进的硬件解决方案，包括处理器、加速器和专用设备。">
+      title={`Welcome to ${siteConfig.title} Developer Wiki Center`}
+      description="CamThink provides open, high-quality hardware and edge AI development solutions for AI developers.">
       <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+      <HomepageFeatures />
     </Layout>
   );
 }
