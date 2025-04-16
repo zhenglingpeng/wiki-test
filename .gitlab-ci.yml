@@ -24,6 +24,7 @@ deploy-job:      # This job runs in the deploy stage.
   script:
     - echo "building wiki..."
     - yarn install
+    - yarn add @docusaurus/core @docusaurus/preset-classic
     - yarn build
     - sudo cp rsync -avh ./build /home/zhengb/wiki
     - sudo chown -R zhengb:zhengb /home/zhengb/wiki
