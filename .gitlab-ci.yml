@@ -23,6 +23,7 @@ deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   script:
     - echo "building wiki..."
+    - yarn install
     - yarn build
     - sudo cp rsync -avh ./build /home/zhengb/wiki
     - sudo chown -R zhengb:zhengb /home/zhengb/wiki
