@@ -309,5 +309,21 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "support.discord.title": {
+    "message": "Join Developer Community",
+    "description": "Support card title for discord"
+  },
+  "support.discord.description": {
+    "message": "Chat with developers about technical issues\nGet the latest product updates and tutorials",
+    "description": "Support card description for discord"
+  },
+  "support.github.title": {
+    "message": "GitHub Repository",
+    "description": "Support card title for github"
+  },
+  "support.github.description": {
+    "message": "Submit issues to report problems\nView source code and contribute",
+    "description": "Support card description for github"
   }
 }

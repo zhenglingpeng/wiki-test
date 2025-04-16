@@ -1,4 +1,5 @@
 import Link from "@docusaurus/Link";
+import SupportGrid from '@site/src/components/SupportGrid';
 
 # Overview
 
@@ -302,55 +303,4 @@ Sensor-activated capture:
 
 ## Technical Support
 
-<div style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '25px',
-    margin: '50px 0',
-}}>
-    <a 
-        href="https://discord.com/invite/6TZb2Y8WKx"
-        style={{
-            background: 'linear-gradient(135deg, #5865F2 0%, #8146FF 100%)',
-            borderRadius: '16px',
-            padding: '30px',
-            color: 'white',
-            textAlign: 'center',
-            textDecoration: 'none'
-        }}
-    >
-        <img 
-            src={require('/img/Discord-Logo-White.png').default} 
-            alt="Discord"
-            style={{ height: '50px', marginBottom: '20px' }}
-        />
-        <h2>Developer Community</h2>
-        <p>
-            Real-time developer communication<br/>
-            Latest product updates and tutorials
-        </p>
-    </a>
-
-    <a 
-        href="https://github.com/camthink-ai"
-        style={{
-            background: 'linear-gradient(135deg, #24292f 0%, #2b3137 100%)',
-            borderRadius: '16px',
-            padding: '30px',
-            color: 'white',
-            textAlign: 'center',
-            textDecoration: 'none'
-        }}
-    >
-        <img 
-            src={require('/img/GitHub_Lockup_Light.png').default} 
-            alt="GitHub"
-            style={{ height: '50px', marginBottom: '20px' }}
-        />
-        <h2>GitHub Repository</h2>
-        <p>
-            Submit issues and reports<br/>
-            Access source code and contribute
-        </p>
-    </a>
-</div>
+<SupportGrid />
