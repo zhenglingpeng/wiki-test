@@ -23,6 +23,9 @@ deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   script:
     - echo "building wiki..."
+    - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    - sudo apt-get install -y nodejs
+    - node -v  # Verify the node version
     - yarn install
     - yarn add @docusaurus/core @docusaurus/preset-classic
     - yarn build
