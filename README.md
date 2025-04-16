@@ -1,6 +1,19 @@
-# Website
+### Download Node.js
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+https://nodejs.org/en/download/
+
+```
+# Download and install fnm:
+curl -o- https://fnm.vercel.app/install | bash
+# Download and install Node.js:
+fnm install 22
+# Verify the Node.js version:
+node -v # Should print "v22.14.0".
+# Download and install Yarn:
+corepack enable yarn
+# Verify Yarn version:
+yarn -v
+```
 
 ### Installation
 
