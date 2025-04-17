@@ -1,63 +1,65 @@
+
+
 # Ollama
 
 ---
 
-This guide walks through how to install, update, configure, and uninstall **Ollama** on NVIDIA **Jetson Orin** devices. Ollama enables local inference of large language models (LLMs) with CUDA support and is well-optimized for Jetson hardware.
+本指南讲解如何在 NVIDIA **Jetson Orin** 设备上安装、更新、配置和卸载 **Ollama**。Ollama 支持在本地运行大语言模型（LLMs）推理，具备 CUDA 加速能力，并针对 Jetson 硬件进行了优化。
 
 ---
 
-## 1. Overview
+## 1. 概览
 
-- Fast local inference
-- CUDA acceleration
-- Model version management
-- Easy CLI and optional WebUI
+- 快速的本地推理
+- CUDA 加速支持
+- 模型版本管理
+- 简洁的命令行工具与可选 WebUI
 
-This document covers:
+本文件涵盖：
 
-- Installation via script and Docker  
-- Model execution  
-- Version updates  
-- Optional remote access configuration  
-- Clean uninstallation  
+- 使用脚本或 Docker 安装
+- 模型运行
+- 版本更新
+- 可选的远程访问配置
+- 完整卸载方法
 
 ![overview](/img/NG45XX_ollama_overview.png)
 
 ---
 
-## 2. System Requirements
+## 2. 系统要求
 
-### Hardware
+### 硬件要求
 
-| Component | Minimum Requirements             |
-| --------- | -------------------------------- |
-| Device    | Jetson Orin Nano / NX / AGX      |
-| RAM       | ≥ 8GB for small/medium models    |
-| Storage   | ≥ 10GB for model & cache storage |
+| 组件  | 最低要求                        |
+| --- | --------------------------- |
+| 设备  | Jetson Orin Nano / NX / AGX |
+| 内存  | 运行小/中型模型需 ≥ 8GB             |
+| 存储  | 模型与缓存存储需 ≥ 10GB             |
 
-### Software
+### 软件要求
 
-- Ubuntu 20.04 or 22.04 (JetPack-based)
-- JetPack 5.1.1+ (CUDA, cuDNN, TensorRT preinstalled)
-- Python 3.8+ (optional)
-- Docker (optional, for containerized mode)
+- Ubuntu 20.04 或 22.04（基于 JetPack）
+- JetPack 5.1.1+（预装 CUDA、cuDNN、TensorRT）
+- Python 3.8+（可选）
+- Docker（可选，用于容器化模式）
 
 ---
 
-## 3. Installing Ollama
+## 3. 安装 Ollama
 
-### Method A: Script Installation (Recommended)
+### 方法 A：脚本安装（推荐）
 
-Run the official Ollama installer:
+运行官方安装脚本：
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-- This will install the CLI binary and background service.
-- CUDA support is included by default on Jetson.
+- 会安装 CLI 二进制文件及后台服务
+- 在 Jetson 上默认启用 CUDA 支持
 
-### Method B: Docker-based Installation (Optional)
+### 方法 B：基于 Docker 的安装（可选）
 
 ```bash
 sudo docker run --runtime nvidia --rm --network=host \
@@ -66,32 +68,32 @@ sudo docker run --runtime nvidia --rm --network=host \
   dustynv/ollama:r36.4.0
 ```
 
-> 🧩 Maintained by NVIDIA Jetson community (dustynv), optimized for JetPack environments.
+> 🧩 由 Jetson 社区维护者（dustynv）发布，专为 JetPack 环境优化
 
 ---
 
-## 4. Basic Usage
+## 4. 基本用法
 
-### Common Commands
+### 常用命令
 
 ```bash
-ollama serve         # Start the Ollama backend
-ollama run           # Run a model
-ollama pull          # Pull model from registry
-ollama list          # List installed models
-ollama show          # Show model info
-ollama rm            # Remove model
-ollama help          # View help for commands
+ollama serve         # 启动 Ollama 后台服务
+ollama run           # 运行模型
+ollama pull          # 从仓库拉取模型
+ollama list          # 列出已安装模型
+ollama show          # 显示模型信息
+ollama rm            # 删除模型
+ollama help          # 查看命令帮助
 ```
 
-### Version Check
+### 检查版本
 
 ```bash
 ollama -v
-# Example: ollama version 0.5.7
+# 示例：ollama version 0.5.7
 ```
 
-### Starting the Service (If Not Auto-Started)
+### 启动服务（若未自动启动）
 
 ```bash
 ollama serve &
@@ -99,24 +101,24 @@ ollama serve &
 
 ---
 
-## 5. Optional: Enable Remote Access
+## 5. 可选：启用远程访问
 
-To allow external access to the Ollama service:
+若需允许外部设备访问 Ollama 服务：
 
-1. Edit the systemd service file:
+1. 编辑 systemd 服务文件：
    
    ```bash
    sudo nano /etc/systemd/system/ollama.service
    ```
 
-2. Add the following under `[Service]`:
+2. 在 `[Service]` 段添加以下内容：
    
    ```ini
    Environment="OLLAMA_HOST=0.0.0.0"
    Environment="OLLAMA_ORIGINS=*"
    ```
 
-3. Reload and restart the service:
+3. 重新加载并重启服务：
    
    ```bash
    sudo systemctl daemon-reload
@@ -125,30 +127,30 @@ To allow external access to the Ollama service:
 
 ---
 
-## 6. Running Models
+## 6. 运行模型
 
-Use the `ollama run` command to start inference with a model:
+使用 `ollama run` 命令启动模型推理：
 
 ```bash
 ollama run deepseek-r1:7b
 ```
 
-- Other models are available at: [https://ollama.com/search](https://ollama.com/search)
-- The first run will download the model; subsequent runs use cache.
+- 更多模型可访问：[https://ollama.com/search](https://ollama.com/search)
+- 首次运行会下载模型，后续运行使用本地缓存
 
 ---
 
-## 7. Updating Ollama
+## 7. 更新 Ollama
 
-To update to the latest version:
+更新到最新版：
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-### Optional: Install a Specific Version
+### 可选：安装指定版本
 
-Set the version in the install command:
+通过指定版本号安装：
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | OLLAMA_VERSION=0.1.32 sh
@@ -156,9 +158,9 @@ curl -fsSL https://ollama.com/install.sh | OLLAMA_VERSION=0.1.32 sh
 
 ---
 
-## 8. Uninstalling Ollama
+## 8. 卸载 Ollama
 
-### Remove the Service
+### 移除服务
 
 ```bash
 sudo systemctl stop ollama
@@ -166,15 +168,15 @@ sudo systemctl disable ollama
 sudo rm /etc/systemd/system/ollama.service
 ```
 
-### Remove the Binary
+### 删除执行文件
 
 ```bash
 sudo rm $(which ollama)
 ```
 
-(Ollama is typically installed in `/usr/local/bin`, `/usr/bin`, or `/bin`.)
+（Ollama 通常安装在 `/usr/local/bin`、`/usr/bin` 或 `/bin`）
 
-### Delete Model Files and User
+### 删除模型文件与用户账户
 
 ```bash
 sudo rm -r /usr/share/ollama
@@ -184,29 +186,29 @@ sudo groupdel ollama
 
 ---
 
-## 9. Troubleshooting
+## 9. 故障排查
 
-| Issue                     | Solution                                            |
-| ------------------------- | --------------------------------------------------- |
-| Port 11434 not responding | Restart `ollama serve` or reload systemd service    |
-| Install failed            | Ensure you have curl + internet; retry with `sudo`  |
-| Can't remove ollama       | Check binary path with `which ollama`               |
-| Out of memory (OOM)       | Use smaller model (`1.5b`, `7b`), or add swap space |
+| 问题          | 解决方案                             |
+| ----------- | -------------------------------- |
+| 11434 端口无响应 | 重启 `ollama serve` 或重载 systemd 服务 |
+| 安装失败        | 确保已安装 curl 且联网；可尝试加 `sudo` 重试    |
+| 无法卸载 ollama | 使用 `which ollama` 查找实际路径后删除      |
+| 内存不足（OOM）   | 尝试使用较小模型（如 `1.5b`, `7b`），或添加交换空间 |
 
 ---
 
-## 10. Appendix
+## 10. 附录
 
-### File Paths
+### 路径参考
 
-| Purpose        | Path                                 |
-| -------------- | ------------------------------------ |
-| Ollama binary  | `/usr/local/bin/ollama`              |
-| Model cache    | `~/ollama/` or `/usr/share/ollama`   |
-| Service config | `/etc/systemd/system/ollama.service` |
+| 用途           | 路径                                   |
+| ------------ | ------------------------------------ |
+| Ollama 可执行文件 | `/usr/local/bin/ollama`              |
+| 模型缓存         | `~/ollama/` 或 `/usr/share/ollama`    |
+| 服务配置         | `/etc/systemd/system/ollama.service` |
 
-### References
+### 参考资料
 
-- [Ollama Official Site](https://ollama.com/)
-- [GitHub Repository](https://github.com/ollama/ollama)
-- [Jetson Community](https://forums.developer.nvidia.com/)
+- [Ollama 官方网站](https://ollama.com/)
+- [GitHub 仓库](https://github.com/ollama/ollama)
+- [Jetson 社区论坛](https://forums.developer.nvidia.com/)

@@ -2,77 +2,77 @@
 
 ---
 
-This guide walks through how to install and run **NVIDIA DeepStream SDK** on **Jetson Orin** devices. DeepStream enables real-time video analytics using GPU-accelerated AI pipelines, optimized for Jetson’s CUDA/NvMedia stack.
+本指南介绍如何在 **Jetson Orin** 设备上安装并运行 **NVIDIA DeepStream SDK**。DeepStream 支持使用 GPU 加速的 AI 视频分析流水线，针对 Jetson 的 CUDA/NvMedia 平台高度优化。
 
 ---
 
-## 1. Overview
+## 1. 概览
 
-- Real-time video analytics SDK by NVIDIA  
-- Accelerated with TensorRT and CUDA  
-- Multi-stream AI inference and tracking  
-- Supports RTSP, USB, CSI, and file inputs  
-- Built-in support for object detection, classification, tracking  
+- NVIDIA 提供的实时视频分析 SDK  
+- 基于 TensorRT 和 CUDA 加速  
+- 支持多路 AI 推理与目标追踪  
+- 输入支持 RTSP、USB、CSI 摄像头及本地视频文件  
+- 内置目标检测、分类、追踪功能
 
-This document includes:
+本指南包括：
 
-- Installation (deb & Docker)
-- Sample pipeline execution
-- Custom model integration
-- Docker usage with jetson-containers (optional)
-- Troubleshooting and tips
+- 安装方法（.deb 包和 Docker）
+- 示例流水线运行
+- 自定义模型集成
+- Docker 使用（含 jetson-containers）
+- 常见问题与技巧
 
 ![overview](/img/NG45XX_deepstream_overview.png)
 
 ---
 
-## 2. System Requirements
+## 2. 系统要求
 
-### Hardware
+### 硬件
 
-| Component | Minimum Requirements        |
-| --------- | --------------------------- |
-| Device    | Jetson Orin Nano / NX / AGX |
-| RAM       | ≥ 8GB                       |
-| Storage   | ≥ 10GB                      |
+| 组件   | 最低要求                        |
+| ---- | --------------------------- |
+| 设备   | Jetson Orin Nano / NX / AGX |
+| 内存   | ≥ 8GB                       |
+| 存储空间 | ≥ 10GB                      |
 
-### Software
+### 软件
 
-- JetPack 5.1.1 or higher (L4T ≥ R35.3)
-- Ubuntu 20.04 / 22.04
-- CUDA, TensorRT, cuDNN (included in JetPack)
-- Docker (optional for containerized setup)
+- JetPack 5.1.1 或更高版本（L4T ≥ R35.3）  
+- Ubuntu 20.04 / 22.04  
+- CUDA、TensorRT、cuDNN（已包含在 JetPack 中）  
+- Docker（可选，用于容器化部署）
 
 ---
 
-## 3. Installing DeepStream
+## 3. 安装 DeepStream
 
-### Method A: Native Installation (via .deb package)
+### 方法 A：本地安装（.deb 包）
 
-1. Download the DeepStream package for Jetson:
+1. 前往 DeepStream 下载页面：
    
-   - Go to [DeepStream Jetson Download Page](https://developer.nvidia.com/deepstream-sdk-download-tesla#jetson)
-   - Choose the correct version for your JetPack
+   - [DeepStream Jetson 下载页面](https://developer.nvidia.com/deepstream-sdk-download-tesla#jetson)  
+   - 选择与你 JetPack 版本对应的 DeepStream 包
 
-2. Install with `dpkg`:
+2. 使用 `dpkg` 安装：
 
 ```bash
 sudo apt install ./deepstream-<version>_arm64.deb
 ```
 
-3. Verify installation:
+3. 验证安装：
 
 ```bash
 deepstream-app --version
 ```
 
-【image】*Fig: CLI output showing DeepStream installed and version info*
+【图片】*图示：CLI 输出 DeepStream 安装及版本信息*
 
 ---
 
-### Method B: Docker-Based Installation
+### 方法 B：基于 Docker 的安装
 
-If you prefer containerized workflows:
+若你更偏好容器化工作流：
 
 ```bash
 sudo docker run --rm -it --runtime=nvidia --network host \
@@ -80,9 +80,9 @@ sudo docker run --rm -it --runtime=nvidia --network host \
   /bin/bash
 ```
 
-> 🧩 Available via NVIDIA NGC. Make sure your device is registered with [NGC](https://ngc.nvidia.com/).
+> 🧩 来自 NVIDIA NGC 镜像，使用前确保设备已注册 [NGC](https://ngc.nvidia.com/)
 
-You can also use [jetson-containers](https://github.com/dusty-nv/jetson-containers) for a pre-configured experience:
+你也可以使用社区维护的 [jetson-containers](https://github.com/dusty-nv/jetson-containers)：
 
 ```bash
 jetson-containers run dusty-nv/deepstream
@@ -90,25 +90,25 @@ jetson-containers run dusty-nv/deepstream
 
 ---
 
-## 4. Running a Sample Pipeline
+## 4. 运行示例流水线
 
-### Step 1: Launch a Sample App
+### 步骤 1：运行默认示例
 
-Run the default sample (object detection on video file):
+执行内置视频目标检测示例：
 
 ```bash
 deepstream-app -c /opt/nvidia/deepstream/deepstream/samples/configs/deepstream-app/source1_usb_dec_infer_resnet_int8.txt
 ```
 
-This will open a video window and display detected objects in real time.
+该命令将弹出视频窗口，实时显示检测结果。
 
-【image】*Fig: DeepStream running live object detection pipeline*
+【图片】*图示：DeepStream 运行实时目标检测*
 
 ---
 
-### Step 2: Use a USB or CSI Camera
+### 步骤 2：使用 USB 或 CSI 摄像头
 
-Update the config file input section:
+修改配置文件中的输入部分：
 
 ```ini
 [source0]
@@ -119,19 +119,19 @@ camera-height=720
 camera-fps-n=30
 ```
 
-Then run:
+然后运行：
 
 ```bash
 deepstream-app -c <your_camera_config>.txt
 ```
 
-> 🎥 For USB cams, type=1. For CSI, use `nvarguscamerasrc`.
+> 🎥 USB 摄像头对应 `type=1`，CSI 摄像头使用 `nvarguscamerasrc`
 
 ---
 
-### Step 3: Run with RTSP Stream
+### 步骤 3：使用 RTSP 流
 
-Use this config snippet:
+使用以下配置片段：
 
 ```ini
 [source0]
@@ -142,9 +142,9 @@ uri=rtsp://<your-camera-stream>
 
 ---
 
-## 5. Running in Docker (Advanced)
+## 5. Docker 中运行（进阶）
 
-Example: DeepStream 6.3 Triton + PyTorch in Docker:
+示例：在 Docker 中运行 DeepStream 6.3 + Triton + PyTorch：
 
 ```bash
 sudo docker run -it --rm --runtime=nvidia \
@@ -153,29 +153,29 @@ sudo docker run -it --rm --runtime=nvidia \
   nvcr.io/nvidia/deepstream:6.3-triton-devel
 ```
 
-Inside container:
+容器内执行：
 
 ```bash
 deepstream-app -c /opt/nvidia/deepstream/deepstream/samples/configs/deepstream-app/source1_usb_dec_infer_resnet_int8.txt
 ```
 
-【image】*Fig: DeepStream running in Docker container with GUI passthrough*
+【图片】*图示：带 GUI 显示的 DeepStream Docker 容器运行界面*
 
 ---
 
-## 6. Integrating Custom Models
+## 6. 集成自定义模型
 
-DeepStream supports custom models via TensorRT or ONNX.
+DeepStream 支持通过 TensorRT 或 ONNX 集成自定义模型。
 
-### Step 1: Convert your model
+### 步骤 1：模型转换
 
-Use `trtexec` or `tao-converter`:
+使用 `trtexec` 或 `tao-converter` 工具：
 
 ```bash
 trtexec --onnx=model.onnx --saveEngine=model.engine
 ```
 
-### Step 2: Update config
+### 步骤 2：更新配置文件
 
 ```ini
 [primary-gie]
@@ -184,36 +184,36 @@ model-engine-file=model.engine
 network-type=0
 ```
 
-【image】*Fig: Configuration block for custom model integration*
+【图片】*图示：配置块中的自定义模型路径*
 
 ---
 
-## 7. Tips & Troubleshooting
+## 7. 小贴士与故障排查
 
-| Issue                   | Solution                                             |
-| ----------------------- | ---------------------------------------------------- |
-| No display in Docker    | Mount X11 socket & set `DISPLAY` variable            |
-| Low FPS                 | Use TensorRT INT8 engine or reduce resolution        |
-| USB camera not detected | Check `v4l2-ctl --list-devices`                      |
-| GStreamer errors        | Ensure proper plugins installed (or reflash JetPack) |
-| RTSP stream timeout     | Set `drop-frame-interval=0` and `latency=200`        |
+| 问题            | 解决方法                                       |
+| ------------- | ------------------------------------------ |
+| Docker 中无图像显示 | 挂载 X11 socket 并设置 `DISPLAY` 变量             |
+| 帧率低           | 使用 INT8 引擎或降低输入分辨率                         |
+| USB 摄像头无法识别   | 使用 `v4l2-ctl --list-devices` 检查设备          |
+| GStreamer 报错  | 检查插件是否安装，必要时重刷 JetPack                     |
+| RTSP 延迟/丢帧    | 设置 `drop-frame-interval=0` 和 `latency=200` |
 
 ---
 
-## 8. Appendix
+## 8. 附录
 
-### Key Paths
+### 关键路径
 
-| Purpose        | Path                                                 |
-| -------------- | ---------------------------------------------------- |
-| Sample configs | `/opt/nvidia/deepstream/deepstream/samples/configs/` |
-| Model engines  | `/opt/nvidia/deepstream/deepstream/models/`          |
-| Logs           | `/opt/nvidia/deepstream/logs/`                       |
-| DeepStream CLI | `/usr/bin/deepstream-app`                            |
+| 用途               | 路径                                                   |
+| ---------------- | ---------------------------------------------------- |
+| 示例配置文件           | `/opt/nvidia/deepstream/deepstream/samples/configs/` |
+| 模型引擎文件           | `/opt/nvidia/deepstream/deepstream/models/`          |
+| 日志目录             | `/opt/nvidia/deepstream/logs/`                       |
+| DeepStream 命令行工具 | `/usr/bin/deepstream-app`                            |
 
-### References
+### 参考资源
 
-- [DeepStream Developer Page](https://developer.nvidia.com/deepstream-sdk)
-- [NGC Registry - DeepStream](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/deepstream)
-- [GitHub - dusty-nv/jetson-containers](https://github.com/dusty-nv/jetson-containers)
-- [NVIDIA Forums - DeepStream](https://forums.developer.nvidia.com/c/deepstream-sdk/)
+- [DeepStream 官方页面](https://developer.nvidia.com/deepstream-sdk)  
+- [NGC 镜像仓库 - DeepStream](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/deepstream)  
+- [GitHub - dusty-nv/jetson-containers](https://github.com/dusty-nv/jetson-containers)  
+- [NVIDIA 论坛 - DeepStream](https://forums.developer.nvidia.com/c/deepstream-sdk/)

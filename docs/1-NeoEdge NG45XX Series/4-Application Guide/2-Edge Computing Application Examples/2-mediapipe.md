@@ -1,41 +1,43 @@
+
+
 # Pose Estimation
 
 ---
 
-## 1. Overview
+## 1. 概览
 
-This article describes how to run real-time **pose estimation** using **MediaPipe** on the **Jetson Orin** platform (Nano / NX / AGX), leveraging GPU acceleration when possible.
+本文介绍如何在 **Jetson Orin** 平台（Nano / NX / AGX）上使用 **MediaPipe** 运行实时 **姿态估计（Pose Estimation）**，在支持的情况下启用 GPU 加速。
 
-Pose estimation is useful for gesture recognition, fitness tracking, human-computer interaction, etc.
+姿态估计广泛应用于手势识别、健身追踪、人机交互等领域。
 
-【image】*Fig: Real-time pose estimation output example*
-
----
-
-## 2. System Requirements
-
-### Hardware
-
-- Jetson Orin Series (Nano, NX, AGX)
-- USB / CSI Camera (optional but recommended)
-
-### Software
-
-- **OS**: Ubuntu 20.04/22.04 LTS (JetPack-based)
-- **JetPack**: NVIDIA official image (includes CUDA, cuDNN, TensorRT)
-- **MediaPipe**: GitHub source (`master` or tagged version like `v0.9.x`)
-- **Dependencies**:
-  - Bazel 4.2+ (build system)
-  - Python 3.7+
-  - OpenCV, FFmpeg, GStreamer, Protobuf
-
-Ensure JetPack and GPU drivers are properly installed and CUDA is available.
+【图片】*图示：实时姿态估计输出示例*
 
 ---
 
-## 3.  Environment Setup
+## 2. 系统要求
 
-### Step 1: Update and Install Dependencies
+### 硬件
+
+- Jetson Orin 系列（Nano、NX、AGX）  
+- USB / CSI 摄像头（可选但推荐）
+
+### 软件
+
+- **操作系统**：Ubuntu 20.04/22.04 LTS（基于 JetPack）  
+- **JetPack**：官方镜像（包含 CUDA、cuDNN、TensorRT）  
+- **MediaPipe**：GitHub 源代码（`master` 分支或指定版本，如 `v0.9.x`）  
+- **依赖项**：  
+  - Bazel 4.2+（构建系统）  
+  - Python 3.7+  
+  - OpenCV、FFmpeg、GStreamer、Protobuf
+
+确保 JetPack 安装正确，CUDA 可用。
+
+---
+
+## 3. 环境配置
+
+### 步骤 1：更新系统并安装依赖
 
 ```bash
 sudo apt update && sudo apt upgrade
@@ -47,7 +49,7 @@ sudo apt install -y \
     libavcodec-dev libavformat-dev libswscale-dev
 ```
 
-### Step 2: Python Packages
+### 步骤 2：安装 Python 包
 
 ```bash
 python3 -m pip install --upgrade pip
@@ -56,9 +58,9 @@ pip3 install numpy protobuf
 
 ---
 
-## 4. Installing Bazel
+## 4. 安装 Bazel
 
-MediaPipe requires [Bazel](https://bazel.build/) to build from source.
+MediaPipe 使用 [Bazel](https://bazel.build/) 构建源代码：
 
 ```bash
 curl -OL https://github.com/bazelbuild/bazel/releases/download/5.3.0/bazel-5.3.0-linux-arm64
@@ -67,31 +69,31 @@ sudo mv bazel-5.3.0-linux-arm64 /usr/local/bin/bazel
 bazel version
 ```
 
-> 📌 **Note**: MediaPipe version must match Bazel version; refer to official [compatibility guide](https://google.github.io/mediapipe/getting_started/install.html).
+> 📌 **注意**：MediaPipe 版本必须与 Bazel 版本兼容，参考官方 [兼容性指南](https://google.github.io/mediapipe/getting_started/install.html)
 
 ---
 
-## 5. Clone MediaPipe Source
+## 5. 克隆 MediaPipe 源码
 
 ```bash
 git clone https://github.com/google/mediapipe.git
 cd mediapipe
-# Optional: Checkout stable version
+# 可选：切换至稳定版本
 # git checkout v0.9.1
 ```
 
-Explore available demos in:
+示例与图结构文件路径：
 
 - `mediapipe/examples/`
 - `mediapipe/graphs/`
 
 ---
 
-## 6. Build and Configure
+## 6. 构建与配置
 
-### Step 1: Basic C++ Build (Example)
+### 步骤 1：基础 C++ 构建（示例）
 
-Compile a simple hello world or hand tracking demo:
+编译一个 Hello World 或手部追踪示例：
 
 ```bash
 bazel build -c opt \
@@ -101,7 +103,7 @@ bazel build -c opt \
     mediapipe/examples/desktop/hello_world:hello_world
 ```
 
-### Step 2: Pose Estimation Demo Build
+### 步骤 2：编译姿态估计示例
 
 ```bash
 bazel build -c opt \
@@ -110,13 +112,13 @@ bazel build -c opt \
     mediapipe/examples/desktop/pose_tracking:pose_tracking_gpu
 ```
 
-> You may need to download pose models before running.
+> 首次运行前可能需要下载姿态估计模型文件
 
 ---
 
-## 7. Running the Demo
+## 7. 运行示例
 
-### Live Webcam Input (GPU):
+### 使用摄像头进行实时推理（GPU）
 
 ```bash
 GLOG_logtostderr=1 \
@@ -124,7 +126,7 @@ bazel-bin/mediapipe/examples/desktop/pose_tracking/pose_tracking_gpu \
   --calculator_graph_config_file=mediapipe/graphs/pose_tracking/pose_tracking_gpu.pbtxt
 ```
 
-### Video File Input:
+### 使用本地视频文件：
 
 ```bash
 GLOG_logtostderr=1 \
@@ -136,11 +138,11 @@ bazel-bin/mediapipe/examples/desktop/pose_tracking/pose_tracking_gpu \
 
 ---
 
-## 8. Optional: Python API
+## 8. 可选：Python API
 
-MediaPipe also supports Python APIs, but official wheels may not work directly on ARM64.
+MediaPipe 支持 Python 接口，但官方预编译版本在 ARM64 上可能不可用。
 
-### Option 1: Build from Source
+### 方案 1：从源码构建 Python 模块
 
 ```bash
 cd mediapipe
@@ -148,13 +150,13 @@ python3 setup.py gen_protos
 python3 setup.py bdist_wheel --experimental_deps=gpu
 ```
 
-Install generated wheel:
+安装生成的 `.whl` 包：
 
 ```bash
 pip3 install dist/mediapipe-*.whl
 ```
 
-### Example Python Script
+### Python 示例代码
 
 ```python
 import cv2
@@ -179,43 +181,43 @@ cap.release()
 
 ---
 
-## 9. Performance & Optimization
+## 9. 性能与优化建议
 
-| Mode         | FPS (Orin AGX) | GPU Usage | Acceleration |
-| ------------ | -------------- | --------- | ------------ |
-| CPU only     | ~5–10 FPS      | Low       | ❌            |
-| CUDA enabled | ~25–40 FPS     | Medium    | ✅            |
-| TensorRT     | (WIP/manual)   | Low/High  | ⚙️ Potential |
+| 模式       | FPS（AGX Orin） | GPU 使用率 | 是否加速   |
+| -------- | ------------- | ------- | ------ |
+| 仅使用 CPU  | ~5–10 FPS     | 低       | ❌      |
+| 启用 CUDA  | ~25–40 FPS    | 中等      | ✅      |
+| TensorRT | （开发中/手动）      | 低 / 高   | ⚙️ 有潜力 |
 
-### Tips
+### 优化建议
 
-- Use `--config=cuda` for GPU support
-- Try `--define MEDIAPIPE_DISABLE_GPU=0`
-- Check `jetson_clocks` and `nvpmodel` for performance mode
+- 添加 `--config=cuda` 以启用 GPU  
+- 确保 `--define MEDIAPIPE_DISABLE_GPU=0` 被设置  
+- 启用 `jetson_clocks` 和设置 `nvpmodel` 为最大性能
 
-【image】*Fig: Placeholder for performance metrics chart*
+【图片】*图示：性能指标图（占位）*
 
 ---
 
-## 10. 🛠️ Troubleshooting
+## 10. 🛠️ 故障排查
 
-| Issue                        | Suggestion                                           |
-| ---------------------------- | ---------------------------------------------------- |
-| Missing `.so` files          | Add to `LD_LIBRARY_PATH` or reinstall via `apt`      |
-| GStreamer errors             | Install all plugins: `good`, `bad`, `ugly`           |
-| Build failed (Bazel version) | Match Bazel version to MediaPipe documentation       |
-| Python wheel fails to build  | Check `setup.py` + compatible Bazel, Python versions |
+| 问题           | 建议                                  |
+| ------------ | ----------------------------------- |
+| 缺少 `.so` 文件  | 添加至 `LD_LIBRARY_PATH` 或通过 apt 安装    |
+| GStreamer 报错 | 安装全部插件：`good`、`bad`、`ugly`          |
+| Bazel 构建失败   | 检查 MediaPipe 对应的 Bazel 版本           |
+| Python 包构建失败 | 检查 `setup.py` 和对应 Bazel / Python 版本 |
 
 ```bash
-# Install missing plugins if needed
+# 若缺少插件，可运行以下命令补全：
 sudo apt install gstreamer1.0-plugins-{base,good,bad,ugly}
 ```
 
 ---
 
-## 11. Appendix
+## 11. 附录
 
-### Source Tree (Example)
+### 源码目录结构示例
 
 ```bash
 mediapipe/
@@ -226,8 +228,8 @@ mediapipe/
 │       └── pose_tracking/
 ```
 
-### Resources
+### 参考资源
 
-- [MediaPipe Docs](https://google.github.io/mediapipe/)
-- [Jetson Orin Forum](https://forums.developer.nvidia.com/c/embedded/jetson-orin/)
-- [MediaPipe GitHub](https://github.com/google/mediapipe)
+- [MediaPipe 官方文档](https://google.github.io/mediapipe/)  
+- [Jetson Orin 开发者论坛](https://forums.developer.nvidia.com/c/embedded/jetson-orin/)  
+- [MediaPipe GitHub 仓库](https://github.com/google/mediapipe)
