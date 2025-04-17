@@ -1,84 +1,85 @@
-# UVC
+# USB Video Streaming
 
-## Technical Overview
+## Overview
 
-**UVC (USB Video Class) Protocol** is a universal standard protocol for video devices formulated by the USB Implementers Forum. It supports plug-and-play communication between video devices and host devices via USB interfaces. This solution implements the image capture and transmission functions of a UVC camera based on the ESP32-S3 platform.
+This example demonstrates how to achieve real-time video streaming using the UVC protocol. You can develop various practical applications based on this example.
 
-### Solution Advantages
-- Supports higher resolution image capture
-- Flexible replacement of different specifications of camera modules
-- Uses standardized USB interfaces for convenient expansion
-- Simplifies hardware wiring complexity
+### Technical Background
+
+**UVC (USB Video Class) Protocol** is a standard protocol established by the USB Implementers Forum for plug-and-play communication between video devices and host devices via USB interfaces. Its main advantages include:
+
+- Support for high-resolution image capture
+- Easy replacement of different camera modules
+- Use of standardized USB interfaces, offering strong scalability
+- Simplification of hardware wiring complexity
 
 ## Preparation
 
 ### Hardware Configuration Requirements
+
 - Standard development board (ESP32-S3 core board)
 - UVC protocol-compatible camera module
-- Complete hardware connection guide reference: [Hardware Connection Instructions](.././Hardware%20Guide/Hardware%20Connection)
+- For detailed hardware connection instructions, please refer to: [Hardware Connection Guide](.././Hardware%20Guide/Hardware%20Connection)
 
-### Software Resources
+### Software Resource Acquisition
+
 1. **Precompiled Firmware**:
+   
    - Obtain the latest UVC example firmware
-   - Flashing method reference: [Development Environment Setup Guide](./../Software%20Guide/Development%20Environment%20Setup)
+   - For the flashing method, please refer to: [Development Environment Setup Guide](./../Software%20Guide/Development%20Environment%20Setup)
 
 2. **Source Code Development**:
+   
    - Supports local compilation (see the development guide section below for details)
 
 ## Function Verification Process
 
 1. **Firmware Upgrade**
-   - Use the flashing tool to write the UVC example firmware
+   
+   - Use the flashing tool to write the example firmware
 
 2. **Device Initialization**
-   - Connect the hardware devices correctly
-   - Power on and wait for the system to complete initialization (approximately 1 minute)
-
-3. **Function Test**
-   - Short press the function key to enter configuration mode
-   - Access the Web management interface (http://192.168.1.1)
-   - Verify if the real-time video stream displays correctly
    
-   ![Video Preview Interface](/img/NE101_example_2.png)
+   - Correctly connect the hardware devices
+   - Power on and start the device
 
-4. **Snapshot Test**
-   - Set snapshot parameters and execute the test
-   - Complete operation guide reference: [Quick Start Manual](./../Quick%20Start)
+3. **Function Testing**
+   
+   - Connect to WiFi ESP32S3-UVC
+   - Access the web management interface (http://192.168.4.1)
+   - Verify if the real-time video stream is displayed correctly
+     ![UVC Video Stream](/img/NE101_example_uvc1.png)
 
 ## Development Implementation Guide
 
 ### Development Environment Requirements
-- Latest version of Visual Studio Code
-- ESP-IDF plugin (v5.1.1 version)
+
+- The latest version of Visual Studio Code
+- ESP-IDF Plugin (version 5.1.1)
 - UVC example code library
 
 ### Detailed Development Steps
 
-1. **Obtain Source Code**
+1. **Obtain the Source Code**
+   
    ```bash
-   mkdir uvc && cd uvc
    git clone git@github.milesight.com:ne101.git
    ```
 
-2. **Project Configuration**
-   - Open the project directory with VS Code
-   - Enable UVC functionality: modify the `main/camera.c` file, setting `CAMERA_USE_UVC=1`
-
-3. **Resolution Configuration**
-   - Modify the resolution parameters in `main/uvc.c`
-   - Ensure to adjust the buffer size configuration accordingly
+2. **Compile and Flash**
    
-   ![Resolution Configuration Interface](/img/NE101_example_1.png)
-
-4. **Compile and Flash**
-   - Execute the complete compilation process
+   - Use VS Code to open the example project `examples/usb/host/usb_camera_mic_spk`
+   - Set the target chip to ESP32-S3
+   - Execute the full compilation process
    - Flash the generated firmware to the device
 
-## Important Notes
+## Important Considerations
 
 1. **Protocol Compatibility**
-   - ESP32-S3 only supports USB 1.1 protocol
+   
+   - ESP32-S3 only supports the USB 1.1 protocol
    - Custom UVC devices must ensure compatibility with the USB 1.1 standard
 
 2. **Performance Optimization Suggestions**
-   - Set the frame buffer size reasonably under high resolution
+   
+   - For high resolutions, properly set the frame buffer
