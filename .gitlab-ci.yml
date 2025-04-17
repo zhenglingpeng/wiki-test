@@ -1,35 +1,15 @@
-# This file is a template, and might need editing before it works on your project.
-# This is a sample GitLab CI/CD configuration file that should run without any modifications.
-# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
-# it uses echo commands to simulate the pipeline execution.
-#
-# A pipeline is composed of independent jobs that run scripts, grouped into stages.
-# Stages run in sequential order, but jobs within stages run in parallel.
-#
-# For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
-#
-# You can copy and paste this template into a new `.gitlab-ci.yml` file.
-# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
-#
-# To contribute improvements to CI/CD templates, please follow the Development guide at:
-# https://docs.gitlab.com/ee/development/cicd/templates.html
-# This specific template is located at:
-# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
-
 stages:          # List of stages for jobs, and their order of execution
   - deploy
 
 deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+  stage: deploy
+  image: node:latest  # 如果 Runner 配置了 pull_policy="if-not-present"，会优先用本地镜像
   script:
     - echo "building wiki..."
-    - curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-    - sudo apt-get install -y nodejs
-    - node -v  # Verify the node version
     - yarn install
-    - yarn add @docusaurus/core @docusaurus/preset-classic
     - yarn build
-    - sudo cp rsync -avh ./build /home/zhengb/wiki
-    - sudo chown -R zhengb:zhengb /home/zhengb/wiki
+    - rm -rf /out/build || true
+    - cp -r ./build /out/
+    - chown -R 1000:1000 /out/build
   tags:
     - wiki-runner
