@@ -468,70 +468,77 @@ The NG45XX series product and carrier board specifications are as follows:
     gap: "1.5rem",
   }}
 >
-  {[
-    { 
-      title: "LLM Chatbot", 
-      image: require("/img/Overview/NG45xx/application/OpenWebUI.png").default, 
-      description: "This guide explains how to use Ollama (a lightweight inference engine) to locally deploy the DeepSeek-R1 large language model on NVIDIA Jetson Orin devices for offline AI interaction, with simple and efficient setup.", 
-      link: "./Application Guide/Edge Computing Application Examples/Deepseek-r1"
-    },
-    { 
-      title: "Pose Estimation", 
-      image: require("/img/Overview/NG45xx/application/Pose.png").default, 
-      description: "This article describes how to run real-time pose estimation (Pose Estimation) using MediaPipe on Jetson Orin platforms (Nano/NX/AGX), with GPU acceleration where supported.", 
-      link: "./Application Guide/Edge Computing Application Examples/mediapipe"
-    },
-    { 
-      title: "YoLo Object Detection", 
-      image: require("/img/Overview/NG45xx/application/ObjectDetection.png").default, 
-      description: "This tutorial guides you through deploying YOLOv8 models on NVIDIA Jetson Orin platforms using TensorRT for accelerated inference, enabling efficient real-time object detection.", 
-      link: "./Application Guide/Edge Computing Application Examples/Object Detection"
-    }
-  ].map((item, index) => (
-    <Link to={item.link} key={index} style={{ textDecoration: "none", color: "inherit" }}>
-      <div
-        style={{
-          border: "1px solid var(--ifm-color-emphasis-200)",
-          borderRadius: "8px",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-          padding: "1rem",
-          textAlign: "left",
-          cursor: "pointer",
-          position: "relative",
-          transition: "all 0.3s ease-in-out",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.02)";
-          e.currentTarget.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.15)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1)";
-          e.currentTarget.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-        }}
-      >
-      <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "1rem" }}>{item.title}</h3>
-      <img
-        className="no-zoom"
-        src={item.image}
-        alt={item.title}
-        style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "0", width: "100%" }}
-      />
-      <p
-        style={{
-          marginTop: "0.5rem",
-          display: "-webkit-box",
-          WebkitBoxOrient: "vertical",
-          overflow: "hidden",
-          WebkitLineClamp: 2,
-          textOverflow: "ellipsis",
-          transition: "all 0.3s ease-in-out",
-        }}
-      >
-        {item.description}
-      </p>
-    </div>
-   </Link>
-  ))}
+  {/* Define a base URL constant for easier maintenance */}
+  {(() => {
+    const BASE_URL = "/en/docs/NeoEdge NG45XX Series/Application Guide/";
+    
+    const examples = [
+      { 
+        title: "LLM Chatbot", 
+        image: require("/img/Overview/NG45xx/application/OpenWebUI.png").default, 
+        description: "This guide explains how to use Ollama (a lightweight inference engine) to locally deploy the DeepSeek-R1 large language model on NVIDIA Jetson Orin devices for offline AI interaction, with simple and efficient setup.", 
+        path: "Deepseek-r1"
+      },
+      { 
+        title: "Pose Estimation", 
+        image: require("/img/Overview/NG45xx/application/Pose.png").default, 
+        description: "This article describes how to run real-time pose estimation (Pose Estimation) using MediaPipe on Jetson Orin platforms (Nano/NX/AGX), with GPU acceleration where supported.", 
+        path: "mediapipe"
+      },
+      { 
+        title: "YoLo Object Detection", 
+        image: require("/img/Overview/NG45xx/application/ObjectDetection.png").default, 
+        description: "This tutorial guides you through deploying YOLOv8 models on NVIDIA Jetson Orin platforms using TensorRT for accelerated inference, enabling efficient real-time object detection.", 
+        path: "Object Detection"
+      }
+    ];
+    
+    return examples.map((item, index) => (
+      <a href={`${BASE_URL}${item.path}`} key={index} style={{ textDecoration: "none", color: "inherit" }}>
+        <div
+          style={{
+            border: "1px solid var(--ifm-color-emphasis-200)",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            padding: "1rem",
+            textAlign: "left",
+            cursor: "pointer",
+            position: "relative",
+            transition: "all 0.3s ease-in-out",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.02)";
+            e.currentTarget.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.15)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+            e.currentTarget.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+          }}
+        >
+          <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "1rem" }}>{item.title}</h3>
+          <img
+            className="no-zoom"
+            src={item.image}
+            alt={item.title}
+            style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "0", width: "100%" }}
+          />
+          <p
+            style={{
+              marginTop: "0.5rem",
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              WebkitLineClamp: 2,
+              textOverflow: "ellipsis",
+              transition: "all 0.3s ease-in-out",
+            }}
+          >
+            {item.description}
+          </p>
+        </div>
+      </a>
+    ));
+  })()}
 </div>
 
 
