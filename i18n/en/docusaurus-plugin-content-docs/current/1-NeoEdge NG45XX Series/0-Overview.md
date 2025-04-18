@@ -491,7 +491,7 @@ The NG45XX series product and carrier board specifications are as follows:
     <Link to={item.link} key={index} style={{ textDecoration: "none", color: "inherit" }}>
       <div
         style={{
-          border: "1px solid #ddd",
+          border: "1px solid var(--ifm-color-emphasis-200)",
           borderRadius: "8px",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           padding: "1rem",
@@ -518,7 +518,6 @@ The NG45XX series product and carrier board specifications are as follows:
       />
       <p
         style={{
-          color: "#666",
           marginTop: "0.5rem",
           display: "-webkit-box",
           WebkitBoxOrient: "vertical",

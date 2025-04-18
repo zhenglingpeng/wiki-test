@@ -34,16 +34,6 @@ const ApplicationScenarios: React.FC<ApplicationScenariosProps> = ({
   const { colorMode } = useColorMode();
   const isDarkTheme = colorMode === 'dark';
   
-  // 主题颜色
-  const primaryColor = 'var(--ifm-color-primary)';
-  const textColor = isDarkTheme ? 'var(--ifm-font-color-base)' : '#1c1e21';
-  const secondaryTextColor = isDarkTheme ? 'var(--ifm-color-gray-400)' : '#666';
-  const borderColor = isDarkTheme ? 'var(--ifm-color-gray-800)' : '#eaeaea';
-  const bgColor = isDarkTheme ? 'var(--ifm-card-background-color)' : 'white';
-  const shadowColor = isDarkTheme ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.06)';
-  const shadowHoverColor = isDarkTheme ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.1)';
-  const dividerColor = isDarkTheme ? 'var(--ifm-color-gray-800)' : '#e0e0e0';
-  
   // 根据图像位置设置卡片布局
   const isLeftImage = imagePosition === 'left';
   const isCenterImage = imagePosition === 'center';
@@ -59,8 +49,7 @@ const ApplicationScenarios: React.FC<ApplicationScenariosProps> = ({
             fontWeight: '600', 
             margin: '25px 0 15px 0',
             paddingBottom: '8px',
-            borderBottom: `2px solid ${dividerColor}`,
-            color: textColor,
+            borderBottom: `1px solid var(--ifm-color-emphasis-200)`,
             position: 'relative'
           }}>
             <span style={{
@@ -75,7 +64,6 @@ const ApplicationScenarios: React.FC<ApplicationScenariosProps> = ({
                 left: 0,
                 width: '60%',
                 height: '2px',
-                backgroundColor: primaryColor,
                 borderRadius: '2px'
               }} />
             </span>
@@ -92,24 +80,20 @@ const ApplicationScenarios: React.FC<ApplicationScenariosProps> = ({
                 className="scenario-item" 
                 style={{ 
                   padding: '15px', 
-                  border: `1px solid ${borderColor}`, 
+                  border: `1px solid var(--ifm-color-emphasis-200)`,
                   borderRadius: 'var(--ifm-card-border-radius)',
-                  boxShadow: `0 2px 8px ${shadowColor}`,
                   transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                   cursor: 'default',
                   height: '100%',
-                  backgroundColor: bgColor,
                   display: 'flex',
                   overflow: 'hidden',
                   flexDirection: 'row'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.boxShadow = `0 6px 12px ${shadowHoverColor}`;
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = `0 2px 8px ${shadowColor}`;
                 }}
               >
                 {/* 图像显示始终在左侧 */}
@@ -145,19 +129,16 @@ const ApplicationScenarios: React.FC<ApplicationScenariosProps> = ({
                 <div style={{ flex: '1' }}>
                   <strong style={{ 
                     fontSize: '1.1rem', 
-                    color: textColor, 
                     display: 'block', 
                     marginBottom: '10px',
                     fontWeight: '600',
                     lineHeight: '1.4',
-                    borderLeft: `3px solid ${primaryColor}`,
                     paddingLeft: '10px'
                   }}>
                     {item.title}
                   </strong>
                   <p style={{ 
                     margin: 0, 
-                    color: secondaryTextColor, 
                     lineHeight: '1.5',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
