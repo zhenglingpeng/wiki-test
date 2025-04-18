@@ -155,7 +155,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} CamThink.`,
+        copyright: `Copyright © ${new Date().getFullYear()} CamThink.ai All rights reserved.`,
       },
       prism: {
         theme: prismThemes.github,
