@@ -284,7 +284,7 @@ The NeoEdge NG45XX series supports the NVIDIA Super Developer Kit, delivering si
 - **Autonomous Systems**
   - **AGV Navigation**: Hybrid SLAM solution based on LiDAR + vision.
   - **Drone Inspection**: Supports 5G video transmission + edge AI analysis.
-  - **Service Robots**: Multimodal interaction system with <200ms response latency.
+  - **Service Robots**: Multimodal interaction system with &lt;200ms response latency.
 
 - **Healthcare**
   - **Medical Imaging Analysis**: Supports real-time DICOM-standard X-ray diagnosis.
