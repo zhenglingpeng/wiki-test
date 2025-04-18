@@ -28,7 +28,7 @@ const AccessoriesTable: React.FC<AccessoriesTableProps> = ({ accessories }) => {
         <col style={{ width: '55%' }} />
       </colgroup>
       <thead>
-        <tr style={{ backgroundColor: '#f8f8f8', width: '100%' }}>
+        <tr style={{ width: '100%' }}>
           <th style={{ padding: '12px 15px', textAlign: 'center', borderBottom: '1px solid #ddd', borderRight: '1px solid #ddd', width: '25%' }}>
             <Translate id="accessoriesTable.header.image" description="The header for the image column in accessories table">
               图片
@@ -55,10 +55,7 @@ const AccessoriesTable: React.FC<AccessoriesTableProps> = ({ accessories }) => {
         {accessories.map((accessory, index) => (
           <tr 
             key={index}
-            style={{ 
-              backgroundColor: index % 2 === 1 ? '#f9f9f9' : 'transparent',
-              width: '100%'
-            }}
+            style={{ width: '100%' }}
           >
             <td style={{ padding: '8px', textAlign: 'center', borderBottom: '1px solid #ddd', borderRight: '1px solid #ddd', width: '25%' }}>
               <div style={{ width: '100%', height: '80px', margin: '0 auto' }}>
