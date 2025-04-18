@@ -491,7 +491,7 @@ NG45XX系列整机产品和载板的规格信息如下
     <Link to={item.link} key={index} style={{ textDecoration: "none", color: "inherit" }}>
       <div
         style={{
-          border: "1px solid #ddd",
+          border: "1px solid var(--ifm-color-emphasis-200)",
           borderRadius: "8px",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           padding: "1rem",
@@ -518,7 +518,6 @@ NG45XX系列整机产品和载板的规格信息如下
       />
       <p
         style={{
-          color: "#666",
           marginTop: "0.5rem",
           display: "-webkit-box",
           WebkitBoxOrient: "vertical",
