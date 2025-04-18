@@ -1,6 +1,5 @@
 import React from 'react';
-import Translate from '@docusaurus/Translate';
-import { useColorMode, useThemeConfig } from '@docusaurus/theme-common';
+import { useColorMode } from '@docusaurus/theme-common';
 
 interface ScenarioItem {
   title: string;

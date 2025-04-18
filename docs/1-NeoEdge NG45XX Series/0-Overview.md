@@ -468,70 +468,77 @@ NG45XX系列整机产品和载板的规格信息如下
     gap: "1.5rem",
   }}
 >
-  {[
-    { 
-      title: "LLM Chatbot", 
-      image: require("/img/Overview/NG45xx/application/OpenWebUI.png").default, 
-      description: "本指南介绍如何使用 Ollama（轻量推理引擎）在 NVIDIA Jetson Orin 设备上本地部署 DeepSeek-R1 大语言模型，实现离线 AI 交互，安装配置简单高效。", 
-      link: "./Application Guide/Edge Computing Application Examples/Deepseek-r1"
-    },
-    { 
-      title: "Pose Estimation", 
-      image: require("/img/Overview/NG45xx/application/Pose.png").default, 
-      description: "本文介绍如何在 Jetson Orin 平台（Nano / NX / AGX）上使用 MediaPipe 运行实时姿态估计（Pose Estimation），在支持的情况下启用 GPU 加速。", 
-      link: "./Application Guide/Edge Computing Application Examples/mediapipe"
-    },
-    { 
-      title: "YoLo Object Detection", 
-      image: require("/img/Overview/NG45xx/application/ObjectDetection.png").default, 
-      description: "本教程将指导您如何在 NVIDIA Jetson Orin 平台上部署 YOLOv8 模型，并利用 TensorRT 进行推理加速。通过此过程，您将能够在 Jetson Orin 上高效地运行 YOLOv8，实现实时的目标检测。", 
-      link: "./Application Guide/Edge Computing Application Examples/Object Detection"
-    }
-  ].map((item, index) => (
-    <Link to={item.link} key={index} style={{ textDecoration: "none", color: "inherit" }}>
-      <div
-        style={{
-          border: "1px solid var(--ifm-color-emphasis-200)",
-          borderRadius: "8px",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-          padding: "1rem",
-          textAlign: "left",
-          cursor: "pointer",
-          position: "relative",
-          transition: "all 0.3s ease-in-out",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.02)";
-          e.currentTarget.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.15)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1)";
-          e.currentTarget.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-        }}
-      >
-      <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "1rem" }}>{item.title}</h3>
-      <img
-        className="no-zoom"
-        src={item.image}
-        alt={item.title}
-        style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "0", width: "100%" }}
-      />
-      <p
-        style={{
-          marginTop: "0.5rem",
-          display: "-webkit-box",
-          WebkitBoxOrient: "vertical",
-          overflow: "hidden",
-          WebkitLineClamp: 2,
-          textOverflow: "ellipsis",
-          transition: "all 0.3s ease-in-out",
-        }}
-      >
-        {item.description}
-      </p>
-    </div>
-   </Link>
-  ))}
+  {/* 定义一个文档基础路径常量，方便维护 */}
+  {(() => {
+    const BASE_URL = "/docs/NeoEdge NG45XX Series/Application Guide/";
+    
+    const examples = [
+      { 
+        title: "LLM Chatbot", 
+        image: require("/img/Overview/NG45xx/application/OpenWebUI.png").default, 
+        description: "本指南介绍如何使用 Ollama（轻量推理引擎）在 NVIDIA Jetson Orin 设备上本地部署 DeepSeek-R1 大语言模型，实现离线 AI 交互，安装配置简单高效。", 
+        path: "Deepseek-r1"
+      },
+      { 
+        title: "Pose Estimation", 
+        image: require("/img/Overview/NG45xx/application/Pose.png").default, 
+        description: "本文介绍如何在 Jetson Orin 平台（Nano / NX / AGX）上使用 MediaPipe 运行实时姿态估计（Pose Estimation），在支持的情况下启用 GPU 加速。", 
+        path: "mediapipe"
+      },
+      { 
+        title: "YoLo Object Detection", 
+        image: require("/img/Overview/NG45xx/application/ObjectDetection.png").default, 
+        description: "本教程将指导您如何在 NVIDIA Jetson Orin 平台上部署 YOLOv8 模型，并利用 TensorRT 进行推理加速。通过此过程，您将能够在 Jetson Orin 上高效地运行 YOLOv8，实现实时的目标检测。", 
+        path: "Object Detection"
+      }
+    ];
+    
+    return examples.map((item, index) => (
+      <a href={`${BASE_URL}${item.path}`} key={index} style={{ textDecoration: "none", color: "inherit" }}>
+        <div
+          style={{
+            border: "1px solid var(--ifm-color-emphasis-200)",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            padding: "1rem",
+            textAlign: "left",
+            cursor: "pointer",
+            position: "relative",
+            transition: "all 0.3s ease-in-out",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.02)";
+            e.currentTarget.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.15)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+            e.currentTarget.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+          }}
+        >
+          <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "1rem" }}>{item.title}</h3>
+          <img
+            className="no-zoom"
+            src={item.image}
+            alt={item.title}
+            style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "0", width: "100%" }}
+          />
+          <p
+            style={{
+              marginTop: "0.5rem",
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              WebkitLineClamp: 2,
+              textOverflow: "ellipsis",
+              transition: "all 0.3s ease-in-out",
+            }}
+          >
+            {item.description}
+          </p>
+        </div>
+      </a>
+    ));
+  })()}
 </div>
 
 
