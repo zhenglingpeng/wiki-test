@@ -70,5 +70,21 @@
   "sidebar.tutorialSidebar.category.NE300": {
     "message": "NE300",
     "description": "The label for category NE300 in sidebar tutorialSidebar"
+  },
+  "accessoriesTable.header.image": {
+    "message": "Image",
+    "description": "The header for the image column in accessories table"
+  },
+  "accessoriesTable.header.name": {
+    "message": "Name",
+    "description": "The header for the name column in accessories table"
+  },
+  "accessoriesTable.header.quantity": {
+    "message": "Quantity",
+    "description": "The header for the quantity column in accessories table"
+  },
+  "accessoriesTable.header.description": {
+    "message": "Description",
+    "description": "The header for the description column in accessories table"
   }
 }
