@@ -1,33 +1,31 @@
 # Welcome
 
-## CamThink, Empowering Edge Intelligence with Imagination
+Welcome to the **CamThink Wiki Center**!
 
-**CamThink** is a brand that provides developers with various **open hardware** and **open source software**, dedicated to building practical **AI perception systems**. We focus on multi-dimensional perception capabilities including **vision**, **audio**, and **environmental data**, enabling AI to understand the world more comprehensively. As a sub-brand of **Milesight**, **CamThink** inherits strong R&D capabilities and global support networks, ensuring product reliability and continuous innovation.
+We're thrilled to have you join our community, the best place to explore and understand edge AI perception technologies. Whether you're a beginner or an experienced developer, you'll find valuable resources and support here.
 
-## What We Offer
+## CamThink: Redefining Possibilities for Edge Intelligence
 
-- **Hardware Platform**: High-performance, scalable, and modular edge AI devices
-- **Open Source Toolchain**: One-stop support including drivers, SDKs, and model deployment frameworks
-- **Multi-modal Perception**: Various application cases supporting intelligent processing of visual, audio, and sensor data
+**CamThink** is a brand dedicated to providing developers with diverse **open hardware** and **open-source software** solutions. We specialize in building **edge AI perception kits** with real-world applicability, focusing on delivering multidimensional sensing capabilities including vision, audio, and environmental data. Our mission is to enable AI to better understand the world and drive the advancement of edge intelligence technologies. As a sub-brand of Milesight, CamThink inherits its strong R&D capabilities and global support network, ensuring product reliability and continuous innovation.
 
 ## Quick Access
-
-{/* Product Card Container */}
+To help you get started quickly, here are some essential resource links:
+{/* Product card container */}
 <div className="product-card-container">
 
-  {/* NeoEdge NG45XX Series Product Card */}
+  {/* NeoEdge NG45XX Series product card */}
   <div className="product-card">
     <div className="product-header">
       <img src="/img/Overview/NG45xx/NG45XX.png" alt="NeoEdge NG45XX" className="product-image"/>
       <h3 className="product-title">NeoEdge NG45xx Series</h3>
     </div>
     <p className="product-description">
-      High-performance edge computing device based on NVIDIA Jetson platform, suitable for complex AI inference and multi-modal data processing scenarios.
+      High-performance edge computing device based on NVIDIA Jetson platform, ideal for complex AI inference and multimodal data processing scenarios.
     </p>
     <div className="product-links">
       <a href="/docs/NeoEdge NG45XX Series/Overview" className="link-item">
         <span className="link-icon">📖</span>
-        <span>Overview</span>
+        <span>Product Overview</span>
       </a>
       <a href="/docs/NeoEdge NG45XX Series/Quick Start" className="link-item">
         <span className="link-icon">🚀</span>
@@ -48,19 +46,19 @@
     </div>
   </div>
 
-  {/* NeoEyes NE101 Series Product Card */}
+  {/* NeoEyes NE101 Series product card */}
   <div className="product-card">
     <div className="product-header">
       <img src="/img/Overview/NE101/NE101.png" alt="NeoEyes NE101" className="product-image"/>
       <h3 className="product-title">NeoEyes NE101 Smart Camera</h3>
     </div>
     <p className="product-description">
-      Lightweight smart camera device supporting edge vision analysis and wireless connectivity, suitable for IoT and lightweight AI application scenarios.
+      Lightweight intelligent camera supporting edge vision analysis and wireless connectivity, perfect for IoT and lightweight AI applications.
     </p>
     <div className="product-links">
       <a href="/docs/NeoEyes NE101 Series/Overview" className="link-item">
         <span className="link-icon">📖</span>
-        <span>Overview</span>
+        <span>Product Overview</span>
       </a>
       <a href="/docs/NeoEyes NE101 Series/Quick Start" className="link-item">
         <span className="link-icon">🚀</span>
@@ -83,7 +81,7 @@
 
 </div>
 
-{/* Product Card Styles */}
+{/* Product card styling */}
 <style>
 {`
   .product-card-container {
@@ -94,10 +92,9 @@
   }
   
   .product-card {
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--ifm-border-color);
     border-radius: 12px;
     padding: 24px;
-    background-color: #ffffff;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -119,21 +116,17 @@
     height: 90px;
     object-fit: contain;
     border-radius: 8px;
-    background-color: #f8f9fa;
     padding: 8px;
   }
   
   .product-title {
     margin: 0;
     font-size: 1.5rem;
-    color: #333;
     font-weight: 600;
   }
   
   .product-description {
     margin: 0 0 16px 0;
-    color: #555;
-    font-size: 0.95rem;
     line-height: 1.5;
   }
   
@@ -147,16 +140,13 @@
     display: flex;
     align-items: center;
     padding: 10px 12px;
-    background-color: #f8f9fa;
     border-radius: 6px;
     text-decoration: none;
-    color: #333;
     transition: background-color 0.2s ease;
   }
   
   .link-item:hover {
-    background-color: #e9ecef;
-    color: #0066cc;
+    background-color: var(--ifm-hover-overlay);
   }
   
   .link-icon {
