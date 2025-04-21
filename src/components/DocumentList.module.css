@@ -1,5 +1,5 @@
 .documentListContainer {
-  margin: 1rem 0;
+  margin: 0;
   width: 100%;
 }
 
@@ -228,7 +228,7 @@
 /* 文档块容器 */
 .docTreeContainer {
   margin-top: 0.5rem;
-  padding: 1rem;
+  padding: 0;
   background-color: var(--ifm-card-background-color);
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
@@ -300,6 +300,33 @@
   padding: 0.8rem 1rem;
   background-color: var(--ifm-color-emphasis-100);
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.folderHeader:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+/* 展开/收起图标 */
+.expandIcon {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: var(--ifm-color-emphasis-700);
+  transition: transform 0.2s ease;
+}
+
+.expanded {
+  transform: rotate(0deg);
+}
+
+.collapsed {
+  transform: rotate(-90deg);
 }
 
 .folderIcon {

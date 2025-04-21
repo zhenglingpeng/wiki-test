@@ -1,3 +1,5 @@
+import DocumentList from '@site/src/components/DocumentList';
+
 # Welcome
 
 欢迎来到 **CamThink Wiki 中心**！
@@ -17,7 +19,7 @@
   <div className="product-card">
     <div className="product-header">
       <img src="/img/Overview/NG45xx/NG45XX.png" alt="NeoEdge NG45XX" className="product-image"/>
-      <h3 className="product-title">NeoEdge NG45xx 系列</h3>
+      <h3 className="product-title">NeoEdge NG45xx AI边缘计算网关</h3>
     </div>
     <p className="product-description">
       基于NVIDIA Jetson平台的高性能边缘计算设备，适用于复杂AI推理和多模态数据处理场景。
@@ -35,11 +37,11 @@
         <span className="link-icon">🔧</span>
         <span>硬件指南</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Software Guide/Development Environment Setup" className="link-item">
+      <a href="/docs/NeoEdge NG45XX Series/Software Guide/System Flashing and Initialization" className="link-item">
         <span className="link-icon">💻</span>
         <span>软件开发</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Application Guide/Edge Computing Application Examples/template" className="link-item">
+      <a href="/docs/NeoEdge NG45XX Series/Application Guide/Deepseek-r1" className="link-item">
         <span className="link-icon">📱</span>
         <span>应用指南</span>
       </a>
@@ -50,7 +52,7 @@
   <div className="product-card">
     <div className="product-header">
       <img src="/img/Overview/NE101/NE101.png" alt="NeoEyes NE101" className="product-image"/>
-      <h3 className="product-title">NeoEyes NE101 智能摄像机</h3>
+      <h3 className="product-title">NeoEyes NE101 低功耗相机</h3>
     </div>
     <p className="product-description">
       轻量级智能摄像设备，支持边缘视觉分析和无线连接，适用于IoT和轻量级AI应用场景。
@@ -68,11 +70,11 @@
         <span className="link-icon">🔧</span>
         <span>硬件指南</span>
       </a>
-      <a href="/docs/NeoEyes NE101 Series/Software Guide" className="link-item">
+      <a href="/docs/NeoEyes NE101 Series/Software Guide/Development Environment Setup" className="link-item">
         <span className="link-icon">💻</span>
         <span>软件开发</span>
       </a>
-      <a href="/docs/NeoEyes NE101 Series/Application Guide" className="link-item">
+      <a href="/docs/NeoEyes NE101 Series/Application Guide/example-uvc" className="link-item">
         <span className="link-icon">📱</span>
         <span>应用指南</span>
       </a>
@@ -112,8 +114,8 @@
   }
   
   .product-image {
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
     border-radius: 8px;
     padding: 8px;
@@ -161,3 +163,9 @@
   }
 `}
 </style>
+
+## 文档导航
+
+以下是完整的文档导航列表，您可以根据需要浏览相关内容：
+
+<DocumentList />

@@ -4,176 +4,153 @@ import { useAllDocsData } from '@docusaurus/plugin-content-docs/client';
 import styles from './DocumentList.module.css';
 
 /**
- * 文档导航组件 - 使用混合结构呈现文档
+ * 文档导航组件 - 支持多层嵌套目录结构，保持倒序，支持收起展开
  */
 export default function DocumentList() {
   const allDocsData = useAllDocsData();
-  const [docTree, setDocTree] = useState({});
-  const [highlightDocs, setHighlightDocs] = useState([]);
+  const [docItems, setDocItems] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  // 需要特殊处理的高优先级文档
-  const specialDocs = [
-    'overview', 
-    'introduction',
-    'getting-started', 
-    'quick-start',
-    'quickstart',
-    '快速入门',
-    '概述',
-    '介绍'
-    // 'welcome', // 移除welcome从特殊文档中
-    // '欢迎'
-  ];
-  
-  // 检查文档是否属于特殊类型
-  const isSpecialDoc = (key, title) => {
-    if (!key && !title) return false;
-    
-    const normalizedKey = (key || '').toLowerCase();
-    const normalizedTitle = (title || '').toLowerCase();
-    
-    return specialDocs.some(docType => 
-      normalizedKey.includes(docType) || normalizedTitle.includes(docType)
-    );
+  // 存储目录的展开/收起状态，默认展开
+  const [expandedState, setExpandedState] = useState({});
+
+  // 切换目录的展开/收起状态
+  const toggleExpand = (categoryId) => {
+    setExpandedState(prevState => ({
+      ...prevState,
+      [categoryId]: !prevState[categoryId]
+    }));
   };
-  
-  // 检查是否为Welcome文档
-  const isWelcomeDoc = (key, title) => {
-    if (!key && !title) return false;
-    
-    const normalizedKey = (key || '').toLowerCase();
-    const normalizedTitle = (title || '').toLowerCase();
-    
-    return normalizedKey.includes('welcome') || 
-           normalizedKey.includes('欢迎') || 
-           normalizedTitle.includes('welcome') || 
-           normalizedTitle.includes('欢迎');
+
+  // 检查目录是否展开
+  const isCategoryExpanded = (categoryId) => {
+    // 如果目录ID不在状态中，默认为展开
+    return expandedState[categoryId] !== false;
   };
-  
-  // 文档排序
-  const sortDocItems = (items) => {
-    return Object.entries(items).sort((a, b) => {
-      const [keyA, itemA] = a;
-      const [keyB, itemB] = b;
-      
-      // 优先级文档排在前面
-      const isSpecialA = isSpecialDoc(keyA, itemA.title);
-      const isSpecialB = isSpecialDoc(keyB, itemB.title);
-      
-      if (isSpecialA && !isSpecialB) return -1;
-      if (!isSpecialA && isSpecialB) return 1;
-      
-      // 目录排在前面
-      const hasChildrenA = Object.keys(itemA.items || {}).length > 0;
-      const hasChildrenB = Object.keys(itemB.items || {}).length > 0;
-      
-      if (hasChildrenA && !hasChildrenB) return -1;
-      if (!hasChildrenA && hasChildrenB) return 1;
-      
-      // 按标题字母顺序排序
-      return (itemA.title || keyA).localeCompare(itemB.title || keyB);
-    });
+
+  // 检查是否为欢迎页面
+  const isWelcomePage = (id) => {
+    return id === '0-Welcome' || 
+           id.toLowerCase().includes('welcome') || 
+           id.toLowerCase().includes('欢迎');
   };
-  
+
+  // 提取可读的文件名
+  const getDisplayName = (item) => {
+    // 1. 首先使用title
+    if (item.title) {
+      return item.title;
+    }
+    
+    // 2. 如果没有title，则使用id（取最后一部分）
+    const id = item.id;
+    if (id) {
+      const lastPart = id.split('/').pop();
+      // 如果ID就是有意义的名称，直接使用
+      if (!lastPart.match(/^\d+-/)) {
+        return lastPart;
+      }
+      
+      // 3. 如果id有数字前缀，则进行格式化处理
+      const readable = lastPart.replace(/^\d+-/, '').replace(/-/g, ' ');
+      return readable.charAt(0).toUpperCase() + readable.slice(1);
+    }
+    
+    // 最后的后备选项
+    return '无标题文档';
+  };
+
   useEffect(() => {
-    // 处理文档数据，构建文档树
-    const tree = {};
-    const highlights = [];
-    
     try {
-      // 遍历所有文档插件数据
+      const processedItems = [];
+      
+      // 处理所有文档插件数据
       Object.keys(allDocsData).forEach(pluginId => {
         const docsData = allDocsData[pluginId];
         const { versions } = docsData;
-        const latestVersion = versions.find((version) => version.isLast);
+        const latestVersion = versions.find(version => version.isLast);
         
         if (latestVersion && latestVersion.docs) {
-          // 调试输出一些原始文档数据
-          console.log('原始文档数据示例:', latestVersion.docs.slice(0, 3));
+          // 获取倒序的文档列表
+          const reversedDocs = [...latestVersion.docs].reverse();
           
-          // 处理所有文档
-          latestVersion.docs.forEach(doc => {
-            // 跳过欢迎页面
-            if (doc.id === '0-Welcome' || isWelcomeDoc(doc.id, doc.title)) {
-              console.log('过滤欢迎文档:', doc.id, doc.title);
-              return; // 直接跳过，不添加到任何地方
+          // 构建文档路径树
+          const categoryMap = new Map();
+          
+          // 处理所有文档，构建目录结构
+          reversedDocs.forEach(doc => {
+            if (isWelcomePage(doc.id)) {
+              return; // 跳过欢迎页
             }
             
-            // 检查这个文档是否需要突出显示
-            const isHighlight = isSpecialDoc(doc.id, doc.title);
+            // 分割路径，最后一部分是文档，前面的是目录
+            const pathParts = doc.id.split('/');
             
-            // 如果是单层结构的特殊文档，放到highlight数组
-            if (isHighlight && !doc.id.includes('/')) {
-              highlights.push({
+            // 如果只有一级，直接作为根级文档
+            if (pathParts.length === 1) {
+              processedItems.push({
+                type: 'document',
                 id: doc.id,
                 title: doc.title,
                 path: doc.path
               });
-              // 同时也添加到树结构中，方便完整性
+              return;
             }
             
-            // 解析文档路径，提取层级结构
-            const pathParts = doc.id.split('/');
-            
-            // 递归添加到树结构
-            let currentLevel = tree;
-            for (let i = 0; i < pathParts.length; i++) {
+            // 处理多级结构
+            let currentPath = '';
+            for (let i = 0; i < pathParts.length - 1; i++) {
               const part = pathParts[i];
-              const isLastPart = i === pathParts.length - 1;
+              const prevPath = currentPath;
+              currentPath = prevPath ? `${prevPath}/${part}` : part;
               
-              if (!currentLevel[part]) {
-                // 创建新项目
-                currentLevel[part] = {
-                  id: part,
-                  title: isLastPart ? doc.title || part : part, // 防止title为undefined
-                  path: isLastPart ? doc.path : null,
-                  items: {}
+              // 如果此目录不存在，则创建
+              if (!categoryMap.has(currentPath)) {
+                // 提取可读的目录名称
+                let displayName = part;
+                if (part.match(/^\d+-/)) {
+                  // 如有数字前缀，进行格式化处理
+                  const readableName = part.replace(/^\d+-/, '').replace(/-/g, ' ');
+                  displayName = readableName.charAt(0).toUpperCase() + readableName.slice(1);
+                }
+                
+                const category = {
+                  type: 'category',
+                  id: currentPath,
+                  label: displayName, // 使用处理后的显示名称
+                  items: [],
+                  parent: prevPath
                 };
-              } else if (isLastPart) {
-                // 更新现有项的路径和标题
-                currentLevel[part].title = doc.title || part; // 防止title为undefined
-                currentLevel[part].path = doc.path;
+                categoryMap.set(currentPath, category);
+                
+                // 如果有父级，添加到父级的items中
+                if (prevPath) {
+                  const parentCategory = categoryMap.get(prevPath);
+                  if (parentCategory) {
+                    parentCategory.items.push(category);
+                  }
+                } else {
+                  // 一级目录，添加到根级别
+                  processedItems.push(category);
+                }
               }
-              
-              // 移动到下一级
-              if (!currentLevel[part].items) {
-                currentLevel[part].items = {}; // 确保items存在
-              }
-              currentLevel = currentLevel[part].items;
+            }
+            
+            // 添加文档到最后一级目录
+            const docCategory = categoryMap.get(pathParts.slice(0, -1).join('/'));
+            if (docCategory) {
+              docCategory.items.push({
+                type: 'document',
+                id: doc.id,
+                title: doc.title,
+                path: doc.path
+              });
             }
           });
         }
       });
       
-      // 检查并修复可能的空title
-      const fixMissingTitles = (items) => {
-        Object.keys(items).forEach(key => {
-          const item = items[key];
-          
-          // 如果没有标题，使用ID作为标题
-          if (!item.title) {
-            item.title = item.id || key;
-            console.log('修复缺失标题:', key, '→', item.title);
-          }
-          
-          // 递归处理子项
-          if (item.items && Object.keys(item.items).length > 0) {
-            fixMissingTitles(item.items);
-          }
-        });
-      };
-      
-      fixMissingTitles(tree);
-      
-      // 按优先级排序突出显示的文档
-      highlights.sort((a, b) => a.title.localeCompare(b.title));
-      
-      // 调试输出构建后的树结构
-      console.log('构建的文档树结构:', JSON.stringify(tree, null, 2).substring(0, 500) + '...');
-      
-      setDocTree(tree);
-      setHighlightDocs(highlights);
+      setDocItems(processedItems);
     } catch (error) {
       console.error('处理文档结构时出错:', error);
     } finally {
@@ -181,218 +158,97 @@ export default function DocumentList() {
     }
   }, [allDocsData]);
   
-  // 渲染顶部突出显示的文档链接
-  const renderHighlightDocs = () => {
-    // 过滤掉Welcome文档
-    const filteredHighlightDocs = highlightDocs.filter(doc => !isWelcomeDoc(doc.id, doc.title));
-    
-    if (filteredHighlightDocs.length === 0) {
-      return null;
+  // 渲染文档项目
+  const renderDocItem = (item) => {
+    if (item.type === 'document') {
+      const displayName = getDisplayName(item);
+      return (
+        <Link key={item.id} to={item.path} className={styles.level2FileLink}>
+          <span className={styles.fileName}>{displayName}</span>
+        </Link>
+      );
     }
-    
-    return (
-      <div className={styles.highlightDocsContainer}>
-        {filteredHighlightDocs.map(doc => (
-          <Link key={doc.id} to={doc.path} className={styles.highlightDocLink}>
-            <span className={styles.fileName}>{doc.title}</span>
-          </Link>
-        ))}
-      </div>
-    );
-  };
-
-  // 将文档分为文件夹和文件两类
-  const partitionItems = (items) => {
-    const folders = {};
-    const files = [];
-    
-    Object.entries(items).forEach(([key, item]) => {
-      // 过滤掉Welcome文档
-      if (isWelcomeDoc(key, item.title)) {
-        return;
-      }
-      
-      const hasChildren = Object.keys(item.items || {}).length > 0;
-      
-      if (hasChildren) {
-        folders[key] = item;
-      } else {
-        files.push([key, item]);
-      }
-    });
-    
-    return { folders, files };
+    return null;
   };
   
-  // 渲染第二级零散文件（单独占一行）
-  const renderLevel2Files = (files) => {
-    // 过滤掉Welcome文件
-    const filteredFiles = files.filter(([key, file]) => !isWelcomeDoc(key, file.title));
-    
-    if (filteredFiles.length === 0) return null;
-    
-    // 调试输出
-    console.log('Level2Files:', filteredFiles.map(([key, file]) => ({
-      key,
-      title: file.title,
-      path: file.path,
-      fileObj: file
-    })));
+  // 渲染文档链接列表
+  const renderDocLinks = (items) => {
+    const docLinks = items
+      .filter(item => item.type === 'document')
+      .map(renderDocItem);
+      
+    if (docLinks.length === 0) return null;
     
     return (
       <div className={styles.level2Files}>
-        {filteredFiles.map(([key, file]) => (
-          <Link key={key} to={file.path} className={styles.level2FileLink}>
-            <span className={styles.fileName}>{file.title || '无标题文档'}</span>
-          </Link>
-        ))}
+        {docLinks}
       </div>
     );
   };
   
-  // 递归渲染树形结构（第三级及以上）
-  const renderTreeStructure = (items) => {
-    if (!items || Object.keys(items).length === 0) {
+  // 递归渲染目录树
+  const renderCategory = (category, level = 0) => {
+    if (!category || !category.items || category.items.length === 0) {
       return null;
     }
     
-    // 将文档分为文件夹和文件
-    const { folders, files } = partitionItems(items);
+    // 确保目录标题有值，优先使用label
+    const displayLabel = category.label || getDisplayName(category) || '未命名目录';
     
-    // 排序文件夹
-    const sortedFolders = sortDocItems(folders);
+    // 获取当前目录的展开状态
+    const isExpanded = isCategoryExpanded(category.id);
     
-    // 先排序文件并过滤Welcome文件
-    const sortedFiles = files
-      .filter(([key, file]) => !isWelcomeDoc(key, file.title))
-      .sort((a, b) => {
-        const [, fileA] = a;
-        const [, fileB] = b;
-        return (fileA.title || '').localeCompare(fileB.title || '');
-      });
+    // 将文档和目录分离
+    const docs = category.items.filter(item => item.type === 'document');
+    const categories = category.items.filter(item => item.type === 'category');
     
-    // 调试输出
-    if (sortedFiles.length > 0) {
-      console.log('TreeFiles:', sortedFiles.map(([key, file]) => ({
-        key,
-        title: file.title,
-        path: file.path,
-        fileObj: file
-      })));
-    }
+    const docLinks = docs.map(renderDocItem);
     
     return (
-      <ul className={styles.treeList}>
-        {/* 先渲染文件 */}
-        {sortedFiles.length > 0 && (
-          <div className={styles.treeFiles}>
-            {sortedFiles.map(([key, file]) => (
-              <li key={key} className={styles.treeFileItem}>
-                <Link to={file.path} className={styles.treeFileLink}>
-                  <span className={styles.fileName}>
-                    {file.title || key || '无标题文档'}
-                  </span>
-                </Link>
-              </li>
-            ))}
+      <div key={category.id} className={styles.folderBlock}>
+        <div className={styles.folderHeader} onClick={() => toggleExpand(category.id)}>
+          <span className={`${styles.expandIcon} ${isExpanded ? styles.expanded : styles.collapsed}`}>
+            {isExpanded ? '▼' : '▶'}
+          </span>
+          <span className={styles.folderTitle}>{displayLabel}</span>
+        </div>
+        
+        {isExpanded && (
+          <div className={styles.folderContent}>
+            {/* 先显示文档 */}
+            {docLinks.length > 0 && (
+              <div className={styles.treeFiles}>
+                {docLinks}
+              </div>
+            )}
+            
+            {/* 再显示子目录 */}
+            {categories.length > 0 && (
+              <div className={level > 0 ? styles.treeList : styles.docBlocks}>
+                {categories.map(cat => renderCategory(cat, level + 1))}
+              </div>
+            )}
           </div>
         )}
-        
-        {/* 然后渲染文件夹 */}
-        {sortedFolders.map(([key, folder]) => (
-          <li key={key} className={styles.treeFolderItem}>
-            <div className={styles.treeFolderTitle}>
-              {folder.path ? (
-                <Link to={folder.path} className={styles.treeFolderLink}>
-                  <span className={styles.folderTitle}>{folder.title || key}</span>
-                </Link>
-              ) : (
-                <span className={styles.folderTitle}>{folder.title || key}</span>
-              )}
-            </div>
-            {renderTreeStructure(folder.items)}
-          </li>
-        ))}
-      </ul>
+      </div>
     );
   };
   
-  // 递归渲染文档树（第一级和第二级）
-  const renderDocTree = (items, level = 0) => {
-    if (!items || Object.keys(items).length === 0) {
-      return null;
-    }
-    
-    // 将文档分为文件夹和文件
-    const { folders, files } = partitionItems(items);
-    
-    // 对文件夹排序
-    const sortedFolders = sortDocItems(folders);
-    
-    // 对文件排序并过滤Welcome文件
-    const sortedFiles = files
-      .filter(([key, file]) => !isWelcomeDoc(key, file.title))
-      .sort((a, b) => {
-        const [, fileA] = a;
-        const [, fileB] = b;
-        return (fileA.title || '').localeCompare(fileB.title || '');
-      });
-    
-    // 调试输出第一级和第二级文件
-    console.log(`Level ${level} Files:`, sortedFiles.map(([key, file]) => ({
-      key,
-      title: file.title,
-      path: file.path
-    })));
-    
-    // 在第一级使用单列，第二级使用多列
-    const blocksClassName = level === 1 ? `${styles.docBlocks} ${styles.multiColumn}` : styles.docBlocks;
+  // 渲染整个文档树
+  const renderDocTree = () => {
+    // 将根级文档和目录分离
+    const rootDocs = docItems.filter(item => item.type === 'document');
+    const rootCategories = docItems.filter(item => item.type === 'category');
     
     return (
-      <div className={blocksClassName}>
-        {/* 在第二级，零散文件单独占满一行 */}
-        {level === 1 && sortedFiles.length > 0 && (
-          <div className={styles.level2Files}>
-            {sortedFiles.map(([key, file]) => (
-              <Link key={key} to={file.path} className={styles.level2FileLink}>
-                <span className={styles.fileName}>{file.title || key || '无标题文档'}</span>
-              </Link>
-            ))}
-          </div>
-        )}
+      <div className={styles.docTreeContainer}>
+        {/* 先显示根级文档 */}
+        {renderDocLinks(rootDocs)}
         
-        {/* 第一级的零散文件显示在文件夹前面 */}
-        {level === 0 && sortedFiles.length > 0 && (
-          <div className={styles.level2Files}>
-            {sortedFiles.map(([key, file]) => (
-              <Link key={key} to={file.path} className={styles.level2FileLink}>
-                <span className={styles.fileName}>{file.title || key || '无标题文档'}</span>
-              </Link>
-            ))}
-          </div>
-        )}
-        
-        {/* 渲染文件夹 */}
-        {sortedFolders.map(([key, folder]) => (
-          <div key={key} className={styles.folderBlock}>
-            <div className={styles.folderHeader}>
-              <span className={styles.folderTitle}>
-                {folder.path ? (
-                  <Link to={folder.path} className={styles.folderLink}>
-                    {folder.title || key}
-                  </Link>
-                ) : (
-                  folder.title || key
-                )}
-              </span>
-            </div>
-            
-            <div className={styles.folderContent}>
-              {/* 第三级开始使用树状结构 */}
-              {level === 1 ? renderTreeStructure(folder.items) : renderDocTree(folder.items, level + 1)}
-            </div>
-          </div>
-        ))}
+        {/* 再显示根级目录 */}
+        <div className={styles.docBlocks}>
+          {rootCategories.map(category => renderCategory(category))}
+        </div>
       </div>
     );
   };
@@ -408,7 +264,7 @@ export default function DocumentList() {
   }
   
   // 如果没有文档数据
-  if (Object.keys(docTree).length === 0 && highlightDocs.length === 0) {
+  if (docItems.length === 0) {
     return (
       <div className={styles.documentListContainer}>
         <div className={styles.emptyState}>
@@ -420,13 +276,7 @@ export default function DocumentList() {
   
   return (
     <div className={styles.documentListContainer}>
-      {/* 突出显示的文档直接在顶部展示 */}
-      {renderHighlightDocs()}
-      
-      {/* 混合结构呈现所有文档 */}
-      <div className={styles.docTreeContainer}>
-        {renderDocTree(docTree)}
-      </div>
+      {renderDocTree()}
     </div>
   );
 } 
