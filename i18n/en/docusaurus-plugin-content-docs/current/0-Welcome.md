@@ -1,3 +1,5 @@
+import DocumentList from '@site/src/components/DocumentList';
+
 # Welcome
 
 Welcome to the **CamThink Wiki Center**!
@@ -17,7 +19,7 @@ To help you get started quickly, here are some essential resource links:
   <div className="product-card">
     <div className="product-header">
       <img src="/img/Overview/NG45xx/NG45XX.png" alt="NeoEdge NG45XX" className="product-image"/>
-      <h3 className="product-title">NeoEdge NG45xx Series</h3>
+      <h3 className="product-title">Edge AI Box NG45xx</h3>
     </div>
     <p className="product-description">
       High-performance edge computing device based on NVIDIA Jetson platform, ideal for complex AI inference and multimodal data processing scenarios.
@@ -35,11 +37,11 @@ To help you get started quickly, here are some essential resource links:
         <span className="link-icon">🔧</span>
         <span>Hardware Guide</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Software Guide/Development Environment Setup" className="link-item">
+      <a href="/docs/NeoEdge NG45XX Series/Software Guide/System Flashing and Initialization" className="link-item">
         <span className="link-icon">💻</span>
         <span>Software Development</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Application Guide/Edge Computing Application Examples/template" className="link-item">
+      <a href="/docs/NeoEdge NG45XX Series/Application Guide/Deepseek-r1" className="link-item">
         <span className="link-icon">📱</span>
         <span>Application Guide</span>
       </a>
@@ -68,11 +70,11 @@ To help you get started quickly, here are some essential resource links:
         <span className="link-icon">🔧</span>
         <span>Hardware Guide</span>
       </a>
-      <a href="/docs/NeoEyes NE101 Series/Software Guide" className="link-item">
+      <a href="/docs/NeoEyes NE101 Series/Software Guide/Development Environment Setup" className="link-item">
         <span className="link-icon">💻</span>
         <span>Software Development</span>
       </a>
-      <a href="/docs/NeoEyes NE101 Series/Application Guide" className="link-item">
+      <a href="/docs/NeoEyes NE101 Series/Application Guide/example-uvc" className="link-item">
         <span className="link-icon">📱</span>
         <span>Application Guide</span>
       </a>
@@ -112,8 +114,8 @@ To help you get started quickly, here are some essential resource links:
   }
   
   .product-image {
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
     border-radius: 8px;
     padding: 8px;
@@ -161,3 +163,10 @@ To help you get started quickly, here are some essential resource links:
   }
 `}
 </style>
+
+## Document Navigation
+
+Below is a complete document navigation list. You can browse relevant content according to your needs:
+
+<DocumentList />
+

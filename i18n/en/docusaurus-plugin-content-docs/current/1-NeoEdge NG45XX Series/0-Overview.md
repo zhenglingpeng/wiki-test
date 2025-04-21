@@ -384,11 +384,6 @@ The NG45XX series product and carrier board specifications are as follows:
           image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM-MZk8nC4dpWB3RVIh_X1MJdjgPXwTtDT5w&s"
         },
         {
-          title: "Predictive Equipment Maintenance",
-          description: "Connecting vibration, temperature, current, and other sensors with edge AI algorithms to analyze equipment status, establishing anomaly detection models to predict potential failures 7-14 days in advance, reducing maintenance costs and preventing unexpected downtime.",
-          image: "https://lh6.googleusercontent.com/proxy/xTsclU49YVc4V7rntI0ljuBRviYIV4rA9vySkINSMZWx_dlxkpeczhg_hXnGSxcPsZCioCd5PEoG4QVDEMaouSE"
-        },
-        {
           title: "Intelligent Sorting",
           description: "Collaborating with industrial robotic arms for automatic classification of mixed materials via visual recognition systems, achieving speeds of 60 items/minute with over 98% accuracy, maintaining stable performance under varying lighting and orientation conditions.",
           image: "https://p0.itc.cn/images01/20231009/1c0b3fd2d48b4def85979dc839e9388e.jpeg"
@@ -407,11 +402,6 @@ The NG45XX series product and carrier board specifications are as follows:
           title: "Intrusion Detection",
           description: "Integrates face recognition, behavior analysis, and anomaly detection for security monitoring in campuses, malls, and communities, with response times under 1 second, seamlessly integrating with existing security systems.",
           image: "https://p8.itc.cn/images01/20231222/71051bef9d2f412fa433b5131629a924.png"
-        },
-        {
-          title: "Environmental Monitoring",
-          description: "Connects air quality, noise, water quality, and other sensors to establish regional environmental data analysis platforms, enabling localized data processing and anomaly alerts, reducing unnecessary data transmission by ~90% through edge analysis, extending battery life for powered devices.",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBThyZn5ZIA3OQav5Aeb96yvlcqTe7Ne1ybQ&s"
         }
       ]
     },
