@@ -1,16 +1,16 @@
 # Interface
 
-本文档主要介绍GPIO/I2C/SPI/CAN/USB/UART等接口的驱动控制方法。 
+This document mainly introduces the driver control methods for GPIO/I2C/SPI/CAN/USB/UART interfaces.
 
 ## GPIO
 
-GPIO资源信息：[Jetson Orin NX Series and Jetson Orin Nano Series Pinmux](https://developer.nvidia.com/downloads/jetson-orin-nx-and-orin-nano-series-pinmux-config-template)
+GPIO resource information:[Jetson Orin NX Series and Jetson Orin Nano Series Pinmux](https://developer.nvidia.com/downloads/jetson-orin-nx-and-orin-nano-series-pinmux-config-template)
 
-- 通过 gpioinfo 指令找到对应的line
+- Find the corresponding line using the gpioinfo command
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_GPIO.png)
 
-- 通过gpioset控制GPIO
+- Control GPIO using gpioset
 
 ```shell
 # To set GPIO12 to HIGH
@@ -27,47 +27,47 @@ sudo gpioset --mode=wait gpiochip0 144=0
 | RS485                 | UARTA         | 0x03100000   | UART1     | ttyTHS1  | OK         | serial1   |
 | RS232                 | UARTB         | 0x03110000   | UART0     | ttyTHS3  | OK         | serial3   |
 
-- debug
+- Debug
   
-  - 硬件连接，连接Debug线到PC
+  - Hardware connection: Connect Debug cable to PC
   
-  - 打开串口工具，配置波特率：115200，数据位：8，停止位：1，奇偶校验：无，流控制：无
+  - Open serial tool with configuration: Baud rate: 115200, Data bits: 8, Stop bits: 1, Parity: None, Flow control: None
 
 - RS232
   
-  - 硬件连接，如下图
+  - Hardware connection as shown below:
     
-    - 使用接头1，连接PC
-    - 使用接头2，连接Jetson的RS232的`TX\RX`
+    - Use connector 1 to connect to PC
+    - Use connector 2 to connect to Jetson's RS232 `TX\RX`
   
   ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_RS232.png)
 
 - RS485
   
-  - 安装依赖库
+  - Install dependency libraries
   
   ```shell
   sudo apt-get update
   sudo apt-get install gpiod libgpiod-dev
   ```
   
-  - 编译
+  - Compile
   
   ```shell
   gcc -o rs485_test rs485_test.c -lgpiod
   ```
   
-  - 运行
+  - Run
   
   ```shell
   sudo ./rs485_test [TTY_DIR] [DE_CHIP] [DE_LINE]
-  # 运行
+  # Example
   sudo ./rs485_test /dev/ttyTHS1 /dev/gpiochip0 112
   ```
   
-  - 测试
-    启动程序，在终端输入`send`切换到发送模式，然后输入要发送的数据，并按回车键，程序会将数据发送到串口；输入`recv` 切换到接收模式，程序会切换到接收模式，并接收打印提示信息；输入`quit` 并按回车键。
-  - 代码
+  - Testing
+    Start the program, enter `send` in the terminal to switch to send mode, then enter the data to be sent and press Enter. The program will send the data to the serial port. Enter `recv` to switch to receive mode, where the program will print received data. Enter `quit` and press Enter to exit.
+  - Code
 
 ```c
 #include <stdio.h>
@@ -153,7 +153,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // 配置串口属性
     tcgetattr(tty_fd, &tty);
     cfmakeraw(&tty);
     cfsetispeed(&tty, B9600);
@@ -184,7 +183,6 @@ int main(int argc, char* argv[]) {
 
         if (FD_ISSET(STDIN_FILENO, &readfds)) {
             if (fgets(buffer, BUFFER_SIZE, stdin) != NULL) {
-                // 去除输入末尾的换行符
                 buffer[strcspn(buffer, "\n")] = '\0';
 
                 if (strcmp(buffer, "send") == 0) {
@@ -201,7 +199,7 @@ int main(int argc, char* argv[]) {
 
                 if (mode == 1) {
                     set_rts_high();
-                    usleep(10000);  // 等待 10 毫秒，确保 RTS 引脚稳定
+                    usleep(10000);
                     write(tty_fd, buffer, strlen(buffer));
                     tcdrain(tty_fd);
                     set_rts_low();
@@ -222,89 +220,89 @@ int main(int argc, char* argv[]) {
 
 ## SPI
 
-- 硬件连接，短接`MOSI`和`MISO`
+- Hardware connection: Short-circuit `MOSI` and `MISO`
 
-- 测试方法，参考如下：
+- Testing method:
 
 ```shell
-# 获取spi源码
+# Get spi source code
 git clone https://github.com/rm-hull/spidev-test
 cd spidev-test/
 gcc spidev_test.c -o spidev_test
 
-# 测试
+#  Test
 ./spidev_test -v -D /dev/spidev0.0 -p "Test"
 ```
 
 ## CAN
 
-- 硬件连接，两台设备互联D+和D- 
+- Hardware connection: Connect D+ and D- between two devices
 
-- 安装`can-utils`工具
+- Install `can-utils` tools
 
 ```shell
 sudo apt update
 sudo apt-get install can-utils
 ```
 
-- 测试方法，参考如下：
+- Testing method
 
 ```shell
-# 查询 can0 的状态和配置信息
+# Check can0 status and configuration
 ip link show can0
 
-# 配置的 can 接口，波特率设置为 100kbps
+# Configure can interface with bitrate 100kbps
 sudo ip link set can0 up type can bitrate 100000
 
-# 一台设备监听
+# On one device, listen:
 candump can0
 
-# 另一台设备，通过 can0 接口发送一条信息
+# On another device, send message through can0 interface:
 cansend can0 123#11.22.33.44
 ```
 
 ## RTC
 
-- 修改RTC时间
+- Modify RTC time
 
 ```shell
 sudo hwclock --set --date="2000-01-01 12:00:00"
 ```
 
-- 查询RTC时间
+- Check RTC time
 
 ```shell
 sudo hwclock -r
 ```
 
-- 同步时间
+- Synchronize time
 
 ```shell
-# 系统时间 → RTC
+# System time → RTC
 sudo hwclock --systohc
 
-# RTC → 系统时间
+# RTC → System time
 sudo hwclock --hctosys
 ```
 
-- 查询系统时间
+- Check system time
 
 ```shell
 date
 ```
 
-- 网络时钟同步
+- Network time synchronization
 
 ```shell
-# 如无法设置RTC，需要确认是否打开了NTP服务
-# 禁用NTP服务
+# If unable to set RTC, check if NTP service is running
+# Disable NTP service
 sudo systemctl stop systemd-timesyncd.service
 sudo timedatectl set-ntp false
 ```
 
 ## Camera
 
-- 启动和配置摄像头模块的方法，以`imx219`为例
+- Method to start and configure camera module (using `imx219` as example)
 
 ```shell
 # 列出当前支持的硬件模块
@@ -337,8 +335,4 @@ Header 3: Jetson M.2 Key E Slot
 sudo python /opt/nvidia/jetson-io/config-by-hardware.py -n 2='Camera IMX219 Dual CamThink'
 ```
 
-- 重启系统使配置生效
-
-## 参考
-
-数据手册
+- Reboot system to apply configuration

@@ -1,31 +1,30 @@
 # WIFI
 
-本文档介绍了wifi 驱动安装和使用的说明，以rtl8821为例。
+This document describes the installation and usage instructions for WiFi drivers, using rtl8821 as an example.
 
-## 方法
+## Methods
 
-有两种方式安装和使用。
+There are two approaches for installation and usage:
 
-1. 直接在系统内下载安装
+1. Direct installation within the system
+2. Compiling from source code and then flashing
 
-2. 下载源码编译后烧写
+## In-System Installation
 
-## 系统内安装
-
-进入系统后执行以下命令自动安装驱动程序
+Execute the following commands to automatically install the driver after entering the system:
 
 ```
 $ sudo apt update
 $ sudo apt install rtl8821ce-dkms
 ```
 
-完成后执行modprobe
+After completion, execute modprobe:
 
 ```
 $ sudo modprobe rtl8821ce
 ```
 
-执行demsg可看到相关的log，说明驱动设备已经成功加载。
+Check relevant logs using dmesg to confirm successful driver loading:
 
 ```
 [   10.805932] rtl8821ce 0001:01:00.0: Adding to iommu group 3
@@ -35,29 +34,27 @@ $ sudo modprobe rtl8821ce
 [   11.320620] rtl8821ce 0001:01:00.0 wlP1p1s0: renamed from wlan0
 ```
 
-## 使用源码编译
+## Source Code Compilation
 
-### 代码获取
+### Code Acquisition
 
-源码的获取可以在github上查找，或者由wifi厂家提供
+Source code can be obtained from GitHub or provided by the WiFi manufacturer.
 
-rtl8821 github的源码在[GitHub - tomaspinho/rtl8821ce](https://github.com/tomaspinho/rtl8821ce)
+The rtl8821 GitHub repository is available at: [GitHub - tomaspinho/rtl8821ce](https://github.com/tomaspinho/rtl8821ce)
 
-### 编译
+### Compilation
 
-将源码放到工程目录Linux_for_Tegra/source/nvidia-oot/drivers对应的驱动下，例如
+Place the source code in the project directory under Linux_for_Tegra/source/nvidia-oot/drivers corresponding to the driver path, for example:
 
 Linux_for_Tegra/source/nvidia-oot/drivers/net/wireless/realtek
 
-修改Makefile，将rtl8821ce加入编译
+Modify the Makefile to include rtl8821ce in the compilation:
 
 ```
 obj-m += rtl8821ce/
 ```
 
-根据实际情况修改驱动编译的Makefile
-
-rtl8821ce目录下Makefile修改的diff如下
+Modify the driver's Makefile according to actual requirements. The diff for modifying the Makefile in the rtl8821ce directory is as follows:
 
 ```
 diff --git a/Makefile b/Makefile
@@ -117,23 +114,23 @@ index 5b5dc9a..01b1e24 100755
  else
 ```
 
-修改后，执行kernel编译命令或者单独编译模块install到rootfs下，后续烧录即可。编译和烧录参考前面相关文档。
+After modification, execute the kernel compilation command or compile the module separately and install it to the rootfs, then proceed with flashing. Refer to previous relevant documents for compilation and flashing instructions.
 
-## 使用与验证
+## Usage and Verification
 
-系统启动后执行modprobe
+After system startup, execute modprobe:
 
 ```
 $ sudo modprobe rtl8821ce
 ```
 
-使用命令lspci查看pci总线上的设备
+Use the lspci command to view devices on the PCI bus:
 
 ```
 0001:01:00.0 Network controller: Realtek Semiconductor Co., Ltd. RTL8821CE 802.11ac PCIe Wireless Network Adapter
 ```
 
-dmesg命令可以看到设备被添加成功
+The dmesg command shows successful device addition:
 
 ```
 $ sudo dmesg | grep rtl
@@ -144,11 +141,11 @@ $ sudo dmesg | grep rtl
 [   10.441574] rtl8821ce 0001:01:00.0 wlP1p1s0: renamed from wlan0
 ```
 
-连接wifi
+Connect to WiFi:
 
 ![RTL8821_wifi_connection1.png](/img/RTL8821_wifi_connection1.png)
 
-ifconfig查看网络设备
+Check network devices using ifconfig:
 
 ```
 wlP1p1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
@@ -163,7 +160,7 @@ wlP1p1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0ons 0
 ```
 
-使用ping测试网络连接
+Test network connection using ping:
 
 ```
 $ ping -I wlP1p1s0 www.baidu.com

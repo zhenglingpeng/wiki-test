@@ -1,5 +1,3 @@
-
-
 # Docker
 
 ---
@@ -194,5 +192,3 @@ Expected output:
 - [Jetson Docker Runtime Docs](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 - [NVIDIA Developer Forum](https://forums.developer.nvidia.com/)
 - [JetPack SDK](https://developer.nvidia.com/embedded/jetpack)
-
-

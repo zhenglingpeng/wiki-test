@@ -1,99 +1,97 @@
 # System  Flashing
 
-   本章主要介绍NG45XX系列产品的烧录方式，**CMD烧录** 和 **SDK Manager烧录**。
+本章旨在介绍NG45XX系列产品的烧录方法，主要提供烧录镜像包的操作步骤。以NG4511为例，详细说明其烧录过程。
 
 ## 准备工作
 
-- 编程环境：ubuntu20.04（需要预留100GB以上的空间去下载镜像资源）
+- ubuntu电脑(推荐：20.04/22.04)
 
-- Jetson设备、Micro USB 线缆
+- Jetson设备（如NG4511）
+
+- Micro USB 线缆
+
+## 硬件准备​
 
 **软件烧录前，需要完成下述硬件操作。**
 
-- 将 Micro USB 线从 JESTON 的 Micro USB 端口连接到 Linux 主机 PC 的 USB TypeA 端口。
+1. 将 Micro USB 线从 JESTON 的 Micro USB 端口连接到 Linux 主机 PC 的 USB TypeA 端口。
 
-- 连接完成后，长按`force recovery` 按键，并给Jetson设备上电
+2. 连接完成后，长按`force recovery` 按键，并给Jetson设备上电
 
 ![](/img/NG45XX_SOFTWARE/NG45XX_Recovery.png)
 
-- 然后通过指令`lsusb`检查设备是否处于recovery模式，你会看到带有 ID 0955:623 的 NVidia Corp 设备。**（注：如果没有出现NVidia Corp 设备，说明未正确进入recovery模式，请检查recovery按键和usb线缆。）**
+3. 然后通过指令`lsusb`检查设备是否处于recovery模式，你会看到带有 ID 0955:623 的 NVidia Corp 设备。**（注：如果没有出现NVidia Corp 设备，说明未正确进入recovery模式，请检查recovery按键和usb线缆。）**
 
 ![NG45XX_flash_lsusb](/img/NG45XX_flash_lsusb.jpg)
 
-## CMD烧录
+## 烧录镜像包烧录方法：
 
-- 下载&解压AIBOX 烧录包，链接：（下载对应JETSON设备的镜像包）
+1. 下载&解压AIBOX 烧录包，链接如下
+
+| 设备型号-版本类型    | 镜像包链接（含JetPack） | 镜像包链接（不含JetPack） | 硬件型号                  |
+| ------------ | --------------- | ---------------- | --------------------- |
+| NG4510-base  |                 |                  | Jetson Orin nano  4GB |
+| NG4510-super |                 |                  | Jetson Orin nano  4GB |
+| NG4511-base  |                 |                  | Jetson Orin nano  8GB |
+| NG4511-super |                 |                  | Jetson Orin nano  8GB |
+| NG4520-base  |                 |                  | Jetson Orin nx 8GB    |
+| NG4520-super |                 |                  | Jetson Orin nx 8GB    |
+| NG4521-base  |                 |                  | Jetson Orin nx 16GB   |
+| NG4521-super |                 |                  | Jetson Orin nx 16GB   |
+
+2. 解压到Ubuntu电脑
 
 ```
-# mfi_aibox-orin-nano-NG45XX-super-8g-36.4.3-V1.0.tar.gz替换为实际烧录包
-sudo tar -zxvf mfi_aibox-orin-nano-NG45XX-super-8g-36.4.3-V1.0.tar.gz -C ./
+sudo tar -zxvf aibox-NG4511-36.4.3-base-jetpack-V1.0.tgz -C ./
 ```
 
-- 执行烧录命令
+3. 烧录设备，烧录命令如下：
 
 ```
-# flash image
+cd aibox-NG4511-36.4.3-base-jetpack-V1.0
 sudo ./tools/kernel_flash/l4t_initrd_flash.sh --network usb0 --flash-only --showlogs
 ```
 
-## SDK Manager烧录
+**注： 确认设备硬件版本方法**
 
-- 下载 [SDK Manager](https://developer.nvidia.com/sdk-manager) deb包，将deb拷贝到用户的目录下
+**A. 系统可正常启动并进入时​**​
 
-- 启动终端后，运行下面的指令去安装SDK Manager
-  
-  ```shell
-  sudo dpkg -i sdkmanager_2.2.0-12021_amd64.deb  # deb版本替换为您下载的版本
-  ```
+- 采用下述指令，返回设备型号信息
 
-- 完成SDK Manager的安装后，启动终端运行sdkmanager , 点击 “LOGIN”，登录到您的 NVIDIA 帐户，浏览器弹出链接，并输入您的注册电子邮件和密码登录。
-  
-  ![sdk_manager_login](/img/sdk_manager_login.png)
+```shell
+cat /proc/device-tree/model
 
-- 成功登入后，进入“STEP 01”参考按照下述配置选择
-  
-  - 从“**Product Category**”面板中，选择Jetson
-  
-  - 从“**System Configuration**”面板中，选择当前连接的设备型号。（默认USB线缆连接后，进入recovery mode时，默认会自动显示当前的硬件设备，如未显示，请点击刷新）
-    
-    ![sdk_manager_step1](/img/sdk_manager_step1.png)
-  
-  - 从“**SDK VERSION**”面板中，选择所需JetPack SDK版本，点击右下角 (...)可以查看更多版本选择。
-    
-    ![sdk_manager_jetpack_version](/img/sdk_manager_jetpack_version.png)
-  
-  - 完成选择后，点击“**Continue**”进入下一步
+# 输出示例
+NVIDIA Jetson Orin Nano Engineering Reference Developer Kit Super
+```
 
-- Step2， 选择所需组件和接受许可证
-  
-  - 在该步骤可以查看到将要安装的组件。（如第一次验证，可以取消选择Jetson相关的组件，仅保留Jetson的镜像即可）
-  
-  - 检查屏幕底部的下载和安装选项路径，接着检查组件并接受许可证。
-    
-    ![sdk_manager_step2](/img/sdk_manager_step2.png)
-  
-  - 选择“**Continue**”继续下一步
+**B. 系统未启动无法访问时** 
 
-- Step3，安装
-  
-  - 点击“INSTALL”后，SDK Manager 会提示您输入 root 密码
-    
-    ![sdk_manager_root](/img/sdk_manager_root.png)
-  
-  - SDK Manager软件会显示下载和安装的进度
-    
-    ![sdk_manager-download](/img/sdk_manager-download.png)
-  
-  - 当下载完烧录镜像后，会跳出来以下页面，可以填入JESTON预设账户密码，以及选择“**NVMe**”
-    
-    ![sdk_manager_preconfig](/img/sdk_manager_preconfig.png)
+- 查看设备标签或包装盒型号​确认
 
-- Step 04， 完成烧录
+- 检查模组模组背面二维码下方，有一串 ​**​15 位数字组合​**​（如 `900-13767-0030-000`）。具体可以参考下述表格
   
-  - 烧录完成如下图，点击 ”**FINISH**“ 完成烧录，重启JESTON即使用。
+  - **`3767` → Orin 相关设备​**​（如 AGX Orin、Orin NX、Orin Nano）
   
-  ![sdk_manager_finish](/img/sdk_manager_finish.png)
+  - **`0030` → Jetson Nano（8GB RAM）​**
 
-## 参考
+| SKU  | 设备类型                         | 设备名称                             |
+| ---- | ---------------------------- | -------------------------------- |
+| 3767 | NVIDIA Jetson Orin NX和Nano模块 | Jetson Orin NX和Nano模块            |
+| 3701 | NVIDIA Jetson AGX Orin模块     | Jetson AGX Orin模块                |
+| 3768 | Jetson Orin Nano载板           | Jetson Orin Nano载板               |
+| 3737 | Jetson AGX Orin载板            | Jetson AGX Orin载板                |
+| 0000 | Jetson AGX Orin模块            | Jetson AGX Orin                  |
+| 0004 | Jetson AGX Orin模块            | Jetson AGX Orin 32GB (32 GB RAM) |
+| 0005 | Jetson AGX Orin模块            | Jetson AGX Orin 64GB (64 GB RAM) |
+| 0000 | Jetson Orin NX和Nano模块        | Jetson Orin NX 16GB (16 GB RAM)  |
+| 0001 | Jetson Orin NX和Nano模块        | Jetson Orin NX 8GB (8 GB RAM)    |
+| 0003 | Jetson Orin NX和Nano模块        | Jetson Orin Nano 8GB (8 GB RAM)  |
+| 0005 | Jetson Orin NX和Nano模块        | Jetson Orin Nano 8GB (8 GB RAM)  |
+| 0004 | Jetson Orin NX和Nano模块        | Jetson Orin Nano 4GB (4 GB RAM)  |
 
-[NVIDIA - Flashing Support](https://docs.nvidia.com/jetson/archives/r36.4/DeveloperGuide/SD/FlashingSupport.html)
+## NVIDIA官方烧录方法
+
+- **SDK Manager烧录方式**，请参考：[Install Ethernet Switch with SDK Manager — SDK Manager](https://docs.nvidia.com/sdk-manager/install-with-sdkm-switch/index.html)
+
+- **脚本烧录方式**，请参考：[Quick Start — NVIDIA Jetson Linux Developer Guide 1 documentation](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/IN/QuickStart.html#to-flash-the-jetson-developer-kit-operating-software)

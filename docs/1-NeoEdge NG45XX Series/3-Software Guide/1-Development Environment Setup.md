@@ -1,20 +1,203 @@
-本章介绍Jetson Orin NX的开发环境搭建，包括本地开发环境搭建、远程开发与调试、Docker环境支持和远程桌面等内容。
+# Development Environment Setup
 
-## 本地开发环境搭建
+本章详细介绍了 ​**​Jetson Orin NX 的开发环境搭建​**​，涵盖了从 ​**​本地开发环境的配置​**​ 到 ​**​远程调试与桌面访问​**​ 的完整流程，旨在帮助开发者高效搭建适用于嵌入式AI边缘计算设备的开发体系。
 
-## 源码环境搭建
+## 1. 本地源码开发环境搭建
 
-获取源码，根据README配置
+### 前提条件
+
+- Ubuntu 主机（推荐 20.04/22.04 LTS，空间>100GB ,用于交叉编译）
+
+- 安装必要工具，如下：
 
 ```shell
-git clone git@gitlab.milesight.com:ai-developer/aibox/l4t.git
+sudo apt update 
+sudo apt install git-core build-essential bc flex bison libssl-dev
 ```
 
-## 远程桌面
+### 源码部署
+
+1. 下载并解压Linux_for_Tegra源码
+
+```shell
+wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/release/Jetson_Linux_R36.4.0_aarch64.tbz2
+tar xf Jetson_Linux_R36.4.0_aarch64.tbz2 
+```
+
+2. 下载并解压文件系统
+
+```shell
+wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/release/Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2
+sudo tar xpf Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2 -C Linux_for_Tegra/rootfs/
+```
+
+3. 拉取内核源码
+
+```shell
+cd Linux_for_Tegra/source/
+./source_sync.sh -t jetson_36.4
+```
+
+4. 获取下述代码并覆盖原始源代码
+
+```shell
+cd ../..
+mkdir -p gitlab/Linux_for_Tegra
+git clone git@gitlab.milesight.com:ai-developer/aibox/l4t.git  gitlab/Linux_for_Tegra
+cp -r gitlab/Linux_for_Tegra/* Linux_for_Tegra/
+```
+
+5. 部署应用NVIDIA Tegra组件​​
+
+```shell
+cd Linux_for_Tegra
+sudo ./apply_binaries.sh
+```
+
+### 交叉编译工具链部署
+
+下载和解压交叉编译工具链
+
+```shell
+wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2
+mkdir -p $HOME/l4t-gcc
+tar xf aarch64--glibc--stable-2022.08-1.tar.bz2 -C $HOME/l4t-gcc
+```
+
+### 编译方法
+
+环境配置，在编译前需要预配置环境变量（每次创建新终端，都要配置一次），指令如下：
+
+```shell
+cd Linux_for_Tegra/source
+export CROSS_COMPILE=$HOME/l4t-gcc/aarch64--glibc--stable-2022.08-1/bin/aarch64-buildroot-linux-gnu-
+export KERNEL_HEADERS=$PWD/kernel/kernel-jammy-src
+export INSTALL_MOD_PATH=$PWD/Linux_for_Tegra/rootfs/
+```
+
+**完整编译方法（包含内核、模块、设备树）**
+
+```shell
+./nvbuild.sh
+```
+
+**单独编译方法**
+
+1. 编译内核
+
+```shell
+cd Linux_for_Tegra/source
+./nvbuild.sh -o $PWD/kernel_output  
+```
+
+2. 编译Out-of-Tree Modules
+
+```shell
+cd Linux_for_Tegra/source
+make modules
+
+# 安装模块驱动到rootfs
+sudo -E make modules_install
+```
+
+3. 编译设备树
+
+```shell
+cd Linux_for_Tegra/source
+make dtbs
+```
+
+### 更新内核和设备树（非刷机方式）
+
+1. 查看`/boot/extlinux/extlinux.conf`文件，确认当前设备所使用的IMAGE和DTB的路径，如下图中的LINUX和FDT后面的位置信息。
+
+```shell
+TIMEOUT 30
+DEFAULT primary
+
+MENU TITLE L4T boot options
+
+LABEL primary
+      MENU LABEL primary kernel
+      LINUX /boot/Image
+      FDT /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb
+      INITRD /boot/initrd
+      APPEND ${cbootargs} root=PARTUUID=756c2935-3ec5-487a-96c8-424f306ca235 rw rootwait rootfstype=ext4 mminit_loglevel=4 console=ttyTCU0,115200 firmware_class.path=/etc/firmware fbcon=map:0 nospectre_bhb video=efifb:off console=tty0
+      OVERLAYS /boot/tegra234-p3767-camera-p3768-imx678-C.dtbo
+```
+
+2. 将原始的内核镜像进行备份
+
+```shell
+sudo cp /boot/Image /boot/Image.backup
+sudo cp /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb.backup
+```
+
+3. 通过`scp`命令将编译好的IMAGE和DTB，拷贝到上述的路径进行替换即可
+
+```shell
+sudo cp $HOME/Image /boot/Image.backup
+sudo cp $HOME/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb
+```
+
+## 2. 远程调试方法
+
+### 前置条件
+
+需要完成对AIBOX的网络配置，配置步骤如下：
+
+1. 点击桌面右上角 **Ethernet** → 选择 **"Wired Settings"**
+
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Setting.png)
+
+2. 在弹出的网络设置窗口中，选择当前的有线网络连接。
+
+3. 点击 `齿轮` 图标进入详细设置
+   
+   - 在 `IPv4` 标签页下，选择 `Manual`（手动）配置。
+   
+   - 输入静态 IP 地址、子网掩码和网关。例如：
+     
+     - **Address**: `192.168.60.3` 
+     
+     - **Netmask**: `255.255.255.0` 
+     
+     - **Gateway**: `192.168.60.1` 
+   
+   - 在 DNS 部分，输入 DNS 服务器地址，例如 `8.8.8.8` 和 `8.8.4.4`。
+   
+   - 点击 `Apply` 保存设置。
+
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration.jpg)
+
+4. 配置完成后，重启网络以应用新的设置。
+
+**网络验证**
+
+5. 打开终端，通过以下指令确认网络是否正常
+
+```shell
+ping google.com
+```
+
+### SSH访问
+
+1. windows电脑下，按`win+R`，打开“运行”对话框
+
+2. 输入 `powershell`，然后按 ​**​Enter键​**​
+
+3. 然后通过ssh连接到AIBOX，参考下述指令如下：
+
+```shell
+# 连接到AIBOX
+ssh username@aibox-ip
+# 执行远程命令
+ssh username@aibox-ip "uname -a"
+```
 
 ### RDP远程桌面访问
 
-- 启动JETSON终端，安装如下内容：
+1. 启动JETSON终端，安装如下内容：
 
 ```shell
 sudo apt update
@@ -23,49 +206,15 @@ sudo systemctl enable xrdp
 sudo systemctl start xrdp
 ```
 
-- 然后windows下启动 “远程桌面连接”，输入JETSON的ip地址
+2. 然后windows下启动 “远程桌面连接”，输入JETSON的ip地址
 
-    ![Remote_Desktop_IP](/img/Remote_Desktop_IP.png)
+3. 点击“连接”，输入账号密码
+   
+   ![Remote_Desktop_Login](/img/Remote_Desktop_Login.png)
 
-- 点击“连接”，输入账号密码
-  
-  ![Remote_Desktop_Login](/img/Remote_Desktop_Login.png)
+4. 如下图，则为说明进入成功
+   ![Remote_Desktop](/img/Remote_Desktop.png)
 
-- 如下图，则为说明进入成功
-  ![Remote_Desktop](/img/Remote_Desktop.png)
+## 参考
 
-## AIBOX开发环境搭建
-
-### Software Support
-
-NVIDIA Jetson production modules and developer kits are all supported by the same **[NVIDIA software stack](https://developer.nvidia.com/embedded/develop/software)**, enabling you to develop once and deploy everywhere. **[JetPack SDK](https://developer.nvidia.com/embedded/jetpack)** includes the latest [Jetson Linux Driver Package (L4T)](https://elinux.org/Jetson/L4T "Jetson/L4T") with Linux operating system and CUDA-X accelerated libraries and APIs for AI Edge application development. It also includes samples, documentation, and developer tools for both host computer and developer kit, and supports higher level SDKs such as DeepStream for streaming video analytics and Isaac for robotics.
-
-### JetPack INSTALL
-
-Jetpack mainly includes system images, libraries, APIs, developer tools, examples, and some documentation.  The SDK includes TensorRT, cuDNN, CUDA, Multimedia API, Computer Vision, and Developer Tools.
-
-```shell
-sudo apt update
-sudo apt install nvidia-jetpack
-```
-
-### JetPack Components
-
-- [NVIDIA Jetson Linux (L4T)](https://elinux.org/Jetson/L4T "Jetson/L4T")
-- [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit)
-- [cuDNN](https://developer.nvidia.com/cudnn)
-- [TensorRT](https://developer.nvidia.com/tensorrt)
-- [VisionWorks](https://developer.nvidia.com/embedded/visionworks)
-- [DeepStream](https://developer.nvidia.com/deepstream-sdk)
-- OpenCV
-- OpenGL
-- Vulkan
-- V4L2 extensions
-- GStreamer extensions
-- [L4T Multimedia API](https://docs.nvidia.com/jetson/l4t-multimedia/index.html)
-- [NVIDIA Nsight Systems](https://developer.nvidia.com/nsight-systems)
-- [NVIDIA Nsight Graphics](https://developer.nvidia.com/nsight-graphics)
-- [NVIDIA Nsight Compute](https://developer.nvidia.com/nsight-compute)
-
-See [docs.nvidia.com/jetson](https://docs.nvidia.com/jetson/) for online documentation about JetPack.  
-See [developer.nvidia.com/jetpack](https://developer.nvidia.com/jetpack) to download the latest JetPack.
+[Kernel Customization — NVIDIA Jetson Linux Developer Guide 1 documentation](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Kernel/KernelCustomization.html)
