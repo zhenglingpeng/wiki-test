@@ -4,77 +4,51 @@
 
 本章主要帮助您快速使用NG45XX系列产品。
 
-## 硬件相关
+## 硬件准备
 
-- 硬件概述，参考：[Components Overview](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Hardware%20Guide/Components%20Overview)
+- **硬件概述**，请参阅[硬件组件说明](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Hardware%20Guide/Components%20Overview)
 
-- 组装和连接，参考：[Hardware Connection](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Hardware%20Guide/Hardware%20Connection)
+- **设备组装**，请参阅[硬件连接指南](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Hardware%20Guide/Hardware%20Connection)
 
 ## 软件相关
 
-- 软件开发环境搭建，参考：[Development Environment Setup](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/Development%20Environment%20Setup)
+如果选择的是无预烧录的设备，请参考下述链接，完成固件烧录。
 
-- 软件烧录，参考：[System Flashing](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/System%20Flashing%20and%20Initialization)
+- **环境搭建**，软件开发环境，请参阅[开发环境搭建](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/Development%20Environment%20Setup)
+
+- **固件烧录**，详细固件烧录步骤，请参阅[系统固件烧录](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/System%20Flashing%20and%20Initialization)
 
 ## 首次系统启动引导配置
 
-### 1. 用户配置
+参考上述的内容，完成硬件连接后，给NG45XX上电后，按照下面提示完成系统的第一次初始化配置。
 
-根据屏幕提示，完成System Configuration，步骤如下：
+### 1. 系统初始化配置
 
-1. Check `accept license` ，continue
+根据屏幕提示，完成系统配置，步骤如下：
 
-2. Set Language，continue
+1. 勾选 `接受许可协议`，点击下一步
 
-3. Set Keyboard layout，continue
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Licenses.png)
 
-4. Set timezone（eg : `Asia/Shanghai`），continue
+2. 设置语言，点击下一步
 
-5. Configuration 'Your name' and 'password' ，continue
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Language.png)
 
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration.jpg)
+3. 设置键盘布局，点击下一步
 
-6. Finally ，Waiting for system installation, automatic restart
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Keyboard.png)
 
-### 2. 有线网络配置​（可选）
+4. 设置时区（例如：`Asia/Shanghai`），点击下一步
 
-如需使用网络，请参考以下步骤：
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Local.png)
 
-- 点击桌面右上角 **Ethernet** → 选择 **"Wired Settings"**
-
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Setting.png)
-
-- 在弹出的网络设置窗口中，选择当前的有线网络连接。
-
-- 点击 `齿轮` 图标进入详细设置
-  
-  - 在 `IPv4` 标签页下，选择 `Manual`（手动）配置。
-  
-  - 输入静态 IP 地址、子网掩码和网关。例如：
-    
-    - **Address**: `192.168.60.3` (your desired static IP)
-    
-    - **Netmask**: `255.255.255.0` (or `/24` in CIDR notation)
-    
-    - **Gateway**: `192.168.60.1` (your router’s IP)
-  
-  - 在 DNS 部分，输入 DNS 服务器地址，例如 `8.8.8.8` 和 `8.8.4.4`。
-  
-  - 点击 `Apply` 保存设置。
+5. 配置“您的姓名”和“密码”，点击下一步
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration.jpg)
 
-- 配置完成后，重启网络以应用新的设置。
+6. 最后，等待系统安装，自动重启
 
-**网络验证**
-
-- 打开终端，通过以下指令确认网络是否正常
-
-```shell
-ping google.com
-```
-
-### 3. 系统运行状态&版本确认
+### 2. 系统运行状态&版本确认
 
 通过Jtop工具监控，参考以下步骤：
 
@@ -91,13 +65,15 @@ sudo systemctl restart jtop.service
 sudo jtop
 ```
 
-运行后如下图所示，通过键盘查看当前 Jetson 设备的各种资源使用情况，包括 CPU、内存、GPU、磁盘、风扇等。
+运行后如下图所示，通过键盘查看当前 Jetson 设备的各种资源使用情况，包括 CPU、内存、GPU、磁盘、风扇等，以及确认目前系统所安装TensorRT、CUDA等版本。
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_JTOP.png)
 
-## NVIDIA Official Resource
+## 模型部署
 
-**NVIDIA Jetson Software:**
+## NVIDIA 官方资源
+
+**NVIDIA Jetson 软件：**
 
  [Jetson Linux Developer Guide - Quick Start](https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/text/IN/QuickStart.html)
 
@@ -109,6 +85,6 @@ sudo jtop
 
 [Download NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager)
 
-**Software Forum:**
+**软件论坛:**
 
  [Jetson Developer Forum](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems)

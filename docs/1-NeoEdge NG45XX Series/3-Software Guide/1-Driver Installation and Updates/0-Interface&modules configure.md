@@ -1,4 +1,4 @@
-# Interface & modules Driver
+# Interface
 
 本文档主要介绍GPIO/I2C/SPI/CAN/USB/UART等接口的驱动控制方法。 
 
@@ -27,7 +27,7 @@ sudo gpioset --mode=wait gpiochip0 144=0
 | RS485                 | UARTA         | 0x03100000   | UART1     | ttyTHS1  | OK         | serial1   |
 | RS232                 | UARTB         | 0x03110000   | UART0     | ttyTHS3  | OK         | serial3   |
 
-- debug
+- Debug
   
   - 硬件连接，连接Debug线到PC
   
@@ -66,7 +66,7 @@ sudo gpioset --mode=wait gpiochip0 144=0
   ```
   
   - 测试
-    启动程序，在终端输入`send`切换到发送模式，然后输入要发送的数据，并按回车键，程序会将数据发送到串口；输入`recv` 切换到接收模式，程序会切换到接收模式，并接收打印提示信息；输入`quit` 并按回车键。
+    启动程序，在终端输入`send`切换到发送模式，然后输入要发送的数据，并按回车键，程序会将数据发送到串口；输入`recv` 切换到接收模式，程序会切换到接收模式，并接收打印提示信息；输入`quit` 并按回车键。
   - 代码
 
 ```c
@@ -153,7 +153,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // 配置串口属性
     tcgetattr(tty_fd, &tty);
     cfmakeraw(&tty);
     cfsetispeed(&tty, B9600);
@@ -184,7 +183,6 @@ int main(int argc, char* argv[]) {
 
         if (FD_ISSET(STDIN_FILENO, &readfds)) {
             if (fgets(buffer, BUFFER_SIZE, stdin) != NULL) {
-                // 去除输入末尾的换行符
                 buffer[strcspn(buffer, "\n")] = '\0';
 
                 if (strcmp(buffer, "send") == 0) {
@@ -201,7 +199,7 @@ int main(int argc, char* argv[]) {
 
                 if (mode == 1) {
                     set_rts_high();
-                    usleep(10000);  // 等待 10 毫秒，确保 RTS 引脚稳定
+                    usleep(10000);
                     write(tty_fd, buffer, strlen(buffer));
                     tcdrain(tty_fd);
                     set_rts_low();
@@ -338,7 +336,3 @@ sudo python /opt/nvidia/jetson-io/config-by-hardware.py -n 2='Camera IMX219 Dual
 ```
 
 - 重启系统使配置生效
-
-## 参考
-
-数据手册
