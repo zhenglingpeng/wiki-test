@@ -34,7 +34,7 @@ CamThink Event Camera NeoEyes NE101 is a low-power intelligent camera based on e
 
 - **Sensor Low-Power Expansion Support**: Supports event wake-up capture operation mechanism in image trigger mode (such as PIR, radar, temperature, etc.), entering deep sleep in non-working states, fully ensuring controllable power consumption under different trigger frequencies. For development cases on how to expand sensor event capture and sensor connection, see [PIR Example](./3-Software%20Guide/3-example-pir.md).
 
-- **Open-Source Firmware, Commercial Support**: The firmware source code is completely open-source, supporting free commercial use and secondary development. The firmware provides out-of-the-box functions such as image capture, low-power management, and data communication. Developers can quickly expand application logic based on this, shortening the development cycle from prototype to landing. For firmware functions and developer guidance, see [Low-Power Capture Camera Example](./3-Software%20Guide/3-example-pir.md).
+- **Open-Source Firmware, Commercial Support**: The firmware source code is completely open-source, supporting free commercial use and secondary development. The firmware provides out-of-the-box functions such as image capture, low-power management, and data communication. Developers can quickly expand application logic based on this, shortening the development cycle from prototype to landing. For firmware functions and developer guidance, see [Low-Power Capture Camera Example](./4-Application%20Guide/0-low-power-image-acquisition.md).
 
 ![Wireless communication](/img/Overview/NE101/Conet.png)
 

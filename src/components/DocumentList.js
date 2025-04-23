@@ -14,6 +14,9 @@ export default function DocumentList() {
   // 存储目录的展开/收起状态，默认展开
   const [expandedState, setExpandedState] = useState({});
 
+  // 存储文档id到标题的映射
+  const [docTitles, setDocTitles] = useState({});
+  
   // 切换目录的展开/收起状态
   const toggleExpand = (categoryId) => {
     setExpandedState(prevState => ({
@@ -37,23 +40,20 @@ export default function DocumentList() {
 
   // 提取可读的文件名
   const getDisplayName = (item) => {
-    // 1. 首先使用title
+    // 优先使用预设的标题映射
+    if (item.id && docTitles[item.id]) {
+      return docTitles[item.id];
+    }
+    
+    // 如果有显式设置的title，使用它
     if (item.title) {
       return item.title;
     }
     
-    // 2. 如果没有title，则使用id（取最后一部分）
-    const id = item.id;
-    if (id) {
-      const lastPart = id.split('/').pop();
-      // 如果ID就是有意义的名称，直接使用
-      if (!lastPart.match(/^\d+-/)) {
-        return lastPart;
-      }
-      
-      // 3. 如果id有数字前缀，则进行格式化处理
-      const readable = lastPart.replace(/^\d+-/, '').replace(/-/g, ' ');
-      return readable.charAt(0).toUpperCase() + readable.slice(1);
+    // 如果没有预设标题，使用ID的最后部分
+    if (item.id) {
+      const lastPart = item.id.split('/').pop();
+      return lastPart.replace(/-/g, ' ');
     }
     
     // 最后的后备选项
@@ -63,6 +63,7 @@ export default function DocumentList() {
   useEffect(() => {
     try {
       const processedItems = [];
+      const titleMap = {};
       
       // 处理所有文档插件数据
       Object.keys(allDocsData).forEach(pluginId => {
@@ -73,6 +74,26 @@ export default function DocumentList() {
         if (latestVersion && latestVersion.docs) {
           // 获取倒序的文档列表
           const reversedDocs = [...latestVersion.docs].reverse();
+          
+          // 调试：输出第一个文档对象，查看属性
+          if (reversedDocs.length > 0) {
+            console.log('文档对象示例:', reversedDocs[0]);
+            console.log('文档对象属性:', Object.keys(reversedDocs[0]));
+          }
+          
+          // 保存所有文档ID到标题的映射
+          reversedDocs.forEach(doc => {
+            // 从id中提取标题
+            const lastPart = doc.id.split('/').pop();
+            
+            // 移除数字前缀并格式化
+            if (lastPart.match(/^\d+-/)) {
+              const formatted = lastPart.replace(/^\d+-/, '').replace(/-/g, ' ');
+              titleMap[doc.id] = formatted.charAt(0).toUpperCase() + formatted.slice(1);
+            } else {
+              titleMap[doc.id] = lastPart.replace(/-/g, ' ');
+            }
+          });
           
           // 构建文档路径树
           const categoryMap = new Map();
@@ -88,12 +109,15 @@ export default function DocumentList() {
             
             // 如果只有一级，直接作为根级文档
             if (pathParts.length === 1) {
-              processedItems.push({
+              // 创建文档对象，收集尽可能多的元数据
+              const docObj = {
                 type: 'document',
                 id: doc.id,
                 title: doc.title,
                 path: doc.path
-              });
+              };
+              
+              processedItems.push(docObj);
               return;
             }
             
@@ -139,18 +163,22 @@ export default function DocumentList() {
             // 添加文档到最后一级目录
             const docCategory = categoryMap.get(pathParts.slice(0, -1).join('/'));
             if (docCategory) {
-              docCategory.items.push({
+              // 创建文档对象，收集尽可能多的元数据
+              const docObj = {
                 type: 'document',
                 id: doc.id,
                 title: doc.title,
                 path: doc.path
-              });
+              };
+              
+              docCategory.items.push(docObj);
             }
           });
         }
       });
       
       setDocItems(processedItems);
+      setDocTitles(titleMap);
     } catch (error) {
       console.error('处理文档结构时出错:', error);
     } finally {
