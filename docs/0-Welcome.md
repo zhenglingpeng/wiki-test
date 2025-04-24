@@ -163,9 +163,3 @@ import DocumentList from '@site/src/components/DocumentList';
   }
 `}
 </style>
-
-## 文档导航
-
-以下是完整的文档导航列表，您可以根据需要浏览相关内容：
-
-<DocumentList />

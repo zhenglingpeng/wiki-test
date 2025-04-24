@@ -164,9 +164,3 @@ To help you get started quickly, here are some essential resource links:
 `}
 </style>
 
-## Document Navigation
-
-Below is a complete document navigation list. You can browse relevant content according to your needs:
-
-<DocumentList />
-
