@@ -2,114 +2,134 @@
 
 ## Product Overview
 
-This chapter will guide you through the core functions of the NE100 series products. Using the NE101 standard firmware as an example, it focuses on the implementation process of scheduled snapshots and data reporting.
+The NE100 series is a high-performance smart camera product line designed for IoT applications, with the NE101 standard firmware providing core functions such as timed capture and data reporting. This guide will help you quickly master the usage of the product.
 
 ## Hardware Preparation
 
-- **Hardware Overview**: For understanding the components of the device, please refer to [Hardware Components Overview](./Hardware%20Guide/Components%20Overview).
-- **Device Assembly**: For detailed installation steps, refer to [Hardware Connection Guide](./Hardware%20Guide/Hardware%20Connection).
+### Hardware Components
+- **Complete Device**: Includes full enclosure and battery compartment
+- **Development Board**: Exposed PCB board for easy debugging and development
+- **Accessory Pack**: Includes USB data cable, mounting bracket, etc.
 
-## Software Configuration
+For detailed hardware descriptions, please refer to:
+- [Hardware Components Overview](./Hardware%20Guide/Components%20Overview)
+- [Hardware Connection Guide](./Hardware%20Guide/Hardware%20Connection)
 
-- **Environment Setup**: For guidance on configuring the development environment, see [Development Environment Setup](./Software%20Guide/Development%20Environment%20Setup).
-- **Firmware Flashing**: For instructions on writing the system program, see [System Firmware Flashing](./Software%20Guide/System%20Flashing%20and%20Initialization).
+## Operating Guide
 
-## Operating Instructions
+### Device Installation
 
-### Device Operating Modes
+#### Complete Device Mode (Factory Configuration)
+![NE101 Complete Device Appearance](/img/NE101_Complete_Machine.png)  
+![NE101 Complete Device Disassembly Diagram](/img/NE101_Complete_Machine2.png)  
 
-1. **Initialization Mode**
-   - The system starts in the default mode, automatically performing system update checks and time synchronization.
-   - After initialization, it enters a low-power sleep state.
+**Usage Points**:
+1. Open the back cover to install the battery (pay attention to the polarity)
+2. Waterproof design, suitable for outdoor installation
+3. Standard 1/4 screw hole, compatible with most brackets
 
-2. **Configuration Mode**
-   - Press and hold the function key for 3 seconds to activate configuration mode.
-   - Enables dual-band WiFi (AP+STA), with the hotspot name displayed as NE101_XXXXXX.
-   - Access the configuration parameters via a browser at http://192.168.1.1.
-   - Configuration options include:
-     - Image parameter adjustment (brightness/contrast/saturation)
-     - Capture schedule settings (timed/interval/triggered snapshots)
-     - Network module configuration (WiFi/HALOW/cellular network)
-     - Device maintenance functions
-   - Sleep mechanism without operation:
-     - No WiFi connection: Automatically sleeps after 1 minute.
-     - WiFi connected: Enters sleep mode after 5 minutes of no operation.
+#### Development Board Mode (Debugging)
+![NE101 Main Board Front View](/img/NE101_Main_Board.png)  
+![NE101 Main Board Interface Diagram](/img/NE101_Main_Board2.png)  
 
-3. **Working Mode**
-   - Executes the preset capture schedule and automatically uploads data.
-   - Locally caches images when the network is abnormal (maximum storage of 7MB).
-   - Automatically resumes uploading cached data when the network is restored.
+**Usage Points**:
+1. Power via Type-C interface (5V/1A or above)
+2. Interface designed to prevent incorrect connections
+3. Reserved debugging serial port (115200 bps)
 
-### Functional Test Process
+> **Safety Tips**: Ensure correct battery installation in complete device mode; avoid short-circuit risks in development board mode
 
-1. **Device Initialization**
-   - Properly install the device and connect the power.
-   - Observe the status indicator light up for 1 second (indicating successful startup).
-   - Wait approximately 1 minute for initialization to complete.
+### Quick Start Process
 
-2. **Enter Configuration Interface**
-   - Short press the function key to activate configuration mode.
-   - Connect to the device hotspot NE101_XXXXXX.
-   - Access the management page at http://192.168.1.1.
- 
-   ![Device WiFi Connection Illustration](/img/NE101_wifi_connect.png)
-   
-   ![Device Management Interface Overview](/img/NE101_web.png)
+1. **Powering the Device**
+   - Complete Device: Automatically starts after battery installation
+   - Development Board: Connect USB power
 
-3. **Camera Detection**
-   - Adjust the device viewing angle.
-   - Observe the real-time update of the preview screen on the web interface.
- 
-   ![Real-time Preview](/img/NE101_web_cam.png)
+2. **Status Confirmation**
+   - Power indicator lights up for 1 second indicating successful start
+   - System initialization takes approximately 1 minute
 
-4. **Image Parameter Settings**
-   - Flashlight control:
-     - Intelligent mode (photosensitive automatic adjustment)
-     - Timed mode (custom time period)
-     - Manual switch control
-   - Brightness adjustment (0-100 levels)
-   - Image enhancement settings:
-     - Three-axis adjustment for brightness/contrast/saturation
-     - Image mirroring function (horizontal/vertical flip)
- 
-   ![Image Adjustment Interface](/img/NE101_web_ImageAdjustment.png)
+3. **Entering Configuration Mode**
+   - Short press the function key (about 0.5 seconds)
+   - Device hotspot name displays as NE101_XXXXXX
 
-5. **Capture Schedule Configuration**
-   - Timed snapshots (executed at fixed time points)
-   - Interval shooting (periodic cycles)
-   - External trigger snapshots (triggered by Alarm-In signal)
-   - Manual snapshots (triggered by a button press)
- 
-   ![Capture Settings Interface](/img/NE101_web_cap_setting.png)
+4. **Connecting to Management Interface**
+   - Connect your phone/computer to the device WiFi
+   - Access http://192.168.1.1
 
-6. **Data Reporting Test**
-   - Configure MQTT server parameters (setup guide in the appendix document).
-   - Manually trigger test shooting.
-   - Check the data push status.
- 
-   ![Data Reporting Configuration Interface](/img/NE101_web_DataReport.png)
+![Device WiFi Connection Diagram](/img/NE101_wifi_connect.png)
+![Device Management Interface Overview](/img/NE101_web.png)
 
-7. **Network Connection Verification**
-   - Select an available WiFi network.
-   - Perform a Ping test to verify connectivity.
- 
-   ![Network Connection Interface](/img/NE101_web_WLANConnection.png)
-   
-   ![Network Test Illustration](/img/NE101_ping.png)
+### Core Function Configuration
 
-8. **Full Function Test**
-   - Activate sleep mode.
-   - Wait for 5 minutes for the automatic wake-up and shooting.
-   - Confirm successful data upload.
- 
-   ![Snapshot Success Prompt](/img/NE101_cap_success.png)
+#### Image Capture Settings
+![Real-time Image Preview](/img/NE101_web_cam.png)
 
-## Extended Functions
+**Key Parameters**:
+- **Flash Mode**:
+  - Intelligent Auto (default)
+  - Timed On
+  - Forced Off
 
-- **Hardware Reset**: Use the reset button for a soft reset (see [Hardware Components Overview](./Hardware%20Guide/Components%20Overview)).
-- **Device Information**: View device identification information and operating status (MAC address/serial number/firmware version/battery information).
-- **Wireless Upgrade**: For OTA upgrade instructions, see [System Firmware Flashing](./Software%20Guide/System%20Flashing%20and%20Initialization).
+- **Image Adjustment**:
+  - Brightness grading adjustment (0-90 levels)
+  - Three-axis adjustment (brightness/contrast/saturation)
+  - Image mirroring function
+
+![Image Adjustment Interface](/img/NE101_web_ImageAdjustment.png)
+
+#### Capture Plan Configuration
+![Capture Settings Interface](/img/NE101_web_cap_setting.png)
+
+**Working Modes**:
+1. **Timed Capture**: Set specific time points
+2. **Interval Shooting**: Set cycle period (5 minutes - 24 hours)
+3. **External Trigger Mode**: Trigger via Alarm-In signal
+4. **Manual Mode**: Capture triggered by button press
+
+#### Network and Data
+![Network Connection Interface](/img/NE101_web_WLANConnection.png)
+
+**Network Test (Serial Connection)**:
+```bash
+# Example of executing ping test via serial port
+ping www.example.com -c 4
+```
+![Network Test Diagram](/img/NE101_ping.png)
+
+**Data Reporting**:
+1. Configure MQTT server parameters
+2. Verify data stream using MQTTX tool
+3. Check reporting status
+
+![Data Reporting Configuration Interface](/img/NE101_web_DataReport.png)
+![MQTT Data Stream Example](/img/NE101_MQTT.png)
+
+### Function Verification Process
+
+1. Enter sleep mode (auto wake-up after 5 minutes)
+2. Trigger capture task (timed/manual/external trigger)
+3. Confirm image quality (resolution/exposure/focus)
+4. Verify data upload (server reception confirmation)
+
+![Capture Success Prompt](/img/NE101_cap_success.png)
+
+## Detailed Device Working Modes
+
+| Mode       | Trigger Condition | Duration   | Main Function       |
+|------------|-------------------|------------|---------------------|
+| Initialization | Auto on power-up | ~1 minute  | System self-check, time synchronization |
+| Configuration | Button trigger    | 1-5 minutes | Parameter setting, status check |
+| Working    | Plan trigger       | As needed  | Image capture, data reporting |
+| Sleep      | Auto entry         | As planned | Low-power standby   |
+
+## Advanced Functions
+
+### Device Maintenance
+- **Hardware Reset**: Short press reset button to restart
+- **Device Information**: View MAC address/firmware version
+- **Wireless Upgrade**: Supports OTA firmware updates
 
 ![OTA Upgrade Interface](/img/NE101_ota.png)
 
-> Tip: It is recommended to complete all basic tests during the first use to ensure that all functional modules are working correctly. If any abnormal conditions occur, record the status indicator light flashing mode and contact technical support.
+> **Technical Support**: It is recommended to complete a full function test during the first use.

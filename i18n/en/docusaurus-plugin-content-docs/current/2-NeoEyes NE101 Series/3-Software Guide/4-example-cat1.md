@@ -2,100 +2,116 @@
 
 ## Overview
 
-This example introduces how to achieve low-power capture using **LTE Cat 1**, suitable for outdoor scenarios without WiFi and gateways.
+This solution demonstrates how to utilize **LTE Cat 1** technology for low-power image capture and transmission in outdoor environments, specifically suitable for applications without WiFi coverage and lacking gateway devices.
 
 ### Technical Background
 
-**LTE Cat 1** is a communication standard defined by 3GPP specifically for IoT, featuring:
+**LTE Cat 1** is a communication standard designed by 3GPP for the Internet of Things (IoT), featuring the following core advantages:
 
-- Maximum downlink rate of 10 Mbps and uplink rate of 5 Mbps
-- Support for mobility and VoLTE voice functionality
-- Low power design, suitable for battery-powered devices
-- Wide network coverage, directly accessible to existing 4G networks
+- **Efficient Transmission**: Supports up to 10 Mbps downlink and 5 Mbps uplink speeds
+- **Full Functionality**: Includes mobility management and VoLTE voice communication capabilities
+- **Energy Efficiency**: Optimized power consumption, suitable for long-term battery-powered devices
+- **Wide Coverage**: Can directly access existing 4G network infrastructure, facilitating easy deployment
 
 ## Development Preparation
 
-### Hardware Configuration
+### Hardware Requirements
 
-- Standard development board (ESP32-S3 core board)
-- LTE Cat 1 communication module
-- SIM card (supporting 4G network)
+- **Main Control Unit**: Core development board
+- **Communication Module**: LTE Cat 1 wireless module
+- **Network Access**: Activated 4G SIM card
 
-![Cat1 Module Connection Diagram](/img/Overview/NE101/cat1PCBA.png)
-
-Complete hardware connection guide: [Hardware Connection Guide](.././Hardware%20Guide/Hardware%20Connection)
+![Cat1 Module Hardware Connection Diagram](/img/Overview/NE101/cat1PCBA.png)
 
 ### Software Resources
 
-1. **Precompiled Firmware**:
-   
-   - Obtain the Cat1 communication example firmware
-   - For the flashing method, refer to: [Development Environment Setup Guide](./../Software%20Guide/Development%20Environment%20Setup)
+#### 1. Quick Experience Firmware
 
-2. **Source Code Development**:
-   
-   - Supports local compilation (see the development guide section below for details)
+- Precompiled production firmware download:
+  [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101.1.0.1.bin)
 
-## Function Verification Process
+#### 2. Development Environment Configuration
 
-1. **Hardware Connection**
-   
-   - Properly install the Cat1 module
-   - Insert a valid SIM card
-   - Power on the device
+- **IDE Tool**: Visual Studio Code (v1.99.2+)
+- **Development Framework**: ESP-IDF plugin (v5.1.6)
+- **Sample Code Repository**:
+  [lowpower_camera](https://github.com/camthink-ai/lowpower_camera.git)
 
-2. **Network Status Check**
-   
-   - Short press the function button to enter configuration mode
-   - Access the web management interface (http://192.168.1.1)
-   - Check the "Cellular Network" status display
-   
-   ![Network Status Interface 1](/img/NE101_example_cat1_1.png)
-   ![Network Status Interface 2](/img/NE101_example_cat1_2.png)
+## Function Verification
 
-3. **Data Transmission Test**
-   
-   - Configure the MQTT server parameters
-   - Perform a test capture and image upload
-   - For a complete operation guide, refer to: [Quick Start Manual](./../Quick%20Start)
+### Precompiled Firmware Usage Guide
 
-## Development Implementation Guide
+#### 1. Hardware Preparation
 
-### Development Environment Requirements
+1. Properly install the Cat1 communication module
+2. Insert an activated 4G SIM card
 
-- The latest version of Visual Studio Code
-- ESP-IDF v5.1.1 toolchain
-- Cat1 example code library
+> For detailed connection instructions, refer to:
+> [Hardware Connection Guide](../Hardware%20Guide/Hardware%20Connection)
 
-### Development Steps
+#### 2. Firmware Flashing
 
-1. **Obtain the Source Code**
-   
-   ```bash
-   git clone git@github.milesight.com:ne101.git
-   ```
+Follow the standard flashing process:
+[System Flashing and Initialization Guide](./../Software%20Guide/System%20Flashing%20and%20Initialization)
 
-2. **Project Configuration**
-   
-   - Use VS Code to open the project directory
+#### 3. Network Status Verification
 
-3. **Compile and Flash**
-   
-   - Execute the full compilation process
-   - Flash the generated firmware to the device
-   - For detailed reference, see: [Development Environment Setup Guide](./../Software%20Guide/Development%20Environment%20Setup)
+1. Short press the function key to enter configuration mode
+2. Access the device's web management interface (http://192.168.1.1)
+3. Check the "Cellular Network" status information
 
-## Considerations
+![Network Status Display Interface 1](/img/NE101_example_cat1_1.png)
+![Network Status Display Interface 2](/img/NE101_example_cat1_2.png)
 
-1. **SIM Card Management**
-   
-   - Ensure the SIM card has activated 4G service
-   - Check if the SIM card contacts are good
+#### 4. Data Transmission Test
 
-2. **Signal Strength Evaluation**
-   
-   - RSSI > -85 dBm: Excellent signal
-   - -85 dBm > RSSI > -95 dBm: Average signal
-   - RSSI < -95 dBm: Weak signal
+1. Configure MQTT server connection parameters
+2. Perform test capture and image upload functionality
 
-> Technical Tip: During development, it is recommended to use a serial debugging tool to monitor AT command interactions in real-time, which can quickly locate communication issues. The network registration process typically takes 30-60 seconds, so please be patient.
+> For the complete operation guide, refer to:
+> [Quick Start Guide](./../Quick%20Start)
+
+### Source Code Development Verification Process
+
+#### 1. Obtain the Code Repository
+
+```bash
+git clone https://github.com/camthink-ai/lowpower_camera.git
+```
+
+#### 2. Project Configuration
+
+Open the project directory with VS Code:
+
+![Project Directory Structure](/img/NE101_code_dir.png)
+
+#### 3. Compilation and Deployment
+
+1. Execute project compilation:
+
+![Compilation Process](/img/NE101_idf_build.png)
+
+2. Flash the generated firmware:
+
+![Firmware Flashing Interface](/img/NE101_idf_flash.png)
+
+#### 4. Function Verification
+
+Network status check and data transmission test methods are the same as in the precompiled firmware section.
+
+## Notes
+
+### SIM Card Management
+
+- Ensure the SIM card has an active 4G data service
+
+### Signal Quality Assessment
+
+- **Excellent Signal**: RSSI > -85 dBm
+- **Moderate Signal**: -85 dBm > RSSI > -95 dBm  
+- **Weak Signal**: RSSI < -95 dBm
+
+> **Development Suggestions**:
+> 1. Use a serial tool to monitor AT command interactions to quickly troubleshoot communication issues
+> 2. The network registration process typically takes 30-60 seconds, which is normal
+> 3. Adjust the device position in weak signal environments

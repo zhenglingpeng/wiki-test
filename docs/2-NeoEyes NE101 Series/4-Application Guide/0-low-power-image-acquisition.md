@@ -1,9 +1,11 @@
 # Low Power Image Acquisition
 
 ## 应用简介
+
 本项目基于NE101硬件特性实现低功耗图像采集相机的项目工程实现示例。软件工程上实现了支持低功耗工作模式、通讯管理、MQTT管理、数据传输等应用程序逻辑，适合在图像采集场景下使用。基于此项目工程，开发者可结合传感器采集数据进行采集判断或者结合本地AI算法完成更加丰富的应用拓展。
 
 ## 主要特性
+
 - 超低功耗设计，支持电池供电长期工作
 - 灵活的唤醒机制，支持定时和传感器触发
 - 完整的图像采集和数据传输流程
@@ -19,7 +21,7 @@ flowchart LR
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px
     classDef highlight fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     classDef process fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    
+
     %% 定义节点
     A[设备启动]:::highlight
     B[设备休眠]:::default
@@ -47,35 +49,65 @@ flowchart LR
     F --> B
 ```
 
-## 项目工程结构
-项目的工程目录如下，如果需要进行二次开发可在github上获取项目源代码[「工程名称」]('https://github.com')
-```
-.
-├── build 
-├── docs
-├── docusaurus.config.js
-├── i18n
-├── node_modules
-├── package-lock.json
-├── package.json
-├── README.md
-├── sidebars.js
-├── src
-├── static
-└── yarn.lock
-```
+## 软件资源
+
+1. **预编译固件**：
+   
+   - 示例固件：[lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101.1.0.1.bin)
+
+2. **源码开发**：
+   
+   - 最新版 Visual Studio Code（1.99.2以上）
+   - ESP-IDF 插件（v5.1.6版本)
+   - 示例代码库[lowpower_camera](https://github.com/camthink-ai/lowpower_camera.git)
+
+### 使用预编译固件升级
+
+1. **设备连接**
+   
+   完整硬件连接指南：[硬件连接说明](.././Hardware%20Guide/Hardware%20Connection)
+
+2. **设备烧录**
+   
+   烧录方法请参考：[System Flashing](./../Software%20Guide/System%20Flashing%20and%20Initialization)
+
+### 使用源码开发验证
+
+1. **获取源码**
+   
+   ```bash
+   git clone https://github.com/camthink-ai/lowpower_camera.git
+   ```
+
+2. **打开工程**
+   
+   使用 VS Code 打开工程目录
+   
+   ![NE101_code_dir.png](/img/NE101_code_dir.png)
+
+3. **编译**
+   
+   ![NE101_idf_build.png](/img/NE101_idf_build.png)
+
+4. **烧录**
+   
+   ![NE101_idf_flash.png](/img/NE101_idf_flash.png)
 
 ## 软件说明
+
 本章节主要介绍项目工程中的软件功能模块，包括图像调整、拍照设置、数据上报等核心功能。通过这些功能模块的配置和使用，可以实现低功耗图像采集的完整应用流程。
 
 ### 软件功能
+
 软件功能包括以下几个主要部分:
+
 - 图像调整：用于控制图像的亮度、对比度、饱和度等参数
 - 拍照设置：支持定时拍照、报警触发拍照等多种拍摄模式
 - 数据上报：通过MQTT协议将图像数据上传至服务器
 - 设备维护：提供设备管理和维护相关的功能
 
 以下将详细说明各个功能模块的具体参数和使用方法。
+
 #### 图像调整（Image Adjustment）
 
 - **补光灯（Supplement Light）**
@@ -92,7 +124,7 @@ flowchart LR
   - 开关状态：已开启
 - **恢复默认（Default）按钮**
   - 功能：重置图像参数为默认值
-<img src="/img/Overview/NE101/Software/1.png" alt="Image Adjustment" style={{height: "300px", display: "block", margin: "20px auto"}} />
+    <img src="/img/Overview/NE101/Software/1.png" alt="Image Adjustment" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 拍照设置（Capture Setting）
 
@@ -110,8 +142,7 @@ flowchart LR
   - 开关状态：已关闭
 - **启用拍照按钮（Enable Capture Button）**
   - 开关状态：已开启
-<img src="/img/Overview/NE101/Software/2.png" alt="Capture Setting" style={{height: "300px", display: "block", margin: "20px auto"}} />
-
+    <img src="/img/Overview/NE101/Software/2.png" alt="Capture Setting" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 数据上报（Data Report）
 
@@ -123,8 +154,7 @@ flowchart LR
 - **Username / Password**：留空
 - **保存按钮（Save）**
   - 保存数据上报相关配置
-<img src="/img/Overview/NE101/Software/3.png" alt="Data Report" style={{height: "300px", display: "block", margin: "20px auto"}} />
-
+    <img src="/img/Overview/NE101/Software/3.png" alt="Data Report" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 设备维护（Device Maintenance）
 
@@ -135,8 +165,7 @@ flowchart LR
 - **固件版本（Firmware Version）**：`NE_101.1.0.1`
 - **固件升级（Upgrade Firmware）**
   - 通过本地上传固件文件进行升级
-<img src="/img/Overview/NE101/Software/4.png" alt="Device Maintenance" style={{height: "300px", display: "block", margin: "20px auto"}} />
-
+    <img src="/img/Overview/NE101/Software/4.png" alt="Device Maintenance" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 网络连接（Connection）
 
@@ -162,20 +191,26 @@ flowchart LR
 <img src="/img/Overview/NE101/Software/5.png" alt="WLAN Connection" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 休眠模式（Sleep Mode）
+
 - **Sleep Mode 按钮**
   - 功能：一键将设备切换为低功耗休眠状态
 
 ### 软件使用说明
+
 软件的使用说明可以见[快速开始](../1-Quick%20Start.md)
 
 ## 应用说明
->NE101作为低功耗图像采集设备的特点是以较强的生命周期来进行图像采集，下方将说明设备采集的数据如何进行应用与使用的简单示例。
+
+> NE101作为低功耗图像采集设备的特点是以较强的生命周期来进行图像采集，下方将说明设备采集的数据如何进行应用与使用的简单示例。
 
 ### MQTTX接收MQTT数据
+
 为了验证设备的数据上报功能是否正常，可以使用 MQTT 客户端工具（如 [MQTTX](https://mqttx.app/)）进行数据接收测试。
 
 #### 步骤说明
->需要保证MQTTX服务端与NE101处于同一网络环境
+
+> 需要保证MQTTX服务端与NE101处于同一网络环境
+
 1. 打开 MQTTX，点击 `新建连接`。
 2. 设置以下连接参数：
    - **Host**：`192.168.44.80`
@@ -225,6 +260,3 @@ flowchart LR
 ```
 
 也可以将 Base64 数据粘贴至 [Base64图像查看器](https://base64.guru/converter/decode/image) 进行在线预览。
-
-
-
