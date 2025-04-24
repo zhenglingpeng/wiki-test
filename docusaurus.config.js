@@ -50,6 +50,14 @@ const config = {
   plugins: [
     'docusaurus-plugin-image-zoom',
   ],
+  
+  // 启用Mermaid支持
+  markdown: {
+    mermaid: true,
+  },
+  themes: [
+    '@docusaurus/theme-mermaid',
+  ],
 
   presets: [
     [
@@ -112,6 +120,10 @@ const config = {
           margin: 24,
           scrollOffset: 0,
         }
+      },
+      // Mermaid配置
+      mermaid: {
+        theme: { light: 'neutral', dark: 'forest' },
       },
       // 颜色模式配置
       colorMode: {
