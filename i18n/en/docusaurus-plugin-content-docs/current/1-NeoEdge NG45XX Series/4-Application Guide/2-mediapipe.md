@@ -1,14 +1,13 @@
 # Pose Estimation
-
 ---
 
 ## 1. Overview
 
-This article describes how to run real-time **pose estimation** using **MediaPipe** on the **Jetson Orin** platform (Nano / NX / AGX), leveraging GPU acceleration when possible.
+This document explains how to use **MediaPipe Python API** for real-time **pose estimation** on **Jetson Orin** platforms (Nano/NX/AGX) with GPU acceleration (if supported).
 
-Pose estimation is useful for gesture recognition, fitness tracking, human-computer interaction, etc.
+Pose estimation is widely used in gesture recognition, fitness tracking, HCI, etc.
 
-【image】*Fig: Real-time pose estimation output example*
+![mediapipe-series-solutions](/img/mediapipe-series-solutions.gif)
 
 ---
 
@@ -16,145 +15,51 @@ Pose estimation is useful for gesture recognition, fitness tracking, human-compu
 
 ### Hardware
 
-- Jetson Orin Series (Nano, NX, AGX)
-- USB / CSI Camera (optional but recommended)
+- Jetson Orin series (Nano, NX, AGX)  
+- USB/CSI camera (optional but recommended)
 
 ### Software
 
-- **OS**: Ubuntu 20.04/22.04 LTS (JetPack-based)
-- **JetPack**: NVIDIA official image (includes CUDA, cuDNN, TensorRT)
-- **MediaPipe**: GitHub source (`master` or tagged version like `v0.9.x`)
-- **Dependencies**:
-  - Bazel 4.2+ (build system)
-  - Python 3.7+
-  - OpenCV, FFmpeg, GStreamer, Protobuf
-
-Ensure JetPack and GPU drivers are properly installed and CUDA is available.
+- **OS**: Ubuntu 20.04/22.04 LTS (JetPack-based)  
+- **JetPack**: Official image (includes CUDA, cuDNN, TensorRT)  
+- **Python**: Recommended 3.8+  
+- **MediaPipe (Python)**: Via pip  
+- **Dependencies**: OpenCV, FFmpeg, GStreamer (for camera/video)  
 
 ---
 
-## 3.  Environment Setup
+## 3. Environment Setup
 
-### Step 1: Update and Install Dependencies
+### Step 1: Update System and Install Dependencies
 
 ```bash
 sudo apt update && sudo apt upgrade
 sudo apt install -y \
-    build-essential cmake git curl unzip \
     python3-dev python3-pip python3-opencv \
-    libopencv-dev libprotobuf-dev protobuf-compiler \
+    libopencv-dev \
     libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
     libavcodec-dev libavformat-dev libswscale-dev
 ```
 
-### Step 2: Python Packages
+### Step 2: Install Python Packages
 
 ```bash
 python3 -m pip install --upgrade pip
-pip3 install numpy protobuf
+pip3 install mediapipe opencv-python
+```
+
+For Jetson GPU acceleration, ensure TensorRT/CUDA are enabled and max performance:
+
+```bash
+sudo nvpmodel -m 0
+sudo jetson_clocks
 ```
 
 ---
 
-## 4. Installing Bazel
+## 4. Run Pose Estimation
 
-MediaPipe requires [Bazel](https://bazel.build/) to build from source.
-
-```bash
-curl -OL https://github.com/bazelbuild/bazel/releases/download/5.3.0/bazel-5.3.0-linux-arm64
-chmod +x bazel-5.3.0-linux-arm64
-sudo mv bazel-5.3.0-linux-arm64 /usr/local/bin/bazel
-bazel version
-```
-
-> 📌 **Note**: MediaPipe version must match Bazel version; refer to official [compatibility guide](https://google.github.io/mediapipe/getting_started/install.html).
-
----
-
-## 5. Clone MediaPipe Source
-
-```bash
-git clone https://github.com/google/mediapipe.git
-cd mediapipe
-# Optional: Checkout stable version
-# git checkout v0.9.1
-```
-
-Explore available demos in:
-
-- `mediapipe/examples/`
-- `mediapipe/graphs/`
-
----
-
-## 6. Build and Configure
-
-### Step 1: Basic C++ Build (Example)
-
-Compile a simple hello world or hand tracking demo:
-
-```bash
-bazel build -c opt \
-    --define MEDIAPIPE_DISABLE_GPU=0 \
-    --copt -DMESA_EGL_NO_X11_HEADERS \
-    --action_env PYTHON_BIN_PATH=$(which python3) \
-    mediapipe/examples/desktop/hello_world:hello_world
-```
-
-### Step 2: Pose Estimation Demo Build
-
-```bash
-bazel build -c opt \
-    --config=cuda \
-    --define MEDIAPIPE_DISABLE_GPU=0 \
-    mediapipe/examples/desktop/pose_tracking:pose_tracking_gpu
-```
-
-> You may need to download pose models before running.
-
----
-
-## 7. Running the Demo
-
-### Live Webcam Input (GPU):
-
-```bash
-GLOG_logtostderr=1 \
-bazel-bin/mediapipe/examples/desktop/pose_tracking/pose_tracking_gpu \
-  --calculator_graph_config_file=mediapipe/graphs/pose_tracking/pose_tracking_gpu.pbtxt
-```
-
-### Video File Input:
-
-```bash
-GLOG_logtostderr=1 \
-bazel-bin/mediapipe/examples/desktop/pose_tracking/pose_tracking_gpu \
-  --calculator_graph_config_file=mediapipe/graphs/pose_tracking/pose_tracking_gpu.pbtxt \
-  --input_video_path=input.mp4 \
-  --output_video_path=output_pose.mp4
-```
-
----
-
-## 8. Optional: Python API
-
-MediaPipe also supports Python APIs, but official wheels may not work directly on ARM64.
-
-### Option 1: Build from Source
-
-```bash
-cd mediapipe
-python3 setup.py gen_protos
-python3 setup.py bdist_wheel --experimental_deps=gpu
-```
-
-Install generated wheel:
-
-```bash
-pip3 install dist/mediapipe-*.whl
-```
-
-### Example Python Script
+![pose](/img/mediapipe_pose_0.png)
 
 ```python
 import cv2
@@ -166,68 +71,93 @@ pose = mp_pose.Pose()
 cap = cv2.VideoCapture(0)
 while True:
     ret, frame = cap.read()
+    if not ret:
+        break
     image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = pose.process(image)
 
     if results.pose_landmarks:
-        print(results.pose_landmarks)
-    cv2.imshow("Pose", frame)
+        mp.solutions.drawing_utils.draw_landmarks(
+            frame, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+    
+    cv2.imshow("Pose Estimation", frame)
     if cv2.waitKey(5) & 0xFF == 27:
         break
 cap.release()
+cv2.destroyAllWindows()
 ```
+![mediapipe_pose_1](/img/mediapipe_pose_1.png)
 
 ---
 
-## 9. Performance & Optimization
+## 5. Hand Tracking
 
-| Mode         | FPS (Orin AGX) | GPU Usage | Acceleration |
-| ------------ | -------------- | --------- | ------------ |
-| CPU only     | ~5–10 FPS      | Low       | ❌            |
-| CUDA enabled | ~25–40 FPS     | Medium    | ✅            |
-| TensorRT     | (WIP/manual)   | Low/High  | ⚙️ Potential |
+![hand](/img/mediapipe_hand_0.png)
 
-### Tips
+```python
+import cv2
+import mediapipe as mp
+import time
 
-- Use `--config=cuda` for GPU support
-- Try `--define MEDIAPIPE_DISABLE_GPU=0`
-- Check `jetson_clocks` and `nvpmodel` for performance mode
+mp_hands = mp.solutions.hands
+hands = mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5)
+mp_drawing = mp.solutions.drawing_utils
 
-【image】*Fig: Placeholder for performance metrics chart*
+cap = cv2.VideoCapture(0)
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        continue
+    image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    results = hands.process(image)
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+
+    if results.multi_hand_landmarks:
+        for hand_landmarks in results.multi_hand_landmarks:
+            mp_drawing.draw_landmarks(image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+
+    cv2.imshow("Hand Tracking", image)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+![hand](/img/mediapipe_hand_1.png)
 
 ---
 
-## 10. 🛠️ Troubleshooting
+## 6. Performance and Optimization
 
-| Issue                        | Suggestion                                           |
-| ---------------------------- | ---------------------------------------------------- |
-| Missing `.so` files          | Add to `LD_LIBRARY_PATH` or reinstall via `apt`      |
-| GStreamer errors             | Install all plugins: `good`, `bad`, `ugly`           |
-| Build failed (Bazel version) | Match Bazel version to MediaPipe documentation       |
-| Python wheel fails to build  | Check `setup.py` + compatible Bazel, Python versions |
+| Mode        | FPS (AGX Orin) | GPU Usage | Accelerated |
+|-------------|----------------|-----------|-------------|
+| Default CPU | ~5-10 FPS      | Low       | ❌          |
+| JetPack GPU | ~25-40 FPS     | Medium    | ✅          |
 
-```bash
-# Install missing plugins if needed
-sudo apt install gstreamer1.0-plugins-{base,good,bad,ugly}
-```
+### Optimization Tips
+
+- Enable `jetson_clocks` and set `nvpmodel` to max performance  
+- Use OpenCV multithreading for frame capture  
+- Reduce image resolution (e.g., 640x480)  
 
 ---
 
-## 11. Appendix
+## 7. Troubleshooting
 
-### Source Tree (Example)
+| Issue            | Solution                          |
+|------------------|-----------------------------------|
+| Import errors    | Ensure `mediapipe` is installed   |
+| Camera not opening| Test with `cv2.VideoCapture(0)`   |
+| Low FPS          | Enable GPU, reduce resolution     |
+| No display       | Use `export DISPLAY=:0` for SSH   |
 
-```bash
-mediapipe/
-├── graphs/
-│   └── pose_tracking/
-├── examples/
-│   └── desktop/
-│       └── pose_tracking/
-```
+---
 
-### Resources
+## 8. Appendix
 
-- [MediaPipe Docs](https://google.github.io/mediapipe/)
-- [Jetson Orin Forum](https://forums.developer.nvidia.com/c/embedded/jetson-orin/)
+### References
+ 
 - [MediaPipe GitHub](https://github.com/google/mediapipe)
+- [MediaPipe Samples](https://github.com/google-ai-edge/mediapipe-samples)

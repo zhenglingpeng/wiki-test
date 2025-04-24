@@ -1,219 +1,331 @@
-# DeepStream
+# DeepStream  
 
----
+---  
 
-This guide walks through how to install and run **NVIDIA DeepStream SDK** on **Jetson Orin** devices. DeepStream enables real-time video analytics using GPU-accelerated AI pipelines, optimized for Jetson’s CUDA/NvMedia stack.
+This guide explains how to install and run **NVIDIA DeepStream SDK** on **Jetson Orin** devices. DeepStream supports GPU-accelerated AI video analytics pipelines and is highly optimized for Jetson's CUDA/NvMedia platform.  
 
----
+---  
 
-## 1. Overview
+## 1. Overview  
 
-- Real-time video analytics SDK by NVIDIA  
+- Real-time video analytics SDK provided by NVIDIA  
 - Accelerated with TensorRT and CUDA  
-- Multi-stream AI inference and tracking  
-- Supports RTSP, USB, CSI, and file inputs  
-- Built-in support for object detection, classification, tracking  
+- Supports multi-stream AI inference and object tracking  
+- Input sources include RTSP, USB, CSI cameras, and local video files  
+- Built-in object detection, classification, and tracking capabilities  
+
+This guide covers:  
+
+- Installation methods (.deb package and Docker)  
+- Running sample pipelines  
+- Integrating custom models  
+- Docker usage (including jetson-containers)  
+- Common issues and tips  
+
+![overview](/img/NG45XX_deepstream_overview.png)  
+
+---  
+
+## 2. System Requirements  
+
+### Hardware  
 
-This document includes:
+| Component | Minimum Requirement               |  
+| --------- | --------------------------------- |  
+| Device    | Jetson Orin Nano / NX / AGX       |  
+| RAM       | ≥ 8GB                             |  
+| Storage   | ≥ 10GB                            |  
 
-- Installation (deb & Docker)
-- Sample pipeline execution
-- Custom model integration
-- Docker usage with jetson-containers (optional)
-- Troubleshooting and tips
+### Software  
 
-![overview](/img/NG45XX_deepstream_overview.png)
+- JetPack 6.1 GA or later (L4T ≥ R36.4)  
+- Ubuntu 20.04 / 22.04  
+- CUDA, TensorRT, cuDNN (included in JetPack)  
+- Docker (optional, for containerized deployment)  
 
----
+---  
 
-## 2. System Requirements
+## 3. Installing DeepStream  
 
-### Hardware
+### glib Migration  
 
-| Component | Minimum Requirements        |
-| --------- | --------------------------- |
-| Device    | Jetson Orin Nano / NX / AGX |
-| RAM       | ≥ 8GB                       |
-| Storage   | ≥ 10GB                      |
+To migrate to a newer glib version (e.g., 2.76.6), follow these steps:  
 
-### Software
+Prerequisites: Install the following packages:  
+```bash  
+sudo pip3 install meson  
+sudo pip3 install ninja  
+```  
 
-- JetPack 5.1.1 or higher (L4T ≥ R35.3)
-- Ubuntu 20.04 / 22.04
-- CUDA, TensorRT, cuDNN (included in JetPack)
-- Docker (optional for containerized setup)
+Compilation and installation steps:  
+```bash  
+git clone https://github.com/GNOME/glib.git  
+cd glib  
+git checkout <glib-version-branch>  
+# e.g., 2.76.6  
+meson build --prefix=/usr  
+ninja -C build/  
+cd build/  
+sudo ninja install  
+```  
 
----
+Verify the installed glib version:  
+```bash  
+pkg-config --modversion glib-2.0  
+```  
 
-## 3. Installing DeepStream
+### Dependency Installation  
 
-### Method A: Native Installation (via .deb package)
+```bash  
+sudo apt update  
+sudo apt install -y \  
+  libssl1.1 \  
+  libgstreamer1.0-0 \  
+  gstreamer1.0-tools \  
+  gstreamer1.0-plugins-good \  
+  gstreamer1.0-plugins-bad \  
+  gstreamer1.0-plugins-ugly \  
+  gstreamer1.0-libav \  
+  libgstrtspserver-1.0-0 \  
+  libjansson4 \  
+  libyaml-cpp-dev  
+```  
 
-1. Download the DeepStream package for Jetson:
-   
-   - Go to [DeepStream Jetson Download Page](https://developer.nvidia.com/deepstream-sdk-download-tesla#jetson)
-   - Choose the correct version for your JetPack
+### Install librdkafka  
 
-2. Install with `dpkg`:
+1. Clone the librdkafka repository from GitHub:  
+```bash  
+git clone https://github.com/confluentinc/librdkafka.git  
+```  
 
-```bash
-sudo apt install ./deepstream-<version>_arm64.deb
-```
+2. Configure and build the library:  
+```bash  
+cd librdkafka  
+git checkout tags/v2.2.0  
+./configure --enable-ssl  
+make  
+sudo make install  
+```  
 
-3. Verify installation:
+3. Copy the generated libraries to the DeepStream directory:  
+```bash  
+sudo mkdir -p /opt/nvidia/deepstream/deepstream/lib  
+sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream/lib  
+sudo ldconfig  
+```  
 
-```bash
-deepstream-app --version
-```
+### Method 1: Install via SDK Manager  
 
-【image】*Fig: CLI output showing DeepStream installed and version info*
+1. Download and install SDK Manager from the [NVIDIA official website](https://developer.nvidia.com/nvidia-sdk-manager).  
 
----
+2. Connect the device: Use a USB-C cable to connect the Jetson Orin device to the host computer.  
 
-### Method B: Docker-Based Installation
+3. Launch SDK Manager: Run the `sdkmanager` command on the host and log in with your NVIDIA developer account.  
 
-If you prefer containerized workflows:
+4. Select target hardware and JetPack version: Choose the corresponding Jetson Orin device and appropriate JetPack version in SDK Manager.  
 
-```bash
-sudo docker run --rm -it --runtime=nvidia --network host \
-  nvcr.io/nvidia/deepstream:6.3-triton-devel \
-  /bin/bash
-```
+5. Enable DeepStream SDK: Check the DeepStream SDK option under "Additional SDKs."  
 
-> 🧩 Available via NVIDIA NGC. Make sure your device is registered with [NGC](https://ngc.nvidia.com/).
+6. Begin installation: Follow the prompts to complete the installation.  
 
-You can also use [jetson-containers](https://github.com/dusty-nv/jetson-containers) for a pre-configured experience:
+---  
 
-```bash
-jetson-containers run dusty-nv/deepstream
-```
+### Method 2: Using DeepStream Tar Package  
 
----
+1. Download DeepStream SDK: Visit the [NVIDIA DeepStream download page](https://catalog.ngc.nvidia.com/orgs/nvidia/resources/deepstream) and download the DeepStream SDK tar package for Jetson (e.g., `deepstream_sdk_v7.1.0_jetson.tbz2`).  
 
-## 4. Running a Sample Pipeline
+2. Extract and install:  
+```bash  
+sudo tar -xvf deepstream_sdk_v7.1.0_jetson.tbz2 -C /  
+cd /opt/nvidia/deepstream/deepstream-7.1  
+sudo ./install.sh  
+sudo ldconfig  
+```  
 
-### Step 1: Launch a Sample App
+---  
 
-Run the default sample (object detection on video file):
+### Method 3: Using DeepStream Debian Package  
 
-```bash
-deepstream-app -c /opt/nvidia/deepstream/deepstream/samples/configs/deepstream-app/source1_usb_dec_infer_resnet_int8.txt
-```
+1. Download DeepStream Debian: Visit the [DeepStream Debian download page](https://catalog.ngc.nvidia.com/orgs/nvidia/resources/deepstream) and download the DeepStream SDK tar package for Jetson (e.g., `deepstream-7.1_7.1.0-1_arm64.deb`).  
 
-This will open a video window and display detected objects in real time.
+2. Install:  
+```bash  
+sudo apt-get install ./deepstream-7.1_7.1.0-1_arm64.deb  
+```  
 
-【image】*Fig: DeepStream running live object detection pipeline*
+### Method 4: Using Docker  
 
----
+1. **Install Docker and NVIDIA Container Toolkit**: Ensure Docker and NVIDIA Container Toolkit are installed.  
 
-### Step 2: Use a USB or CSI Camera
+2. Pull the DeepStream Docker image:  
+```bash  
+docker pull nvcr.io/nvidia/deepstream-l4t:6.1-samples  
+```  
 
-Update the config file input section:
+3. Run the container:  
+```bash  
+docker run -it --rm --runtime=nvidia \  
+  -v /tmp/.X11-unix:/tmp/.X11-unix \  
+  -e DISPLAY=$DISPLAY \  
+  nvcr.io/nvidia/deepstream-l4t:6.1-samples  
+```  
 
-```ini
-[source0]
-enable=1
-type=1
-camera-width=1280
-camera-height=720
-camera-fps-n=30
-```
+Alternatively, use the community-maintained [jetson-containers](https://github.com/dusty-nv/jetson-containers):  
+```bash  
+jetson-containers run dusty-nv/deepstream  
+```  
 
-Then run:
+---  
 
-```bash
-deepstream-app -c <your_camera_config>.txt
-```
+### Installation Verification  
 
-> 🎥 For USB cams, type=1. For CSI, use `nvarguscamerasrc`.
+Check version information:  
+```bash  
+deepstream-app --version-all  
+```  
 
----
+Expected output:  
+```bash  
+deepstream-app version 7.1.0  
+DeepStreamSDK 7.1.0  
+CUDA Driver Version: 12.6  
+CUDA Runtime Version: 12.6  
+TensorRT Version: 10.3  
+cuDNN Version: 9.0  
+libNVWarp360 Version: 2.0.1d3  
+```  
 
-### Step 3: Run with RTSP Stream
+---  
 
-Use this config snippet:
+## 4. Running Examples  
 
-```ini
-[source0]
-enable=1
-type=4
-uri=rtsp://<your-camera-stream>
-```
+### Step 1: Run Default Example  
 
----
+1. Navigate to the configs/deepstream-app directory on the dev kit:  
+```bash  
+cd /opt/nvidia/deepstream/deepstream-7.1/samples/configs/deepstream-app  
+```  
 
-## 5. Running in Docker (Advanced)
+2. Run the reference application:  
+```bash  
+# deepstream-app -c <path_to_config_file>  
+deepstream-app -c source30_1080p_dec_infer-resnet_tiled_display_int8.txt  
+```  
 
-Example: DeepStream 6.3 Triton + PyTorch in Docker:
+This command will pop up a video window displaying real-time detection results:  
 
-```bash
-sudo docker run -it --rm --runtime=nvidia \
-  -v /tmp/.X11-unix:/tmp/.X11-unix \
-  -e DISPLAY=$DISPLAY \
-  nvcr.io/nvidia/deepstream:6.3-triton-devel
-```
+![deepstream_app_5x8](/img/deepstream_app_1.png)  
 
-Inside container:
+---  
 
-```bash
-deepstream-app -c /opt/nvidia/deepstream/deepstream/samples/configs/deepstream-app/source1_usb_dec_infer_resnet_int8.txt
-```
+### Step 2: Using USB or CSI Camera  
 
-【image】*Fig: DeepStream running in Docker container with GUI passthrough*
+Modify the input section in the configuration file:  
+```ini  
+[source0]  
+enable=1  
+type=1  
+camera-width=1280  
+camera-height=720  
+camera-fps-n=30  
+```  
 
----
+Then run:  
+```bash  
+deepstream-app -c <your_camera_config>.txt  
+```  
 
-## 6. Integrating Custom Models
+> 🎥 USB cameras use `type=1`, while CSI cameras use `nvarguscamerasrc`.  
 
-DeepStream supports custom models via TensorRT or ONNX.
+---  
 
-### Step 1: Convert your model
+### Step 3: Using RTSP Stream  
 
-Use `trtexec` or `tao-converter`:
+Use the following configuration snippet:  
+```ini  
+[source0]  
+enable=1  
+type=4  
+uri=rtsp://<your-camera-stream>  
+```  
 
-```bash
-trtexec --onnx=model.onnx --saveEngine=model.engine
-```
+### Step 4: Video Detection  
 
-### Step 2: Update config
+Navigate to the example folder:  
+```bash  
+cd /opt/nvidia/deepstream/deepstream-7.1/sources/apps/sample_apps/deepstream-test1  
+```  
 
-```ini
-[primary-gie]
-enable=1
-model-engine-file=model.engine
-network-type=0
-```
+Compile the source code:  
+```bash  
+sudo make CUDA_VER=12.6  
+```  
 
-【image】*Fig: Configuration block for custom model integration*
+Run:  
+```bash  
+./deepstream-test1-app dstest1_config.yml  
+```  
 
----
+![deepstream_od](/img/deepstream_od.png)  
 
-## 7. Tips & Troubleshooting
+For more source examples, see `/opt/nvidia/deepstream/deepstream/sources`.  
 
-| Issue                   | Solution                                             |
-| ----------------------- | ---------------------------------------------------- |
-| No display in Docker    | Mount X11 socket & set `DISPLAY` variable            |
-| Low FPS                 | Use TensorRT INT8 engine or reduce resolution        |
-| USB camera not detected | Check `v4l2-ctl --list-devices`                      |
-| GStreamer errors        | Ensure proper plugins installed (or reflash JetPack) |
-| RTSP stream timeout     | Set `drop-frame-interval=0` and `latency=200`        |
+---  
 
----
+## 5. Integrating Custom Models  
 
-## 8. Appendix
+DeepStream supports integrating custom models via TensorRT or ONNX.  
 
-### Key Paths
+### Step 1: Model Conversion  
 
-| Purpose        | Path                                                 |
-| -------------- | ---------------------------------------------------- |
-| Sample configs | `/opt/nvidia/deepstream/deepstream/samples/configs/` |
-| Model engines  | `/opt/nvidia/deepstream/deepstream/models/`          |
-| Logs           | `/opt/nvidia/deepstream/logs/`                       |
-| DeepStream CLI | `/usr/bin/deepstream-app`                            |
+Use `trtexec` or `tao-converter`:  
+```bash  
+trtexec --onnx=model.onnx --saveEngine=model.engine  
+```  
 
-### References
+### Step 2: Update Configuration File  
 
-- [DeepStream Developer Page](https://developer.nvidia.com/deepstream-sdk)
-- [NGC Registry - DeepStream](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/deepstream)
+```ini  
+[primary-gie]  
+enable=1  
+model-engine-file=model.engine  
+network-type=0  
+```  
+
+For more DeepStream TAO examples, visit [https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps](https://github.com/NVIDIA-AI-IOT/deepstream_tao_apps).  
+
+---  
+
+## 6. More Examples  
+
+[deepstream_python_apps](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/tree/master)  
+![deepstream_python](/img/deepstream_python.png)  
+
+## 7. Tips and Troubleshooting  
+
+| Issue                     | Solution                                      |  
+| ------------------------- | --------------------------------------------- |  
+| No display in Docker      | Mount X11 socket and set `DISPLAY` variable   |  
+| Low frame rate            | Use INT8 engine or reduce input resolution    |  
+| USB camera not detected   | Check devices with `v4l2-ctl --list-devices`  |  
+| GStreamer errors          | Verify plugin installation or reflash JetPack |  
+| RTSP latency/dropped frames | Set `drop-frame-interval=0` and `latency=200` |  
+
+---  
+
+## 8. Appendix  
+
+### Key Paths  
+
+| Purpose                  | Path                                                   |  
+| ------------------------ | ------------------------------------------------------ |  
+| Sample config files      | `/opt/nvidia/deepstream/deepstream/samples/configs/`   |  
+| Model engine files       | `/opt/nvidia/deepstream/deepstream/models/`            |  
+| Log directory            | `/opt/nvidia/deepstream/logs/`                         |  
+| DeepStream CLI tool      | `/usr/bin/deepstream-app`                              |  
+
+### References  
+
+- [DeepStream Official Page](https://developer.nvidia.com/deepstream-sdk)  
+- [NGC Container Registry - DeepStream](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/deepstream)  
 - [GitHub - dusty-nv/jetson-containers](https://github.com/dusty-nv/jetson-containers)
-- [NVIDIA Forums - DeepStream](https://forums.developer.nvidia.com/c/deepstream-sdk/)

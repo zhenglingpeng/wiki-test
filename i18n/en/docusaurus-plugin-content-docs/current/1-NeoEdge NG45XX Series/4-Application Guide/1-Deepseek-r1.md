@@ -1,74 +1,72 @@
 # Chatbot
-
 ---
 
-This guide walks through deploying the **DeepSeek-R1** large language model locally on **NVIDIA Jetson Orin** devices using **Ollama**—a lightweight inference engine—enabling offline AI interaction with minimal setup.
+This guide explains how to deploy **DeepSeek-R1** large language model locally on **NVIDIA Jetson Orin** devices using **Ollama** (lightweight inference engine) for offline AI interactions with simple installation.
 
 ---
 
 ## 1. Overview
 
-Large Language Models (LLMs) like DeepSeek-R1 are becoming essential for smart edge applications. Running them directly on Jetson Orin allows for:
+LLMs like DeepSeek-R1 are becoming core to edge AI applications. Benefits of running directly on Jetson Orin:
 
-- **Offline interaction**  
-- **Low-latency response**  
+- **Fully offline operation**  
+- **Low-latency responses**  
 - **Enhanced data privacy**
 
-This guide covers:
-
+Guide covers:
 - Environment setup  
 - Ollama installation  
-- Running DeepSeek-R1  
-- Optional web interface with Open WebUI  
+- Running DeepSeek-R1 model  
+- Optional Open WebUI for web interface  
 
-【image】*Fig: Web-based chatbot UI using Open WebUI (placeholder)*
+[Image]*Illustration: Web chat interface based on Open WebUI (placeholder)*
 
 ---
 
 ## 2. Environment Setup
 
-### Hardware Requirements
+### Hardware
 
-| Component | Requirement                      |
-| --------- | -------------------------------- |
-| Device    | Jetson Orin (Nano / NX / AGX)    |
-| RAM       | ≥ 8GB (more for larger models)   |
-| Storage   | ≥ 10GB (depending on model size) |
-| GPU       | NVIDIA GPU with CUDA support     |
+| Component | Requirement                     |
+|-----------|---------------------------------|
+| Device    | Jetson Orin (Nano/NX/AGX)       |
+| RAM       | ≥8GB (more for larger models)   |
+| Storage   | ≥10GB (varies by model size)    |
+| GPU       | NVIDIA GPU with CUDA support    |
 
-### Software Requirements
+### Software
 
-- Ubuntu 20.04 / 22.04 (JetPack 5.1.1+ recommended)
-- NVIDIA CUDA Toolkit & drivers (preinstalled with JetPack)
-- Docker (optional, for containerized setup)
+- Ubuntu 20.04/22.04 (JetPack 5.1.1+ recommended)  
+- NVIDIA CUDA toolkit and drivers (pre-installed in JetPack)  
+- Docker (optional for containerized deployment)  
 
-> ⚙️ Use `jetson_clocks` and check `nvpmodel` to enable max performance mode before running inference.
+> ⚙️ Use `jetson_clocks` and check `nvpmodel` to enable max performance mode for best inference.
 
 ---
 
-## 3. Installing Ollama (Inference Engine)
+## 3. Install Ollama (Inference Engine)
 
-### Option A: Native Script Installation
+### Method A: Native Script Installation
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-- Installs Ollama service and CLI.
-- Automatically handles dependencies and background service setup.
+- Installs Ollama service and CLI  
+- Automatically handles dependencies  
 
-### Option B: Docker-based Deployment
+### Method B: Docker Deployment
 
 ```bash
-sudo docker run --runtime nvidia --rm --network=host \
+sudo docker run --runtime=nvidia --rm --network=host \
   -v ~/ollama:/ollama \
   -e OLLAMA_MODELS=/ollama \
   dustynv/ollama:r36.4.0
 ```
 
-> 🧩 Docker version is maintained by NVIDIA community (dustynv) and optimized for Jetson platforms.
+> 🧩 Docker version maintained by NVIDIA community (dustynv), optimized for Jetson
 
-### Verifying Ollama
+### Verify Ollama Running
 
 ```bash
 ss -tuln | grep 11434
@@ -80,40 +78,41 @@ Expected output:
 LISTEN 0 128 127.0.0.1:11434 ...
 ```
 
-If port `11434` is listening, the Ollama service is active.
+Port `11434` listening indicates Ollama service is running.
 
 ---
 
-## 4. Running DeepSeek-R1 Model
+## 4. Run DeepSeek-R1 Model
 
-### Model Launch
+### Launch Model
 
-To run the 1.5B parameter version:
+Run 1.5B parameter version:
 
 ```bash
 ollama run deepseek-r1:1.5b
 ```
 
-- Ollama will download the model (if not already cached).
-- Prompt-based interaction starts in terminal.
+- Ollama auto-downloads model if not cached  
+- Starts interactive chat in terminal
 
-> 💡 Replace `1.5b` with `8b`, `14b`, etc., based on your hardware's capacity.
+> 💡 Replace `1.5b` with `8b`, `14b` etc. based on hardware capability
 
 ### Model Version Comparison
 
-| Version | RAM Required | Comments                    |
-| ------- | ------------ | --------------------------- |
-| 1.5B    | ~6–8 GB      | Suitable for Orin Nano/NX   |
-| 8B+     | ≥ 16 GB      | Needs AGX Orin              |
-| 70B     | 🚫           | Not feasible on Jetson edge |
+| Version | RAM Needed | Notes               |
+|---------|------------|---------------------|
+| 1.5B    | ~6-8GB     | For Orin Nano/NX    |
+| 8B+     | ≥16GB      | Requires AGX Orin   |
+| 70B     | 🚫         | Not supported       |
 
 ---
 
-## 5. Optional: Web UI (Open WebUI)
+## 5. Web Interface (Open WebUI)
 
-Open WebUI provides a browser-based interface for interacting with Ollama models.
+Open WebUI provides browser-based chat interface.
+![open_webui](/img/open_webui.gif)
 
-### Installing Open WebUI (via Docker)
+### Install Open WebUI (Docker)
 
 ```bash
 sudo docker run -d --network=host \
@@ -124,55 +123,54 @@ sudo docker run -d --network=host \
   ghcr.io/open-webui/open-webui:main
 ```
 
-### Accessing the UI
+### Access WebUI
 
-Open your browser and go to:
-
-```text
+Browser access:
+```
 http://localhost:3000/
 ```
 
-- Interact with the DeepSeek-R1 model in a rich web environment.
-- Monitor prompt history and responses visually.
+- Graphical interaction with DeepSeek-R1  
+- View chat history and responses  
 
 ---
 
-## 6. Performance Tips
+## 6. Performance Optimization
 
-| Optimization Area | Recommendation                                              |
-| ----------------- | ----------------------------------------------------------- |
-| RAM Usage         | Use smaller models (1.5B) or enable swap                    |
-| Jetson Power Mode | Enable `MAXN` performance with `nvpmodel` & `jetson_clocks` |
-| Disk Caching      | Ensure model cache directory (`~/ollama`) has space         |
-| Monitoring        | Use `htop`, `tegrastats` to check runtime load              |
+| Optimization | Recommendation                     |
+|--------------|------------------------------------|
+| Memory       | Use smaller models or enable swap  |
+| Jetson Mode  | Enable `MAXN` + `jetson_clocks`    |
+| Model Cache  | Ensure `~/ollama` has space       |
+| Monitoring   | Use `htop`, `tegrastats`          |
 
-> 📉 Model loading may take ~30s–1 min on first run. Cached models load faster.
+> 📉 First model load takes ~30-60 sec, faster with cache.
 
 ---
 
 ## 7. Troubleshooting
 
-| Issue                      | Resolution                                            |
-| -------------------------- | ----------------------------------------------------- |
-| Port 11434 not listening   | Restart Ollama or check Docker container status       |
-| Model fails to load        | Insufficient memory; try smaller version (e.g., 1.5B) |
-| Web UI not accessible      | Check if Docker is running and mapped to host network |
-| "Ollama command not found" | Re-run installation script or add it to `$PATH`       |
+| Issue                | Solution                          |
+|----------------------|-----------------------------------|
+| Port 11434 not listening | Restart Ollama or check Docker   |
+| Model load failure   | Insufficient RAM, try smaller version |
+| Can't access Web UI  | Check Docker running and network  |
+| Ollama command not found | Reinstall or add to `$PATH`     |
 
 ---
 
 ## 8. Appendix
 
-### Folder Structure Example
+### Example Directory Structure
 
 ```bash
-~/ollama/                # Model cache directory
-~/open-webui/            # WebUI persistent storage
+~/ollama/                # Model cache
+~/open-webui/            # WebUI persistent data
 ```
 
-### References & Resources
+### References
 
-- [DeepSeek-R1 Models](https://huggingface.co/deepseek-ai)
-- [Ollama Documentation](https://ollama.com/)
-- [Open WebUI GitHub](https://github.com/open-webui/open-webui)
-- [Jetson Forum (NVIDIA)](https://forums.developer.nvidia.com/)
+- [DeepSeek-R1 - HuggingFace](https://huggingface.co/deepseek-ai)  
+- [Ollama Docs](https://ollama.com/)  
+- [Open WebUI GitHub](https://github.com/open-webui/open-webui)  
+- [NVIDIA Jetson Forum](https://forums.developer.nvidia.com/)
