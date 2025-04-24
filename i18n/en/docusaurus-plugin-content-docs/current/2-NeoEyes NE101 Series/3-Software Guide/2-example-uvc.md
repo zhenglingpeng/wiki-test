@@ -1,85 +1,76 @@
 # USB Video Streaming
 
 ## Overview
-
-This example demonstrates how to achieve real-time video streaming using the UVC protocol. You can develop various practical applications based on this example.
+This example demonstrates how to achieve real-time video streaming via the UVC protocol, based on the ESP32-S3 development platform.
 
 ### Technical Background
-
-**UVC (USB Video Class) Protocol** is a standard protocol established by the USB Implementers Forum for plug-and-play communication between video devices and host devices via USB interfaces. Its main advantages include:
-
+**UVC (USB Video Class)** is a standard protocol defined by USB-IF, with key features including:
 - Support for high-resolution image capture
-- Easy replacement of different camera modules
-- Use of standardized USB interfaces, offering strong scalability
-- Simplification of hardware wiring complexity
+- Plug-and-play compatibility
+- Standardized control interface
+- Simplified hardware design
 
-## Preparation
+## Preparations
 
-### Hardware Configuration Requirements
+### Hardware Requirements
+- ESP32-S3 development board
+- UVC-compliant camera module
+- USB Type-C data cable
 
-- Standard development board (ESP32-S3 core board)
-- UVC protocol-compatible camera module
-- For detailed hardware connection instructions, please refer to: [Hardware Connection Guide](.././Hardware%20Guide/Hardware%20Connection)
-
-### Software Resource Acquisition
-
+### Software Resources
 1. **Precompiled Firmware**:
-   
-   - Obtain the latest UVC example firmware
-   - For the flashing method, please refer to: [Development Environment Setup Guide](./../Software%20Guide/Development%20Environment%20Setup)
+   [usb_camera_mic_spk.bin](https://github.com/camthink-ai/iot_samples/blob/main/bin/usb_camera_mic_spk.bin)
 
 2. **Source Code Development**:
-   
-   - Supports local compilation (see the development guide section below for details)
-
-## Function Verification Process
-
-1. **Firmware Upgrade**
-   
-   - Use the flashing tool to write the example firmware
-
-2. **Device Initialization**
-   
-   - Correctly connect the hardware devices
-   - Power on and start the device
-
-3. **Function Testing**
-   
-   - Connect to WiFi ESP32S3-UVC
-   - Access the web management interface (http://192.168.4.1)
-   - Verify if the real-time video stream is displayed correctly
-     ![UVC Video Stream](/img/NE101_example_uvc1.png)
-
-## Development Implementation Guide
-
-### Development Environment Requirements
-
-- The latest version of Visual Studio Code
-- ESP-IDF Plugin (version 5.1.1)
-- UVC example code library
-
-### Detailed Development Steps
-
-1. **Obtain the Source Code**
-   
    ```bash
-   git clone git@github.milesight.com:ne101.git
+   git clone https://github.com/camthink-ai/iot_samples
    ```
 
-2. **Compile and Flash**
-   
-   - Use VS Code to open the example project `examples/usb/host/usb_camera_mic_spk`
-   - Set the target chip to ESP32-S3
-   - Execute the full compilation process
-   - Flash the generated firmware to the device
+## Function Verification
 
-## Important Considerations
+### Using Precompiled Firmware
+1. **Device Connection**:
+   - Connect the development board to the UVC camera module
+   - Refer to the [Hardware Connection Guide](../Hardware%20Guide/Hardware%20Connection)
 
-1. **Protocol Compatibility**
-   
-   - ESP32-S3 only supports the USB 1.1 protocol
-   - Custom UVC devices must ensure compatibility with the USB 1.1 standard
+2. **Firmware Flashing**:
+   Refer to the method in: [System Flashing](./../Software%20Guide/System%20Flashing%20and%20Initialization)
 
-2. **Performance Optimization Suggestions**
+3. **Function Testing**:
+   - Connect to the WiFi hotspot `ESP32S3-UVC`
+   - Access http://192.168.4.1
+   - Verify video stream display
+
+   ![UVC video stream](/img/NE101_example_uvc1.png)
+
+### Source Code Development Verification
+1. **Project Configuration**:
+   - Open `examples/usb/host/usb_camera_mic_spk` with VS Code
+
+   ![Project Directory](/img/NE101_uvc_dir.png)
+
+2. **Chip Selection**:
+   Set the target to ESP32-S3
+
+   ![Chip Selection](/img/NE101_idf_IC.png)
+
+3. **Compilation and Flashing**:
+
+   ![Compilation Process](/img/NE101_idf_build.png)
    
-   - For high resolutions, properly set the frame buffer
+   ![Flashing Process](/img/NE101_idf_flash.png)
+
+## Notes
+1. **Protocol Limitations**:
+   - ESP32-S3 only supports USB 1.1
+   - Ensure the camera is compatible with USB 1.1 standards
+
+2. **Performance Optimization**:
+   - Set the frame buffer size appropriately
+   - Recommended resolution is 640x480@30fps
+
+3. **Debugging Tips**:
+   - Use `idf.py monitor` to view logs
+   - Check the quality of the USB connection
+
+> Tip: It is recommended to keep the serial monitor active during development to capture any abnormal information promptly.

@@ -1,85 +1,76 @@
 # usb video streaming
 
 ## 概述
-
-本示例展示了如何通过UVC协议实现视频流的实时传输。您可以基于此示例开发出多种实际应用。
+本示例展示如何通过UVC协议实现视频流实时传输，基于ESP32-S3开发平台。
 
 ### 技术背景
-
-**UVC（USB 视频类）协议**是由USB Implementers Forum制定的标准协议，用于视频设备通过USB接口与主机设备进行即插即用通信。其主要优点包括：
-
+**UVC(USB Video Class)**是USB-IF制定的标准协议，主要特点包括：
 - 支持高分辨率图像采集
-- 方便更换不同规格的摄像头模组
-- 使用标准化USB接口，扩展性强
-- 简化硬件布线的复杂度
+- 即插即用兼容性
+- 标准化控制接口
+- 简化硬件设计
 
 ## 准备工作
 
-### 硬件配置要求
-
-- 标准开发板（ESP32-S3核心板）
+### 硬件需求
+- ESP32-S3开发板
 - 兼容UVC协议的摄像头模组
-- 详细硬件连接指南请参考：[硬件连接说明](.././Hardware%20Guide/Hardware%20Connection)
+- USB Type-C数据线
 
-### 软件资源获取
-
+### 软件资源
 1. **预编译固件**：
-   
-   - 获取最新的UVC示例固件
-   - 烧录方法请参考：[开发环境配置指南](./../Software%20Guide/Development%20Environment%20Setup)
+   [usb_camera_mic_spk.bin](https://github.com/camthink-ai/iot_samples/blob/main/bin/usb_camera_mic_spk.bin)
 
 2. **源码开发**：
-   
-   - 支持本地编译（详见下方开发指南章节）
-
-## 功能验证流程
-
-1. **固件升级**
-   
-   - 使用烧录工具写入示例固件
-
-2. **设备初始化**
-   
-   - 正确连接硬件设备
-   - 上电启动
-
-3. **功能测试**
-   
-   - 连接WiFi ESP32S3-UVC
-   - 访问Web管理界面（http://192.168.4.1）
-   - 验证实时视频流是否正常显示
-     ![UVC视频流](/img/NE101_example_uvc1.png)
-
-## 开发实现指南
-
-### 开发环境要求
-
-- 最新版 Visual Studio Code
-- ESP-IDF 插件（v5.1.1版本）
-- UVC 示例代码库
-
-### 开发步骤详解
-
-1. **获取源码**
-   
    ```bash
-   git clone git@github.milesight.com:ne101.git
+   git clone https://github.com/camthink-ai/iot_samples
    ```
 
-2. **编译烧录**
-   
-   - 使用 VS Code 打开示例工程 examples/usb/host/usb_camera_mic_spk
-   - 设置目标芯片为 ESP32-S3
-   - 执行完整编译流程
-   - 烧录生成的固件到设备
+## 功能验证
 
-## 重要注意事项
+### 使用预编译固件
+1. **设备连接**：
+   - 开发板连接UVC摄像头模组
+   - 参考[硬件连接说明](../Hardware%20Guide/Hardware%20Connection)
 
-1. **协议兼容性**
-   
-   - ESP32-S3 仅支持 USB 1.1 协议
-   - 定制UVC设备需确保兼容 USB 1.1 标准
+2. **固件烧录**：
+   方法参考：[System Flashing](./../Software%20Guide/System%20Flashing%20and%20Initialization)
 
-2. **性能优化建议**
-   
-   - 在高分辨率下需合理设置帧缓冲区
+3. **功能测试**：
+   - 连接WiFi热点`ESP32S3-UVC`
+   - 访问http://192.168.4.1
+   - 验证视频流显示
+
+   ![UVC视频流](/img/NE101_example_uvc1.png)
+
+### 源码开发验证
+1. **工程配置**：
+   - 使用VS Code打开`examples/usb/host/usb_camera_mic_spk`
+
+   ![工程目录](/img/NE101_uvc_dir.png)
+
+2. **芯片选择**：
+   设置目标为ESP32-S3
+
+   ![芯片选择](/img/NE101_idf_IC.png)
+
+3. **编译烧录**：
+
+   ![编译过程](/img/NE101_idf_build.png)
+
+   ![烧录过程](/img/NE101_idf_flash.png)
+
+## 注意事项
+1. **协议限制**：
+   - ESP32-S3仅支持USB 1.1
+   - 确保摄像头兼容USB 1.1标准
+
+2. **性能优化**：
+   - 合理设置帧缓冲区大小
+   - 建议分辨率640x480@30fps
+
+3. **调试建议**：
+   - 使用`idf.py monitor`查看日志
+   - 检查USB连接质量
+
+> 提示：开发过程中建议保持串口监控，及时捕获异常信息。
