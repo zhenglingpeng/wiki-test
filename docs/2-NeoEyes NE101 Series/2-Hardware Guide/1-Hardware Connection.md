@@ -73,7 +73,6 @@
 
 - 以上完成后即可开始相关调试
 
-  
 
  **软件烧录和调试**：[AI Camera System Flashing](http://192.168.13.9:3000/docs/Edge%20AI%20Camera/NeoEyes%20NE101%20Series/Software%20Guide/System%20Flashing%20and%20Initialization)
 
@@ -82,10 +81,8 @@
 ### 16Pin GPIOs Expansion
 
 The 16 pins expansion header provide communication interface like uart, I2C,  SPI and GPIOs. Developer can use these interfaces to expand sensor modules like PIR sensor, OLED module as their needed.
-
-|      |          |             |          |              |                    |
-| ---- | -------- | ----------- | -------- | ------------ | ------------------ |
 | PIN# | Pin Name | Functions   | Pin Type | Pull Up/Down | Alternate Function |
+| ---- | -------- | ----------- | -------- | ------------ | ------------------ |
 | 1    | TXD0     | Uart0 TX    | I/O/T    | PU 10K       | GPIO43             |
 | 2    | GND      | GND         | S        |              |                    |
 | 3    | RXD0     | Uart0 RX    | I/O/T    | PU 10K       | GPIO44             |
@@ -106,10 +103,8 @@ The 16 pins expansion header provide communication interface like uart, I2C,  SP
 ### Camera Sensor IOs
 
 Camera Module OV5640 support 8-bit paralle input interface. The IOs of main board config as below
-
-|      |           |              |          |              |               |
-| ---- | --------- | ------------ | -------- | ------------ | ------------- |
 | PIN# | Pin Name  | Functions    | Pin Type | Pull Up/Down | ESP32-S3 PINs |
+| ---- | --------- | ------------ | -------- | ------------ | ------------- |
 | 1    | Null      |              |          |              |               |
 | 2    | GND       | GND          | S        |              |               |
 | 3    | I2C_SDA   | I2C_Data     | I/O      | PU 4K7       | GPIO4         |
@@ -143,18 +138,16 @@ Please note that for IOs sources lack, the IO configuration conflit with some IO
 ### 16 Pins Expansion  Header
 
 Detailed information please reference the comparison table.
-
-|      |            |              |          |              |                        |
-| ---- | ---------- | ------------ | -------- | ------------ | ---------------------- |
 | PIN# | Pin Name   | Functions    | Pin Type | Pull Up/Down | ESP32-S3 PINs          |
+| ---- | ---------- | ------------ | -------- | ------------ | ---------------------- |
 | 1    | VCC_IN     | Power Output | S        |              |                        |
 | 2    | 3V3        | 3V3 Output   | S        |              |                        |
 | 3    | VCC_IN     | Power Output | S        |              |                        |
 | 4    | 3V3        | 3V3 Output   | S        |              |                        |
 | 5    | SPI_CLK    | SPI_CLK      | I/O/T    |              | GPIO39                 |
 | 6    | SPI_MOSI   | SPI_MOSI     | I/O/T    |              | GPIO38                 |
-| 7    | GND        |              |          |              |                        |
-| 8    | GND        |              |          |              |                        |
+| 7    | GND        |              | GND      |              |                        |
+| 8    | GND        |              | GND      |              |                        |
 | 9    | SPI_CS     | SPI_CS       | I/O/T    |              | GPIO45                 |
 | 10   | SPI_MISO   | SPI_MISO     | I/O/T    |              | GPIO40                 |
 | 11   | SPI_CS     | SPI_CS       | I/O/T    |              | GPIO45                 |
@@ -164,29 +157,14 @@ Detailed information please reference the comparison table.
 | 15   | WIFI_BUSY  | Status       | I/O/T    |              | GPIO20,USB_D+,ADC2_CH9 |
 | 16   | WIFI_RST   | Reset#low    | I/O/T    |              | GPIO46                 |
 
-|      |          |           |          |              |               |
-| ---- | -------- | --------- | -------- | ------------ | ------------- |
-| PIN# | Pin Name | Functions | Pin Type | Pull Up/Down | ESP32-S3 PINs |
-| 1    | Null     |           |          |              |               |
-| 2    | Null     |           |          |              |               |
-| 3    | Null     |           |          |              |               |
-| 4    | Null     |           |          |              |               |
-| 5    | Null     |           |          |              |               |
-| 6    | Null     |           |          |              |               |
-| 7    | Null     |           |          |              |               |
-| 8    | Null     |           |          |              |               |
-| 9    | Null     |           |          |              |               |
-| 10   | Null     |           |          |              |               |
-| 11   | Null     |           |          |              |               |
-| 12   | Null     |           |          |              |               |
+
 
 ### IO Conflict table
 
   If you use the Cat-1 or WiFi-Halow Module,the IOs occupancy by the module should not be used or connected anything on **16 Pins Expansion header**. 
 
-|      |          |             |              |                   |
-| ---- | -------- | ----------- | ------------ | ----------------- |
 | PIN# | Pin Name | Functions   | Cat-1 Module | WiFi-Halow Module |
+| ---- | -------- | ----------- | ------------ | ----------------- |
 | 1    | TXD0     | Uart0 TX    |              |                   |
 | 2    | GND      | GND         |              |                   |
 | 3    | RXD0     | Uart0 RX    |              |                   |

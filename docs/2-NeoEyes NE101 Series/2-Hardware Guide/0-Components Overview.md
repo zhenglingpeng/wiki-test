@@ -31,8 +31,6 @@
 
 模组搭配OV5640,分辨率为2592*1944，靶面尺寸为1/4。镜头有D-FOV 120和77度两种可选。并可依场景需求提供微距抓拍及正常抓拍两种对焦版本。
 
-<style type='text/css'></style>
-
 |                       | OV5640  Module              |          |
 | --------------------- | --------------------------- | -------- |
 | Items                 | Description                 |          |
@@ -49,11 +47,8 @@
 
 USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺寸为1/2.8“， 镜头接口为M12，可配多种FOV镜头可选。
 
-<style type='text/css'></style>
-
-|                          |                   |               |
-| ------------------------ | ----------------- | ------------- |
 |                          | USB Camera Module |               |
+| ------------------------ | ----------------- | ------------- |
 | Items                    | Description       |               |
 | CMOS Sensor              | SC200AI, 1/2.8"   |               |
 | Max.Resolution           | 1920*1080         |               |
@@ -72,42 +67,37 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 
 采用 Quectel的EG912系列模组，通过UART与主板进行通讯。
 
-<style type='text/css'></style>
-
-|                          |                                                              |     |
-| ------------------------ | ------------------------------------------------------------ | --- |
-| Cat-1 Module             |                                                              |     |
-| Module                   | Quectel EG912UGL                                             |     |
-| LTE-FDD                  | B1/ 2/ 3/ 4/ 5/ 7/ 8/ 12/ 13/ 17/ 18/ 19/ 20/ 25/ 26/ 28/ 66 |     |
-| LTE-TDD                  | B34/ 38/ 39/ 40/ 41                                          |     |
-| GSM                      | B2/ 3/ 5/ 8                                                  |     |
-| Antenna                  | PCB Antenna                                                  |     |
-| Communication Interfaces | UART                                                         |     |
-| Power Supply             | DC 4 -- 6 V                                                  |     |
-| Operation Temperature    | -20°-- 60°                                                   |     |
-| Storage Temperature      | -40°-- 85°                                                   |     |
-| Dimensions               | 60mm*60mm                                                    |     |
-| Certifications           | CE                                                           |     |
+|            | Cat-1 Module                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| Module                   | Quectel EG912UGL                                             |   
+| LTE-FDD                  | B1/ 2/ 3/ 4/ 5/ 7/ 8/ 12/ 13/ 17/ 18/ 19/ 20/ 25/ 26/ 28/ 66 |  
+| LTE-TDD                  | B34/ 38/ 39/ 40/ 41                                          |     
+| GSM                      | B2/ 3/ 5/ 8                                                  |    
+| Antenna                  | PCB Antenna                                                  |    
+| Communication Interfaces | UART                                                         |     
+| Power Supply             | DC 4 -- 6 V                                                  |     
+| Operation Temperature    | -20°-- 60°                                                   |     
+| Storage Temperature      | -40°-- 85°                                                   |     
+| Dimensions               | 60mm*60mm                                                    |     
+| Certifications           | CE                                                           |     
 
 ## **WiFi Halow Module Overview**
 
 采用 Quectel的FGH100M模组，通过SPI接口与主板进行通讯。
-
-|                          |                            |      |
-| ------------------------ | -------------------------- | ---- |
-| WiFi Halow Module        |                            |      |
-| Module                   | Quectel FGH100M            |      |
-| WiFi Protocol            | IEEE 802.11 ah             |      |
-| Operating Modes          | AP/STA                     |      |
-| Operation Frequencey     | Sub-1 G: 850–950 MHz       |      |
-| Channel Width            | 1 MHz, 2 MHz, 4 MHz, 8 MHz |      |
-| Antenna                  | PCB Antenna                |      |
-| Communication Interfaces | SPI                        |      |
-| Power Supply             | DC 4 -- 6 V                |      |
-| Operation Temperature    | -20°-- 60°                 |      |
-| Storage Temperature      | -40°-- 85°                 |      |
-| Dimensions               | 60mm*60mm                  |      |
-| Certifications           | CE/FCC                     |      |
+|                          | WiFi Halow Module          |
+| ------------------------ | -------------------------- |
+| Module                   | Quectel FGH100M            |
+| WiFi Protocol            | IEEE 802.11 ah             |
+| Operating Modes          | AP/STA                     |
+| Operation Frequencey     | Sub-1 G: 850–950 MHz       |
+| Channel Width            | 1 MHz, 2 MHz, 4 MHz, 8 MHz |
+| Antenna                  | PCB Antenna                |
+| Communication Interfaces | SPI                        |
+| Power Supply             | DC 4 -- 6 V                |
+| Operation Temperature    | -20°-- 60°                 |
+| Storage Temperature      | -40°-- 85°                 |
+| Dimensions               | 60mm*60mm                  |
+| Certifications           | CE/FCC                     |
 
 ## **Accessories and Brackets**
 
