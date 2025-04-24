@@ -199,9 +199,8 @@ There are related interafces detailed decription,which are using on the Board an
 
 ### J19: M.2 Key E
 此接口用于连接WiFi/BT模组
-|       |               |                                                                          |           |                   |
+| Pin #  | Signal Name   | Description                                                              | Direction | Pin Type          |
 | ----- | ------------- | ------------------------------------------------------------------------ | --------- | ----------------- |
-| Pin # | Signal Name   | Description                                                              | Direction | Pin Type          |
 | /     | USB2_HUB1_P   | from usb hub                                                             | Bidir     |                   |
 | /     | USB2_HUB1_N   | from usb hub                                                             | Bidir     |                   |
 | 167   | PCIE1_RX0_N   | PCIe 1 Receive 0– (PCIe Ctrl # 1 Lane 0)                                 | Input     | PCIe PHY          |
@@ -240,9 +239,8 @@ There are related interafces detailed decription,which are using on the Board an
 
 ### J10: Camera Interface
 此接口为CSI1支持4lanes MIPI,用于连接Camera Module。
-|       |             |                                                        |           |                   |
-| ----- | ----------- | ------------------------------------------------------ | --------- | ----------------- |
 | Pin # | Signal Name | Description                                            | Direction | Pin Type          |
+| ----- | ----------- | ------------------------------------------------------ | --------- | ----------------- |
 | 24    | CSI2_D0_P   | Camera, CSI 2 Data 0+                                  | Input     | MIPI D-PHY        |
 | 34    | CSI2_D1_N   | Camera, CSI 2 Data 1–                                  | Input     | MIPI D-PHY        |
 | 36    | CSI2_D1_P   | Camera, CSI 2 Data 1+                                  | Input     | MIPI D-PHY        |
