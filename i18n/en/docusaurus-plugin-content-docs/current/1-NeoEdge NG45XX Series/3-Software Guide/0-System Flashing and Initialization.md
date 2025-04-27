@@ -2,7 +2,7 @@
 
 This chapter aims to introduce the flashing methods for the NG45XX series of products, mainly providing the operation steps for flashing image packages. Taking NG4511 as an example, the flashing process is detailed below.
 
-#### Preparation Work
+## Preparation Work
 
 - An Ubuntu computer (recommended: 20.04/22.04)
 - A Jetson device (e.g., NG4511)
@@ -23,28 +23,24 @@ This chapter aims to introduce the flashing methods for the NG45XX series of pro
 
 ## Flashing the Image Package
 
-### 1. Download and extract the AIBOX flashing package
+1. Download and extract the AIBOX flashing package
 
 The links are as follows:
 
-| Device Model - Version Type | Image Package Link (with JetPack) | Image Package Link (without JetPack) | Hardware Model       |
-| --------------------------- | --------------------------------- | ------------------------------------ | -------------------- |
-| NG4510 - base               |                                   |                                      | Jetson Orin nano 4GB |
-| NG4510 - super              |                                   |                                      | Jetson Orin nano 4GB |
-| NG4511 - base               |                                   |                                      | Jetson Orin nano 8GB |
-| NG4511 - super              |                                   |                                      | Jetson Orin nano 8GB |
-| NG4520 - base               |                                   |                                      | Jetson Orin nx 8GB   |
-| NG4520 - super              |                                   |                                      | Jetson Orin nx 8GB   |
-| NG4521 - base               |                                   |                                      | Jetson Orin nx 16GB  |
-| NG4521 - super              |                                   |                                      | Jetson Orin nx 16GB  |
+| Device Model - Version Type | Image Package Link (with JetPack)                                                                                                                                                                                                                                                                                                                                                                                                                                        | Image Package Link (without JetPack)                                                                                                                                                                                                                                                                                                                                                                                                     | Hardware Model       |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| NG4510                      | image:[aibox-NG4510-36.4.3-super-jetpack-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4510-super_41600/aibox-NG4510-36.4.3-super-jetpack-V1.0.tgz)<br/>md5sum:[md5sum-aibox-NG4510-36.4.3-super-jetpack-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4510-super_41600/md5sum-aibox-NG4510-36.4.3-super-jetpack-V1.0.txt) | image:[aibox-NG4510-36.4.3-super-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4510-super_41682/aibox-NG4510-36.4.3-super-V1.0.tgz)<br/>md5sum:[md5sum-aibox-NG4510-36.4.3-super-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4510-super_41682/md5sum-aibox-NG4510-36.4.3-super-V1.0.txt) | Jetson Orin nano 4GB |
+| NG4511                      | image:[aibox-NG4511-36.4.3-super-jetpack-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4511-super_41601/aibox-NG4511-36.4.3-super-jetpack-V1.0.tgz)<br/>md5sum:[md5sum-aibox-NG4511-36.4.3-super-jetpack-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4511-super_41601/md5sum-aibox-NG4511-36.4.3-super-jetpack-V1.0.txt) | image:[aibox-NG4511-36.4.3-super-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4511-super_41683/aibox-NG4511-36.4.3-super-V1.0.tgz)<br/>md5sum:[md5sum-aibox-NG4511-36.4.3-super-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4511-super_41683/md5sum-aibox-NG4511-36.4.3-super-V1.0.txt) | Jetson Orin nano 8GB |
+| NG4520                      | image:[aibox-NG4520-36.4.3-super-jetpack-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4520-super_41602/aibox-NG4520-36.4.3-super-jetpack-V1.0.tgz)<br/>md5sum:[md5sum-aibox-NG4520-36.4.3-super-jetpack-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4520-super_41602/md5sum-aibox-NG4520-36.4.3-super-jetpack-V1.0.txt) | image:[aibox-NG4520-36.4.3-super-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4520-super_41684/aibox-NG4520-36.4.3-super-V1.0.tgz)<br/>md5sum:[md5sum-aibox-NG4520-36.4.3-super-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4520-super_41684/md5sum-aibox-NG4520-36.4.3-super-V1.0.txt) | Jetson Orin nx 8GB   |
+| NG4521                      | image:[aibox-NG4521-36.4.3-super-jetpack-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4521-super_41661/aibox-NG4521-36.4.3-super-jetpack-V1.0.tgz)<br/>md5sum:[md5sum-aibox-NG4521-36.4.3-super-jetpack-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4521-super_41661/md5sum-aibox-NG4521-36.4.3-super-jetpack-V1.0.txt) | image:[aibox-NG4521-36.4.3-super-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4521-super_41685/aibox-NG4521-36.4.3-super-V1.0.tgz)<br/>md5sum:[md5sum-aibox-NG4521-36.4.3-super-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4521-super_41685/md5sum-aibox-NG4521-36.4.3-super-V1.0.txt) | Jetson Orin nx 16GB  |
 
-### 2. Extract it to the Ubuntu computer
+2. Extract it to the Ubuntu computer
 
 ```shell
 sudo tar -zxvf aibox-NG4511-36.4.3-base-jetpack-V1.0.tgz -C ./
 ```
 
-### 3. Flash the device
+3. Flash the device
 
 The flashing command is as follows:
 
