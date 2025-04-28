@@ -7,9 +7,9 @@
     "message": "Edge AI Box",
     "description": "The label for category Edge AI Box in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.NeoEdge NG45XX Series": {
-    "message": "NeoEdge NG45XX Series",
-    "description": "The label for category NeoEdge NG45XX Series in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.NeoEdge NG4500 Series": {
+    "message": "NeoEdge NG4500 Series",
+    "description": "The label for category NeoEdge NG4500 Series in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Hardware Guide": {
     "message": "Hardware Guide",

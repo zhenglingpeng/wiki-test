@@ -19,29 +19,25 @@ import DocumentList from '@site/src/components/DocumentList';
   <div className="product-card">
     <div className="product-header">
       <img src="/img/Overview/NG45xx/NG45XX.png" alt="NeoEdge NG45XX" className="product-image"/>
-      <h3 className="product-title">NeoEdge NG45xx AI边缘计算网关</h3>
+      <h3 className="product-title">NeoEdge NG4500 AI边缘计算网关</h3>
     </div>
     <p className="product-description">
       基于NVIDIA Jetson平台的高性能边缘计算设备，适用于复杂AI推理和多模态数据处理场景。
     </p>
     <div className="product-links">
-      <a href="/docs/NeoEdge NG45XX Series/Overview" className="link-item">
+      <a href="/docs/NeoEdge NG4500 Series/Overview" className="link-item">
         <span className="link-icon">📖</span>
         <span>产品概述</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Quick Start" className="link-item">
+      <a href="/docs/NeoEdge NG4500 Series/Quick Start" className="link-item">
         <span className="link-icon">🚀</span>
         <span>快速入门</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Hardware Guide/Components Overview" className="link-item">
+      <a href="/docs/NeoEdge NG4500 Series/NG4500-CB01 Development Board/Dev Guide" className="link-item">
         <span className="link-icon">🔧</span>
-        <span>硬件指南</span>
+        <span>开发指南</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Software Guide/System Flashing and Initialization" className="link-item">
-        <span className="link-icon">💻</span>
-        <span>软件开发</span>
-      </a>
-      <a href="/docs/NeoEdge NG45XX Series/Application Guide/Deepseek-r1" className="link-item">
+      <a href="/docs/NeoEdge NG4500 Series/Application Guide/Deepseek-r1" className="link-item">
         <span className="link-icon">📱</span>
         <span>应用指南</span>
       </a>
@@ -66,13 +62,9 @@ import DocumentList from '@site/src/components/DocumentList';
         <span className="link-icon">🚀</span>
         <span>快速入门</span>
       </a>
-      <a href="/docs/NeoEyes NE101 Series/Hardware Guide/Components Overview" className="link-item">
+      <a href="/docs/NeoEyes NE101 Series/NE100-MB01 Development Board/Dev Guide" className="link-item">
         <span className="link-icon">🔧</span>
-        <span>硬件指南</span>
-      </a>
-      <a href="/docs/NeoEyes NE101 Series/Software Guide/Development Environment Setup" className="link-item">
-        <span className="link-icon">💻</span>
-        <span>软件开发</span>
+        <span>开发指南</span>
       </a>
       <a href="/docs/NeoEyes NE101 Series/Application Guide/example-uvc" className="link-item">
         <span className="link-icon">📱</span>

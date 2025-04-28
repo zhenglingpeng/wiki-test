@@ -473,10 +473,6 @@ NE101整机产品规格如下：
 |--------------------------|----------------------------------------------------------------------|
 | 硬件原理图               | [/docs/hardware-schematic](/docs/hardware-schematic)                 |
 | 硬件设计指南             | [/docs/hardware-guide](/docs/hardware-guide)                         |
-| 物料清单 (BOM)           | [/docs/bom-list](/docs/bom-list)                                     |
-| 项目工程示例代码         | [GitHub](https://github.com/camthink-ai/examples)                  |
-| API 参考文档             | [/docs/api-reference](/docs/api-reference)                           |
-| SDK 工具包               | [/downloads/sdk-toolkit](/downloads/sdk-toolkit)                     |
 
 ## 技术支持
 

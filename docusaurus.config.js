@@ -49,6 +49,19 @@ const config = {
   // 添加插件
   plugins: [
     'docusaurus-plugin-image-zoom',
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        language: ["en", "zh"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        docsRouteBasePath: '/docs',
+        indexDocs: true,
+        indexBlog: false,
+        docsDir: 'docs',
+      },
+    ],
   ],
   
   // 启用Mermaid支持
@@ -139,7 +152,7 @@ const config = {
             items: [
               {
                 label: 'Wiki',
-                to: '/docs/Quick_Guide',
+                to: '/docs/0-Welcome',
               },
             ],
           },

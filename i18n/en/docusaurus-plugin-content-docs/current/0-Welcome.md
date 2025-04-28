@@ -15,7 +15,7 @@ To help you get started quickly, here are some essential resource links:
 {/* Product card container */}
 <div className="product-card-container">
 
-  {/* NeoEdge NG45XX Series product card */}
+  {/* NeoEdge NG4500 Series product card */}
   <div className="product-card">
     <div className="product-header">
       <img src="/img/Overview/NG45xx/NG45XX.png" alt="NeoEdge NG45XX" className="product-image"/>
@@ -25,23 +25,19 @@ To help you get started quickly, here are some essential resource links:
       High-performance edge computing device based on NVIDIA Jetson platform, ideal for complex AI inference and multimodal data processing scenarios.
     </p>
     <div className="product-links">
-      <a href="/docs/NeoEdge NG45XX Series/Overview" className="link-item">
+      <a href="/docs/NeoEdge NG4500 Series/Overview" className="link-item">
         <span className="link-icon">📖</span>
         <span>Product Overview</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Quick Start" className="link-item">
+      <a href="/docs/NeoEdge NG4500 Series/Quick Start" className="link-item">
         <span className="link-icon">🚀</span>
         <span>Quick Start</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Hardware Guide/Components Overview" className="link-item">
+      <a href="/docs/NeoEdge NG4500 Series/NG4500-CB01 Development Board/Dev Guide" className="link-item">
         <span className="link-icon">🔧</span>
-        <span>Hardware Guide</span>
+        <span>Development Guide</span>
       </a>
-      <a href="/docs/NeoEdge NG45XX Series/Software Guide/System Flashing and Initialization" className="link-item">
-        <span className="link-icon">💻</span>
-        <span>Software Development</span>
-      </a>
-      <a href="/docs/NeoEdge NG45XX Series/Application Guide/Deepseek-r1" className="link-item">
+      <a href="/docs/NeoEdge NG4500 Series/Application Guide/Deepseek-r1" className="link-item">
         <span className="link-icon">📱</span>
         <span>Application Guide</span>
       </a>
@@ -66,13 +62,9 @@ To help you get started quickly, here are some essential resource links:
         <span className="link-icon">🚀</span>
         <span>Quick Start</span>
       </a>
-      <a href="/docs/NeoEyes NE101 Series/Hardware Guide/Components Overview" className="link-item">
+      <a href="/docs/NeoEyes NE101 Series/NE100-MB01 Development Board/Dev Guide" className="link-item">
         <span className="link-icon">🔧</span>
-        <span>Hardware Guide</span>
-      </a>
-      <a href="/docs/NeoEyes NE101 Series/Software Guide/Development Environment Setup" className="link-item">
-        <span className="link-icon">💻</span>
-        <span>Software Development</span>
+        <span>Development Guide</span>
       </a>
       <a href="/docs/NeoEyes NE101 Series/Application Guide/example-uvc" className="link-item">
         <span className="link-icon">📱</span>

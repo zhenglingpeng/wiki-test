@@ -297,7 +297,7 @@ NG45XX系列整机产品和载板的规格信息如下
     },
     {
       image: "/img/Accessories/ng45xx_power_cable.jpg",
-      name: <a href="./2-Hardware Guide/1-Hardware Connection.md">电源线</a>,
+      name: "电源线",
       quantity: "1",
       description: ["标准三芯电源线1.5m，默认欧规"]
     },
@@ -323,13 +323,13 @@ NG45XX系列整机产品和载板的规格信息如下
   accessories={[
     {
       image: "/img/Accessories/ng45xx_ssd.png",
-      name: "SSD",
+      name: <a href="../Hardware Dev Resources/SSD">SSD</a>,
       quantity: "1",
       description: ["M.2 NVMe SSD 容量256G-1TB可选"]
     },
     {
       image: "/img/Accessories/ng45xx_wifi.png",
-      name: "WiFi模组",
+      name: <a href="../Hardware Dev Resources/WIFI Module">WiFi模组</a>,
       quantity: "1",
       description: ["6221M-PUC 双频 Wi-Fi 和蓝牙 5.0 模块"]
     },
@@ -470,7 +470,7 @@ NG45XX系列整机产品和载板的规格信息如下
 >
   {/* 定义一个文档基础路径常量，方便维护 */}
   {(() => {
-    const BASE_URL = "/docs/NeoEdge NG45XX Series/Application Guide/";
+    const BASE_URL = "/docs/NeoEdge NG4500 Series/Application Guide/";
     
     const examples = [
       { 
@@ -551,8 +551,6 @@ NG45XX系列整机产品和载板的规格信息如下
 
 关于如何使用Edge AI Box系统驱动和开发指引可见[「系统和驱动指南」](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)
 
-常见产品问题可见[「参见问题支持」](./6-FAQ%20and%20Support/0-FAQ.md)
-
 
 ### 产品资源
 
@@ -560,10 +558,6 @@ NG45XX系列整机产品和载板的规格信息如下
 |--------------------------|----------------------------------------------------------------------|
 | 硬件原理图               | [/docs/hardware-schematic](/docs/hardware-schematic)                 |
 | 硬件设计指南             | [/docs/hardware-guide](/docs/hardware-guide)                         |
-| 物料清单 (BOM)           | [/docs/bom-list](/docs/bom-list)                                     |
-| 项目工程示例代码         | [GitHub](https://github.com/camthink-ai/examples)                  |
-| API 参考文档             | [/docs/api-reference](/docs/api-reference)                           |
-| SDK 工具包               | [/downloads/sdk-toolkit](/downloads/sdk-toolkit)                     |
 
 
 ## 技术支持与社区
