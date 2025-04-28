@@ -158,17 +158,17 @@ sudo cp $HOME/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dt
    
    - 输入静态 IP 地址、子网掩码和网关。例如：
      
-     - **Address**: `192.168.60.3` 
+     - **Address**: `192.168.231.100` 
      
      - **Netmask**: `255.255.255.0` 
      
-     - **Gateway**: `192.168.60.1` 
+     - **Gateway**: `192.168.231.1` 
    
    - 在 DNS 部分，输入 DNS 服务器地址，例如 `8.8.8.8` 和 `8.8.4.4`。
    
    - 点击 `Apply` 保存设置。
 
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration.jpg)
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Setting_Network.png)
 
 4. 配置完成后，重启网络以应用新的设置。
 
