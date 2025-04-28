@@ -494,8 +494,8 @@ The NG45XX series product and carrier board specifications are as follows:
 >
   {/* Define a base URL constant for easier maintenance */}
   {(() => {
-    const BASE_URL = "/en/docs/NeoEdge NG45XX Series/Application Guide/";
-
+    const BASE_URL = "/en/docs/NeoEdge NG4500 Series/Application Guide/";
+    
     const examples = [
       { 
         title: "LLM Chatbot", 
@@ -577,7 +577,6 @@ For hardware features and usage instructions, see [Hardware Usage Guide](./2-Har
 
 For system drivers and development guidance, see [System and Driver Guide](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)
 
-For common product questions, see [FAQ Support](./6-FAQ%20and%20Support/0-FAQ.md)
 
 ### Product Resources
 
