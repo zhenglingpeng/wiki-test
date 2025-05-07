@@ -10,14 +10,14 @@
 
 ### 硬件需求
 
-- 支持摄像头模块的开发板（推荐ESP32-S3系列）
+- NE100-CM01开发板
 
 ### 软件准备
 
 #### 1. 预编译固件
 
 可直接下载最新预编译固件进行快速体验：
-- [human_face_detect.bin](https://github.com/camthink-ai/esp-who/blob/master/bin/human_face_detect.bin)
+- [human_face_detect.zip](https://github.com/camthink-ai/esp-who/blob/master/bin/human_face_detect.zip)
 
 #### 2. 源码开发环境
 
@@ -26,7 +26,7 @@
 - **开发框架**：ESP-IDF插件（v5.4.0或更高版本）
 - **示例代码**：[camthink-ai/esp-who](https://github.com/camthink-ai/esp-who)
 
-> **重要提示**：请务必按照[开发环境配置指南](./../Software%20Guide/Development%20Environment%20Setup)完成环境配置。
+> **重要提示**：请务必按照[开发环境配置指南](./../NE100-MB01%20Development%20Board/Software%20Guide/Development%20Environment%20Setup)完成环境配置。
 
 ## 功能验证
 
@@ -41,7 +41,7 @@
 #### 2. 固件烧录
 
 参考详细烧录指南：
-- [系统烧录与初始化](./../Software%20Guide/System%20Flashing%20and%20Initialization)
+- [系统烧录与初始化](./../NE100-MB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
 
 #### 3. 串口输出解析
 

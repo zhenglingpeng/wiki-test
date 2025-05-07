@@ -13,13 +13,12 @@
 ## 准备工作
 
 ### 硬件需求
-- ESP32-S3开发板
+- NE100-CM01开发板
 - 兼容UVC协议的摄像头模组
-- USB Type-C数据线
 
 ### 软件资源
 1. **预编译固件**：
-   [usb_camera_mic_spk.bin](https://github.com/camthink-ai/iot_samples/blob/main/bin/usb_camera_mic_spk.bin)
+   [usb_camera_mic_spk.zip](https://github.com/camthink-ai/iot_samples/blob/main/bin/usb_camera_mic_spk.zip)
 
 2. **源码开发**：
    ```bash
