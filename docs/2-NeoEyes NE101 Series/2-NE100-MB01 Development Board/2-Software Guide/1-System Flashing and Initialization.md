@@ -2,7 +2,7 @@
 
 ## 设备烧录说明
 
-默认固件获取地址：[lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101.1.0.1.bin)
+默认固件获取地址：[lowpower_camera.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101.1.0.1.zip)
 
 ### 硬件信息
 

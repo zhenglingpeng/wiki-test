@@ -53,23 +53,23 @@ flowchart LR
 
 1. **预编译固件**：
    
-   - 示例固件：[lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101.1.0.1.bin)
+   - 示例固件：[lowpower_camera.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101.1.0.1.zip)
 
 2. **源码开发**：
    
    - 最新版 Visual Studio Code（1.99.2以上）
-   - ESP-IDF 插件（v5.1.6版本)
+   - ESP-IDF 插件（v5.1.6版本）
    - 示例代码库[lowpower_camera](https://github.com/camthink-ai/lowpower_camera.git)
 
 ### 使用预编译固件升级
 
 1. **设备连接**
    
-   完整硬件连接指南：[硬件连接说明](.././Hardware%20Guide/Hardware%20Connection)
+   完整硬件连接指南：[硬件连接说明](./../NE100-MB01%20Development%20Board/Hardware%20Guide/Hardware%20Connection)
 
 2. **设备烧录**
    
-   烧录方法请参考：[System Flashing](./../Software%20Guide/System%20Flashing%20and%20Initialization)
+   烧录方法请参考：[System Flashing](./../NE100-MB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
 
 ### 使用源码开发验证
 
