@@ -7,12 +7,12 @@ import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
 # Overview
 
 ## Product Introduction
-![NG45XX](/img/Overview/NG45xx/NG45XX.png)
+![NG4500](/img/Overview/NG45xx/NG45XX.png)
 
-The CamThink Edge AI Box NeoEdge NG45XX series delivers powerful edge computing capabilities, integrating NVIDIA® Jetson Orin™ NX or Nano core modules while being compatible with the **NVIDIA Super Developer Kit**, fully unleashing the computational performance of Jetson Orin™. Compared to previous-generation products without NVIDIA Super Developer Kit support, it achieves **up to 1.7x performance improvement**. Beyond deploying common visual AI applications, it efficiently runs various mainstream generative AI models, including **large language models (LLMs), vision language models (VLMs), and multimodal large language models (MLLMs)**. Additionally, the NG45XX supports multiple physical interfaces and expandable communication modules (WiFi/4G/5G), enabling flexible adaptation to diverse edge computing scenarios for device-to-device communication and edge-to-cloud collaboration. It finds extensive applications in robotic systems, intelligent vehicle terminals, smart factory computing centers, and AI edge computing gateways. Its **industrial-grade design** ensures stable operation in environments ranging from -20°C to 60°C, offering exceptional reliability to meet diverse scenario requirements.
+The CamThink Edge AI Box NeoEdge NG4500 series delivers powerful edge computing capabilities, integrating NVIDIA® Jetson Orin™ NX or Nano core modules while being compatible with the **NVIDIA Super Developer Kit**, fully unleashing the computational performance of Jetson Orin™. Compared to previous-generation products without NVIDIA Super Developer Kit support, it achieves **up to 1.7x performance improvement**. Beyond deploying common visual AI applications, it efficiently runs various mainstream generative AI models, including **large language models (LLMs), vision language models (VLMs), and multimodal large language models (MLLMs)**. Additionally, the NG4500 supports multiple physical interfaces and expandable communication modules (WiFi/4G/5G), enabling flexible adaptation to diverse edge computing scenarios for device-to-device communication and edge-to-cloud collaboration. It finds extensive applications in robotic systems, intelligent vehicle terminals, smart factory computing centers, and AI edge computing gateways. Its **industrial-grade design** ensures stable operation in environments ranging from -20°C to 60°C, offering exceptional reliability to meet diverse scenario requirements.
 
 ### NVIDIA Super Developer Kit Support
-The NeoEdge NG45XX series supports the NVIDIA Super Developer Kit, delivering significant performance improvements across numerous mainstream large language models (LLMs), vision language models (VLMs), and vision transformers (ViTs) compared to previous-generation products. **Purchasing the CamThink Edge AI Box NeoEdge NG45XX series allows you to experience the latest performance and features**. For more details on upgrade features, refer to [Jetson Orin Super Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/).
+The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering significant performance improvements across numerous mainstream large language models (LLMs), vision language models (VLMs), and vision transformers (ViTs) compared to previous-generation products. **Purchasing the CamThink Edge AI Box NeoEdge NG45XX series allows you to experience the latest performance and features**. For more details on upgrade features, refer to [Jetson Orin Super Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/).
 
 <div className="performance-cards" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
   {[
@@ -66,13 +66,13 @@ The NeoEdge NG45XX series supports the NVIDIA Super Developer Kit, delivering si
   - **CPU**: 8-core Arm® Cortex®-A78AE v8.2 (64-bit) @ 2.0GHz.
   - **Memory**: LPDDR5 up to 16GB, bandwidth up to 102GB/s.
 - Pre-installed **NVIDIA JetPack 6.0+ SDK**, including complete development environment with CUDA, cuDNN, TensorRT, DeepStream, etc. For system features, see [**Jetpack SDK 6.0**](https://developer.nvidia.com/embedded/jetpack-sdk-60). For system flashing instructions, refer to the [**System Flashing Guide**](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md) provided in this wiki.
-- Supports various mainstream AI frameworks: TensorFlow/Keras, PyTorch, ONNX Runtime, etc.
+- Supports various mainstream AI frameworks and inference services: TensorFlow/Keras, PyTorch, ONNX Runtime, TensorRT, Ollama, llama.cpp, VLLM, ultralytics, etc.
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
   <img src={require("/img/Overview/NG45xx/Jetpack.png").default} style={{ maxHeight: '300px' }} />
 </div>
 
 ### Rich Hardware Interfaces
->The NG45XX offers extensive interface capabilities to meet various industrial and edge computing scenario requirements. For usage tutorials, see [**Hardware Interface Usage Guide**](./2-Hardware%20Guide/1-Hardware%20Connection.md).
+>The NG4500 offers extensive interface capabilities to meet various industrial and edge computing scenario requirements. For usage tutorials, see [**Hardware Interface Usage Guide**](./2-Hardware%20Guide/1-Hardware%20Connection.md).
 - **Gigabit Network Connectivity**: Features **dual gigabit Ethernet ports** for stable and reliable network communication, suitable for industrial communication and edge computing applications, capable of **simultaneously processing up to 16 video streams** (depending on model).
 - **Abundant USB Ports**: Includes **4×USB 3.1 + 1×Type-C (USB 3.2)** ports for high-speed data transfer, supporting external cameras, storage devices, and other USB peripherals.
 - **Industrial-Grade Communication Protocols**: Built-in **RS232, RS485, CAN bus** interfaces for seamless integration with industrial-grade devices, meeting stringent communication requirements with anti-interference design for complex electromagnetic environments.
@@ -87,7 +87,7 @@ The NeoEdge NG45XX series supports the NVIDIA Super Developer Kit, delivering si
 
 
 ### Expandability and Flexibility
->The NG45XX carrier board provides powerful storage and communication expansion capabilities, along with other interfaces to meet various application scenario requirements. For module installation and usage, see [**Hardware PCBA Usage Guide**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md).
+>The NG4500 carrier board provides powerful storage and communication expansion capabilities, along with other interfaces to meet various application scenario requirements. For module installation and usage, see [**Hardware PCBA Usage Guide**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md).
 - **NVMe SSD Storage Expansion**: Supports **M.2 Key M PCIe 4.0 SSD**, compatible with 2280 NVMe SSDs (pre-installed 256GB/512GB/1TB), accommodating **256GB to 1TB or larger** NVMe SSDs for massive data storage. An additional M.2 Key M (PCIe×1 Gen3) slot allows for a second SSD.
 - **Wireless Communication Expansion**: **M.2 Key B and Key E** interfaces support various wireless communication modules for diverse edge wireless communication needs.
   - **4G/5G/Wi-Fi Halow Expansion**: Via **M.2 Key B** slot (supports 2242/2252 modules) for flexible cellular network or Wi-Fi Halow expansion.
@@ -261,7 +261,7 @@ The NG45XX series product and carrier board specifications are as follows:
     </tr>
     <tr>
       <td><strong>SMA Antenna Connector</strong></td>
-      <td colSpan="4">6</td>
+      <td colSpan="4">4-6 (4 for 4G+WiFi, 6 for 5G+WiFi)</td>
     </tr>
     <tr>
       <td><strong>Thermal</strong></td>
@@ -282,7 +282,7 @@ The NG45XX series product and carrier board specifications are as follows:
 ### Product Accessories
 
 #### Standard Accessories
->The CamThink Edge AI Box NeoEdge NG45XX series includes the following standard accessories:
+>The CamThink Edge AI Box NeoEdge NG4500 series includes the following standard accessories:
 
 <AccessoriesTable
   accessories={[
@@ -297,39 +297,39 @@ The NG45XX series product and carrier board specifications are as follows:
     },
     {
       image: "/img/Accessories/ng45xx_power_cable.jpg",
-      name: <a href="./2-Hardware Guide/1-Hardware Connection.md">Power Cable</a>,
+      name: "Power Cable",
       quantity: "1",
-      description: ["Standard 3-core power cable 1.5m, default European standard"]
+      description: ["Standard 3-core power cable 1.5m, European standard by default, other regional specifications available"]
     },
     {
       image: "/img/Accessories/ng45xx_connector.jpg",
       name: "Industrial Terminal Blocks",
       quantity: "2",
-      description: ["16-pin male terminal, 8-pin male terminal"]
+      description: ["16-pin male terminal × 1, 8-pin male terminal × 1"]
     },
     {
       image: "/img/Accessories/ng45xx_bracket.jpg",
       name: "Mounting Brackets",
       quantity: "2",
-      description: ["Wall mounting brackets"]
+      description: ["Wall mounting brackets × 2, DIN rail mounting bracket × 1"]
     }
   ]}
 />
 
 #### Optional Accessories
->The CamThink Edge AI Box NeoEdge NG45XX series supports the following optional accessories:
+>The CamThink Edge AI Box NeoEdge NG4500 series supports the following optional accessories:
 
 <AccessoriesTable
   accessories={[
     {
       image: "/img/Accessories/ng45xx_ssd.png",
-      name: "SSD",
+      name: <a href="../Hardware Dev Resources/SSD">SSD</a>,
       quantity: "1",
       description: ["M.2 NVMe SSD with 256GB-1TB capacity options"]
     },
     {
       image: "/img/Accessories/ng45xx_wifi.png",
-      name: "WiFi Module",
+      name: <a href="../Hardware Dev Resources/WIFI Module">WiFi Module</a>,
       quantity: "1",
       description: ["6221M-PUC dual-band Wi-Fi and Bluetooth 5.0 module"]
     },
@@ -369,7 +369,7 @@ The NG45XX series product and carrier board specifications are as follows:
 
 ## Product Applications
 ### Application Scenarios
->The NG45xx series edge computing devices, with their powerful AI computing and industrial-grade reliability, can be applied across multiple industries.
+>The NG4500 series edge computing devices, with their powerful AI computing and industrial-grade reliability, can be applied across multiple industries.
 
 <ApplicationScenarios
   imagePosition="center"
@@ -414,34 +414,9 @@ The NG45XX series product and carrier board specifications are as follows:
           image: "https://www.lscm.hk/files/image/2-Technology-Commercialisation/Case%20Studies/Case-AGV-1.jpg"
         },
         {
-          title: "Drone Inspection",
-          description: "Integrating 5G modules for high-bandwidth video transmission, processing HD video streams directly at the edge to detect anomalies in power lines, oil pipelines, wind turbines, and other infrastructure, reducing bandwidth requirements by 95% for long-distance inspection missions.",
-          image: "https://www.hcuav.com/uploads/images/2023/0421/S7qkgHCnyWmCCwkKQkEcztHQlBtO6lJptf3OEOqf.jpg"
-        },
-        {
           title: "Service Robots",
           description: "Deploying multimodal interaction systems integrating voice recognition, face recognition, and behavior tracking with response latency under 200ms, protecting user privacy through local processing, suitable for hospitals, hotels, and public venues.",
           image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMK1Iu8Dv-u-6AZZbUyDCi5knSzrFqzOJu-Q&s"
-        }
-      ]
-    },
-    {
-      title: "Healthcare",
-      items: [
-        {
-          title: "Medical Imaging Analysis",
-          description: "Supports DICOM-standard medical imaging processing, deploying AI-assisted diagnostic models for X-rays, CT scans, ultrasounds, and other modalities with accuracy over 93%, processing times under 10 seconds, aiding rapid lesion screening.",
-          image: "https://developer-blogs.nvidia.com/zh-cn-blog/wp-content/uploads/sites/2/2022/06/Swin.png"
-        },
-        {
-          title: "Intelligent Triage",
-          description: "Integrates NLP and face recognition for patient identification, symptom screening, and department triage, simplifying medical processes, saving 8-15 minutes of waiting time per patient, improving healthcare efficiency.",
-          image: "http://www.lovechuangchuang.com/image/dzjqr1.jpg"
-        },
-        {
-          title: "Remote Consultation",
-          description: "Through 4K HD video capture and low-latency transmission with edge AI preprocessing, enabling remote consultations between primary clinics and tertiary hospitals with end-to-end latency under 250ms, ensuring real-time and accurate diagnostics.",
-          image: "https://upload-cdn.orayimg.com/upload/help/2106/202106050928526013.png"
         }
       ]
     }
@@ -449,7 +424,7 @@ The NG45XX series product and carrier board specifications are as follows:
 />
 
 ### Application Examples
->The NG45XX series can be applied in various real-world scenarios. Below are some typical use cases, each with detailed deployment guides for quick replication and application.
+>The NG4500 series can be applied in various real-world scenarios. Below are some typical use cases, each with detailed deployment guides for quick replication and application.
 
 <div
   style={{
@@ -460,7 +435,7 @@ The NG45XX series product and carrier board specifications are as follows:
 >
   {/* Define a base URL constant for easier maintenance */}
   {(() => {
-    const BASE_URL = "/en/docs/NeoEdge NG4500 Series/Application Guide/";
+    const BASE_URL = "/docs/NeoEdge NG4500 Series/Application Guide/";
     
     const examples = [
       { 
@@ -472,7 +447,7 @@ The NG45XX series product and carrier board specifications are as follows:
       { 
         title: "Pose Estimation", 
         image: require("/img/Overview/NG45xx/application/Pose.png").default, 
-        description: "This article describes how to run real-time pose estimation (Pose Estimation) using MediaPipe on Jetson Orin platforms (Nano/NX/AGX), with GPU acceleration where supported.", 
+        description: "This article describes how to run real-time pose estimation using MediaPipe on Jetson Orin platforms (Nano/NX/AGX), with GPU acceleration where supported.", 
         path: "mediapipe"
       },
       { 
