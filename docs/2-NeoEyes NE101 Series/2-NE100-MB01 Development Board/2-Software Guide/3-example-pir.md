@@ -15,18 +15,16 @@
 
 ## 开发准备
 
-### 硬件配置
-
-- **主控单元**：ESP32-S3核心开发板
-- **传感模块**：PIR运动检测传感器
-- **供电系统**：建议采用锂电池组（可选）
+### 硬件需求
+- NE100-CM01开发板
+- PIR运动检测传感器
 
 ### 软件资源
 
 #### 1. 快速部署固件
 
 - 预编译生产固件下载：
-  [PIR检测固件](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE101_PIR.bin)
+  [PIR检测固件](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE101_PIR.zip)
 
 #### 2. 开发环境配置
 

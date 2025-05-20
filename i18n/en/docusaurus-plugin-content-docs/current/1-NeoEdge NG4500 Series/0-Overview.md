@@ -3,16 +3,17 @@ import SupportGrid from '@site/src/components/SupportGrid';
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
 
-
 # Overview
 
 ## Product Introduction
+
 ![NG4500](/img/Overview/NG45xx/NG45XX.png)
 
 The CamThink Edge AI Box NeoEdge NG4500 series delivers powerful edge computing capabilities, integrating NVIDIA® Jetson Orin™ NX or Nano core modules while being compatible with the **NVIDIA Super Developer Kit**, fully unleashing the computational performance of Jetson Orin™. Compared to previous-generation products without NVIDIA Super Developer Kit support, it achieves **up to 1.7x performance improvement**. Beyond deploying common visual AI applications, it efficiently runs various mainstream generative AI models, including **large language models (LLMs), vision language models (VLMs), and multimodal large language models (MLLMs)**. Additionally, the NG4500 supports multiple physical interfaces and expandable communication modules (WiFi/4G/5G), enabling flexible adaptation to diverse edge computing scenarios for device-to-device communication and edge-to-cloud collaboration. It finds extensive applications in robotic systems, intelligent vehicle terminals, smart factory computing centers, and AI edge computing gateways. Its **industrial-grade design** ensures stable operation in environments ranging from -20°C to 60°C, offering exceptional reliability to meet diverse scenario requirements.
 
 ### NVIDIA Super Developer Kit Support
-The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering significant performance improvements across numerous mainstream large language models (LLMs), vision language models (VLMs), and vision transformers (ViTs) compared to previous-generation products. **Purchasing the CamThink Edge AI Box NeoEdge NG45XX series allows you to experience the latest performance and features**. For more details on upgrade features, refer to [Jetson Orin Super Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/).
+
+The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering significant performance improvements across numerous mainstream large language models (LLMs), vision language models (VLMs), and vision transformers (ViTs) compared to previous-generation products. **Purchasing the CamThink Edge AI Box NeoEdge NG4500 series allows you to experience the latest performance and features**. For more details on upgrade features, refer to [Jetson Orin Super Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/).
 
 <div className="performance-cards" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
   {[
@@ -55,64 +56,91 @@ The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering si
   ))}
 </div>
 
-
 ### High-Performance AI Platform
->Built on NVIDIA Jetson Orin series modules, delivering 20-157 TOPS of powerful AI computing with up to 1024 CUDA cores and 32 Tensor cores. Supports the complete **JetPack 6.0** development suite, pre-installed with CUDA, TensorRT, and other toolchains, compatible with mainstream AI frameworks. Ideal for computer vision, robotics, edge computing gateways, and other edge AI applications.
+
+> Built on NVIDIA Jetson Orin series modules, delivering 20-157 TOPS of powerful AI computing with up to 1024 CUDA cores and 32 Tensor cores. Supports the complete **JetPack 6.0** development suite, pre-installed with CUDA, TensorRT, and other toolchains, compatible with mainstream AI frameworks. Ideal for computer vision, robotics, edge computing gateways, and other edge AI applications.
+
 - Equipped with **NVIDIA Jetson Orin** series modules, offering tiered AI performance:
+  
   - **Standard Mode**: 20 TOPS (NG4510) → 100 TOPS (NG4521).
   - **SUPER Mode (INT8)**: 34 TOPS → 157 TOPS.
+
 - Heterogeneous computing architecture:
+  
   - **GPU**: Up to 1024 NVIDIA® CUDA® cores + 32 Tensor cores.
   - **CPU**: 8-core Arm® Cortex®-A78AE v8.2 (64-bit) @ 2.0GHz.
   - **Memory**: LPDDR5 up to 16GB, bandwidth up to 102GB/s.
+
 - Pre-installed **NVIDIA JetPack 6.0+ SDK**, including complete development environment with CUDA, cuDNN, TensorRT, DeepStream, etc. For system features, see [**Jetpack SDK 6.0**](https://developer.nvidia.com/embedded/jetpack-sdk-60). For system flashing instructions, refer to the [**System Flashing Guide**](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md) provided in this wiki.
-- Supports various mainstream AI frameworks and inference services: TensorFlow/Keras, PyTorch, ONNX Runtime, TensorRT, Ollama, llama.cpp, VLLM, ultralytics, etc.
+
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
   <img src={require("/img/Overview/NG45xx/Jetpack.png").default} style={{ maxHeight: '300px' }} />
 </div>
 
 ### Rich Hardware Interfaces
+
 >The NG4500 offers extensive interface capabilities to meet various industrial and edge computing scenario requirements. For usage tutorials, see [**Hardware Interface Usage Guide**](./2-Hardware%20Guide/1-Hardware%20Connection.md).
+
 - **Gigabit Network Connectivity**: Features **dual gigabit Ethernet ports** for stable and reliable network communication, suitable for industrial communication and edge computing applications, capable of **simultaneously processing up to 16 video streams** (depending on model).
+
 - **Abundant USB Ports**: Includes **4×USB 3.1 + 1×Type-C (USB 3.2)** ports for high-speed data transfer, supporting external cameras, storage devices, and other USB peripherals.
+
 - **Industrial-Grade Communication Protocols**: Built-in **RS232, RS485, CAN bus** interfaces for seamless integration with industrial-grade devices, meeting stringent communication requirements with anti-interference design for complex electromagnetic environments.
+
 - **Automation Control Applications**: Features **DI/DO interfaces** for digital signal input/output, enabling automation control and logic judgment.
+
 - **HDMI Output**: HDMI port supporting 4K display.
+
 - **3.5mm Audio Jack**: Supports microphone input and audio output.
+
 - **6×SMA Antenna Ports**: Supports external high-gain antennas.
-<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
+  
+  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={require("/img/Overview/NG45xx/Product2.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
   <img src={require("/img/Overview/NG45xx/Product1.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-</div>
-
+  </div>
 
 ### Expandability and Flexibility
+
 >The NG4500 carrier board provides powerful storage and communication expansion capabilities, along with other interfaces to meet various application scenario requirements. For module installation and usage, see [**Hardware PCBA Usage Guide**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md).
+
 - **NVMe SSD Storage Expansion**: Supports **M.2 Key M PCIe 4.0 SSD**, compatible with 2280 NVMe SSDs (pre-installed 256GB/512GB/1TB), accommodating **256GB to 1TB or larger** NVMe SSDs for massive data storage. An additional M.2 Key M (PCIe×1 Gen3) slot allows for a second SSD.
+
 - **Wireless Communication Expansion**: **M.2 Key B and Key E** interfaces support various wireless communication modules for diverse edge wireless communication needs.
+  
   - **4G/5G/Wi-Fi Halow Expansion**: Via **M.2 Key B** slot (supports 2242/2252 modules) for flexible cellular network or Wi-Fi Halow expansion.
   - **Wi-Fi 6/Bluetooth 5.0**: Via **M.2 Key E** slot (2230 specification) for high-speed wireless connectivity.
   - **Nano SIM Slot**: Compatible with SIM cards for 4G/5G modules.
+
 - **RTC Real-Time Clock**: Built-in CR2032 battery.
+
 - **Video Module Interface**: Supports **4-lane MIPI×2** camera interfaces, allowing simultaneous connection of multiple high-resolution industrial cameras on the carrier board for various edge scenario applications.
-<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
+  
+  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={require("/img/Overview/NG45xx/PCB.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
   <img src={require("/img/Overview/NG45xx/PCB2.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-</div>
+  </div>
 
 ### Durability and Reliability
->Designed for harsh industrial environments, this edge computing device adheres to industrial-grade manufacturing standards, ensuring long-term stable operation under adverse conditions. For installation and deployment instructions, see [**Device Installation and Deployment**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md).
-- **Industrial-Grade Power Design**: Wide voltage input (12V-36V DC), adaptable to industrial voltage fluctuations, with peak power of 120W to meet high-performance computing needs. Built-in multi-protection circuits (overvoltage/overcurrent/reverse polarity protection) ensure stable support for SUPER mode continuous operation.
-- **Compact and Rugged Structure**: Device dimensions of 160mm × 125mm × 75mm, all-metal enclosure, supporting **desktop placement, wall mounting, and DIN rail mounting**.
-- **Excellent Environmental Adaptability**: **Fanless passive cooling architecture and wide-temperature design**, operating temperature range of -25°C to 60°C, storage temperature range of -40°C to 85°C, suitable for various industrial environments.
-<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>  
-  <img src={require("/img/Overview/NG45xx/Product3.png").default} style={{ maxHeight: '300px' }} />
-</div>
 
+> Designed for harsh industrial environments, this edge computing device adheres to industrial-grade manufacturing standards, ensuring long-term stable operation under adverse conditions. For installation and deployment instructions, see [**Device Installation and Deployment**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md).
+
+- **Industrial-Grade Power Design**: Wide voltage input (12V-36V DC), adaptable to industrial voltage fluctuations, with peak power of 120W to meet high-performance computing needs. Built-in multi-protection circuits (overvoltage/overcurrent/reverse polarity protection) ensure stable support for SUPER mode continuous operation.
+
+- **Compact and Rugged Structure**: Device dimensions of 160mm × 125mm × 75mm, all-metal enclosure, supporting **desktop placement, wall mounting, and DIN rail mounting**.
+
+- **Excellent Environmental Adaptability**: **Fanless passive cooling architecture and wide-temperature design**, operating temperature range of -25°C to 60°C, storage temperature range of -40°C to 85°C, suitable for various industrial environments.
+  
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>  
+  <img src={require("/img/Overview/NG45xx/Product3.png").default} style={{ maxHeight: '300px' }} />
+  </div>
 
 ## Product Information
+
 ### Product Specifications
+
 The NG45XX series product and carrier board specifications are as follows:
+
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={require("/img/Overview/NG45xx/Product2.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
   <img src={require("/img/Overview/NG45xx/PCB.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
@@ -278,10 +306,10 @@ The NG45XX series product and carrier board specifications are as follows:
   </tbody>
 </table>
 
-
 ### Product Accessories
 
 #### Standard Accessories
+
 >The CamThink Edge AI Box NeoEdge NG4500 series includes the following standard accessories:
 
 <AccessoriesTable
@@ -317,6 +345,7 @@ The NG45XX series product and carrier board specifications are as follows:
 />
 
 #### Optional Accessories
+
 >The CamThink Edge AI Box NeoEdge NG4500 series supports the following optional accessories:
 
 <AccessoriesTable
@@ -368,7 +397,9 @@ The NG45XX series product and carrier board specifications are as follows:
 />
 
 ## Product Applications
+
 ### Application Scenarios
+
 >The NG4500 series edge computing devices, with their powerful AI computing and industrial-grade reliability, can be applied across multiple industries.
 
 <ApplicationScenarios
@@ -424,6 +455,7 @@ The NG45XX series product and carrier board specifications are as follows:
 />
 
 ### Application Examples
+
 >The NG4500 series can be applied in various real-world scenarios. Below are some typical use cases, each with detailed deployment guides for quick replication and application.
 
 <div
@@ -503,13 +535,15 @@ The NG45XX series product and carrier board specifications are as follows:
         </div>
       </a>
     ));
-  })()}
-</div>
 
+  })()}
+
+</div>
 
 ## Product Resources
 
 ### Product Tutorials
+
 For quick start guides, see [Quick Start Tutorial](./1-Quick%20Start.md)
 
 For hardware features and usage instructions, see [Hardware Usage Guide](./2-Hardware%20Guide/0-Components%20Overview.md)
@@ -519,15 +553,14 @@ For system drivers and development guidance, see [System and Driver Guide](./3-S
 
 ### Product Resources
 
-| Resource Name                 | URL                                                                 |
-|--------------------------|----------------------------------------------------------------------|
-| Hardware Schematics               | [/docs/hardware-schematic](/docs/hardware-schematic)                 |
-| Hardware Design Guide             | [/docs/hardware-guide](/docs/hardware-guide)                         |
-| Bill of Materials (BOM)           | [/docs/bom-list](/docs/bom-list)                                     |
-| Example Project Code         | [GitHub](https://github.com/camthink-ai/examples)                  |
-| API Reference             | [/docs/api-reference](/docs/api-reference)                           |
-| SDK Toolkit               | [/downloads/sdk-toolkit](/downloads/sdk-toolkit)                     |
-
+| Resource Name           | URL                                                  |
+| ----------------------- | ---------------------------------------------------- |
+| Hardware Schematics     | [/docs/hardware-schematic](/docs/hardware-schematic) |
+| Hardware Design Guide   | [/docs/hardware-guide](/docs/hardware-guide)         |
+| Bill of Materials (BOM) | [/docs/bom-list](/docs/bom-list)                     |
+| Example Project Code    | [GitHub](https://github.com/camthink-ai/examples)    |
+| API Reference           | [/docs/api-reference](/docs/api-reference)           |
+| SDK Toolkit             | [/downloads/sdk-toolkit](/downloads/sdk-toolkit)     |
 
 ## Technical Support and Community
 

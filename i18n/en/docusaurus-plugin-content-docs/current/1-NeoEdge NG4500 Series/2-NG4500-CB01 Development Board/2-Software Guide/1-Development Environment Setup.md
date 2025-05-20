@@ -158,17 +158,17 @@ Complete the AIBOX network configuration as follows:
    
    - Enter the static IP address, subnet mask, and gateway. For example:
      
-     - **Address**: `192.168.60.3`
+     - **Address**: `192.168.231.100`
      
      - **Netmask**: `255.255.255.0`
      
-     - **Gateway**: `192.168.60.1`
+     - **Gateway**: `192.168.231.1`
    
    - In the DNS section, enter DNS server addresses (e.g., `8.8.8.8` and `8.8.4.4`).
    
    - Click `Apply` to save the settings.
 
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration.jpg)
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Setting_Network.png)
 
 4. Restart the network to apply the new settings.
 
@@ -180,7 +180,7 @@ Complete the AIBOX network configuration as follows:
 
 ```
 
-## SSH Access
+### SSH Access
 
 1. On a Windows PC, press `Win + R` to open the "Run" dialog.
 

@@ -305,9 +305,9 @@ sudo timedatectl set-ntp false
 - Method to start and configure camera module (using `imx219` as example)
 
 ```shell
-# 列出当前支持的硬件模块
+# List the currently supported hardware modules
 sudo python /opt/nvidia/jetson-io/config-by-hardware.py -l
-#输出如下：
+# Output:
 Header 1 [default]: Jetson 40pin Header
   Available hardware modules:
   1. Adafruit SPH0645LM4H
@@ -330,9 +330,8 @@ Header 2: Jetson 24pin CSI Connector
 Header 3: Jetson M.2 Key E Slot
   No hardware configurations found!
 
-# 选择并配置 IMX219 Dual CamThink 摄像头模块。 
-# -n 选择Header编号，Camera IMX219 Dual CamThink 是dtbo的overlay-name
+# Select and configure the IMX219 Dual CamThink camera module.
+# -n selects the Header number, Camera IMX219 Dual CamThink is the dtbo overlay-name
 sudo python /opt/nvidia/jetson-io/config-by-hardware.py -n 2='Camera IMX219 Dual CamThink'
+Reboot system to apply configuration
 ```
-
-- Reboot system to apply configuration
