@@ -15,7 +15,7 @@ import DocumentList from '@site/src/components/DocumentList';
 {/* 产品卡片容器 */}
 <div className="product-card-container">
 
-  {/* NeoEdge NG45XX 系列产品卡片 */}
+  {/* NeoEdge NG4500 系列产品卡片 */}
   <div className="product-card">
     <div className="product-header">
       <img src="/img/Overview/NG45xx/NG45XX.png" alt="NeoEdge NG45XX" className="product-image"/>

@@ -7,12 +7,12 @@ import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
 # Overview
 
 ## 产品简介
-![NG45XX](/img/Overview/NG45xx/NG45XX.png)
+![NG4500](/img/Overview/NG45xx/NG45XX.png)
 
-CamThink Edge AI Box NeoEdge NG45XX 系列具备强大的边缘计算能力，集成了NVIDIA® Jetson Orin™ NX 或 Nano 核心模块，并兼容**NVIDIA Super Developer Kit**，能够充分释放 Jetson Orin™ 的计算性能。与未支持NVIDIA Super Developer Kit的上一代产品相比，整体**性能提升最高可达1.7倍**。除了支持常见视觉AI应用的部署外，它还能高效运行各种主流生成式AI模型，包括**文本大语言模型（LLMs）、视觉大语言模型（VLMs）、多模态大语言模型（MLLMs）**。此外NG45XX支持多种物理接口及可扩展的通信模块（WiFi/4G/5G），能够灵活适配各类边缘计算应用场景的设备间通讯及边缘与云端协同通信，在例如机器人系统、智能车载终端、智慧工厂计算中心以及AI边缘计算网关场景中可广泛应用。其**工业级设计**保障设备在 -20°C 至 60°C 的环境下稳定运行，具备出色的可靠性，可满足多样化的场景需求。
+CamThink NeoEdge NG4500 系列具备强大的边缘计算能力，集成了NVIDIA® Jetson Orin™ NX 或 Nano 核心模块，并兼容**NVIDIA Super Developer Kit**，能够充分释放 Jetson Orin™ 的计算性能。与未支持NVIDIA Super Developer Kit的上一代产品相比，整体**性能提升最高可达1.7倍**。除了支持常见视觉AI应用的部署外，它还能高效运行各种主流生成式AI模型，包括**文本大语言模型（LLMs）、视觉大语言模型（VLMs）、多模态大语言模型（MLLMs）**。此外NG4500支持多种物理接口及可扩展的通信模块（WiFi/4G/5G），能够灵活适配各类边缘计算应用场景的设备间通讯及边缘与云端协同通信，在例如机器人系统、智能车载终端、智慧工厂计算中心以及AI边缘计算网关场景中可广泛应用。其**工业级设计**保障设备在 -20°C 至 60°C 的环境下稳定运行，具备出色的可靠性，可满足多样化的场景需求。
 
 ### 支持NVIDIA Super Developer Kit
-NeoEdge NG45XX 系列产品支持NVIDIA Super Developer Kit，在众多主流的大语言模型（LLMs）、视觉语言模型（VLMs）以及视觉 Transformer（ViTs）中，相较于前代产品实现了显著的性能提升，**购买CamThink Edge AI Box NeoEdge NG45XX系列产品即可以体验最新性能与特性**。有关升级特性的更多信息，请参阅[Jetson Orin Super Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) 。
+NeoEdge NG4500 系列产品支持NVIDIA Super Developer Kit，在大语言模型（LLMs）、视觉语言模型（VLMs）以及视觉 Transformer（ViTs）中性能表现有显著提升，更多参数信息可参阅[Jetson Orin Nano Super Developer Kit | NVIDIA](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) 。
 
 <div className="performance-cards" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
   {[
@@ -57,26 +57,26 @@ NeoEdge NG45XX 系列产品支持NVIDIA Super Developer Kit，在众多主流的
 
 
 ### 高性能AI平台
->基于NVIDIA Jetson Orin系列模块打造，提供20-157 TOPS的强劲AI算力，配备最多1024个CUDA核心和32个Tensor核心。支持**JetPack 6.0**完整开发套件，预装CUDA、TensorRT等工具链，兼容主流AI框架。适用于计算机视觉、机器人、边缘计算网关等边缘AI应用场景。
-- 搭载 **NVIDIA Jetson Orin** 系列模块，提供阶梯式 AI 算力：
+>NG4500系列支持算力范围在20-157 TOPS，最多GPU最多可搭载1024个CUDA核心和32个Tensor核心。支持**JetPack 6.0**完整开发套件，预装CUDA、TensorRT等工具链，兼容主流AI框架。适用于计算机视觉、机器人、边缘计算网关等边缘AI应用场景。
+- 阶梯式 AI 算力：
   - **标准模式**：20 TOPS（NG4510）→ 100 TOPS（NG4521）。
   - **SUPER 模式（INT8）**：34 TOPS → 157 TOPS。
-- 异构计算架构：
+- 异构计算架构(NG4521)：
   - **GPU**：最多 1024 个 NVIDIA® CUDA® 核心 + 32 个 Tensor 核心。
   - **CPU**：8 核 Arm® Cortex®-A78AE v8.2（64位）@ 2.0GHz。
   - **内存**：LPDDR5 最高 16GB，带宽达 102GB/s。
 - 预装 **NVIDIA JetPack 6.0+ SDK**，包含完整开发环境CUDA、cuDNN、TensorRT、DeepStream等，系统特性详见 [**Jetpack SDK 6.0**](https://developer.nvidia.com/embedded/jetpack-sdk-60)，系统烧录教程请参考本wiki中心提供的 [**「系统烧录指南」**](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)。
-- 支持各种主流 AI 框架：TensorFlow/Keras、PyTorch、ONNX Runtime等。
+- 支持各种主流AI框架及推理服务部署：TensorFlow/Keras、PyTorch、ONNX Runtime、TensorRT、Ollama、llama.cpp、VLLM、ultralytics等。
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
   <img src={require("/img/Overview/NG45xx/Jetpack.png").default} style={{ maxHeight: '300px' }} />
 </div>
 
 ### 硬件接口丰富
->NG45XX拥有丰富的接口能力，满足各种工业和边缘计算场景需求，使用教程可见[**「硬件接口使用指南」**](./2-Hardware%20Guide/1-Hardware%20Connection.md)
-- **千兆网络连接：** 配备 **双千兆以太网接口**，确保稳定可靠的网络通信，适用于工业通信和边缘计算应用，并可**同时处理最多16路视频流**（视型号而定）。
-- **丰富的USB接口：** 搭载 **4×USB 3.1 + 1×Type-C (USB 3.2)** 接口，实现高速数据传输，支持外接摄像头、存储设备等USB外设。
-- **工业级通信协议：** 内置 **RS232、RS485、CAN 总线** 接口，无缝对接各类工业级设备，满足严苛的通信需求，抗干扰设计，适用于复杂电磁环境。
-- **自动化控制应用：** 配备 **DI/DO 接口**，支持数字信号输入输出，方便实现自动化控制和逻辑判断。
+>NG4500拥有丰富的接口能力，满足各种工业和边缘计算场景需求，使用教程可见[**「硬件接口使用指南」**](./2-Hardware%20Guide/1-Hardware%20Connection.md)
+- **千兆网络连接：** 配备 **双千兆以太网接口**，确保稳定可靠的网络通信，并可**同时处理最多16路视频流编解码**（部分型号使用），适用于工业通信和边缘计算应用。
+- **丰富的USB接口：** 搭载 **4×USB 3.1 + 1×Type-C (USB 3.2)** 接口，可实现高速数据传输，支持外接摄像头、存储设备等USB外设。
+- **工业级通信协议：** 内置 **RS232、RS485、CAN 总线** 接口，无缝对接各类工业级设备，抗干扰能力强，适用于有严苛通讯需求的复杂电磁环境。
+- **自动化控制应用：** 配备 **DI/DO 接口**，支持数字信号输入输出，可实现自动化控制和逻辑判断。
 - **HDMI输出**：HDMI接口输出，支持4K显示。
 - **3.5mm音频接口**：支持麦克风输入、声音输出。
 - **6×SMA天线接口**：支持外接高增益天线。
@@ -87,13 +87,13 @@ NeoEdge NG45XX 系列产品支持NVIDIA Super Developer Kit，在众多主流的
 
 
 ### 扩展与灵活性
->NG45XX载板提供强大的存储和通讯扩展及其他接口能力，满足各种应用场景的硬件扩展需求，扩展模块的安装与使用可见[**「硬件PCBA使用指南」**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md)
+>NG4500载板提供强大的存储和通讯扩展及其他接口能力，满足各种应用场景的硬件扩展需求，扩展模块的安装与使用可见[**「硬件PCBA使用指南」**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md)
 - **NVMe SSD存储扩展：** 支持 **M.2 Key M PCIe 4.0 SSD**，支持2280 NVMe SSD（预装256GB/512GB/1TB），可搭载 **256GB 至 1TB 及以上**的 NVMe 固态硬盘，满足海量数据存，额外M.2 Key M（PCIe×1 Gen3）可扩展第二块SSD
-- **无线通信能力扩展：**  **M.2 Key B 与 Key E** 接口支持多种无线通信模块，满足各种边缘无线通讯需求
+- **无线通信能力扩展：**  **M.2 Key B 与 Key E** 接口支持多种无线通信模块，满足各种边缘无线通讯需求。
   - **4G/5G/Wi-Fi Halow扩展：**通过**M.2 Key B**插槽（支持2242/2252模块）灵活扩展蜂窝网络或Wi-Fi Halow。
   - **Wi-Fi 6/蓝牙5.0：** 通过**M.2 Key E**插槽（2230规格）扩展高速无线连接。
-  - **Nano SIM卡槽**：兼容4G/5G模块所需的SIM卡安装
-- **RTC实时时钟**：内置CR2032电池
+  - **Nano SIM卡槽**：主板带有4G/5G模块所需的SIM卡安装槽。
+- **RTC实时时钟**：内置CR2032电池座。
 - **视频模组接口**：支持**4 lanes MIPI×2**摄像头接口，在载板上可同时接入多路高分辨率工业相机，适用于各种边缘场景应用扩展。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={require("/img/Overview/NG45xx/PCB.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
@@ -112,7 +112,7 @@ NeoEdge NG45XX 系列产品支持NVIDIA Super Developer Kit，在众多主流的
 
 ## 产品信息
 ### 产品规格
-NG45XX系列整机产品和载板的规格信息如下
+NG4500系列整机产品和载板的规格信息如下
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={require("/img/Overview/NG45xx/Product2.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
   <img src={require("/img/Overview/NG45xx/PCB.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
@@ -261,7 +261,7 @@ NG45XX系列整机产品和载板的规格信息如下
     </tr>
     <tr>
       <td><strong>SMA Antenna Connector</strong></td>
-      <td colSpan="4">6</td>
+      <td colSpan="4">4-6（4G+WiFi数量为4，5G+WiFi数量为6）</td>
     </tr>
     <tr>
       <td><strong>Thermal</strong></td>
@@ -282,7 +282,7 @@ NG45XX系列整机产品和载板的规格信息如下
 ### 产品配件
 
 #### 产品标准配件
->CamThink Edge AI Box NeoEdge NG45XX产品系列提供的标准配件如下：
+>CamThink NeoEdge NG4500产品系列提供的标准配件如下：
 
 <AccessoriesTable
   accessories={[
@@ -299,25 +299,25 @@ NG45XX系列整机产品和载板的规格信息如下
       image: "/img/Accessories/ng45xx_power_cable.jpg",
       name: "电源线",
       quantity: "1",
-      description: ["标准三芯电源线1.5m，默认欧规"]
+      description: ["标准三芯电源线1.5m，默认欧规，可选配其他地区规格"]
     },
     {
       image: "/img/Accessories/ng45xx_connector.jpg",
       name: "工业级接线端子",
       quantity: "2",
-      description: ["16pin公端子、8pin公端子"]
+      description: ["16pin公端子*1、8pin公端子*1"]
     },
     {
       image: "/img/Accessories/ng45xx_bracket.jpg",
       name: "安装支架",
       quantity: "2",
-      description: ["壁挂安装支架"]
+      description: ["壁挂安装支架*2，DIN导轨安装支架*1"]
     }
   ]}
 />
 
 #### 产品选配配件
->CamThink Edge AI Box NeoEdge NG45XX产品系列支持选配配件如下：
+>CamThink NeoEdge NG4500产品系列支持选配配件如下：
 
 <AccessoriesTable
   accessories={[
@@ -369,7 +369,7 @@ NG45XX系列整机产品和载板的规格信息如下
 
 ## 产品应用
 ### 产品适用场景
->NG45xx系列边缘计算设备凭借其强大的AI算力和工业级可靠性，可应用于多个行业领域
+>NG4500系列边缘计算设备凭借其强大的AI算力和工业级可靠性，可应用于多个行业领域
 
 <ApplicationScenarios
   imagePosition="center"
@@ -382,11 +382,6 @@ NG45XX系列整机产品和载板的规格信息如下
           title: "工业质检",
           description: "结合YOLOv5/v8目标检测模型与高分辨率工业相机，实现对生产线产品的实时缺陷检测。系统可同时处理多条生产线，检测精度达99.5%以上，大幅减少人工检查成本，提高生产效率。",
           image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM-MZk8nC4dpWB3RVIh_X1MJdjgPXwTtDT5w&s"
-        },
-        {
-          title: "设备预测性维护",
-          description: "通过连接振动、温度、电流等多类型传感器，结合边缘AI算法分析设备运行状态，建立异常检测模型，提前7-14天预警潜在设备故障，降低维护成本，避免生产线意外停机。",
-          image: "https://lh6.googleusercontent.com/proxy/xTsclU49YVc4V7rntI0ljuBRviYIV4rA9vySkINSMZWx_dlxkpeczhg_hXnGSxcPsZCioCd5PEoG4QVDEMaouSE"
         },
         {
           title: "智能分拣",
@@ -404,14 +399,9 @@ NG45XX系列整机产品和载板的规格信息如下
           image: "https://hailo.ai/wp-content/uploads/2023/10/Powerful-Edge-AI-to-Boost-Intelligent-Traffic-Systems-ITS-1024x458.jpeg"
         },
         {
-          title: "入侵检测",
+          title: "行为检测",
           description: "结合人脸识别、行为分析和异常事件检测技术，可覆盖校园、商场、社区等场景的安全监控，系统对异常事件响应时间小于1秒，支持与现有安防系统无缝集成。",
           image: "https://p8.itc.cn/images01/20231222/71051bef9d2f412fa433b5131629a924.png"
-        },
-        {
-          title: "环境监测",
-          description: "对接空气质量、噪声、水质等多类传感器，建立区域环境数据分析平台，可实现数据本地化处理和异常报警，通过边缘分析减少约90%的不必要数据传输，延长电池供电设备使用寿命。",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBThyZn5ZIA3OQav5Aeb96yvlcqTe7Ne1ybQ&s"
         }
       ]
     },
@@ -424,34 +414,9 @@ NG45XX系列整机产品和载板的规格信息如下
           image: "https://www.lscm.hk/files/image/2-Technology-Commercialisation/Case%20Studies/Case-AGV-1.jpg"
         },
         {
-          title: "无人机巡检",
-          description: "集成5G通信模块实现高带宽图传，在边缘端直接处理高清视频流，检测电力线路、石油管道、风电设备等基础设施异常，减少95%传输带宽需求，支持超长距离巡检任务。",
-          image: "https://www.hcuav.com/uploads/images/2023/0421/S7qkgHCnyWmCCwkKQkEcztHQlBtO6lJptf3OEOqf.jpg"
-        },
-        {
           title: "服务机器人",
           description: "部署多模态交互系统，集成语音识别、人脸识别、行为追踪等功能，系统响应延迟低于200ms，通过本地处理保护用户隐私，适用于医院、酒店、展馆等公共服务场所。",
           image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMK1Iu8Dv-u-6AZZbUyDCi5knSzrFqzOJu-Q&s"
-        }
-      ]
-    },
-    {
-      title: "医疗健康",
-      items: [
-        {
-          title: "医疗影像分析",
-          description: "支持DICOM标准医疗影像处理，可部署X光片、CT、超声等多模态医学影像AI辅助诊断模型，准确率达到93%以上，处理时间控制在10秒内，帮助医生快速筛查病灶。",
-          image: "https://developer-blogs.nvidia.com/zh-cn-blog/wp-content/uploads/sites/2/2022/06/Swin.png"
-        },
-        {
-          title: "智能导诊",
-          description: "整合自然语言处理和人脸识别技术，实现患者身份识别、症状初筛和科室分诊一体化方案，简化就医流程，平均每位患者节省8-15分钟排队等待时间，提升医疗机构服务效率。",
-          image: "http://www.lovechuangchuang.com/image/dzjqr1.jpg"
-        },
-        {
-          title: "远程会诊",
-          description: "通过4K高清视频采集和低延迟传输技术，结合边缘AI预处理，实现基层医疗机构与三甲医院专家的远程会诊，端到端延迟控制在250ms以内，保证远程诊疗的实时性与准确性。",
-          image: "https://upload-cdn.orayimg.com/upload/help/2106/202106050928526013.png"
         }
       ]
     }
@@ -459,7 +424,7 @@ NG45XX系列整机产品和载板的规格信息如下
 />
 
 ### 应用工程示例
->NG45XX系列产品可在多个实际场景中进行应用，以下为部分典型应用案例。每个案例都配有详细的部署指南，帮助您快速复现和应用。
+>NG4500系列产品可在多个实际场景中进行应用，以下为部分典型应用案例。每个案例都配有详细的部署指南，帮助您快速复现和应用。
 
 <div
   style={{
@@ -545,6 +510,7 @@ NG45XX系列整机产品和载板的规格信息如下
 ## 产品资料
 
 ### 产品教程
+
 关于如何快速使用Edge AI Box可见[「快速使用教程」](./1-Quick%20Start.md)
 
 关于如何使用Edge AI Box硬件特性和使用说明可见[「硬件使用指南」](./2-Hardware%20Guide/0-Components%20Overview.md)
