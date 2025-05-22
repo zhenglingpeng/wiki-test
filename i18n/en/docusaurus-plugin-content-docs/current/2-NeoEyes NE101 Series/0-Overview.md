@@ -288,10 +288,10 @@ The specifications of the NE101 product are as follows:
       quantity: "1",
       description: [
         "Supports 4 specifications:",
-        "60° FOV, 8cm focus",
-        "60° FOV, 3m focus",
-        "120° FOV, 15cm focus",
-        "120° FOV, 4m focus",
+        "60° FOV, 15cm focus",
+        "60° FOV, 4m focus",
+        "120° FOV, 8cm focus",
+        "120° FOV, 3m focus",
       ]
     },
     {

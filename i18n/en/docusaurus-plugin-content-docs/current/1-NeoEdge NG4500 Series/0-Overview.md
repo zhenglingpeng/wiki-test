@@ -245,15 +245,11 @@ The NG45XX series product and carrier board specifications are as follows:
     </tr>
     <tr>
       <td><strong>M.2 Key B</strong></td>
-      <td colSpan="4">M.2 Key B 2242/2252 support 4G/5G/Wi-Fi Halow</td>
+      <td colSpan="4">M.2 Key B 2242/2252 support 4G/5G</td>
     </tr>
     <tr>
       <td><strong>M.2 Key E</strong></td>
       <td colSpan="4">M.2 Key E 2230 support Wi-Fi/Bluetooth</td>
-    </tr>
-    <tr>
-      <td><strong>Wi-Fi Halow</strong></td>
-      <td colSpan="4">M.2 Key B support Wi-Fi Halow</td>
     </tr>
     <tr>
       <td><strong>Storage</strong></td>

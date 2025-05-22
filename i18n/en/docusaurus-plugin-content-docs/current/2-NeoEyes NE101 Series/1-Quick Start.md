@@ -1,135 +1,194 @@
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+
 # Quick Start
 
-## Product Overview
+## Overview
+This tutorial provides detailed instructions for using the NE101 device, covering basic operation, device configuration, and installation procedures.
 
-The NE100 series is a high-performance smart camera product line designed for IoT applications, with the NE101 standard firmware providing core functions such as timed capture and data reporting. This guide will help you quickly master the usage of the product.
+## Product Preparation
+Before starting, prepare the following items: NE101 device, 4×AA batteries (size 5), a Phillips screwdriver, and optional accessories such as Cat-1 communication module or WiFi-Halow module. If you don't have an NE101 yet, visit our [online store](https://www.camthink.ai) to purchase.
 
-## Hardware Preparation
+![NE101](/img/QuickStart/NE101/ne101_1.png)
 
-### Hardware Components
-- **Complete Device**: Includes full enclosure and battery compartment
-- **Development Board**: Exposed PCB board for easy debugging and development
-- **Accessory Pack**: Includes USB data cable, mounting bracket, etc.
+## Device Operation
+### Powering On
+1. Use the screwdriver to remove the rear cover.
+2. Install batteries into the battery compartment as indicated.
+3. Wait for the **indicator light** on the front to **flash**, indicating successful boot-up.
+4. Reattach the rear cover.
 
-For detailed hardware descriptions, please refer to:
-- [Hardware Components Overview](./Hardware%20Guide/Components%20Overview)
-- [Hardware Connection Guide](./Hardware%20Guide/Hardware%20Connection)
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_2.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_3.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_4.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_5.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-## Operating Guide
+### Device Configuration
+The NE101 provides a configuration web interface via its built-in WiFi AP (SSID: **NE101_ABC123**). Connect to this AP using a smartphone/computer, then access `http://192.168.1.1` to configure device parameters.
 
-### Device Installation
+#### 1. Verify Power Status
+Press the capture button on the right side. If the flash activates, the device is powered on. In normal operation, pressing this button triggers image capture and MQTT upload.
 
-#### Complete Device Mode (Factory Configuration)
-![NE101 Complete Device Appearance](/img/NE101_Complete_Machine.png)  
-![NE101 Complete Device Disassembly Diagram](/img/NE101_Complete_Machine2.png)  
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_6.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-**Usage Points**:
-1. Open the back cover to install the battery (pay attention to the polarity)
-2. Waterproof design, suitable for outdoor installation
-3. Standard 1/4 screw hole, compatible with most brackets
+#### 2. Connect to WiFi AP
+After booting, locate the **NE101_ABC123** WiFi network and connect (no password required). For newer firmware versions, **long-press the capture button for 3 seconds** to activate the AP mode (indicator flashes).
 
-#### Development Board Mode (Debugging)
-![NE101 Main Board Front View](/img/NE101_Main_Board.png)  
-![NE101 Main Board Interface Diagram](/img/NE101_Main_Board2.png)  
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_7.gif" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_9.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_10.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-**Usage Points**:
-1. Power via Type-C interface (5V/1A or above)
-2. Interface designed to prevent incorrect connections
-3. Reserved debugging serial port (115200 bps)
+#### 3. Configuration Settings
+##### Image Settings
+> Applies to OV5640 camera modules. USB modules only support fill light settings.
+- **Reset Button**: Restores factory settings for OV5640 modules.
+- **Fill Light Mode**:
+  - *Auto*: Activates fill light when ambient light drops below a set threshold (adjustable via light sensor data).
+  - *Custom*: Enables scheduled operation with time ranges and intensity (1-100).
+  - *Always On/Off*: Constant fill light state.
+- **Image Adjustments**:
+  - Brightness/Contrast/Saturation: 0-2 scales.
+  - Horizontal/Vertical Flip: For installation adjustments.
 
-> **Safety Tips**: Ensure correct battery installation in complete device mode; avoid short-circuit risks in development board mode
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_11.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-### Quick Start Process
+##### Capture Settings
+- **Scheduled Capture**:
+  - *Timed Mode*: Daily or weekly schedules (up to 8 time points).
+  - *Interval Mode*: Minute/hour/day-based intervals (single rule).
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_12.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_13.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-1. **Powering the Device**
-   - Complete Device: Automatically starts after battery installation
-   - Development Board: Connect USB power
+- **Alarm-In Trigger**: Uses hardware signals via the rear Alarm-In port.
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_18.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-2. **Status Confirmation**
-   - Power indicator lights up for 1 second indicating successful start
-   - System initialization takes approximately 1 minute
+- **Button Capture**: Enabled by default. Disabling this prevents manual capture via the side button.
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_19.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-3. **Entering Configuration Mode**
-   - Short press the function key (about 0.5 seconds)
-   - Device hotspot name displays as NE101_XXXXXX
+##### Data Reporting (MQTT)
+Configure MQTT parameters for data transmission:
+- Host: Domain/IP of MQTT broker.
+- Port: Default 1883.
+- Topic: Data publication topic.
+- Client ID: Unique MQTT client identifier.
+- QoS: 0/1/2.
+- Username/Password: Broker authentication.
 
-4. **Connecting to Management Interface**
-   - Connect your phone/computer to the device WiFi
-   - Access http://192.168.1.1
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_15.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-![Device WiFi Connection Diagram](/img/NE101_wifi_connect.png)
-![Device Management Interface Overview](/img/NE101_web.png)
+##### Device Management
+View device info and update firmware:
+- Device Name: Editable identifier included in MQTT data.
+- MAC/SN: Hardware identifiers.
+- Battery Level: Current charge.
+- Firmware Version: Display and update via file upload.
 
-### Core Function Configuration
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_14.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-#### Image Capture Settings
-![Real-time Image Preview](/img/NE101_web_cam.png)
+##### Network Configuration
+- **WiFi**: Scan and connect to available networks (stores latest credentials).
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_13.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-**Key Parameters**:
-- **Flash Mode**:
-  - Intelligent Auto (default)
-  - Timed On
-  - Forced Off
+- **Cat-1 (Cellular)**:
+  1. Insert compatible SIM card (non-North American regions).
+  2. Configure APN, credentials, and PIN in the Cellular section.
+  3. Test connectivity and save settings.
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_21.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_20.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_23.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_22.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-- **Image Adjustment**:
-  - Brightness grading adjustment (0-90 levels)
-  - Three-axis adjustment (brightness/contrast/saturation)
-  - Image mirroring function
+- **WiFi Halow**: Select region frequency and connect to Halow gateways.
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/QuickStart/NE101/ne101_24.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_25.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_26.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-![Image Adjustment Interface](/img/NE101_web_ImageAdjustment.png)
+### Device Testing
+Verify functionality by capturing images and checking MQTT data reception using tools like [MQTTX](https://mqttx.app/).
 
-#### Capture Plan Configuration
-![Capture Settings Interface](/img/NE101_web_cap_setting.png)
+#### MQTTX Setup Example
+1. Create a new connection with:
+   - **Host**: `192.168.44.80`
+   - **Port**: `1884`
+   - **Topic**: `left`
+2. Subscribe to the topic and press the device's capture button.
+3. Validate received JSON payload containing image data in Base64 format:
 
-**Working Modes**:
-1. **Timed Capture**: Set specific time points
-2. **Interval Shooting**: Set cycle period (5 minutes - 24 hours)
-3. **External Trigger Mode**: Trigger via Alarm-In signal
-4. **Manual Mode**: Capture triggered by button press
-
-#### Network and Data
-![Network Connection Interface](/img/NE101_web_WLANConnection.png)
-
-**Network Test (Serial Connection)**:
-```bash
-# Example of executing ping test via serial port
-ping www.example.com -c 4
+```json
+{
+  "ts": 1740640441620,
+  "values": {
+    "devName": "NE101 Sensing Camera",
+    "devMac": "D8:3B:DA:4D:10:2C",
+    "battery": 84,
+    "snapType": "Button",
+    "localtime": "2025-02-27 15:14:01",
+    "imageSize": 74371,
+    "image": "data:image/jpeg;base64,..."
+  }
+}
 ```
-![Network Test Diagram](/img/NE101_ping.png)
 
-**Data Reporting**:
-1. Configure MQTT server parameters
-2. Verify data stream using MQTTX tool
-3. Check reporting status
+##### Field Descriptions
 
-![Data Reporting Configuration Interface](/img/NE101_web_DataReport.png)
-![MQTT Data Stream Example](/img/NE101_MQTT.png)
+- `ts`: Timestamp (milliseconds)
+- `devName`: Device name
+- `devMac`: Device MAC address
+- `battery`: Battery level (percentage)
+- `snapType`: Image capture type (e.g., `Button`, `Scheduled`, `PIR`, etc.)
+- `localtime`: Local time (string format)
+- `imageSize`: Image size (in bytes)
+- `image`: Base64 encoded JPEG image data, prefixed with `data:image/jpeg;base64,`
 
-### Function Verification Process
+##### Visualization Suggestions
 
-1. Enter sleep mode (auto wake-up after 5 minutes)
-2. Trigger capture task (timed/manual/external trigger)
-3. Confirm image quality (resolution/exposure/focus)
-4. Verify data upload (server reception confirmation)
+You can quickly preview images in a web page or tool using the Base64 image data:
 
-![Capture Success Prompt](/img/NE101_cap_success.png)
+```html
+<img src="data:image/jpeg;base64,...">
+```
 
-## Detailed Device Working Modes
+You can also paste the Base64 data into a[Base64 IMAGE View](https://base64.guru/converter/decode/image) for online preview.
 
-| Mode       | Trigger Condition | Duration   | Main Function       |
-|------------|-------------------|------------|---------------------|
-| Initialization | Auto on power-up | ~1 minute  | System self-check, time synchronization |
-| Configuration | Button trigger    | 1-5 minutes | Parameter setting, status check |
-| Working    | Plan trigger       | As needed  | Image capture, data reporting |
-| Sleep      | Auto entry         | As planned | Low-power standby   |
 
-## Advanced Functions
 
-### Device Maintenance
-- **Hardware Reset**: Short press reset button to restart
-- **Device Information**: View MAC address/firmware version
-- **Wireless Upgrade**: Supports OTA firmware updates
+## Product Installation
+>The NE101 offers various installation options, and you can choose from the wide range of brackets provided by CamThink. Below, we'll explain how to simply use and install the main optional brackets.
+### Bottom Bracket Extension
+Locate the screw hole on the side of the NE101. Align the bracket with the device, then use screws to secure it. Once fixed, you can rotate the bracket to adjust the angle. Secure the bottom of the bracket to the desired mounting location by drilling screw holes.
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/Overview/NE101/Bracket/1.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+   <img src="/img/QuickStart/NE101/ne101_27.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
-![OTA Upgrade Interface](/img/NE101_ota.png)
 
-> **Technical Support**: It is recommended to complete a full function test during the first use.
+### Back Bracket Extension
+Locate the screw hole on the side of the NE101. Align the bracket with the device, then use screws to secure it. Find the desired wall-mounting location and secure the bracket by screwing into the screw holes on both sides.
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src="/img/Overview/NE101/Bracket/3.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/QuickStart/NE101/ne101_28.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
+

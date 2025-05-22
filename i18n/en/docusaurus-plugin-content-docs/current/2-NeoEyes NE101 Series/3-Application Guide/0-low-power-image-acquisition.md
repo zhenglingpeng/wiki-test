@@ -17,24 +17,24 @@ This project demonstrates an example implementation of a low-power image acquisi
 
 ```mermaid
 flowchart LR
-    %% Node styles
+    %% 设置节点样式
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px
     classDef highlight fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     classDef process fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
 
-    %% Nodes
-    A[Device Start]:::highlight
+    %% 定义节点
+    A[Device Startup]:::highlight
     B[Device Sleep]:::default
-    C1[Wake - Timer Trigger]:::default
-    C2[Wake - IO Trigger<br>See "PIR Example"]:::process
+    C1[Wake-up - Timer Triggered]:::default
+    C2[Wake-up - IO Triggered, See "PIR Example"]:::process
     D[Capture Image]:::default
     E[Data Processing]:::default
-    E1[AI Recognition<br>See "Face Recognition Example"]:::process
-    E2[Image Transfer Only]:::default
-    F[MQTT Transfer]:::default
-    G[Application Use]:::highlight
+    E1[AI Recognition, See "Face Recognition Example"]:::process
+    E2[Image Transmission Only]:::default
+    F[MQTT Transmission]:::default
+    G[Application Usage]:::highlight
 
-    %% Connections
+    %% 连接关系
     A --> B
     B --> C1
     B --> C2
