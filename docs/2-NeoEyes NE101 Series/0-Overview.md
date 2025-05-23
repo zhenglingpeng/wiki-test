@@ -290,10 +290,10 @@ NE101整机产品规格如下：
       quantity: "1",
       description: [
         "支持4种规格：",
-        "60° FOV, 8cm focus",
-        "60° FOV, 3m focus",
-        "120° FOV, 15cm focus",
-        "120° FOV, 4m focus",
+        "60° FOV, 15cm focus",
+        "60° FOV, 4m focus",
+        "120° FOV, 8cm focus",
+        "120° FOV, 3m focus",
       ]
     },
     {

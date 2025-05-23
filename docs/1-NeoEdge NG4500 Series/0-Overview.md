@@ -217,15 +217,11 @@ NG4500系列整机产品和载板的规格信息如下
     </tr>
     <tr>
       <td><strong>M.2 Key B</strong></td>
-      <td colSpan="4">M.2 Key B 2242/2252 support 4G/5G/Wi-Fi Halow</td>
+      <td colSpan="4">M.2 Key B 2242/2252 support 4G/5G</td>
     </tr>
     <tr>
       <td><strong>M.2 Key E</strong></td>
       <td colSpan="4">M.2 Key E 2230 support Wi-Fi/Bluetooth</td>
-    </tr>
-    <tr>
-      <td><strong>Wi-Fi Halow</strong></td>
-      <td colSpan="4">M.2 Key B support Wi-Fi Halow</td>
     </tr>
     <tr>
       <td><strong>Storage</strong></td>
@@ -254,6 +250,10 @@ NG4500系列整机产品和载板的规格信息如下
     <tr>
       <td><strong>Dimensions</strong></td>
       <td colSpan="4">160mm x 125mm x 75mm</td>
+    </tr>
+    <tr>
+      <td><strong>Weight</strong></td>
+      <td colSpan="4">1.9Kg</td>
     </tr>
     <tr>
       <td><strong>Installation</strong></td>
