@@ -20,8 +20,6 @@ Refer to the above content, complete the hardware connection, power to NG45XX, a
 
 ### 1. User Configuration
 
-Follow the on-screen prompts to complete the system configuration:
-
 1. Check `accept license` and continue.
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Licenses.png)
@@ -82,11 +80,15 @@ The following will introduce how to deploy and run the NanoOWL real - time visua
 
 - ​​**​JetPack Version​**​：
   - JetPack 5 (L4T r35.x)
-  - JetPack 6 (L4T r36.x)
+  - JetPack 6 (L4T r36.x) (Default version of the system)
 
 ### Environment Preparation
 
-1. Install dependencies
+1. Hardware connection: Connect the IMX219 camera (Note: The metal contacts should face upwards).
+   
+   ![](/img/NG45XX_SOFTWARE/NG45XX_IMX219.png)
+
+2. Install dependencies
 
 ```shell
 sudo apt update
@@ -175,21 +177,3 @@ ls /dev/video*
      - [a table [a keyboard, a pen, a mouse]]
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Quickstart_NanoOWL.png)
-
-## NVIDIA Official Reference Resource
-
-**NVIDIA Jetson Software:**
-
- [Jetson Linux Developer Guide - Quick Start](https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/text/IN/QuickStart.html)
-
-[Jetson Jetpack SDK](https://developer.nvidia.com/embedded/jetpack)
-
-[Jetson FAQ](https://developer.nvidia.com/embedded/faq)
-
-[Jetson Download Center](https://developer.nvidia.com/embedded/downloads)
-
-[Download NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager)
-
-**Software Forum:**
-
- [Jetson Developer Forum](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems)

@@ -10,17 +10,29 @@
 
 - Micro USB 线缆
 
+## PC Ubuntu电脑环境配置
+
+     烧录前需要预安装下面软件包，安装指令如下：
+
+```shell
+sudo apt update
+sudo apt install -y build-essential git wget curl python3 python3-pip \
+  python3-venv python3-distutils python3-setuptools python3-pexpect \
+  python3-serial libusb-1.0-0-dev pkg-config device-tree-compiler \
+  unzip bzip2 zstd
+```
+
 ## 硬件准备​
 
 **软件烧录前，需要完成下述硬件操作。**
 
 1. 将 Micro USB 线从 JESTON 的 Micro USB 端口连接到 Linux 主机 PC 的 USB TypeA 端口。
 
-2. 连接完成后，长按`force recovery` 按键，并给Jetson设备上电
+2. 连接完成后，将`SW1`开关，将拨码1拨到`on`，进如recovery模式
 
-![](/img/NG45XX_SOFTWARE/NG45XX_Recovery.png)
+![](/img/NG45XX_SOFTWARE/NG45XX_Recovery_SW1.png)
 
-3. 然后通过指令`lsusb`检查设备是否处于recovery模式，你会看到带有 ID 0955:623 的 NVidia Corp 设备。**（注：如果没有出现NVidia Corp 设备，说明未正确进入recovery模式，请检查recovery按键和usb线缆。）**
+3. 然后通过指令`lsusb`检查设备是否处于recovery模式，你会看到带有 ID 0955:623 的 NVidia Corp 设备。**（注：如果没有出现NVidia Corp 设备，说明未正确进入recovery模式，请检查recovery按键拨码和usb线缆。）**
 
 ![NG45XX_flash_lsusb](/img/NG45XX_flash_lsusb.jpg)
 
@@ -30,10 +42,10 @@
 
 | 设备型号-版本类型 | 镜像包链接（含JetPack）                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 镜像包链接（不含JetPack）                                                                                                                                                                                                                                                                                                                                                                                                                       | 硬件型号                 |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| NG4510    | 镜像包：[aibox-NG4510-36.4.3-super-jetpack-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4510-super_41600/aibox-NG4510-36.4.3-super-jetpack-V1.0.tgz)<br/>md5sum：[md5sum-aibox-NG4510-36.4.3-super-jetpack-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4510-super_41600/md5sum-aibox-NG4510-36.4.3-super-jetpack-V1.0.txt) | 镜像包：[aibox-NG4510-36.4.3-super-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4510-super_41682/aibox-NG4510-36.4.3-super-V1.0.tgz)<br/>md5sum：[md5sum-aibox-NG4510-36.4.3-super-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4510-super_41682/md5sum-aibox-NG4510-36.4.3-super-V1.0.txt) | Jetson Orin nano 4GB |
-| NG4511    | 镜像包：[aibox-NG4511-36.4.3-super-jetpack-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4511-super_41601/aibox-NG4511-36.4.3-super-jetpack-V1.0.tgz)<br/>md5sum：[md5sum-aibox-NG4511-36.4.3-super-jetpack-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4511-super_41601/md5sum-aibox-NG4511-36.4.3-super-jetpack-V1.0.txt) | 镜像包：[aibox-NG4511-36.4.3-super-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4511-super_41683/aibox-NG4511-36.4.3-super-V1.0.tgz)<br/>md5sum：[md5sum-aibox-NG4511-36.4.3-super-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4511-super_41683/md5sum-aibox-NG4511-36.4.3-super-V1.0.txt) | Jetson Orin nano 8GB |
-| NG4520    | 镜像包：[aibox-NG4520-36.4.3-super-jetpack-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4520-super_41602/aibox-NG4520-36.4.3-super-jetpack-V1.0.tgz)<br/>md5sum：[md5sum-aibox-NG4520-36.4.3-super-jetpack-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4520-super_41602/md5sum-aibox-NG4520-36.4.3-super-jetpack-V1.0.txt) | 镜像包：[aibox-NG4520-36.4.3-super-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4520-super_41684/aibox-NG4520-36.4.3-super-V1.0.tgz)<br/>md5sum：[md5sum-aibox-NG4520-36.4.3-super-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4520-super_41684/md5sum-aibox-NG4520-36.4.3-super-V1.0.txt) | Jetson Orin nx 8GB   |
-| NG4521    | 镜像包：[aibox-NG4521-36.4.3-super-jetpack-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4521-super_41661/aibox-NG4521-36.4.3-super-jetpack-V1.0.tgz)<br/>md5sum：[md5sum-aibox-NG4521-36.4.3-super-jetpack-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4521-super_41661/md5sum-aibox-NG4521-36.4.3-super-jetpack-V1.0.txt) | 镜像包：[aibox-NG4521-36.4.3-super-V1.0.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4521-super_41685/aibox-NG4521-36.4.3-super-V1.0.tgz)<br/>md5sum：[md5sum-aibox-NG4521-36.4.3-super-V1.0.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.0/aibox-NG4521-super_41685/md5sum-aibox-NG4521-36.4.3-super-V1.0.txt) | Jetson Orin nx 16GB  |
+| NG4510    | 镜像包：[aibox-NG4510-36.4.3-super-jetpack-V1.1.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4510-super_42936/aibox-NG4510-36.4.3-super-jetpack-V1.1.tgz)<br/>md5sum：[md5sum-aibox-NG4510-36.4.3-super-jetpack-V1.1.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4510-super_42936/md5sum-aibox-NG4510-36.4.3-super-jetpack-V1.1.txt) | 镜像包：[aibox-NG4510-36.4.3-super-V1.1.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4510-super_43202/aibox-NG4510-36.4.3-super-V1.1.tgz)<br/>md5sum：[md5sum-aibox-NG4510-36.4.3-super-V1.1.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4510-super_43202/md5sum-aibox-NG4510-36.4.3-super-V1.1.txt) | Jetson Orin nano 4GB |
+| NG4511    | 镜像包：[aibox-NG4511-36.4.3-super-jetpack-V1.1.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4511-super_42937/aibox-NG4511-36.4.3-super-jetpack-V1.1.tgz)<br/>md5sum：[md5sum-aibox-NG4511-36.4.3-super-jetpack-V1.1.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4511-super_42937/md5sum-aibox-NG4511-36.4.3-super-jetpack-V1.1.txt) | 镜像包：[aibox-NG4511-36.4.3-super-V1.1.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4511-super_43203/aibox-NG4511-36.4.3-super-V1.1.tgz)<br/>md5sum：[md5sum-aibox-NG4511-36.4.3-super-V1.1.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4511-super_43203/md5sum-aibox-NG4511-36.4.3-super-V1.1.txt) | Jetson Orin nano 8GB |
+| NG4520    | 镜像包：[aibox-NG4520-36.4.3-super-jetpack-V1.1.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4520-super_42938/aibox-NG4520-36.4.3-super-jetpack-V1.1.tgz)<br/>md5sum：[md5sum-aibox-NG4520-36.4.3-super-jetpack-V1.1.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4520-super_42938/md5sum-aibox-NG4520-36.4.3-super-jetpack-V1.1.txt) | 镜像包：[aibox-NG4520-36.4.3-super-V1.1.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4520-super_43204/aibox-NG4520-36.4.3-super-V1.1.tgz)<br/>md5sum：[md5sum-aibox-NG4520-36.4.3-super-V1.1.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4520-super_43204/md5sum-aibox-NG4520-36.4.3-super-V1.1.txt) | Jetson Orin nx 8GB   |
+| NG4521    | 镜像包：[aibox-NG4521-36.4.3-super-jetpack-V1.1.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4521-super_42939/aibox-NG4521-36.4.3-super-jetpack-V1.1.tgz)<br/>md5sum：[md5sum-aibox-NG4521-36.4.3-super-jetpack-V1.1.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4521-super_42939/md5sum-aibox-NG4521-36.4.3-super-jetpack-V1.1.txt) | 镜像包：[aibox-NG4521-36.4.3-super-V1.1.tgz](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4521-super_43205/aibox-NG4521-36.4.3-super-V1.1.tgz)<br/>md5sum：[md5sum-aibox-NG4521-36.4.3-super-V1.1.txt](https://resource-cam-think.oss-cn-hongkong.aliyuncs.com/download/firmware/aibox/NG45XX/36.4.3/v1.1/aibox-NG4521-super_43205/md5sum-aibox-NG4521-36.4.3-super-V1.1.txt) | Jetson Orin nx 16GB  |
 
 2. 解压到Ubuntu电脑
 
@@ -47,6 +59,8 @@ sudo tar -zxvf aibox-NG4511-36.4.3-base-jetpack-V1.0.tgz -C ./
 cd aibox-NG4511-36.4.3-base-jetpack-V1.0
 sudo ./tools/kernel_flash/l4t_initrd_flash.sh --network usb0 --flash-only --showlogs
 ```
+
+4. 烧录完成后log显示`Flash is successful` 即为烧录成功，将SW1拨码1拨到off，重启即可。
 
 **注： 确认设备硬件版本方法**
 

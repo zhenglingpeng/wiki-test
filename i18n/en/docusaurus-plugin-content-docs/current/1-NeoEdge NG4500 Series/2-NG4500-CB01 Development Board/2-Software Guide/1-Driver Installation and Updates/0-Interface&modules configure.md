@@ -6,6 +6,27 @@ This document mainly introduces the driver control methods for GPIO/I2C/SPI/CAN/
 
 GPIO resource information:[Jetson Orin NX Series and Jetson Orin Nano Series Pinmux](https://developer.nvidia.com/downloads/jetson-orin-nx-and-orin-nano-series-pinmux-config-template)
 
+- Io extension panel interface hardware information
+
+| Pin # | Signal Name    | Description                                       | Direction | Pin Type    |
+| ----- | -------------- | ------------------------------------------------- | --------- | ----------- |
+| 218   | GPIO12         | GPIO=Low/high when IN1=high（Open）/low(Short)      | Input     | dry contact |
+|       |                | IN1_COM: COM pin                                  |           |             |
+| 216   | GPIO11         | IN2: GPIO=Low/high when IN1=high（Open）/low(Short) | Input     | dry contact |
+|       |                | IN2_COM: COM pin                                  |           |             |
+| 206   | GPIO07         | IN3: GPIO=Low/high when IN1=high（Open）/low(Short) | Input     | dry contact |
+|       |                | IN3_COM: COM pin                                  |           |             |
+| 228   | GPIO13         | IN4: GPIO=Low/high when IN1=high（Open）/low(Short) | Input     | dry contact |
+|       |                | IN4_COM: COM pin                                  |           |             |
+| 199   | I2S0_SCLK_1V8  | OUT1: GPIO=Low for short, high for open           | Output    | dry contact |
+|       |                | OUT1_COM: COM pin                                 |           |             |
+| 197   | I2S0_LRCK_1V8  | OUT2: GPIO=Low for short, high for open           | Output    | dry contact |
+|       |                | OUT2_COM: COM pin                                 |           |             |
+| 195   | I2S0_SDIN_1V8  | OUT3: GPIO=Low for shor, high for open.           | Output    | dry contact |
+|       |                | OUT3_COM: COM pin                                 |           |             |
+| 193   | I2S0_SDOUT_1V8 | OUT4: GPIO=Low for short, high for open.          | Output    | dry contact |
+|       |                | OUT4_COM: COM pin                                 |           |             |
+
 - Find the corresponding line using the gpioinfo command
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_GPIO.png)
@@ -35,14 +56,29 @@ sudo gpioset --mode=wait gpiochip0 144=0
 
 - RS232
   
-  - Hardware connection as shown below:
-    
-    - Use connector 1 to connect to PC
-    - Use connector 2 to connect to Jetson's RS232 `TX\RX`
+  - Hardware interface information
+  
+  | Pin | Signal Name | Description                                    | Direction | Pin Type    |
+  | --- | ----------- | ---------------------------------------------- | --------- | ----------- |
+  | 99  | UART0_TXD   | Use for uart Ransmit (with 3.3 level shifter)  | Output    | CMOS – 1.8V |
+  | 101 | UART0_RXD   | Use for uart  Receive (with 3.3 level shifter) | Input     | CMOS – 1.8V |
+
+- Hardware connection as shown below:
+  
+  - Use connector 1 to connect to PC
+  - Use connector 2 to connect to Jetson's RS232 `TX\RX`
   
   ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_RS232.png)
 
 - RS485
+  
+  - Hardware interface information
+  
+  | Pin | Signal Name | Description       | Direction | Pin Type     |
+  | --- | ----------- | ----------------- | --------- | ------------ |
+  | 203 | UART1_TXD   | Use for RS_485    | Output    | CMOS    1.8V |
+  | 205 | UART1_RXD   | Use for RS_485    | Input     | CMOS    1.8V |
+  | 207 | UART1_RTS*  | RS_485 enable pin | Output    | CMOS    1.8V |
   
   - Install dependency libraries
   
@@ -220,6 +256,16 @@ int main(int argc, char* argv[]) {
 
 ## SPI
 
+- SPI hardware interface information
+
+| Pin | Signal Name | Description                 | Direction | Pin Type    |
+| --- | ----------- | --------------------------- | --------- | ----------- |
+| 106 | SPI1_SCK    | SPI 1 Clock                 | Bidir     | CMOS – 3.3V |
+| 108 | SPI1_MISO   | SPI 1 Master In / Slave Out | Bidir     | CMOS – 3.3V |
+| 104 | SPI1_MOSI   | SPI 1 Master Out / Slave In | Bidir     | CMOS – 3.3V |
+| 110 | SPI1_CS0*   | SPI 1 Chip Select 0         | Bidir     | CMOS – 3.3V |
+| 112 | SPI1_CS1*   | SPI 1 Chip Select 1         | Bidir     | CMOS – 3.3V |
+
 - Hardware connection: Short-circuit `MOSI` and `MISO`
 
 - Testing method:
@@ -235,6 +281,13 @@ gcc spidev_test.c -o spidev_test
 ```
 
 ## CAN
+
+- Hardware interface information
+
+| Pin | Signal Name | Description     | Direction | Pin Type    |
+| --- | ----------- | --------------- | --------- | ----------- |
+| 145 | CAN_TX      | FD CAN Transmit | Output    | CMOS – 3.3V |
+| 143 | CAN_RX      | FD CAN Receive  | Input     | CMOS – 3.3V |
 
 - Hardware connection: Connect D+ and D- between two devices
 
@@ -302,12 +355,16 @@ sudo timedatectl set-ntp false
 
 ## Camera
 
-- Method to start and configure camera module (using `imx219` as example)
+- Methods for starting and configuring the camera module, using `imx219` as an example. The hardware connection is as follows:
+  
+  ![](/img/NG45XX_SOFTWARE/NG45XX_IMX219.png)
+
+- Start the camera using the config-by-hardware.py tool. The configuration will take effect after a reboot.
 
 ```shell
 # List the currently supported hardware modules
 sudo python /opt/nvidia/jetson-io/config-by-hardware.py -l
-# Output:
+# Output example:
 Header 1 [default]: Jetson 40pin Header
   Available hardware modules:
   1. Adafruit SPH0645LM4H
@@ -331,7 +388,16 @@ Header 3: Jetson M.2 Key E Slot
   No hardware configurations found!
 
 # Select and configure the IMX219 Dual CamThink camera module.
-# -n selects the Header number, Camera IMX219 Dual CamThink is the dtbo overlay-name
+# -n selects the Header number, and Camera IMX219 Dual CamThink is the overlay-name of the dtbo.
 sudo python /opt/nvidia/jetson-io/config-by-hardware.py -n 2='Camera IMX219 Dual CamThink'
-Reboot system to apply configuration
+```
+
+- Connect a mouse and keyboard, open a terminal, and run the following commands:
+
+```shell
+sudo apt update
+sudo apt install -y nvidia-l4t-gstreamer nvidia-l4t-jetson-multimedia-api
+
+# Activate the camera
+nvgstcapture-1.0    
 ```
