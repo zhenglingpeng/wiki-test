@@ -12,7 +12,7 @@
 
 ## 软件部署
 
-如果选择的是无预烧录的设备，请参考下述链接，完成固件烧录。
+如果设备尚未烧录固件，请参考以下链接以完成固件烧录步骤；如果您已经完成固件烧录，可直接进行部署。
 
 - **环境搭建**，软件开发环境，请参阅[开发环境搭建](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/Development%20Environment%20Setup)
 
@@ -20,11 +20,9 @@
 
 ## 首次系统启动引导配置
 
-参考上述的内容，完成硬件连接后，给NG45XX上电后，按照下面提示完成系统的第一次初始化配置。
+确认设备已完成固件烧录后，，为NG45XX接通设备电源，并根据屏幕提示，按照以下步骤完成首次系统初始化配置。
 
 ### 1. 系统初始化配置
-
-根据屏幕提示，完成系统配置，步骤如下：
 
 1. 勾选 `接受许可协议`，点击下一步
 
@@ -50,7 +48,8 @@
 
 ### 2. 系统运行状态&版本确认
 
-通过Jtop工具监控，参考以下步骤：
+按照以下步骤安装 Jtop 工具，以监控当前设备的资源使用情况：
+运行后，界面将显示如下图所示的信息。可以通过键盘查看当前 Jetson 设备的资源使用情况，包括 CPU、内存、GPU、磁盘、风扇等。同时还可以确认当前系统所安装的 TensorRT、CUDA 版本信息等。
 
 ```shell
 # 安装 Jtop 工具
@@ -71,26 +70,30 @@ sudo jtop
 
 ## 模型部署
 
-下面将会介绍如何在AIBOX上部署运行NanoOWL实时视觉推理模型，下面以NG4511为例，使用imx219摄像头。
+下面将会介绍如何在AIBOX上部署运行NanoOWL实时视觉推理模型，以NG4511为例，使用imx219摄像头。
 
 ### 硬件需求
 
-| 组件   | 要求                           |
-| ---- | ---------------------------- |
-| 设备   | Jetson Orin（Nano / NX / AGX） |
-| 内存   | ≥ 8GB（更大模型需更高内存）             |
-| 存储空间 | ≥ 10GB（取决于模型大小）              |
-| GPU  | 支持 CUDA 的 NVIDIA GPU         |
+| 组件   | 要求                       |
+| ---- | ------------------------ |
+| 设备   | Jetson Orin（Nano / NX /） |
+| 内存   | ≥ 8GB（更大模型需更高内存）         |
+| 存储空间 | ≥ 10GB（取决于模型大小）          |
+| GPU  | 支持 CUDA 的 NVIDIA GPU     |
 
 ### 软件环境
 
-- ​**​JetPack版本​**​：
+- **支持​​JetPack版本**​​：
   - JetPack 5 (L4T r35.x)
-  - JetPack 6 (L4T r36.x)
+  - JetPack 6 (L4T r36.x) （系统默认版本）
 
 ### 环境准备
 
-1. 安装依赖
+1. 硬件连接，连接IMX219摄像头 （注：连接金属片朝上）
+   
+   ![](/img/NG45XX_SOFTWARE/NG45XX_IMX219.png)
+
+2. 安装依赖
 
 ```shell
 sudo apt update
@@ -109,7 +112,7 @@ git clone https://github.com/dusty-nv/jetson-containers
 bash jetson-containers/install.sh
 ```
 
-3. 开始部署，自动拉去/构建nanoowl容器。(注：获取完容器，会启动启动容器)
+3. 开始部署，自动拉取/构建nanoowl容器。(注：获取完容器，会启动启动容器)
 
 ```shell
 cd jetson-containers/
@@ -179,21 +182,3 @@ ls /dev/video*
      - [a table [a keyboard, a pen, a mouse]]
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Quickstart_NanoOWL.png)
-
-## NVIDIA 官方参考资源
-
-**NVIDIA Jetson 软件：**
-
- [Jetson Linux Developer Guide - Quick Start](https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/text/IN/QuickStart.html)
-
-[Jetson Jetpack SDK](https://developer.nvidia.com/embedded/jetpack)
-
-[Jetson FAQ](https://developer.nvidia.com/embedded/faq)
-
-[Jetson Download Center](https://developer.nvidia.com/embedded/downloads)
-
-[Download NVIDIA SDK Manager](https://developer.nvidia.com/sdk-manager)
-
-**软件论坛:**
-
- [Jetson Developer Forum](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems)

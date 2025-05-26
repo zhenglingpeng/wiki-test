@@ -6,6 +6,27 @@
 
 GPIO资源信息：[Jetson Orin NX Series and Jetson Orin Nano Series Pinmux](https://developer.nvidia.com/downloads/jetson-orin-nx-and-orin-nano-series-pinmux-config-template)
 
+- IO 扩展面板接口硬件信息
+
+| Pin # | Signal Name    | Description                                       | Direction | Pin Type    |
+| ----- | -------------- | ------------------------------------------------- | --------- | ----------- |
+| 218   | GPIO12         | GPIO=Low/high when IN1=high（Open）/low(Short)      | Input     | dry contact |
+|       |                | IN1_COM: COM pin                                  |           |             |
+| 216   | GPIO11         | IN2: GPIO=Low/high when IN1=high（Open）/low(Short) | Input     | dry contact |
+|       |                | IN2_COM: COM pin                                  |           |             |
+| 206   | GPIO07         | IN3: GPIO=Low/high when IN1=high（Open）/low(Short) | Input     | dry contact |
+|       |                | IN3_COM: COM pin                                  |           |             |
+| 228   | GPIO13         | IN4: GPIO=Low/high when IN1=high（Open）/low(Short) | Input     | dry contact |
+|       |                | IN4_COM: COM pin                                  |           |             |
+| 199   | I2S0_SCLK_1V8  | OUT1: GPIO=Low for short, high for open           | Output    | dry contact |
+|       |                | OUT1_COM: COM pin                                 |           |             |
+| 197   | I2S0_LRCK_1V8  | OUT2: GPIO=Low for short, high for open           | Output    | dry contact |
+|       |                | OUT2_COM: COM pin                                 |           |             |
+| 195   | I2S0_SDIN_1V8  | OUT3: GPIO=Low for shor, high for open.           | Output    | dry contact |
+|       |                | OUT3_COM: COM pin                                 |           |             |
+| 193   | I2S0_SDOUT_1V8 | OUT4: GPIO=Low for short, high for open.          | Output    | dry contact |
+|       |                | OUT4_COM: COM pin                                 |           |             |
+
 - 通过 gpioinfo 指令找到对应的line
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_GPIO.png)
@@ -35,6 +56,13 @@ sudo gpioset --mode=wait gpiochip0 144=0
 
 - RS232
   
+  - 硬件接口信息
+  
+  | Pin | Signal Name | Description                                    | Direction | Pin Type    |
+  | --- | ----------- | ---------------------------------------------- | --------- | ----------- |
+  | 99  | UART0_TXD   | Use for uart Ransmit (with 3.3 level shifter)  | Output    | CMOS – 1.8V |
+  | 101 | UART0_RXD   | Use for uart  Receive (with 3.3 level shifter) | Input     | CMOS – 1.8V |
+  
   - 硬件连接，如下图
     
     - 使用接头1，连接PC
@@ -43,6 +71,14 @@ sudo gpioset --mode=wait gpiochip0 144=0
   ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_RS232.png)
 
 - RS485
+  
+  - 硬件接口信息
+  
+  | Pin | Signal Name | Description       | Direction | Pin Type     |
+  | --- | ----------- | ----------------- | --------- | ------------ |
+  | 203 | UART1_TXD   | Use for RS_485    | Output    | CMOS    1.8V |
+  | 205 | UART1_RXD   | Use for RS_485    | Input     | CMOS    1.8V |
+  | 207 | UART1_RTS*  | RS_485 enable pin | Output    | CMOS    1.8V |
   
   - 安装依赖库
   
@@ -220,7 +256,34 @@ int main(int argc, char* argv[]) {
 
 ## SPI
 
+- SPI硬件接口信息
+
+| Pin | Signal Name | Description                 | Direction | Pin Type    |
+| --- | ----------- | --------------------------- | --------- | ----------- |
+| 106 | SPI1_SCK    | SPI 1 Clock                 | Bidir     | CMOS – 3.3V |
+| 108 | SPI1_MISO   | SPI 1 Master In / Slave Out | Bidir     | CMOS – 3.3V |
+| 104 | SPI1_MOSI   | SPI 1 Master Out / Slave In | Bidir     | CMOS – 3.3V |
+| 110 | SPI1_CS0*   | SPI 1 Chip Select 0         | Bidir     | CMOS – 3.3V |
+| 112 | SPI1_CS1*   | SPI 1 Chip Select 1         | Bidir     | CMOS – 3.3V |
+
 - 硬件连接，短接`MOSI`和`MISO`
+
+- 启动配置SPI
+  
+  - 运行指令` sudo python /opt/nvidia/jetson-io/jetson-io.py`
+      ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI1.png)
+  
+  - 选择 `Configure Jetson 40pin Header`
+      ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI2.png)
+  
+  - 选择 `Configure header pins manually`  
+      ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI3.png)
+  
+  - 通过空格键选中 SPI1 和 SPI3 ，启用SPI
+      ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI4.png)
+  
+  - 然后选择`back`，选择`Save and reboot to reconfigure pins`, 重启后即可使用。
+      ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI5.png)
 
 - 测试方法，参考如下：
 
@@ -235,6 +298,13 @@ gcc spidev_test.c -o spidev_test
 ```
 
 ## CAN
+
+- 硬件接口信息
+
+| Pin | Signal Name | Description     | Direction | Pin Type    |
+| --- | ----------- | --------------- | --------- | ----------- |
+| 145 | CAN_TX      | FD CAN Transmit | Output    | CMOS – 3.3V |
+| 143 | CAN_RX      | FD CAN Receive  | Input     | CMOS – 3.3V |
 
 - 硬件连接，两台设备互联D+和D- 
 
@@ -302,7 +372,11 @@ sudo timedatectl set-ntp false
 
 ## Camera
 
-- 启动和配置摄像头模块的方法，以`imx219`为例
+- 启动和配置摄像头模块的方法，以`imx219`为例，硬件连接如下：
+  
+  ![](/img/NG45XX_SOFTWARE/NG45XX_IMX219.png)
+
+- 通过config-by-hardware.py软件启动摄像头，重启后生效
 
 ```shell
 # 列出当前支持的硬件模块
@@ -335,4 +409,12 @@ Header 3: Jetson M.2 Key E Slot
 sudo python /opt/nvidia/jetson-io/config-by-hardware.py -n 2='Camera IMX219 Dual CamThink'
 ```
 
-- 重启系统使配置生效
+- 接入鼠标键盘，启动终端，运行以下指令：
+
+```shell
+sudo apt update
+sudo apt install -y nvidia-l4t-gstreamer nvidia-l4t-jetson-multimedia-api
+
+# 启动摄像头
+nvgstcapture-1.0    
+```
