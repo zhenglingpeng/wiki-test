@@ -5,8 +5,6 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
 
 ## **PCBA Interfaces**
 
-(须用最终版本PCBA图，并指示出相关接口:  参考官方标注方式)
-
 ![NG45_PCBA_IO_Bottom](/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45_PCBA_IO_Top.png)
 
 ### Top side Interfaces
