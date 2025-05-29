@@ -1,5 +1,5 @@
 ## **Jetson Modules Brief**
-本产品支持的核心模组包括Orin Nano/NX, 及对应的Super版本。但不支持AGX Orin系列。Jetson Orin 系列模组因配置不同，性能存在差异。
+本产品支持的核心模组包括Orin Nano/NX, 及对应的Super版本。Jetson Orin 系列模组因配置不同，性能存在差异。
 ![Orin_Parameters_Comparation](/img/Orin_Parameters_Comparation.png)
 模组的主要差异，如下几点：  
 - Cores数量不同带来的性能差别
@@ -8,8 +8,7 @@
 - DLA/PVA功能模块有无及数量的影响
 - 供电要求（如Orin Nano只支持5V供电），及对应功耗和散热的差异 
 ## Product Overview 
-  本产品的载板，基于原官方Carrier Board基础上进行拓展和优化。
-
+  
 **Main features**:
 
 - 100M/1000M 双网口
@@ -23,6 +22,7 @@
 - Camera Input Interfaces *2 （MIPI）
 - 14Pins FFC可拓展IO接口    
   ![NG45XX_Product_View](/img/Hardware_Guide/Edge_AI_Box/ComponentsOverview/NG45XX_Product_View.png)  
+    <font color="#ff0000">  [待替换为载板同角度图片]  ☝ </font>
  ## **Accessories Overview**
  ### Camera modules 
   兼容树莓派镜头模组，“Camera Module V2” 和 "HQ Camera"可选
