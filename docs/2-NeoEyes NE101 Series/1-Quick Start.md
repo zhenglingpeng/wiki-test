@@ -30,7 +30,7 @@ import AccessoriesTable from '@site/src/components/AccessoriesTable';
 
 #### 2、开启NE101 WiFi AP 并在手机或电脑上寻找到它
 NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找对应SSID规则为 **NE101_ABC123**的WiFi AP，点击连接它，你无需输入密码，当你正常链接后，即可通过**192.168.1.1**地址在浏览器中访问到NE101的配置Web页，如果你成功了将看到浏览器上的Web页面。
->**在新的固件版本中为了进一步降低NE101的使用功耗，WiFi AP的唤醒逻辑为长按拍照键3s，直到灯光闪烁亮起，可以参考下方的操作录屏**
+>**在新的固件版本中为了进一步降低NE101的使用功耗，WiFi AP的唤醒逻辑为长按拍照键3s（逻辑改：长按3-5S，且等灯闪2次），直到灯光闪烁亮起，可以参考下方的操作录屏**
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
   <img src="/img/QuickStart/NE101/ne101_7.gif" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
   <img src="/img/QuickStart/NE101/ne101_9.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
@@ -123,7 +123,7 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
    - 重新安装设备前盖。
    - 打开浏览器，进入设备的配置Web页，在浏览器内输入**192.168.1.1**。
    - 到下方的Cellular配置，按照运营商提供的sim卡信息按照需求输入APN、Username、Password、PIN Code、Authentication Type、AT Commands，你可以点击「Send」按钮测试蜂窝网络，如果正常Cellular Status
-会变为connect状态，说明网络正常，然后点击save保存信息。
+   会变为connect状态，说明网络正常，然后点击save保存信息。
    - 你可以通过Details按钮来查看网络的详细信息，显示信息可以参考下方图像。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
   <img src="/img/QuickStart/NE101/ne101_21.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />

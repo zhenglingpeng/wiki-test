@@ -9,10 +9,10 @@ import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
 ## 产品简介
 ![NG4500](/img/Overview/NG45xx/NG45XX.png)
 
-CamThink NeoEdge NG4500 系列具备强大的边缘计算能力，集成了NVIDIA® Jetson Orin™ NX 或 Nano 核心模块，并兼容**NVIDIA Super Developer Kit**，能够充分释放 Jetson Orin™ 的计算性能。与未支持NVIDIA Super Developer Kit的上一代产品相比，整体**性能提升最高可达1.7倍**。除了支持常见视觉AI应用的部署外，它还能高效运行各种主流生成式AI模型，包括**文本大语言模型（LLMs）、视觉大语言模型（VLMs）、多模态大语言模型（MLLMs）**。此外NG4500支持多种物理接口及可扩展的通信模块（WiFi/4G/5G），能够灵活适配各类边缘计算应用场景的设备间通讯及边缘与云端协同通信，在例如机器人系统、智能车载终端、智慧工厂计算中心以及AI边缘计算网关场景中可广泛应用。其**工业级设计**保障设备在 -20°C 至 60°C 的环境下稳定运行，具备出色的可靠性，可满足多样化的场景需求。
+CamThink NeoEdge NG4500 系列具备强大的边缘计算能力，集成了NVIDIA® Jetson Orin™ NX 或 Nano 核心模块，能够充分释放 Jetson Orin™ 的计算性能。与未支持NVIDIA Super Developer Kit的上一代产品相比，整体**性能提升最高可达1.7倍**。除了支持常见视觉AI应用的部署外，它还能高效运行各种主流生成式AI模型，包括**文本大语言模型（LLMs）、视觉大语言模型（VLMs）、多模态大语言模型（MLLMs）**。此外NG4500支持多种物理接口及可扩展的通信模块（WiFi/4G/5G），能够灵活适配各类边缘计算应用场景的设备间通讯及边缘与云端协同通信，在例如机器人系统、智能车载终端、智慧工厂计算中心以及AI边缘计算网关场景中可广泛应用。其**工业级设计**保障设备在 -25°C 至 60°C 的环境下稳定运行，具备出色的可靠性，可满足多样化的场景需求。
 
-### 支持NVIDIA Super Developer Kit
-NeoEdge NG4500 系列产品支持NVIDIA Super Developer Kit，在大语言模型（LLMs）、视觉语言模型（VLMs）以及视觉 Transformer（ViTs）中性能表现有显著提升，更多参数信息可参阅[Jetson Orin Nano Super Developer Kit | NVIDIA](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) 。
+### NVIDIA Super 性能提升
+NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs）、视觉语言模型（VLMs）以及视觉 Transformer（ViTs）中性能表现有显著提升，更多参数信息可参阅[Jetson Orin Nano Super Developer Kit | NVIDIA](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/) 。
 
 <div className="performance-cards" style={{ width: '100%', maxWidth: '800px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
   {[
@@ -71,7 +71,7 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Developer Kit，在大语言模型
   <img src={require("/img/Overview/NG45xx/Jetpack.png").default} style={{ maxHeight: '300px' }} />
 </div>
 
-### 硬件接口丰富
+### 硬件接口丰富 (Note: 此部份图改为带标注的图)
 >NG4500拥有丰富的接口能力，满足各种工业和边缘计算场景需求，使用教程可见[**「硬件接口使用指南」**](./2-Hardware%20Guide/1-Hardware%20Connection.md)
 - **千兆网络连接：** 配备 **双千兆以太网接口**，确保稳定可靠的网络通信，并可**同时处理最多16路视频流编解码**（部分型号使用），适用于工业通信和边缘计算应用。
 - **丰富的USB接口：** 搭载 **4×USB 3.1 + 1×Type-C (USB 3.2)** 接口，可实现高速数据传输，支持外接摄像头、存储设备等USB外设。
@@ -86,19 +86,6 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Developer Kit，在大语言模型
 </div>
 
 
-### 扩展与灵活性
->NG4500载板提供强大的存储和通讯扩展及其他接口能力，满足各种应用场景的硬件扩展需求，扩展模块的安装与使用可见[**「硬件PCBA使用指南」**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md)
-- **NVMe SSD存储扩展：** 支持 **M.2 Key M PCIe 4.0 SSD**，支持2280 NVMe SSD（预装256GB/512GB/1TB），可搭载 **256GB 至 1TB 及以上**的 NVMe 固态硬盘，满足海量数据存，额外M.2 Key M（PCIe×1 Gen3）可扩展第二块SSD
-- **无线通信能力扩展：**  **M.2 Key B 与 Key E** 接口支持多种无线通信模块，满足各种边缘无线通讯需求。
-  - **4G/5G/Wi-Fi Halow扩展：**通过**M.2 Key B**插槽（支持2242/2252模块）灵活扩展蜂窝网络或Wi-Fi Halow。
-  - **Wi-Fi 6/蓝牙5.0：** 通过**M.2 Key E**插槽（2230规格）扩展高速无线连接。
-  - **Nano SIM卡槽**：主板带有4G/5G模块所需的SIM卡安装槽。
-- **RTC实时时钟**：内置CR2032电池座。
-- **视频模组接口**：支持**4 lanes MIPI×2**摄像头接口，在载板上可同时接入多路高分辨率工业相机，适用于各种边缘场景应用扩展。
-<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={require("/img/Overview/NG45xx/PCB.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-  <img src={require("/img/Overview/NG45xx/PCB2.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-</div>
 
 ### 耐用与可靠性
 >专为严苛工业环境设计的边缘计算设备，采用工业级制造标准，确保在恶劣条件下长期稳定运行。设备安装与部署说明详见[**「设备安装与部署」**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md)。
@@ -113,10 +100,6 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Developer Kit，在大语言模型
 ## 产品信息
 ### 产品规格
 NG4500系列整机产品和载板的规格信息如下
-<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={require("/img/Overview/NG45xx/Product2.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-  <img src={require("/img/Overview/NG45xx/PCB.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-</div>
 <table>
   <thead>
     <tr>
@@ -180,10 +163,6 @@ NG4500系列整机产品和载板的规格信息如下
       <td colSpan="4">Linux</td>
     </tr>
     <tr>
-      <td><strong>Button</strong></td>
-      <td colSpan="4">1 x Power Button, 1 x Reset Button</td>
-    </tr>
-    <tr>
       <td><strong>Ethernet</strong></td>
       <td colSpan="4">2 x RJ45 (1000Mbps Ethernet)</td>
     </tr>
@@ -209,7 +188,7 @@ NG4500系列整机产品和载板的规格信息如下
     </tr>
     <tr>
       <td><strong>RTC</strong></td>
-      <td colSpan="4">CR2032 RTC Battery</td>
+      <td colSpan="4"> Support CR2032 RTC Battery</td>
     </tr>
     <tr>
       <td><strong>FAN</strong></td>
@@ -225,7 +204,7 @@ NG4500系列整机产品和载板的规格信息如下
     </tr>
     <tr>
       <td><strong>Storage</strong></td>
-      <td colSpan="4">1 x M.2 Key M PCIe*4_Gen3 SSD<br /> (NVMe 2280 SSD 128G/256G/512G/1T included)<br />1 x M.2 Key M PCIe*1_Gen3 SSD</td>
+      <td colSpan="4">1 x M.2 Key M PCIe*4 SSD<br /> (NVMe 2280 SSD 128G/256G/512G/1T Optional)<br />1 x M.2 Key M PCIe*1 SSD</td>
     </tr>
     <tr>
       <td><strong>Power Supply</strong></td>
@@ -245,7 +224,7 @@ NG4500系列整机产品和载板的规格信息如下
     </tr>
     <tr>
       <td><strong>Operating Humidity</strong></td>
-      <td colSpan="4">20% - 90% (non-condensing)</td>
+      <td colSpan="4">0% - 90% (non-condensing)</td>
     </tr>
     <tr>
       <td><strong>Dimensions</strong></td>
@@ -279,7 +258,11 @@ NG4500系列整机产品和载板的规格信息如下
 </table>
 
 
-### 产品配件
+### 产品尺寸规格
+产品外型和支架的尺寸示意如下：
+
+![NG45_Series_Outline.png](/img/Hardware_Guide/Edge_AI_Box/BracketAndUage/NG45_Series_Outline.png)
+### 产品配件 （Note:图片修整，并内容链接到：Dev-Resources）
 
 #### 产品标准配件
 >CamThink NeoEdge NG4500产品系列提供的标准配件如下：
@@ -354,13 +337,13 @@ NG4500系列整机产品和载板的规格信息如下
     },
     {
       image: "/img/Accessories/IMX219.png",
-      name: "索尼相机模组",
+      name: "Raspberry Pi Camera Module 2",
       quantity: "1",
       description: ["SONY IMX219 3280*2464 1/4' 1.12um"]
     },
     {
       image: "/img/Accessories/SC0870.png",
-      name: "树莓派相机模组",
+      name: "Raspberry Pi High Quality Camera",
       quantity: "1",
       description: ["SC0870 Raspberry Pi M12 High Quality Camera"]
     }
@@ -436,7 +419,7 @@ NG4500系列整机产品和载板的规格信息如下
   {/* 定义一个文档基础路径常量，方便维护 */}
   {(() => {
     const BASE_URL = "/docs/NeoEdge NG4500 Series/Application Guide/";
-    
+
     const examples = [
       { 
         title: "LLM Chatbot", 

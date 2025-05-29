@@ -1,27 +1,4 @@
-## **Product Brief**
 
-![NE101_Product_Overview.png](/img/Hardware_Guide/Edge_AI_Camera/HardwareConnection/NE101_Product_Overview.png)
-
-## Product interface
-
-- Configuration and Snap shotButton
-  (须用最终版本整机图，并指示出相关接口)
-
-## **Product quick start guide**
-
-  拿到整机后，若非预装版本，须拆开底板后盖进行配件相关装配后才可使用。
-
-- 拿到样机后，拆包装后确认样机外观无缺损
-
-- 拆开前盖，将Sim卡装配到Cat-1模组，装配好后重新锁好前盖（仅针对Cat-1版本）
-
-- 拆开底部盖板，将电池装配到电池仓，确认正负极无误后，重新锁紧后盖
-
-- 按配置按键，用准备好手机或支持WiFi设备搜索设备的WiFi SSID进行连接后，输入IP:xxxx,打开Web端进行功能配置
-
-- 环境搭建说明，并验证设备能正常工作(待补充)
-
-- 将设备结合支架布署到实际环境（若非马上布署，可将设备待机或取出电池处理）
 
 ## **Main Board Interfaces Overview**
 

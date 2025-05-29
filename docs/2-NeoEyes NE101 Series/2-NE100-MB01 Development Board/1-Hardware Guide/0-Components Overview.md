@@ -1,11 +1,11 @@
 ## **Product Brief**
 
-本产品是一款低功耗无线 电池版本的抓拍相机。基于乐鑫的ESP32-S3模组进行开发，支持2.4G WiFi 和BLE。搭配OV5640 Cameras模组，且可拓展Cat-1或WiFi-Halow通讯方式。适用于无线布署的图片抓拍相关场景。并有灵活安装的支架可选。
+本产品是一款低功耗无线 电池版本的抓拍相机方案。基于乐鑫的ESP32-S3模组进行开发，支持2.4G WiFi 和BLE。搭配OV5640 Cameras模组，可拓展Cat-1或WiFi-Halow通讯方式。适用于无线布署的图片抓拍相关场景。并有灵活安装的支架可选。
 
 ## **Main Board Overview**
 
 主板搭配乐鑫的ESP32-S3-WROOM-1-N16R8模组，Flash 支持16MB, PSRAM支持8MB。支持 IEEE 802.11b/g/n (2.4 GHz Wi-Fi) 和 Bluetooth® 5 (LE)。支持拓展Cat-1或WiFi-Halow无线模组，及拓展其它GPIOs适用于二次开发。标配OV5640 Camera模组，并可选配USB Camera模组（UVC协议）。
-主板主要特性： 
+主要特性： 
 
 - 搭配ESP32-S3模组，Xtensa双核@240MHz
 
@@ -31,19 +31,19 @@
 
 模组搭配OV5640,分辨率为2592*1944，靶面尺寸为1/4。镜头有D-FOV 120和77度两种可选。并可依场景需求提供微距抓拍及正常抓拍两种对焦版本。
 
-|                       | OV5640  Module              |          |
-| --------------------- | --------------------------- | -------- |
-| Items                 | Description                 |          |
-| CMOS Sensor           | OV5640PLCC, 1/4"            |          |
-| Max.Resolution        | 2592*1944                   |          |
-| F.No                  | 2.4                         |          |
-| Focal Length          | 3.97mm                      |          |
-| Focusing distance     | 15cm or 400cm               | Optional |
-| FOV(D)                | 59                          |          |
-| TV-Distortion         | 1%                          |          |
-| FPC Connector         | 38.5*12.5mm 24Pins@0.5mm    |          |
-| Dimensions            | 8.5*8.5*6.5mm (without FPC) |          |
-| Operation Temperature | -10 -- 65                   |          |
+|                       | OV5640  Module                  |          |
+| --------------------- | ------------------------------- | -------- |
+| Items                 | Description                     |          |
+| CMOS Sensor           | OV5640PLCC, 1/4"                |          |
+| Max.Resolution        | 2592*1944                       |          |
+| F.No                  | 2.4                             |          |
+| Focal Length          | 3.97mm                          |          |
+| Focusing distance     | 15cm or 400cm                   | Optional |
+| FOV(D)                | 59                              |          |
+| TV-Distortion         | 1%                              |          |
+| FPC Connector         | 38.5*12.5mm 24Pins@0.5mm        |          |
+| Dimensions            | 8.5 x 8.5 x 6.5mm (without FPC) |          |
+| Operation Temperature | -10 -- 65                       |          |
 
 USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺寸为1/2.8“， 镜头接口为M12，可配多种FOV镜头可选。
 
@@ -60,7 +60,7 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 | Communication Interfaces | USB               |               |
 | Operation Temperature    | -20°-- 60°        |               |
 | Storage Temperature      | -40°-- 85°        |               |
-| Dimensions               | 25mm*23.86mm      |               |
+| Dimensions               | 25mm x 23.86mm    |               |
 | Certifications           | /                 |               |
 
 ## **Cat-1 Module Overview**
@@ -69,17 +69,17 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 
 |            | Cat-1 Module                                         |
 | ------------------------ | ------------------------------------------------------------ |
-| Module                   | Quectel EG912UGL                                             |   
-| LTE-FDD                  | B1/ 2/ 3/ 4/ 5/ 7/ 8/ 12/ 13/ 17/ 18/ 19/ 20/ 25/ 26/ 28/ 66 |  
-| LTE-TDD                  | B34/ 38/ 39/ 40/ 41                                          |     
-| GSM                      | B2/ 3/ 5/ 8                                                  |    
-| Antenna                  | PCB Antenna                                                  |    
-| Communication Interfaces | UART                                                         |     
-| Power Supply             | DC 4 -- 6 V                                                  |     
-| Operation Temperature    | -20°-- 60°                                                   |     
-| Storage Temperature      | -40°-- 85°                                                   |     
-| Dimensions               | 60mm*60mm                                                    |     
-| Certifications           | CE                                                           |     
+| Module                   | Quectel EG912UGL                                             |
+| LTE-FDD                  | B1/ 2/ 3/ 4/ 5/ 7/ 8/ 12/ 13/ 17/ 18/ 19/ 20/ 25/ 26/ 28/ 66 |
+| LTE-TDD                  | B34/ 38/ 39/ 40/ 41                                          |
+| GSM                      | B2/ 3/ 5/ 8                                                  |
+| Antenna                  | PCB Antenna                                                  |
+| Communication Interfaces | UART                                                         |
+| Power Supply             | DC 4 -- 6 V                                                  |
+| Operation Temperature    | -20°-- 60°                                                   |
+| Storage Temperature      | -40°-- 85°                                                   |
+| Dimensions               | 60mm x 60mm                                                 |
+| Certifications           | CE                                                           |
 
 ## **WiFi Halow Module Overview**
 
@@ -96,7 +96,7 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 | Power Supply             | DC 4 -- 6 V                |
 | Operation Temperature    | -20°-- 60°                 |
 | Storage Temperature      | -40°-- 85°                 |
-| Dimensions               | 60mm*60mm                  |
+| Dimensions               | 60mm x 60mm                |
 | Certifications           | CE/FCC                     |
 
 ## **Accessories and Brackets**
