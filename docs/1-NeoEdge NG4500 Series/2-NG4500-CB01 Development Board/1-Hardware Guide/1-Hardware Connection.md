@@ -1,7 +1,7 @@
 ## **Brief**
 
 More information,please reference official documents.[DeveloperGuide](https://docs.nvidia.com/jetson/archives/r35.2.1/DeveloperGuide/index.html)
-Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, with 260 pin SO-DIMM connector.
+Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, with 260 pins SO-DIMM connector.
 
 ## **PCBA Interfaces**
 
@@ -12,7 +12,7 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
 - DC input from 12 to 36V
 - 100M/1000M LAN *2
 - USB Type-A *4  support USB3.1
-- HDMI  (Support: Nano=HDMI 1.4, NX=HDMI 2.1)
+- HDMI  (Support: Orin Nano=HDMI 1.4, Orin NX=HDMI 2.1)
 - USB Type-C support USB3.2
 - SO-DIMM SOCKET 260 pins for Orin Nano/Nx Modules
 - PWM FAN Connector
@@ -46,7 +46,7 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
 
 ### Quick connection guide
 
-<font color="#ff0000"> 待补充工程样机的PCBA组件图 </font>
+<font color="#ff0000"> 待补充工程样机的PCBA组件图 (或换成组装图，视频)</font>!!!
 
 1. 确认开发套件所需的清单是否齐全，包括核心模组，载板，风扇及其它周边配件
 2. 将风扇装配到Orin Nano/NX模组上 
@@ -81,41 +81,6 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
 
     **软件烧录和操作参考**：[System Flashing](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/System%20Flashing%20and%20Initialization)
 
-    
-
-## **Product Interfaces**
-
-![NG45XX_IO_Front](/img//Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_IO_Front.png)
-
-### Product front panel interface
-- DC input from 12 to 36V
-- 100M/1000M LAN *2
-- USB Type-A *4  support USB3.1
-- HDMI  (Support: Nano=HDMI 1.4, NX=HDMI 2.1)
-- USB Type-C support USB3.2
-![NG45XX_IO_Rear](/img//Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_IO_Rear.png)
-### Product rear panel interface
-- 3.5 Phone Jack for Audio Input and Output
-- Terminals for RS485, RS232, CAN, 5V Power Output
-- Terminals for DI *4 and DO *4
-- 4G/5G Antenna from ANT1 to ANT4
-- WiFi&BT Antenna with WIFI-ANT1, WIFI-ANT2 
-  (须用最终版本整机图，并指示出相关接口)  
-### Product quick start guide
-拿到整机后，若非预装版本，须拆开底板后盖进行配件相关装配后才可使用。
-1. 拿到样机后，拆包装后确认样机外观无缺损
-2. 拆开底部盖板
-3. 将SSD装配 J11 的M.2 Key M PCIex4 接口，或 J13 的M.2 Key M PCIex1接口
-4. 将WiFi&BT模组固定到J19的 M.2 Key E 2230，并连接到外接天线（Optional）
-5. 将4G/5G模组固定到J15的M.2 Key B 2242, or M.2 Key B 2252 ,并将Sim卡插到J18的Sim卡槽 ，并连接到外置天线（Optional）
-6. 将 RTC Battery CR1220固定到 BT1的 Holder上（Optional）
-7. 确认安装完毕后，重新锁好底部盖板
-8. HDMI接口连接到外部显示器
-9. 将有线鼠标和键标连接到USB Type-A接口中任意两个
-10. 将网线连接到 LAN 口中任意一个
-11. 将USB Type-C 接口连接到调试电脑
-12. 确认以上操作无误后，将电源适配器连接到 DC-JACK，即可开始进行套件开发调试    
-    
  ## **Interfaces  and instructions**
 
 There are related interafces detailed decription,which are using on the Board and product. More information please refer "Jetson Orin NX Series and Jetson Orin Nano Series Pinmux". 

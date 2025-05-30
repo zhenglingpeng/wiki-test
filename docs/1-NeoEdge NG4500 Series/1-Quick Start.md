@@ -2,13 +2,47 @@
 
 ## 概述
 
-本章主要帮助您快速使用NG45XX系列产品。
+本章主要帮助您快速使用NG4500系列产品。
 
 ## 硬件准备
 
 - **硬件概述**，请参阅[硬件组件说明](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Hardware%20Guide/Components%20Overview)
 
-- **设备组装**，请参阅[硬件连接指南](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Hardware%20Guide/Hardware%20Connection)
+- **设备组装（补充接线的整机图,或安装步骤图）** 
+
+  拿到整机后，若非预装版本，须拆开底板后盖进行配件相关装配后才可使用。
+
+  1. 拿到样机后，拆包装后确认样机外观无缺损
+
+  2. 拆开底部盖板
+
+  3. 将SSD装配 J11 的M.2 Key M PCIex4 接口（建议），或 J13 的M.2 Key M PCIex1接口
+
+  4. 将WiFi&BT模组固定到J19的 M.2 Key E 2230，并连接到外接天线（Optional）
+
+  5. 将4G/5G模组固定到J15的M.2 Key B 2242, or M.2 Key B 2252 ,并将Sim卡插到J18的Sim卡槽 ，并连接到外置天线（Optional）
+
+  6. 将 RTC Battery CR1220固定到 BT1的 Holder上（Optional）
+
+  7. 确认安装完毕后，重新锁好底部盖板
+
+  8. HDMI接口连接到外部显示器
+
+  9. 将有线鼠标和键标连接到USB Type-A接口中任意两个
+
+  10. 将网线连接到 LAN 口中任意一个
+
+  11. 将USB Type-C 接口连接到调试电脑
+
+  12. 确认以上操作无误后，将电源适配器连接到 DC-JACK，即可开始进行套件开发调试    
+
+      > [!WARNING]
+      >
+      > 1、请使用原装标配的适配器
+      >
+      > 2、Orin Nano 4/8G 模组内部只支持5V输入， 请保证“Power Mode Switch” 在OFF状态 
+
+      
 
 ## 软件部署
 
