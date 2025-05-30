@@ -57,14 +57,14 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs�
 
 
 ### 高性能AI平台
->NG4500系列支持算力范围在20-157 TOPS，最多GPU最多可搭载1024个CUDA核心和32个Tensor核心。支持**JetPack 6.0**完整开发套件，预装CUDA、TensorRT等工具链，兼容主流AI框架。适用于计算机视觉、机器人、边缘计算网关等边缘AI应用场景。
+>CamThink NG4500系列支持算力范围在20-157 TOPS，GPU最多可搭载1024个CUDA核心和32个Tensor核心。支持**JetPack 6.0**完整开发套件，预装CUDA、TensorRT等工具链，兼容主流AI框架。适用于计算机视觉、机器人、边缘计算网关等边缘AI应用场景。
 - 阶梯式 AI 算力：
   - **标准模式**：20 TOPS（NG4510）→ 100 TOPS（NG4521）。
   - **SUPER 模式（INT8）**：34 TOPS → 157 TOPS。
 - 异构计算架构(NG4521)：
-  - **GPU**：最多 1024 个 NVIDIA® CUDA® 核心 + 32 个 Tensor 核心。
+  - **GPU**：1024 个 NVIDIA® CUDA® 核心 + 32 个 Tensor 核心。
   - **CPU**：8 核 Arm® Cortex®-A78AE v8.2（64位）@ 2.0GHz。
-  - **内存**：LPDDR5 最高 16GB，带宽达 102GB/s。
+  - **内存**：LPDDR5 16GB，带宽达 102GB/s。
 - 预装 **NVIDIA JetPack 6.0+ SDK**，包含完整开发环境CUDA、cuDNN、TensorRT、DeepStream等，系统特性详见 [**Jetpack SDK 6.0**](https://developer.nvidia.com/embedded/jetpack-sdk-60)，系统烧录教程请参考本wiki中心提供的 [**「系统烧录指南」**](./2-NG4500-CB01%20Development%20Board/2-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)。
 - 支持各种主流AI框架及推理服务部署：TensorFlow/Keras、PyTorch、ONNX Runtime、TensorRT、Ollama、llama.cpp、VLLM、ultralytics等。
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
@@ -75,7 +75,7 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs�
 >NG4500拥有丰富的接口能力，满足各种工业和边缘计算场景需求，使用教程可见[**「硬件接口使用指南」**](./2-NG4500-CB01%20Development%20Board/1-Hardware%20Guide/1-Hardware%20Connection.md)
 - **千兆网络连接：** 配备 **双千兆以太网接口**，确保稳定可靠的网络通信，并可**同时处理最多16路视频流编解码**（部分型号使用），适用于工业通信和边缘计算应用。
 - **丰富的USB接口：** 搭载 **4×USB 3.1 + 1×Type-C (USB 3.2)** 接口，可实现高速数据传输，支持外接摄像头、存储设备等USB外设。
-- **工业级通信协议：** 内置 **RS232、RS485、CAN 总线** 接口，无缝对接各类工业级设备，抗干扰能力强，适用于有严苛通讯需求的复杂电磁环境。
+- **工业级通信协议：** 内置 **RS232、RS485、CAN 总线** 接口，支持无缝对接各类工业级设备，抗干扰能力强，适用于有严苛通讯需求的复杂电磁环境。
 - **自动化控制应用：** 配备 **DI/DO 接口**，支持数字信号输入输出，可实现自动化控制和逻辑判断。
 - **HDMI输出**：HDMI接口输出，支持4K显示。
 - **3.5mm音频接口**：支持麦克风输入、声音输出。
@@ -363,7 +363,7 @@ NG4500系列整机产品和载板的规格信息如下
         {
           title: "工业质检",
           description: "结合YOLOv5/v8目标检测模型与高分辨率工业相机，实现对生产线产品的实时缺陷检测。系统可同时处理多条生产线，检测精度达99.5%以上，大幅减少人工检查成本，提高生产效率。",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM-MZk8nC4dpWB3RVIh_X1MJdjgPXwTtDT5w&s"
+          image: "https://www.0755vc.com/wp-content/uploads/2020/12/2020120201440655.jpg"
         },
         {
           title: "智能分拣",
@@ -398,7 +398,7 @@ NG4500系列整机产品和载板的规格信息如下
         {
           title: "服务机器人",
           description: "部署多模态交互系统，集成语音识别、人脸识别、行为追踪等功能，系统响应延迟低于200ms，通过本地处理保护用户隐私，适用于医院、酒店、展馆等公共服务场所。",
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMK1Iu8Dv-u-6AZZbUyDCi5knSzrFqzOJu-Q&s"
+          image: "https://www.imaydesign.com/uploads/allimg/181009/1-1Q009140ST03.png"
         }
       ]
     }

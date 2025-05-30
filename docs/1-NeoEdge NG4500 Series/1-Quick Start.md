@@ -54,7 +54,7 @@
 
 ## 首次系统启动引导配置
 
-确认设备已完成固件烧录后，，为NG4500接通设备电源，并根据屏幕提示，按照以下步骤完成首次系统初始化配置。
+确认设备已完成固件烧录后，为NG45XX接通设备电源，并根据屏幕提示，按照以下步骤完成首次系统初始化配置。
 
 ### 1. 系统初始化配置
 
@@ -110,7 +110,7 @@ sudo jtop
 
 | 组件   | 要求                       |
 | ---- | ------------------------ |
-| 设备   | Jetson Orin（Nano / NX /） |
+| 设备   | Jetson Orin（Nano / NX） |
 | 内存   | ≥ 8GB（更大模型需更高内存）         |
 | 存储空间 | ≥ 10GB（取决于模型大小）          |
 | GPU  | 支持 CUDA 的 NVIDIA GPU     |
@@ -118,8 +118,8 @@ sudo jtop
 ### 软件环境
 
 - **支持​​JetPack版本**​​：
-  - JetPack 5 (L4T r35.x)
-  - JetPack 6 (L4T r36.x) （系统默认版本）
+  - [JetPack 5 (L4T r35.x)](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-jetpack/tags)
+  - [JetPack 6 (L4T r36.x)](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-jetpack/tags) （系统默认版本）
 
 ### 环境准备
 
