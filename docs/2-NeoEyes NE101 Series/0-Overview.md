@@ -3,7 +3,7 @@ import SupportGrid from '@site/src/components/SupportGrid';
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
 
-# Overview
+# Product Info
 
 ## 产品介绍
 ![NE101](/img/Overview/NE101/NE101.png)
@@ -14,10 +14,10 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 >NeoEyes NE101产品由前盖、镜头模组、主板、通讯模块、电池模块等多个功能单元组成。各模块间通过标准化接口连接，便于拆装与维护，支持开发者按需替换、升级或定制特定模块。
 - **分层式结构设计**：采用前/中/后分离的模块化布局，便于快速拆装与功能扩展，支持用户按需DIY改装。如需获取结构设计文件，请参阅[「产品资源」](#产品资源)。
 - **多样化安装支持**：结构主体预留丰富的安装孔位，兼容多种支架和外壳扩展方案。配合 CamThink 提供的[「产品配件」](#产品配件)，可灵活部署于不同使用场景。
-- **相机模组可选**：主板支持CPI、USB相机模组，可更换不同规格的镜头，用于满足不同场景的图像采集需求，相机模组更换和支持规格详见[「可更换相机模组」](#可更换相机模组)。
+- **相机模组可选**：主板支持CPI、USB相机模组，可更换不同规格的镜头，用于满足不同场景的图像采集需求，相机模组更换和支持规格详见[「可换相机模组」](#可换相机模组)。
 - **通讯方案可选**：支持WiFi、Cat-1、WiFi-Halow通讯方案切换，满足不同场景通讯需求，通讯模组更换和支持规格详见[「通讯方案扩展」](#通讯方案扩展)。
 - **供电方案可选**：默认支持电池仓方案供电，4节AA电池即可工作，也可通过主板Type-C进行有线供电。
-- **硬件开放性**：提供结构设计文件用于DIY外壳（可3D打印）或自定义扩展，提供完整开源固件，具备开箱即用功能：低功耗模式、设备唤醒、MQTT数据传输、补光控制、定时拍摄、图像参数调整、网络管理。开发和烧录请参见[「软件指南」](./3-Software%20Guide/1-System%20Flashing%20and%20Initialization.md)
+- **硬件开放性**：提供结构设计文件用于DIY外壳（可3D打印）或自定义扩展，提供完整开源固件，具备开箱即用功能：低功耗模式、设备唤醒、MQTT数据传输、补光控制、定时拍摄、图像参数调整、网络管理。开发和烧录请参见[「开发指南」](./2-NE100-MB01%20Development%20Board/0-Dev%20Guide.md)
 
 ![NE101](/img/Overview/NE101/Module.png)
 
@@ -33,27 +33,27 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
   | Cat.1 | 0.83年 | 2.08年 | 虽支持广域蜂窝网络，但在极低功耗场景中建议搭配外部供电优化使用策略 |
   > 注：测试条件为每日拍摄10次，电池使用率70%。6V电池为标配AA电池，7.2V锂亚电池为4节38.8Wh规格，其中**锂亚电池暂不支持当前的标准电池仓安装，若有需要可联系我们**。
 
-- **传感器感知低功耗扩展支持**：支持图像触发模式下的事件唤醒抓拍运行机制（如PIR、雷达、温度等），在非工作状态下进入深度休眠，充分保障系统在不同触发频率下的功耗可控，关于如何扩展传感器事件抓拍的传感器连接的开发案例详见：[「PIR示例」](./3-Software%20Guide/3-example-pir.md)
+- **传感器感知低功耗扩展支持**：支持图像触发模式下的事件唤醒抓拍运行机制（如PIR、雷达、温度等），在非工作状态下进入深度休眠，充分保障系统在不同触发频率下的功耗可控，关于如何扩展传感器事件抓拍的传感器连接的开发案例详见：[「PIR示例」](./2-NE100-MB01%20Development%20Board/2-Software%20Guide/3-example-pir.md)
 
-- **开源固件，支持商用**：固件源码完全开源，支持免费商用与二次开发，固件提供图像采集、低功耗管理、数据通信等开箱即用功能，开发者可在此基础上快速扩展应用逻辑，缩短从原型到落地的开发周期。关于固件功能及开发者指引详见：[「超低功耗相机示例」](./4-Application%20Guide/0-low-power-image-acquisition.md)
+- **开源固件，支持商用**：固件源码完全开源，支持免费商用与二次开发，固件提供图像采集、低功耗管理、数据通信等开箱即用功能，开发者可在此基础上快速扩展应用逻辑，缩短从原型到落地的开发周期。关于固件功能及开发者指引详见：[「超低功耗相机示例」](./3-Application%20Guide/0-low-power-image-acquisition.md)
 
 ![Wireless communication](/img/Overview/NE101/Conet.png)
 
 ### 硬件接口扩展
->NeoEyes NE101支持根据硬件使用场景扩展硬件能力，关于各种物理接口的使用可见[「硬件指南」](./2-Hardware%20Guide/0-Components%20Overview.md)
-- **16Pin IO接口**：主板背部预留16pin座子，带有GPIOs、DI、DO等接口，支持接入各种传感器触发拍摄（资源使用取决于通信模块和USB相机的占用情况），具体IO资源详见[「硬件指南-硬件连接-16Pin GPIO扩展」](./2-Hardware%20Guide/1-Hardware%20Connection.md)
+>NeoEyes NE101支持根据硬件使用场景扩展硬件能力，关于各种物理接口的使用可见[「硬件指南」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md)
+- **16Pin IO接口**：主板背部预留16pin座子，带有GPIOs、DI、DO等接口，支持接入各种传感器触发拍摄（资源使用取决于通信模块和USB相机的占用情况），具体IO资源详见[「硬件指南-硬件连接-16Pin GPIO扩展」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/1-Hardware%20Connection.md)
 - **电源接口**：主板背面留有2pin电源座子，支持电池仓连接供电，主板正面下方带有Type-C接口可支持有线连接直供电（整机使用需要下方开孔引出）。
 - **Micro TF卡槽**：可用于存储扩展，适用于本地图像或数据存储。
 - **调试接口**：Type-C和UART用于开发串口调试使用。
 - **补光灯**：补光灯和光敏支持，适合在近距离黑暗环境中采集图像使用。
 - **Alam接口**：2Pin Wafer支持Alarm输入。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Overview/NE101/PCBT.png" alt="主板正面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/Overview/NE101/PCBB.png" alt="主板背面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/Board/NE100-MB01_1.png" alt="主板正面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src="/img/Board/NE100-MB01_2.png" alt="主板背面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ### 通讯方案扩展
->NeoEyes NE101默认支持WiFi通讯传输数据，支持选用LTE Cat-1、WiFi-Halow通讯模块，模块与主板正面pin座子连接即可支持LTE Cat-1或WiFi-Halow通讯，易于硬件的通讯方案更换和扩展，关于模组的更换使用可见[「硬件指南」](./2-Hardware%20Guide/0-Components%20Overview.md)。
+>NeoEyes NE101默认支持WiFi通讯传输数据，支持选用LTE Cat-1、WiFi-Halow通讯模块，模块与主板正面pin座子连接即可支持LTE Cat-1或WiFi-Halow通讯，易于硬件的通讯方案更换和扩展，关于模组的更换使用可见[「硬件指南」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md)。
 - **接口与兼容性**：标准PIN座连接，位于主板正面，支持免驱动识别。
 - **Cat-1模块规格**：移远EG912UGL，支持LTE FDD/TDD和GSM（除北美外全球支持），尺寸60mm x 60mm。
 - **WiFi HaLow模块规格**：移远FGH100M，基于IEEE 802.11ah协议，用于长距离低功耗连接，尺寸60mm x 60mm。
@@ -63,7 +63,7 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 </div>
 
 ### 可换相机模组
-> NeoEyes NE101 采用模块化相机设计，支持用户根据实际应用场景灵活更换不同参数的镜头模组，以适配不同的拍摄角度和对焦距离需求。关于模组更换与使用详见 [「硬件指南」](./2-Hardware%20Guide/0-Components%20Overview.md)。
+> NeoEyes NE101 采用模块化相机设计，支持用户根据实际应用场景灵活更换不同参数的镜头模组，以适配不同的拍摄角度和对焦距离需求。关于模组更换与使用详见 [「硬件指南」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md)。
 
 #### 硬件特性优势
 - **灵活部署**：可根据部署高度、空间大小和识别目标，选择最适配的镜头模组。
@@ -238,40 +238,9 @@ NE101整机产品规格如下：
 本产品提供多种支架配件，支持多种安装方式，可满足多种场景使用需求。
 
 
-### 产品外形整尺寸：
+### 产品外形整尺寸
 
 ![NE_Series_OutlineSize.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_OutlineSize.png)
-
-### 壁装支架及安装示意
-
-![NE_Series_Bracket_Wall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_Wall_Mount.png)
-
-![NE_Series_Wall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Wall_Mount.png)
-
-### 表盘支架及安装示意
-
-![NE_Series_Bracket_Meter_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_Meter_Mount.png)
-
-![NE_Series_Meter_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Meter_Mount.png)
-
-### 杆件支架及安装示意
-
-![NE_Series_Bracket_Rod_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_Rod_Mount.png)
-
-![NE_Series_Rod_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Rod_Mount.png)
-
-### 三轴球支架及安装示意
-
-![NE_Series_Bracket_ShaftBall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_ShaftBall_Mount.png)
-
-![NE_Series_ShaftBall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_ShaftBall_Mount.png)
-
-### 座装支架及安装示意
-
-![NE_Series_Bracket_U_Type_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_U_Type_Mount.png)
-
-![NE_Series_U_Type_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_U_Type_Mount.png)
-
 
 
 
@@ -363,6 +332,38 @@ NE101整机产品规格如下：
     },
   ]}
 />
+
+### 产品安装
+
+#### 壁装支架及安装示意
+
+![NE_Series_Bracket_Wall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_Wall_Mount.png)
+
+![NE_Series_Wall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Wall_Mount.png)
+
+#### 表盘支架及安装示意
+
+![NE_Series_Bracket_Meter_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_Meter_Mount.png)
+
+![NE_Series_Meter_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Meter_Mount.png)
+
+#### 杆件支架及安装示意
+
+![NE_Series_Bracket_Rod_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_Rod_Mount.png)
+
+![NE_Series_Rod_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Rod_Mount.png)
+
+#### 三轴球支架及安装示意
+
+![NE_Series_Bracket_ShaftBall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_ShaftBall_Mount.png)
+
+![NE_Series_ShaftBall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_ShaftBall_Mount.png)
+
+#### 座装支架及安装示意
+
+![NE_Series_Bracket_U_Type_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_U_Type_Mount.png)
+
+![NE_Series_U_Type_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_U_Type_Mount.png)
 
 
 ## 产品应用
@@ -503,19 +504,19 @@ NE101整机产品规格如下：
 
 ## 产品资源
 ### 产品教程
-关于如何快速使用NE101系列产品可见[「快速使用教程」](./1-Quick%20Start.md)
 
-关于如何使用NE101系列硬件特性和使用说明可见[「硬件使用指南」](./2-Hardware%20Guide/0-Components%20Overview.md)
+关于如何快速使用NE101系列产品可见[「快速开始」](./1-Quick%20Start.md)
 
-关于如何使用NE101系列系统驱动和开发指引可见[「系统和驱动指南」](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)
+关于如何使用NE100-MB01主板的相关硬件使用和系统应用开发说明可见[「开发指南」](./2-NE100-MB01%20Development%20Board/0-Dev%20Guide.md)
 
+关于NE101系列产品的应用场景与指南可见[「应用指南」](./3-Application%20Guide/0-low-power-image-acquisition.md)
 
-### 产品资源
+<!-- ### 产品资源
 
 | 资源名称                 | 地址                                                                 |
 |--------------------------|----------------------------------------------------------------------|
 | 硬件原理图               | [/docs/hardware-schematic](/docs/hardware-schematic)                 |
-| 硬件设计指南             | [/docs/hardware-guide](/docs/hardware-guide)                         |
+| 硬件设计指南             | [/docs/hardware-guide](/docs/hardware-guide)                         | -->
 
 ## 技术支持
 

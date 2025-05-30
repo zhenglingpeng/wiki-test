@@ -4,7 +4,7 @@ import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
 
 
-# Overview
+# Product Info
 
 ## 产品简介
 ![NG4500](/img/Overview/NG45xx/NG45XX.png)
@@ -65,14 +65,14 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs�
   - **GPU**：最多 1024 个 NVIDIA® CUDA® 核心 + 32 个 Tensor 核心。
   - **CPU**：8 核 Arm® Cortex®-A78AE v8.2（64位）@ 2.0GHz。
   - **内存**：LPDDR5 最高 16GB，带宽达 102GB/s。
-- 预装 **NVIDIA JetPack 6.0+ SDK**，包含完整开发环境CUDA、cuDNN、TensorRT、DeepStream等，系统特性详见 [**Jetpack SDK 6.0**](https://developer.nvidia.com/embedded/jetpack-sdk-60)，系统烧录教程请参考本wiki中心提供的 [**「系统烧录指南」**](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)。
+- 预装 **NVIDIA JetPack 6.0+ SDK**，包含完整开发环境CUDA、cuDNN、TensorRT、DeepStream等，系统特性详见 [**Jetpack SDK 6.0**](https://developer.nvidia.com/embedded/jetpack-sdk-60)，系统烧录教程请参考本wiki中心提供的 [**「系统烧录指南」**](./2-NG4500-CB01%20Development%20Board/2-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)。
 - 支持各种主流AI框架及推理服务部署：TensorFlow/Keras、PyTorch、ONNX Runtime、TensorRT、Ollama、llama.cpp、VLLM、ultralytics等。
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
   <img src={require("/img/Overview/NG45xx/Jetpack.png").default} style={{ maxHeight: '300px' }} />
 </div>
 
 ### 硬件接口丰富 (Note: 此部份图改为带标注的图)
->NG4500拥有丰富的接口能力，满足各种工业和边缘计算场景需求，使用教程可见[**「硬件接口使用指南」**](./2-Hardware%20Guide/1-Hardware%20Connection.md)
+>NG4500拥有丰富的接口能力，满足各种工业和边缘计算场景需求，使用教程可见[**「硬件接口使用指南」**](./2-NG4500-CB01%20Development%20Board/1-Hardware%20Guide/1-Hardware%20Connection.md)
 - **千兆网络连接：** 配备 **双千兆以太网接口**，确保稳定可靠的网络通信，并可**同时处理最多16路视频流编解码**（部分型号使用），适用于工业通信和边缘计算应用。
 - **丰富的USB接口：** 搭载 **4×USB 3.1 + 1×Type-C (USB 3.2)** 接口，可实现高速数据传输，支持外接摄像头、存储设备等USB外设。
 - **工业级通信协议：** 内置 **RS232、RS485、CAN 总线** 接口，无缝对接各类工业级设备，抗干扰能力强，适用于有严苛通讯需求的复杂电磁环境。
@@ -86,9 +86,8 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs�
 </div>
 
 
-
 ### 耐用与可靠性
->专为严苛工业环境设计的边缘计算设备，采用工业级制造标准，确保在恶劣条件下长期稳定运行。设备安装与部署说明详见[**「设备安装与部署」**](./2-Hardware%20Guide/2-Schematics%20and%20PCB%20Design%20Documents.md)。
+>专为严苛工业环境设计的边缘计算设备，采用工业级制造标准，确保在恶劣条件下长期稳定运行。设备安装与部署说明详见[**「快速开始」**](./1-Quick%20Start.md)。
 - **工业级电源设计**：宽电压输入（12V-36V DC），适应工业现场电压波动，峰值功率120W，满足高性能计算需求，内置多重保护电路（过压/过流/反接保护）,稳定支持支持SUPER模式持续工作。
 - **紧凑坚固的结构**：设备尺寸为160mm × 125mm × 75mm，全金属外壳，支持**桌面放置、壁挂安装、DIN导轨安装**等多种安装方式。
 - **较好的环境适应性**：**无风扇被动散热架构及宽温设计**，工作温度范围-25°C 至 60°C，存储温度-40°C 至 85°C，适应各种工业环境。
@@ -136,10 +135,10 @@ NG4500系列整机产品和载板的规格信息如下
       <td>117 INT8 TOPs</td>
       <td>157 INT8 TOPs</td>
     </tr>
-    <tr>
+    <tr> 
       <td><strong>GPU</strong></td>
-      <td colSpan="2">512 NVIDIA® CUDA® cores<br />16 Tensor cores</td>
-      <td colSpan="2">1024 NVIDIA® CUDA® cores<br />32 Tensor cores</td>
+      <td colSpan="1">512 NVIDIA® CUDA® cores<br />16 Tensor cores</td>
+      <td colSpan="3">1024 NVIDIA® CUDA® cores<br />32 Tensor cores</td>
     </tr>
     <tr>
       <td><strong>CPU</strong></td>
@@ -264,14 +263,14 @@ NG4500系列整机产品和载板的规格信息如下
 ![NG45_Series_Outline.png](/img/Hardware_Guide/Edge_AI_Box/BracketAndUage/NG45_Series_Outline.png)
 ### 产品配件 （Note:图片修整，并内容链接到：Dev-Resources）
 
-#### 产品标准配件
+#### 产品基本配件
 >CamThink NeoEdge NG4500产品系列提供的标准配件如下：
 
 <AccessoriesTable
   accessories={[
     {
       image: "/img/Accessories/ng45xx_power_adapter.jpg",
-      name: "电源适配器",
+      name: "电源适配器（可选）",
       quantity: "1",
       description: [
         "输入: 100-240V AC",
@@ -280,21 +279,21 @@ NG4500系列整机产品和载板的规格信息如下
     },
     {
       image: "/img/Accessories/ng45xx_power_cable.jpg",
-      name: "电源线",
+      name: "电源线（可选）",
       quantity: "1",
       description: ["标准三芯电源线1.5m，默认欧规，可选配其他地区规格"]
     },
     {
       image: "/img/Accessories/ng45xx_connector.jpg",
-      name: "工业级接线端子",
+      name: "工业级接线端子（标准配件）",
       quantity: "2",
       description: ["16pin公端子*1、8pin公端子*1"]
     },
     {
       image: "/img/Accessories/ng45xx_bracket.jpg",
-      name: "安装支架",
+      name: "安装支架（标准配件）",
       quantity: "2",
-      description: ["壁挂安装支架*2，DIN导轨安装支架*1"]
+      description: ["壁挂安装支架*2、DIN导轨安装支架*1"]
     }
   ]}
 />
@@ -306,26 +305,26 @@ NG4500系列整机产品和载板的规格信息如下
   accessories={[
     {
       image: "/img/Accessories/ng45xx_ssd.png",
-      name: <a href="../Hardware Dev Resources/SSD">SSD</a>,
+      name: <a href="../Hardware%20Dev%20Resources/SSD">SSD</a>,
       quantity: "1",
       description: ["M.2 NVMe SSD 容量256G-1TB可选"]
     },
     {
       image: "/img/Accessories/ng45xx_wifi.png",
-      name: <a href="../Hardware Dev Resources/WIFI Module">WiFi模组</a>,
+      name: <a href="../Hardware%20Dev%20Resources/WIFI%20Module">WiFi模组</a>,
       quantity: "1",
       description: ["6221M-PUC 双频 Wi-Fi 和蓝牙 5.0 模块"]
     },
     {
       image: "/img/Accessories/ng45xx_4g.png",
-      name: "4G模块+天线",
+      name: <a href="../Hardware%20Dev%20Resources/3-4G%20Module">4G模块+天线</a>,
       quantity: "1",
       description: [
         "Quectel EM05 EM05-G 4G M.2模块，支持欧洲、美国、中国、日本、澳大利亚等主要地区使用"]
     },
     {
       image: "/img/Accessories/ng45xx_5g.png",
-      name: "5G模块+天线",
+      name: <a href="../Hardware%20Dev%20Resources/4-5G%20Module">5G模块+天线</a>,
       quantity: "1",
       description: ["Quectel RM520N-GL 5G M.2模块，支持全球主要地区使用"]
     },
@@ -333,7 +332,7 @@ NG4500系列整机产品和载板的规格信息如下
       image: "/img/Accessories/ng45xx_fan.png",
       name: "风扇",
       quantity: "1",
-      description: ["散热风扇套件, NG45XX载板可用"]
+      description: ["散热风扇套件, NG4500载板可用"]
     },
     {
       image: "/img/Accessories/IMX219.png",
@@ -494,19 +493,19 @@ NG4500系列整机产品和载板的规格信息如下
 
 ### 产品教程
 
-关于如何快速使用Edge AI Box可见[「快速使用教程」](./1-Quick%20Start.md)
+关于如何快速使用NG4500系列AI Box可见[「快速使用教程」](./1-Quick%20Start.md)
 
-关于如何使用Edge AI Box硬件特性和使用说明可见[「硬件使用指南」](./2-Hardware%20Guide/0-Components%20Overview.md)
+关于如何使用NG4500-CB01载板的相关硬件使用和系统应用开发说明可见[「开发指南」](./2-NG4500-CB01%20Development%20Board/0-Dev%20Guide.md)
 
-关于如何使用Edge AI Box系统驱动和开发指引可见[「系统和驱动指南」](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)
+关于NG4500系列产品的应用指南可见[「应用指南」](./3-Application%20Guide/1-Deepseek-r1.md)
 
 
-### 产品资源
+<!-- ### 产品资源
 
 | 资源名称                 | 地址                                                                 |
 |--------------------------|----------------------------------------------------------------------|
 | 硬件原理图               | [/docs/hardware-schematic](/docs/hardware-schematic)                 |
-| 硬件设计指南             | [/docs/hardware-guide](/docs/hardware-guide)                         |
+| 硬件设计指南             | [/docs/hardware-guide](/docs/hardware-guide)                         | -->
 
 
 ## 技术支持与社区

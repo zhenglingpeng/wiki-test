@@ -2,7 +2,7 @@
 
 ## Overview
 
-This chapter provides a quick guide to using the NG45XX series products.
+This chapter provides a quick guide to using the NG4500 series products.
 
 ## Hardware-related
 
@@ -16,7 +16,7 @@ This chapter provides a quick guide to using the NG45XX series products.
 
 ## Initial System Startup Configuration
 
-Refer to the above content, complete the hardware connection, power to NG45XX, according to the following prompts to complete the system's first initial configuration.
+Refer to the above content, complete the hardware connection, power to NG4500, according to the following prompts to complete the system's first initial configuration.
 
 ### 1. User Configuration
 
