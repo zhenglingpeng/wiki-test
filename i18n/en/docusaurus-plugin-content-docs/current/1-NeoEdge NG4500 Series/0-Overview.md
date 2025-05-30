@@ -139,7 +139,7 @@ The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering si
 
 ### Product Specifications
 
-The NG45XX series product and carrier board specifications are as follows:
+The NG4500 series product and carrier board specifications are as follows:
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={require("/img/Overview/NG45xx/Product2.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
@@ -375,7 +375,7 @@ The NG45XX series product and carrier board specifications are as follows:
       image: "/img/Accessories/ng45xx_fan.png",
       name: "Cooling Fan",
       quantity: "1",
-      description: ["Cooling fan kit, compatible with NG45XX carrier board"]
+      description: ["Cooling fan kit, compatible with NG4500 carrier board"]
     },
     {
       image: "/img/Accessories/IMX219.png",
