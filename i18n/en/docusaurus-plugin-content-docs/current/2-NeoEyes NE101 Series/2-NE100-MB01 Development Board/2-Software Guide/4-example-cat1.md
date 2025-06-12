@@ -28,7 +28,7 @@ This solution demonstrates how to utilize **LTE Cat 1** technology for low-power
 #### 1. Quick Experience Firmware
 
 - Precompiled production firmware download:
-  [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101.1.0.1.bin)
+  [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101_FCC.zip)
 
 #### 2. Development Environment Configuration
 
