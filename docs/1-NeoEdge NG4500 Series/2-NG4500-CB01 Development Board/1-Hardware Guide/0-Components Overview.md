@@ -8,7 +8,8 @@
 - DRAM大小及带宽性能对数据处理能力的影响
 - DLA/PVA功能模块：Orin Nano 4/8G 不支持， Orin NX 8G/16G 支持
 - 供电要求（如Orin Nano只支持5V供电），及对应功耗和散热的差异 
-## Carrier Board Overview （图片更新为PCBA）
+## Product Overview 
+
 **Main features**:
 
 - 100M/1000M 双网口
@@ -22,7 +23,7 @@
 - Camera Input Interfaces *2 （4 Lanes MIPI）
 - 14Pins FFC可拓展IO接口    
   ![NG45XX_Product_View](/img/Hardware_Guide/Edge_AI_Box/ComponentsOverview/NG45XX_Product_View.png)  
- ## **Support Accessories Overview**
+ ## **Accessories Overview**
  ### Camera modules 
   兼容树莓派镜头模组，“Camera Module V2” 和 "HQ Camera"可选
 - Camera Module V2: IMX219 4K resolution with fixed Lens

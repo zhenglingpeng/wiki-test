@@ -5,8 +5,6 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
 
 ## **PCBA Interfaces**
 
-(须用最终版本PCBA图，并指示出相关接口:  参考官方标注方式)
-
 ![NG45_PCBA_IO_Bottom](/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45_PCBA_IO_Top.png)
 
 ### Top side Interfaces
@@ -109,7 +107,7 @@ There are related interafces detailed decription,which are using on the Board an
 | 157   | PCIE0_RX3_P   | PCIe 0 Receive 3+ (PCIe Ctrl #4 Lane 3)  | Input     | PCIe PHY          |
 | 134   | PCIE0_TX0_N   | PCIe 0 Transmit 0– (PCIe Ctrl #4 Lane 0) | Output    | PCIe PHY          |
 | 136   | PCIE0_TX0_P   | PCIe 0 Transmit 0+ (PCIe Ctrl #4 Lane 0) | Output    | PCIe PHY          |
-| 140   | PCIE0_TX1_N   | PCIe 0 Transmit 1– PCIe Ctrl #4 Lane 1)  | Output    | PCIe PHY          |
+| 140   | PCIE0_TX1_N   | PCIe 0 Transmit 1– (PCIe Ctrl #4 Lane 1)  | Output   | PCIe PHY          |
 | 142   | PCIE0_TX1_P   | PCIe 0 Transmit 1+ (PCIe Ctrl #4 Lane 1) | Output    | PCIe PHY          |
 | 148   | PCIE0_TX2_N   | PCIe 0 Transmit 2– (PCIe Ctrl #4 Lane 2) | Output    | PCIe PHY          |
 | 150   | PCIE0_TX2_P   | PCIe 0 Transmit 2+ (PCIe Ctrl #4 Lane 2) | Output    | PCIe PHY          |
@@ -142,7 +140,7 @@ There are related interafces detailed decription,which are using on the Board an
 ### J15: M.2 Key B
 此接口用于连接4G/5G模组。
 | Pin # | Signal Name | Description                            | Direction | Pin Type    |
-| ----- | ----------- | -------------------------------------- | --------- | ----------- |
+| :---: | :---------: | :------------------------------------: | --------- | ----------- |
 | /     | USB2_HUB2_P | from usb hub                           | Bidir     |             |
 | /     | USB2_HUB2_N | from usb hub                           | Bidir     |             |
 | 51    | USBSS2_RX_N | USB SS Receive– (USB 3.2 Ctrl #2)      | Input     | USB SS PHY  |
@@ -164,8 +162,8 @@ There are related interafces detailed decription,which are using on the Board an
 
 ### J19: M.2 Key E
 此接口用于连接WiFi/BT模组
-| Pin #  | Signal Name   | Description                                                              | Direction | Pin Type          |
-| ----- | ------------- | ------------------------------------------------------------------------ | --------- | ----------------- |
+| Pin #  | Signal Name  | Description | Direction | Pin Type  |
+| :---: | :-----------: | :--------------------------------------: | :-------: | :---------------: |
 | /     | USB2_HUB1_P   | from usb hub                                                             | Bidir     |                   |
 | /     | USB2_HUB1_N   | from usb hub                                                             | Bidir     |                   |
 | 167   | PCIE1_RX0_N   | PCIe 1 Receive 0– (PCIe Ctrl # 1 Lane 0)                                 | Input     | PCIe PHY          |
@@ -185,7 +183,7 @@ There are related interafces detailed decription,which are using on the Board an
 ### J9: Camera Interface
 此接口为CSI0支持4lanes MIPI,用于连接Camera Module。
 | Pin # | Signal Name | Description                                            | Direction | Pin Type          |
-| ----- | ----------- | ------------------------------------------------------ | --------- | ----------------- |
+| :---: | :---------: | :----------------------------------------------------: | :-------: | :---------------: |
 | 4     | CSI0_D0_N   | Camera, CSI 0 Data 0–                                  | Input     | MIPI D-PHY        |
 | 6     | CSI0_D0_P   | Camera, CSI 0 Data 0+                                  | Input     | MIPI D-PHY        |
 | 16    | CSI0_D1_N   | Camera, CSI 0 Data 1–                                  | Input     | MIPI D-PHY        |
@@ -205,7 +203,7 @@ There are related interafces detailed decription,which are using on the Board an
 ### J10: Camera Interface
 此接口为CSI1支持4lanes MIPI,用于连接Camera Module。
 | Pin # | Signal Name | Description                                            | Direction | Pin Type          |
-| ----- | ----------- | ------------------------------------------------------ | --------- | ----------------- |
+| :---: |    :---:    | :----------------------------------------------------: | :-------: | :---------------: |
 | 24    | CSI2_D0_P   | Camera, CSI 2 Data 0+                                  | Input     | MIPI D-PHY        |
 | 34    | CSI2_D1_N   | Camera, CSI 2 Data 1–                                  | Input     | MIPI D-PHY        |
 | 36    | CSI2_D1_P   | Camera, CSI 2 Data 1+                                  | Input     | MIPI D-PHY        |
@@ -224,7 +222,7 @@ There are related interafces detailed decription,which are using on the Board an
 ### Audio Interface
 
 | Interfaces | Functions            | Descriptions                                                 |
-| ---------- | -------------------- | ------------------------------------------------------------ |
+| :--------: | :------------------: | :----------------------------------------------------------: |
 | J27        | 3.5 Audio Phone Jack | Support Audio Output and Mic Input                           |
 | J24        | Mic Input            | Mono Audio Output or Mic Input, Pin1=In/Out,Pin2=GND         |
 | J25        | Mic Input            | Mono Audio IOutput or Mic Input, Pin1=In/Out,Pin2=GND        |
@@ -237,7 +235,7 @@ There are related interafces detailed decription,which are using on the Board an
 ### 14 Pins Expansion IOs
 此接口可以配拓展板来连接外围设备。
 | Pin # | Signal Name | Description                                               | Direction | Pin Type          |
-| ----- | ----------- | --------------------------------------------------------- | --------- | ----------------- |
+| :---: | :---------: | :-------------------------------------------------------: | :-------: | :---------------: |
 | 103   | UART0_RTS*  | UART #0 Request to Send                                   | Output    | CMOS – 3.3V       |
 | 105   | UART0_CTS*  | UART #0 Clear to Send                                     | Input     | CMOS – 3.3V       |
 | /     | GND         | GND                                                       | GND       | GND               |
@@ -263,10 +261,10 @@ Note:
 Please note that the Alarm IOs are dry contact. 
 
 | Pin # | Signal Name    | Description                                       | Direction | Pin Type    |
-| ----- | -------------- | ------------------------------------------------- | --------- | ----------- |
-| 218   | GPIO12         | GPIO=Low/high when IN1=high（Open）/low(Short)      | Input     | dry contact |
+| ----- | :------------: | ------------------------------------------------- | :-------: | :---------: |
+| 218   | GPIO12         | GPIO=Low/high when IN1=high（Open）/low(Short)    | Input     | dry contact |
 |       |                | IN1_COM: COM pin                                  |           |             |
-| 216   | GPIO11         | IN2: GPIO=Low/high when IN1=high（Open）/low(Short) | Input     | dry contact |
+| 216   | GPIO11         | IN2: GPIO=Low/high when IN1=high（Open）/low(Short) | Input   | dry contact |
 |       |                | IN2_COM: COM pin                                  |           |             |
 | 206   | GPIO07         | IN3: GPIO=Low/high when IN1=high（Open）/low(Short) | Input     | dry contact |
 |       |                | IN3_COM: COM pin                                  |           |             |
@@ -282,7 +280,7 @@ Please note that the Alarm IOs are dry contact.
 |       |                | OUT4_COM: COM pin                                 |           |             |
 
 | Pin # | Signal Name | Description                                    | Direction | Pin Type     |
-| ----- | ----------- | ---------------------------------------------- | --------- | ------------ |
+| :---: | :---------: | :--------------------------------------------: | :-------: | :----------: |
 | 203   | UART1_TXD   | Use for RS_485                                 | Output    | CMOS    1.8V |
 | 205   | UART1_RXD   | Use for RS_485                                 | Input     | CMOS    1.8V |
 | 207   | UART1_RTS*  | RS_485 enable pin                              | Output    | CMOS    1.8V |
