@@ -310,12 +310,13 @@ NE101整机产品规格如下：
     },
     {
       image: "/img/Overview/NE101/sensor1.png",
-      name: "2MP USB摄像头模组",
+      name: "SC200AI USB摄像头模组",
       quantity: "1",
       description: [
-        "支持2种规格：",
-        "60° FOV, 9m focus",
-        "120° FOV, 5m focus",
+        "支持3种规格：",
+        "1080P ,51° FOV, 4m focus",
+        "1080P ,88° FOV, 3m focus",
+        "1080P ,137° FOV, 2m focus",
       ]
     },
     {
