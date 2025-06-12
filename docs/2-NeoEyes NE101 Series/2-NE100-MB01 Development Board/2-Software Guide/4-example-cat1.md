@@ -17,9 +17,9 @@
 
 ### 硬件需求
 
-- **主控单元**：核心开发板
-- **通信模块**：LTE Cat 1无线模组
-- **网络接入**：已激活的4G SIM卡
+- NE100-MB01开发板
+- LTE Cat 1无线模组
+- 已激活的4G SIM卡
 
 ![Cat1模组硬件连接示意图](/img/Overview/NE101/cat1PCBA.png)
 
@@ -27,8 +27,7 @@
 
 #### 1. 快速体验固件
 
-- 预编译生产固件下载：
-  [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101.1.0.1.bin)
+- 预编译生产固件下载：[lowpower_camera/bin/NE_101_FCC.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
 
 #### 2. 开发环境配置
 
@@ -56,8 +55,8 @@
 
 #### 3. 网络状态验证
 
-1. 短按功能键进入配置模式
-2. 访问设备Web管理界面（http://192.168.1.1）
+1. 长按功能键进入配置模式
+2. 访问设备Web管理界面 http://192.168.1.1
 3. 查看"蜂窝网络"状态信息
 
 ![网络状态显示界面1](/img/NE101_example_cat1_1.png)
@@ -112,6 +111,7 @@ git clone https://github.com/camthink-ai/lowpower_camera.git
 - **弱信号**：RSSI < -95dBm
 
 > **开发建议**：
+> 
 > 1. 使用串口工具监控AT指令交互，便于快速排查通信问题
 > 2. 网络注册过程通常需要30-60秒，属正常现象
 > 3. 在弱信号环境下调整设备位置

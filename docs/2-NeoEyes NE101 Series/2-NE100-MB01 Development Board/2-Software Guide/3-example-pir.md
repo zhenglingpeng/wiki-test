@@ -16,15 +16,15 @@
 ## 开发准备
 
 ### 硬件需求
-- NE100-CM01开发板
+
+- NE100-MB01开发板
 - PIR运动检测传感器
 
 ### 软件资源
 
 #### 1. 快速部署固件
 
-- 预编译生产固件下载：
-  [PIR检测固件](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE101_PIR.zip)
+- 预编译生产固件下载：[lowpower_camera/bin/NE_101_PIR.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
 
 #### 2. 开发环境配置
 
@@ -108,10 +108,6 @@ git clone https://github.com/camthink-ai/lowpower_camera.git
 
 ## 优化建议
 
-### 功耗管理策略
-
-- 设置合理的触发间隔（建议≥30秒）
-
 ### 抗干扰措施
 
 - 增加PULSE_C参数值（建议2-3秒）
@@ -125,5 +121,6 @@ git clone https://github.com/camthink-ai/lowpower_camera.git
 - 根据场景调整检测角度
 
 > **调试技巧**：
+> 
 > 1. 使用逻辑分析仪监测GPIO信号
 > 2. 通过串口日志分析误触发原因

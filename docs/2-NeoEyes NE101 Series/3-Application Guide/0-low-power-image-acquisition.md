@@ -53,7 +53,7 @@ flowchart LR
 
 1. **预编译固件**：
    
-   - 示例固件：[lowpower_camera.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101.1.0.1.zip)
+   - 示例固件：[lowpower_camera.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101_FCC.zip)
 
 2. **源码开发**：
    
