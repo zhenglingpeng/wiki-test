@@ -1,4 +1,5 @@
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Quick Start
 
@@ -18,10 +19,10 @@ Before starting, prepare the following items: NE101 device, 4×AA batteries (siz
 4. Reattach the rear cover.
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_2.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_3.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_4.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_5.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_2.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_3.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_4.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_5.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ### Device Configuration
@@ -31,16 +32,16 @@ The NE101 provides a configuration web interface via its built-in WiFi AP (SSID:
 Press the capture button on the right side. If the flash activates, the device is powered on. In normal operation, pressing this button triggers image capture and MQTT upload.
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_6.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_6.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 #### 2. Connect to WiFi AP
 After booting, locate the **NE101_ABC123** WiFi network and connect (no password required). For newer firmware versions, **long-press the capture button for 3 seconds** to activate the AP mode (indicator flashes).
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_7.gif" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_9.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_10.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_7.gif')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_9.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_10.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 #### 3. Configuration Settings
@@ -56,7 +57,7 @@ After booting, locate the **NE101_ABC123** WiFi network and connect (no password
   - Horizontal/Vertical Flip: For installation adjustments.
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_11.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_11.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ##### Capture Settings
@@ -64,18 +65,18 @@ After booting, locate the **NE101_ABC123** WiFi network and connect (no password
   - *Timed Mode*: Daily or weekly schedules (up to 8 time points).
   - *Interval Mode*: Minute/hour/day-based intervals (single rule).
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_12.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_13.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_12.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_13.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 - **Alarm-In Trigger**: Uses hardware signals via the rear Alarm-In port.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_18.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_18.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 - **Button Capture**: Enabled by default. Disabling this prevents manual capture via the side button.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_19.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_19.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ##### Data Reporting (MQTT)
@@ -88,7 +89,7 @@ Configure MQTT parameters for data transmission:
 - Username/Password: Broker authentication.
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_15.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_15.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ##### Device Management
@@ -99,13 +100,13 @@ View device info and update firmware:
 - Firmware Version: Display and update via file upload.
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_14.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_14.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ##### Network Configuration
 - **WiFi**: Scan and connect to available networks (stores latest credentials).
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_13.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_13.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 - **Cat-1 (Cellular)**:
@@ -113,17 +114,17 @@ View device info and update firmware:
   2. Configure APN, credentials, and PIN in the Cellular section.
   3. Test connectivity and save settings.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_21.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_20.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_23.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_22.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_21.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_20.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_23.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_22.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 - **WiFi Halow**: Select region frequency and connect to Halow gateways.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_24.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_25.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_26.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_24.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_25.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_26.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ### Device Testing
@@ -180,15 +181,15 @@ You can also paste the Base64 data into a[Base64 IMAGE View](https://base64.guru
 ### Bottom Bracket Extension
 Locate the screw hole on the side of the NE101. Align the bracket with the device, then use screws to secure it. Once fixed, you can rotate the bracket to adjust the angle. Secure the bottom of the bracket to the desired mounting location by drilling screw holes.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Overview/NE101/Bracket/1.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
-   <img src="/img/QuickStart/NE101/ne101_27.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/Bracket/1.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_27.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
 ### Back Bracket Extension
 Locate the screw hole on the side of the NE101. Align the bracket with the device, then use screws to secure it. Find the desired wall-mounting location and secure the bracket by screwing into the screw holes on both sides.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Overview/NE101/Bracket/3.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_28.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/Bracket/3.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_28.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 

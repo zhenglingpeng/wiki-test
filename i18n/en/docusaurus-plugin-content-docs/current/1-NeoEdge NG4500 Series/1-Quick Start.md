@@ -6,13 +6,14 @@ This chapter provides a quick guide to using the NG4500 series products.
 
 ## Hardware-related
 
-- ​**​Hardware Overview​**​: For details, refer to the [Hardware Component Description](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Hardware%20Guide/Components%20Overview).
-- ​**​Device Assembly​**​: For instructions, see the [Hardware Connection Guide](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Hardware%20Guide/Hardware%20Connection).
+- ​**​Hardware Overview​**​: For details, refer to the [Hardware Component Description](NG4500-CB01%20Development%20Board/Hardware%20Guide/Components%20Overview)
+
+- ​**​Device Assembly​**​: For instructions, see the [Hardware Connection Guide](NG4500-CB01%20Development%20Board/Hardware%20Guide/Hardware%20Connection).
 
 ## Software-related
 
-- ​**​Environment Setup​**​: For setting up the software development environment, refer to [Development Environment Setup](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/Development%20Environment%20Setup).
-- ​**​Firmware Flashing​**​: For detailed steps on firmware flashing, see [System Firmware Flashing and Initialization](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/System%20Flashing%20and%20Initialization).
+- ​**​Environment Setup​**​: For setting up the software development environment, refer to [Development Environment Setup](NG4500-CB01%20Development%20Board/Software%20Guide/Development%20Environment%20Setup).
+- ​**​Firmware Flashing​**​: For detailed steps on firmware flashing, see [System Firmware Flashing and Initialization](NG4500-CB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization).
 
 ## Initial System Startup Configuration
 

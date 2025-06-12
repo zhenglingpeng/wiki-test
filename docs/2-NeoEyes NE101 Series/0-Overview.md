@@ -2,6 +2,7 @@ import Link from "@docusaurus/Link";
 import SupportGrid from '@site/src/components/SupportGrid';
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Product Info
 
@@ -48,8 +49,8 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 - **补光灯**：补光灯和光敏支持，适合在近距离黑暗环境中采集图像使用。
 - **Alam接口**：2Pin Wafer支持Alarm输入。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Board/NE100-MB01_1.png" alt="主板正面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/Board/NE100-MB01_2.png" alt="主板背面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Board/NE100-MB01_1.png')} alt="主板正面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Board/NE100-MB01_2.png')} alt="主板背面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ### 通讯方案扩展
@@ -58,8 +59,8 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 - **Cat-1模块规格**：移远EG912UGL，支持LTE FDD/TDD和GSM（除北美外全球支持），尺寸60mm x 60mm。
 - **WiFi HaLow模块规格**：移远FGH100M，基于IEEE 802.11ah协议，用于长距离低功耗连接，尺寸60mm x 60mm。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Overview/NE101/cat1PCBA.png" alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/Overview/NE101/wifihalow.png" alt="WiFi HaLow PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/cat1PCBA.png')} alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/wifihalow.png')} alt="WiFi HaLow PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ### 可换相机模组
@@ -124,8 +125,8 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 注：USB相机模组会占用额外IO资源，详见[「硬件指南-硬件连接-16Pin GPIO扩展」](./2-Hardware%20Guide/1-Hardware%20Connection.md)
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Overview/NE101/sensor1.png" alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/Overview/NE101/sensor2.png" alt="WiFi HaLow PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/sensor1.png')} alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/sensor2.png')} alt="WiFi HaLow PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ### 适用性与部署
@@ -134,18 +135,18 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 - **无线与户外部署支持**：支持电池供电、低功耗运行，结合 IP67 级防护设计，适用于各种恶劣环境中的长期部署。
 - **灵活的安装方式**：支持墙面、顶部、立杆等多种安装方式，提供丰富的原装支架和外壳扩展组件，满足多样部署需求，支架规格和主要使用常见可见[产品配件-产品选配配件](#产品选配配件)
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Overview/NE101/Bracket/1.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/Overview/NE101/Bracket/3.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/Overview/NE101/Bracket/5.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/Bracket/1.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/Bracket/3.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/Bracket/5.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ## 产品信息
 ### 产品规格
 NE101整机产品规格如下：
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Overview/NE101/NE101.png" alt="NE101" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/Overview/NE101/ProductBL.png" alt="NE101" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/Overview/NE101/ProductR.png" alt="NE101" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/NE101.png')} alt="NE101" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/ProductBL.png')} alt="NE101" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/ProductR.png')} alt="NE101" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 <table style={{ width: '100%', tableLayout: 'fixed' }}>
   <thead>

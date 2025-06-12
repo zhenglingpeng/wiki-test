@@ -1,4 +1,6 @@
 import DocumentList from '@site/src/components/DocumentList';
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Welcome
 
@@ -18,58 +20,58 @@ To help you get started quickly, here are some essential resource links:
   {/* NeoEdge NG4500 Series product card */}
   <div className="product-card">
     <div className="product-header">
-      <img src="/img/Overview/NG45xx/NG45XX.png" alt="NeoEdge NG45XX" className="product-image"/>
+      <img src={useBaseUrl('img/Overview/NG45xx/NG45XX.png')} alt="NeoEdge NG45XX" className="product-image"/>
       <h3 className="product-title">Edge AI Box NG45xx</h3>
     </div>
     <p className="product-description">
       High-performance edge computing device based on NVIDIA Jetson platform, ideal for complex AI inference and multimodal data processing scenarios.
     </p>
     <div className="product-links">
-      <a href="/docs/NeoEdge NG4500 Series/Overview" className="link-item">
+      <Link to={useBaseUrl('docs/NeoEdge NG4500 Series/Overview')} className="link-item">
         <span className="link-icon">📖</span>
         <span>Product Overview</span>
-      </a>
-      <a href="/docs/NeoEdge NG4500 Series/Quick Start" className="link-item">
+      </Link>
+      <Link to={useBaseUrl('docs/NeoEdge NG4500 Series/Quick Start')} className="link-item">
         <span className="link-icon">🚀</span>
         <span>Quick Start</span>
-      </a>
-      <a href="/docs/NeoEdge NG4500 Series/NG4500-CB01 Development Board/Dev Guide" className="link-item">
+      </Link>
+      <Link to={useBaseUrl('docs/NeoEdge NG4500 Series/NG4500-CB01 Development Board/Dev Guide')} className="link-item">
         <span className="link-icon">🔧</span>
         <span>Development Guide</span>
-      </a>
-      <a href="/docs/NeoEdge NG4500 Series/Application Guide/Deepseek-r1" className="link-item">
+      </Link>
+      <Link to={useBaseUrl('docs/NeoEdge NG4500 Series/Application Guide/Deepseek-r1')} className="link-item">
         <span className="link-icon">📱</span>
         <span>Application Guide</span>
-      </a>
+      </Link>
     </div>
   </div>
 
   {/* NeoEyes NE101 Series product card */}
   <div className="product-card">
     <div className="product-header">
-      <img src="/img/Overview/NE101/NE101.png" alt="NeoEyes NE101" className="product-image"/>
+      <img src={useBaseUrl('img/Overview/NE101/NE101.png')} alt="NeoEyes NE101" className="product-image"/>
       <h3 className="product-title">NeoEyes NE101 Smart Camera</h3>
     </div>
     <p className="product-description">
       Lightweight intelligent camera supporting edge vision analysis and wireless connectivity, perfect for IoT and lightweight AI applications.
     </p>
     <div className="product-links">
-      <a href="/docs/NeoEyes NE101 Series/Overview" className="link-item">
+      <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Overview')} className="link-item">
         <span className="link-icon">📖</span>
         <span>Product Overview</span>
-      </a>
-      <a href="/docs/NeoEyes NE101 Series/Quick Start" className="link-item">
+      </Link>
+      <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Quick Start')} className="link-item">
         <span className="link-icon">🚀</span>
         <span>Quick Start</span>
-      </a>
-      <a href="/docs/NeoEyes NE101 Series/NE100-MB01 Development Board/Dev Guide" className="link-item">
+      </Link>
+      <Link to={useBaseUrl('docs/NeoEyes NE101 Series/NE100-MB01 Development Board/Dev Guide')} className="link-item">
         <span className="link-icon">🔧</span>
         <span>Development Guide</span>
-      </a>
-      <a href="/docs/NeoEyes NE101 Series/Application Guide/example-uvc" className="link-item">
+      </Link>
+      <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Application Guide/example-uvc')} className="link-item">
         <span className="link-icon">📱</span>
         <span>Application Guide</span>
-      </a>
+      </Link>
     </div>
   </div>
 

@@ -81,7 +81,7 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
 
 10. 确认以上操作无误后，将电源适配器连接到 DC-JACK，即可开始进行套件开发调试
 
-    **软件烧录和操作参考**：[System Flashing](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/System%20Flashing%20and%20Initialization)
+    **软件烧录和操作参考**：[System Flashing](../Software%20Guide/System%20Flashing%20and%20Initialization)
 
     
 

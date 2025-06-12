@@ -51,7 +51,7 @@
 - 以上完成后即可开始相关调试
 
 
- **软件烧录和调试**：[AI Camera System Flashing](http://192.168.13.9:3000/docs/Edge%20AI%20Camera/NeoEyes%20NE101%20Series/Software%20Guide/System%20Flashing%20and%20Initialization)
+ **软件烧录和调试**：[AI Camera System Flashing](../Software%20Guide/System%20Flashing%20and%20Initialization)
 
 ## **Interfaces description**
 

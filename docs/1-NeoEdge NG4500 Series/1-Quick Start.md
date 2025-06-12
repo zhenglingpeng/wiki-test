@@ -6,7 +6,7 @@
 
 ## 硬件准备
 
-- **硬件概述**，请参阅[硬件组件说明](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Hardware%20Guide/Components%20Overview)
+- **硬件概述**，请参阅[硬件组件说明](NG4500-CB01%20Development%20Board/Hardware%20Guide/Components%20Overview)
 
 - **设备组装（补充接线的整机图,或安装步骤图）** 
 
@@ -48,9 +48,9 @@
 
 如果设备尚未烧录固件，请参考以下链接以完成固件烧录步骤；如果您已经完成固件烧录，可直接进行部署。
 
-- **环境搭建**，软件开发环境，请参阅[开发环境搭建](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/Development%20Environment%20Setup)
+- **环境搭建**，软件开发环境，请参阅[开发环境搭建](NG4500-CB01%20Development%20Board/Software%20Guide/Development%20Environment%20Setup)
 
-- **固件烧录**，详细固件烧录步骤，请参阅[系统固件烧录](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/System%20Flashing%20and%20Initialization)
+- **固件烧录**，详细固件烧录步骤，请参阅[系统固件烧录](NG4500-CB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
 
 ## 首次系统启动引导配置
 

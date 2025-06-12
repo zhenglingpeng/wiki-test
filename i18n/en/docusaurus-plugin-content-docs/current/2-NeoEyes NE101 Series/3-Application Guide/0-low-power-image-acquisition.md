@@ -1,3 +1,5 @@
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Low Power Image Acquisition
 
 ## Application Introduction
@@ -10,8 +12,8 @@ This project demonstrates an example implementation of a low-power image acquisi
 - Flexible wake-up mechanisms, supporting both timing and sensor triggers
 - Complete image acquisition and data transmission process
 - Open extension interfaces, supporting AI and sensor function extensions
-  - For sensor extension, see ["PIR Example"](../3-Software%20Guide/3-example-pir.md)
-  - For AI extension, see ["Face Recognition Example"](1-human-face-detect.md)
+  - For sensor extension, see ["PIR Example"](../NE100-MB01%20Development%20Board/Software%20Guide/example-pir)
+  - For AI extension, see ["Face Recognition Example"](./human-face-detect)
 
 ## Program Logic
 
@@ -124,7 +126,7 @@ The following will detail the specific parameters and usage methods of each func
   - Switch status: Enabled
 - **Default Button**
   - Function: Reset image parameters to default values
-    <img src="/img/Overview/NE101/Software/1.png" alt="Image Adjustment" style={{height: "300px", display: "block", margin: "20px auto"}} />
+    <img src={useBaseUrl('/img/Overview/NE101/Software/1.png')} alt="Image Adjustment" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Capture Setting
 
@@ -142,7 +144,7 @@ The following will detail the specific parameters and usage methods of each func
   - Switch status: Disabled
 - **Enable Capture Button**
   - Switch status: Enabled
-    <img src="/img/Overview/NE101/Software/2.png" alt="Capture Setting" style={{height: "300px", display: "block", margin: "20px auto"}} />
+    <img src={useBaseUrl('/img/Overview/NE101/Software/2.png')} alt="Capture Setting" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Data Report
 
@@ -154,7 +156,7 @@ The following will detail the specific parameters and usage methods of each func
 - **Username / Password**: Empty
 - **Save Button**
   - Save data reporting related configuration
-    <img src="/img/Overview/NE101/Software/3.png" alt="Data Report" style={{height: "300px", display: "block", margin: "20px auto"}} />
+    <img src={useBaseUrl('/img/Overview/NE101/Software/3.png')} alt="Data Report" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Device Maintenance
 
@@ -165,7 +167,7 @@ The following will detail the specific parameters and usage methods of each func
 - **Firmware Version**: `NE_101.1.0.1`
 - **Upgrade Firmware**
   - Upgrade through local firmware file upload
-    <img src="/img/Overview/NE101/Software/4.png" alt="Device Maintenance" style={{height: "300px", display: "block", margin: "20px auto"}} />
+    <img src={useBaseUrl('/img/Overview/NE101/Software/4.png')} alt="Device Maintenance" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Connection
 
@@ -188,7 +190,7 @@ The following will detail the specific parameters and usage methods of each func
   - One-click refresh: Quick scan for available networks
   - Auto reconnect: Automatic recovery after network interruption
 
-<img src="/img/Overview/NE101/Software/5.png" alt="WLAN Connection" style={{height: "300px", display: "block", margin: "20px auto"}} />
+<img src={useBaseUrl('/img/Overview/NE101/Software/5.png')} alt="WLAN Connection" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Sleep Mode
 

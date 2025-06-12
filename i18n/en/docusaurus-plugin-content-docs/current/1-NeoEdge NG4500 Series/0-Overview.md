@@ -529,7 +529,7 @@ The NG4500 series product and carrier board specifications are as follows:
             {item.description}
           </p>
         </div>
-      </a>
+      </Link>
     ));
 
   })()}

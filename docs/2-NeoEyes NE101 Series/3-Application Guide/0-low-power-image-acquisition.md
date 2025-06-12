@@ -1,3 +1,5 @@
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Low Power Image Acquisition
 
 ## 应用简介
@@ -10,8 +12,8 @@
 - 灵活的唤醒机制，支持定时和传感器触发
 - 完整的图像采集和数据传输流程
 - 开放的扩展接口，支持AI和传感器功能扩展
-  - 传感器扩展参见[「PIR示例」](../3-Software%20Guide/3-example-pir.md)
-  - AI扩展参见[「人脸识别示例」](1-human-face-detect.md)
+  - 传感器扩展参见[「PIR示例」](../NE100-MB01%20Development%20Board/Software%20Guide/example-pir)
+  - AI扩展参见[「人脸识别示例」](./human-face-detect)
 
 ## 程序逻辑
 
@@ -124,7 +126,7 @@ flowchart LR
   - 开关状态：已开启
 - **恢复默认（Default）按钮**
   - 功能：重置图像参数为默认值
-    <img src="/img/Overview/NE101/Software/1.png" alt="Image Adjustment" style={{height: "300px", display: "block", margin: "20px auto"}} />
+    <img src={useBaseUrl('/img/Overview/NE101/Software/1.png')} alt="Image Adjustment" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 拍照设置（Capture Setting）
 
@@ -142,7 +144,7 @@ flowchart LR
   - 开关状态：已关闭
 - **启用拍照按钮（Enable Capture Button）**
   - 开关状态：已开启
-    <img src="/img/Overview/NE101/Software/2.png" alt="Capture Setting" style={{height: "300px", display: "block", margin: "20px auto"}} />
+    <img src={useBaseUrl('/img/Overview/NE101/Software/2.png')} alt="Capture Setting" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 数据上报（Data Report）
 
@@ -154,7 +156,7 @@ flowchart LR
 - **Username / Password**：留空
 - **保存按钮（Save）**
   - 保存数据上报相关配置
-    <img src="/img/Overview/NE101/Software/3.png" alt="Data Report" style={{height: "300px", display: "block", margin: "20px auto"}} />
+    <img src={useBaseUrl('/img/Overview/NE101/Software/3.png')} alt="Data Report" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 设备维护（Device Maintenance）
 
@@ -165,7 +167,7 @@ flowchart LR
 - **固件版本（Firmware Version）**：`NE_101.1.0.1`
 - **固件升级（Upgrade Firmware）**
   - 通过本地上传固件文件进行升级
-    <img src="/img/Overview/NE101/Software/4.png" alt="Device Maintenance" style={{height: "300px", display: "block", margin: "20px auto"}} />
+    <img src={useBaseUrl('/img/Overview/NE101/Software/4.png')} alt="Device Maintenance" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 网络连接（Connection）
 
@@ -188,7 +190,7 @@ flowchart LR
   - 一键刷新：快速扫描可用网络
   - 自动重连：网络中断自动恢复
 
-<img src="/img/Overview/NE101/Software/5.png" alt="WLAN Connection" style={{height: "300px", display: "block", margin: "20px auto"}} />
+<img src={useBaseUrl('/img/Overview/NE101/Software/5.png')} alt="WLAN Connection" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### 休眠模式（Sleep Mode）
 

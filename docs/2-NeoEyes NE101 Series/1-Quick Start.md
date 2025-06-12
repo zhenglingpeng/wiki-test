@@ -1,4 +1,5 @@
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Quick Start
 
@@ -14,10 +15,10 @@ import AccessoriesTable from '@site/src/components/AccessoriesTable';
 ### 设备开机
 使用螺丝刀拆卸NE101后盖，按照电池仓分布安装电池，等待相机前部的**灯光闪烁亮起**后，表示相机已经**系统启动**，将后盖重新安装回设备，到这里你将完成设备的基本启动，完成后我们可以进行下一步，对设备进行配置。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_2.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_3.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_4.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_5.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_2.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_3.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_4.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_5.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ### 设备配置
@@ -25,16 +26,16 @@ import AccessoriesTable from '@site/src/components/AccessoriesTable';
 #### 1、保证NE101处于开机状态
 你可以手指轻按相机右侧的拍照按钮，查看闪光灯是否亮起，如果亮起说明当前机器处于开机状态，如果你是在调试设备，点击拍照按键NE101将会抓取当前页面图像，并通过你配置的MQTT地址上传图像，如果一切配置正常的话，详细配置修改见下方说明。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_6.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_6.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 #### 2、开启NE101 WiFi AP 并在手机或电脑上寻找到它
 NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找对应SSID规则为 **NE101_ABC123**的WiFi AP，点击连接它，你无需输入密码，当你正常链接后，即可通过**192.168.1.1**地址在浏览器中访问到NE101的配置Web页，如果你成功了将看到浏览器上的Web页面。
 >**在新的固件版本中为了进一步降低NE101的使用功耗，WiFi AP的唤醒逻辑为长按拍照键3s（逻辑改：长按3-5S，且等灯闪2次），直到灯光闪烁亮起，可以参考下方的操作录屏**
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_7.gif" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_9.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_10.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_7.gif')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_9.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_10.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 #### 3、进行设备配置
@@ -45,7 +46,7 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 - 默认按钮：点击后会重置OV5640相机模组的参数为出厂设置，请谨慎使用。
 - 补光灯模式：支持自动模式、自定义、常开、长开4种模式，请根据你的实际使用场景设置此配置。
    - 自动模式
-      - 选择自动模式需要额外设置“光照阈值”，“光照阈值”文本右侧数值为当前环境的光照数值，你可通过数值右侧的按钮刷新数据，右侧可拖拽设置阈值，阈值作用为当光照强度低于设置值时自动开启设备补光灯。
+      - 选择自动模式需要额外设置"光照阈值"，"光照阈值"文本右侧数值为当前环境的光照数值，你可通过数值右侧的按钮刷新数据，右侧可拖拽设置阈值，阈值作用为当光照强度低于设置值时自动开启设备补光灯。
       - 光照强度为补光灯强度，1-100可调整。
    - 自定义模式
       - 支持设置时间范围，指的是时间在什么区间内设备会启用补光灯，通常是具有周期性的场景下定期开始补光灯保证图像质量时使用此模式
@@ -61,7 +62,7 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
    - 水平翻转：画面水平翻转，用于设备实际安装后成像需要水平翻转时使用
    - 垂直翻转：画面垂直翻转，用于设备实际安装后成像需要垂直翻转时使用
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_11.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_11.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 **抓图设置**
@@ -70,16 +71,16 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
    - 定时抓图模式：支持设置每天定时抓图或周一至周日具体时间点抓图，时间可以设置00:00 - 23:59，最多支持设置8个抓拍时间用于定时图像抓取。
    - 间隔抓图模式：支持设置抓图的时间间隔，用于按照时间间隔进行图像抓取，支持按照分钟、小时、天的时间纬度进行设置，最多仅支持1个规则设置。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_12.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_13.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_12.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_13.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 - Alarm-In抓图：开启功能后支持，硬件主板背部的Alarm-In座子输入信号用于图像抓拍。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_18.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_18.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 - 启用按键抓图：开启抓图按键，**此功能建议不要关闭**，用于设备外部右侧的开关按键可操作抓取当前图像使用。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_19.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_19.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
@@ -93,7 +94,7 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 - Username：用于设置连接MQTT服务所需校验的用户名。
 - Password：用于设置连接MQTT服务所需校验的用户名对应的密码，需要与上方相同。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_15.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_15.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
@@ -107,7 +108,7 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 - 固件版本：当前硬件装载的固件版本。
 - 固件更新：点击下方的Browse按钮，可以选择电脑或手机的文件，选取需要升级的镜像文件后，可以点击Upgrade按钮上传进行镜像更新，需要注意**设备更新完成后需要刷新Web页，少数情况需要重新连接NE101的WiFi AP**
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_14.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_14.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
@@ -115,7 +116,7 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 >NE101的网络连接设置，根据所选的通讯方案设置内容有所差异，主要有**WiFi、Cat-1、WiFi-Halow**3种通讯方案可设置，下方详细说明这些通讯方案的设置与使用。
 - **WiFi设置**：NE101标准版本自带WiFi，WiFi版本下，可在配置界面中查看当前范围内可检索到的WiFi信号，你可以根据所需连接的WiFi进行选择设置，设备会自动记录WiFi的SSID和密码，如果重复设置NE101连接的WiFi则设备存储的SSID和密码始终是最近一次的。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_13.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_13.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 - **Cat-1网络设置**：NE101 Cat-1版本支持进行网络的设置，你有一些必要的前提条件，分别是所在地区的sim卡，当前NE101 Cat-1版本支持除北美地区以外的其他地区使用，请按照当前地区的所在运营商购置对应的sim卡，下方将会说明如何进行Cat-1网络设置，如何获取Cat-1版本的NE101，可以考虑。
    - 使用螺丝刀打开NE101的设备前盖。
@@ -126,18 +127,18 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
    会变为connect状态，说明网络正常，然后点击save保存信息。
    - 你可以通过Details按钮来查看网络的详细信息，显示信息可以参考下方图像。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_21.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_20.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_23.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_22.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_21.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_20.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_23.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_22.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
 - **WiFi Halow网络设置**：NE101 WiFi-Halow版本支持进行网络设置，可以通过Refresh按钮刷新当前的WiFi-Halow网关信号，Region下拉选择对应的区域频段，找对所需要的WiFi-Halow SSID进行连接。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/QuickStart/NE101/ne101_24.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_25.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_26.png" alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_24.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_25.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_26.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ### 设备调试
@@ -204,14 +205,14 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 ### 底部支架扩展件
 找到NE101侧面的螺丝孔，将支架与设备对齐，对齐后使用螺丝进行固定，固定完成后可以旋转支架调整角度，将支架底部与需要固定安装的位置进行螺丝打孔固定。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Overview/NE101/Bracket/1.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
-   <img src="/img/QuickStart/NE101/ne101_27.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/Bracket/1.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_27.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
 ### 背部支架扩展件
 找到NE101侧面的螺丝孔，将支架与设备对齐，对齐后使用螺丝进行固定，找到需要壁挂安装的位置，将支架左右两侧的螺丝孔进行螺丝固定安装。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src="/img/Overview/NE101/Bracket/3.png" alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src="/img/QuickStart/NE101/ne101_28.png" alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/Bracket/3.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_28.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
