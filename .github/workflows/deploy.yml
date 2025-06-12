@@ -9,28 +9,86 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 获取源码
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 设置 Git 用户身份，防止提交失败
       - name: Set Git Identity
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
 
+      # 安装 Node.js 和缓存 yarn 依赖
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: yarn
 
+      # 安装依赖
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      # 构建静态网站
       - name: Build site
         run: yarn build
 
+      # 部署到 gh-pages 分支
       - name: Deploy to GitHub Pages
         env:
           GIT_USER: camthink-ai
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: yarn deploy
+          USE_SSH: false
+        run: |
+          # 强制将 SSH URL 替换为 HTTPS，确保使用 Token 方式推送
+          git config --global url."https://github.com/".insteadOf git@github.com:
+          git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+          yarn deploy
+name: Deploy Docusaurus to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 获取源码
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 设置 Git 用户身份，防止提交失败
+      - name: Set Git Identity
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
+      # 安装 Node.js 和缓存 yarn 依赖
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: yarn
+
+      # 安装依赖
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # 构建静态网站
+      - name: Build site
+        run: yarn build
+
+      # 部署到 gh-pages 分支
+      - name: Deploy to GitHub Pages
+        env:
+          GIT_USER: camthink-ai
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USE_SSH: false
+        run: |
+          # 强制将 SSH URL 替换为 HTTPS，确保使用 Token 方式推送
+          git config --global url."https://github.com/".insteadOf git@github.com:
+          git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+          yarn deploy
