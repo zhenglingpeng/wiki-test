@@ -36,8 +36,8 @@
 
   
  ### Expansion modules
-- 4G 模组：[4G Module](http://localhost:3000/docs/Hardware%20Dev%20Resources/3-4G%20Module)
-- 5G 模组：[5G Module](http://localhost:3000/docs/Hardware%20Dev%20Resources/4-5G%20Module)
+- 4G 模组：[4G Module](../../../Hardware%20Dev%20Resources/3-4G%20Module)
+- 5G 模组：[5G Module](../../../Hardware%20Dev%20Resources/4-5G%20Module)
 - WiFi/BT 模组
  ### Mounts and enclosures
 

@@ -34,7 +34,7 @@
 - After completing the above steps, you may begin the related debugging procedures.
 
 
- **For program and debug, please ref**：[AI Camera System Flashing](http://192.168.13.9:3000/docs/Edge%20AI%20Camera/NeoEyes%20NE101%20Series/Software%20Guide/System%20Flashing%20and%20Initialization)
+ **For program and debug, please ref**：[AI Camera System Flashing](../Software%20Guide/System%20Flashing%20and%20Initialization)
 
 ## **Interfaces description**
 ### PIR  GPIOs Defined
@@ -144,4 +144,4 @@ Detailed information please reference the comparison table.
 | 13   | GPIO     | GPIO19      |              | WIFI_WAKE         |
 | 14   | GPIO     | GPIO48      | CAT1_PWR_H   | WIFI_PWR_H        |
 | 15   | GPIO     | GPIO20      |              | WIFI_RST          |
-| 16   | GPIO     | GPIO46      |              | WIFI_BUSY         |
+| 16   | GPIO     | GPIO46      |              | `WIFI_BUSY`       |
