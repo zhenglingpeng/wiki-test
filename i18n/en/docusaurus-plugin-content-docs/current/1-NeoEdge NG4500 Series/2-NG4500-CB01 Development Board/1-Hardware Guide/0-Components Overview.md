@@ -22,7 +22,6 @@
 - RTC Backup Battery 
 - Camera Input Interfaces *2 （MIPI）
 - 14Pins FFC可拓展IO接口    
-  ![NG45XX_Product_View](/img/Hardware_Guide/Edge_AI_Box/ComponentsOverview/NG45XX_Product_View.png)  
  ## **Accessories Overview**
  ### Camera modules 
   兼容树莓派镜头模组，“Camera Module V2” 和 "HQ Camera"可选

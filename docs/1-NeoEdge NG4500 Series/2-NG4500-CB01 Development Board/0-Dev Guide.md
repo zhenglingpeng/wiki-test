@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 
 NG4500-CB01 是为 NeoEdge NG4500 系列 AI 边缘计算设备设计的高性能开发载板。该载板适用于 NVIDIA Jetson Orin 系列模块（Orin Nano/NX），适用于机器视觉、工业自动化、机器人和 AIoT 等应用场景。
 
-![开发板实物图](/img/Overview/NG45xx/PCB.jpg)
+![开发板实物图](/img/Overview/NG45xx/NG45XX_MainBoard_Top.jpg)
 
 ## 核心特性
 

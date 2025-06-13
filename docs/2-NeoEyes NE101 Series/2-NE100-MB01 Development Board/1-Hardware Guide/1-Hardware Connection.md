@@ -2,59 +2,48 @@
 
 ## **Main Board Interfaces Overview**
 
-   ![NE101_MainBoard_Top.png](/img/Hardware_Guide\Edge_AI_Camera/HardwareConnection/NE101_MainBoard_Top.png)
-   (须用最终版本PCBA图，并指示出相关接口:  参考官方标注方式)
+
 ### Top side Interfaces:
-
 - Type-C for UART and Power Supply
-
-- Micro-TF Card Slot
-
+- MicroSD Slot
 - Reset Button
-
-- Communication Module 连接母座
-
-- 配置和抓拍按键
-
-- Uart for Debug (同Type-C　Uart)
-
-- USB Camera Module Connector
-
-- LED和光敏模组
-
+- Wireless Module Connector
+- Sanp Button
+- Uart Port for Debug
+- USB Camera  Connector
+- LED Board Connector
 - Camera Module Interface
+![NE10X_Top_IO_Marker.png](/img/Hardware_Guide\Edge_AI_Camera/HardwareConnection/NE10X_Top_IO_Marker.png)
 
-  ![NE101_MainBoard_Bottom.png](/img/Hardware_Guide/Edge_AI_Camera/HardwareConnection/NE101_MainBoard_Bottom.png)
 
 ### Bottom side Interfaces:
-
-- Power Supply Connector
-
+- Power Input Connector
 - Alarm Input Connector
-
+- PIR Input Connector
 - Expansioin GPIOs, include UART、I2C、SPI、Power Output
-
 - Boot Button
+![NE10X_Bot_IO_Marker.png](/img/Hardware_Guide/Edge_AI_Camera/HardwareConnection/NE10X_Bot_IO_Marker.png)
 
 ## **Demo Kit quick start guide**
 
-- 拆开包装后确认Main Board,及配件相关的完好
-
-- 将Camera Module 连接到主板（OV5640 Module or USB Module）
-
-- 将通讯模组（Cat-1 或 WiFi-Halow）扣接到主板上 (Optional)
-
-- 通过Type-C或4Pin Wafer座连接调试 UART口
-
-- 通过Type-C供电或电源座进行供电
-
-- 以上完成后即可开始相关调试
+- After unpacking, inspect the Main Board and accessories to ensure they are intact.
+- Connect the Camera Module (OV5640 Module or USB Module) to the main board.
+- Attach the communication module (Cat-1 or WiFi-Halow) to the main board (optional).
+- Connect the debug UART port via the Type-C or 4Pin Wafer connector.
+- Supply power through the Type-C port or the power connector.
+- After completing the above steps, you may begin the related debugging procedures.
 
 
- **软件烧录和调试**：[AI Camera System Flashing](../Software%20Guide/System%20Flashing%20and%20Initialization)
+ **For program and debug, please ref**：[AI Camera System Flashing](../Software%20Guide/System%20Flashing%20and%20Initialization)
 
 ## **Interfaces description**
-
+### PIR  GPIOs Defined
+| PIN# | Pin Name | Functions   | Pin Type | Pull Up/Down | Alternate Function |
+| ---- | -------- | ----------- | -------- | ------------ | ------------------ |
+| 1    | VDD      | Power supply| S        |              |                    |
+| 2    | GND      | GND         | S        |              |                    |
+| 3    | Serial_IN| Config Port | I/O/T    |              | GPIO2              |
+| 4    | INT/Dout | AlarmIN     | I/O/T    |              | GPIO41             |
 ### 16Pin GPIOs Expansion
 
 The 16 pins expansion header provide communication interface like uart, I2C,  SPI and GPIOs. Developer can use these interfaces to expand sensor modules like PIR sensor, OLED module as their needed.
@@ -65,7 +54,7 @@ The 16 pins expansion header provide communication interface like uart, I2C,  SP
 | 3    | RXD0     | Uart0 RX    | I/O/T    | PU 10K       | GPIO44             |
 | 4    | GND      | GND         | S        |              |                    |
 | 5    | GPIO     | GPIO41      | I/O/T    |              |                    |
-| 6    | 3V3      | 3V3 Output  | S        |              |                    |
+| 6    | 5V0      | 5V0 Input   | S        |              |                    |
 | 7    | SPI_MISO | SPI_MISO    | I/O/T    |              | GPIO40             |
 | 8    | 3V3      | 3V3 Output  | S        |              |                    |
 | 9    | SPI_CLK  | SPI_CLK     | I/O/T    |              | GPIO39             |
@@ -121,20 +110,18 @@ Detailed information please reference the comparison table.
 | 2    | 3V3        | 3V3 Output   | S        |              |                        |
 | 3    | VCC_IN     | Power Output | S        |              |                        |
 | 4    | 3V3        | 3V3 Output   | S        |              |                        |
-| 5    | SPI_CLK    | SPI_CLK      | I/O/T    |              | GPIO39                 |
-| 6    | SPI_MOSI   | SPI_MOSI     | I/O/T    |              | GPIO38                 |
-| 7    | GND        |              | GND      |              |                        |
-| 8    | GND        |              | GND      |              |                        |
+| 5    | WIFI_PWR_H | Power Enable | I/O/T    |              | GPIO48                 |
+| 6    | GND        |              | GND      |              |                        |
+| 7    | SPI_MOSI   | SPI_MOSI     | I/O/T    |              | GPIO38                 |
+| 8    | SPI_MISO   | SPI_MISO     | I/O/T    |              | GPIO40                 |
 | 9    | SPI_CS     | SPI_CS       | I/O/T    |              | GPIO45                 |
-| 10   | SPI_MISO   | SPI_MISO     | I/O/T    |              | GPIO40                 |
-| 11   | SPI_CS     | SPI_CS       | I/O/T    |              | GPIO45                 |
+| 10   | SPI_CS     | SPI_CS       | I/O/T    |              | GPIO45                 |
+| 11   | WIFI_BUSY  | Status       | I/O/T    |              | GPIO20,USB_D+,ADC2_CH9 |
 | 12   | IRQ        | Interrupt    | I/O/T    |              | GPIO41                 |
-| 13   | WIFI_PWR_H | Power Enable | I/O/T    |              | GPIO48                 |
+| 13   | GND        |              | GND      |              |                        |
 | 14   | WIFI_WAKE  | Wake_Up      | I/O/T    |              | GPIO19,USB_D-,ADC2_CH8 |
-| 15   | WIFI_BUSY  | Status       | I/O/T    |              | GPIO20,USB_D+,ADC2_CH9 |
+| 15   | SPI_CLK    | SPI_CLK      | I/O/T    |              | GPIO39                 |
 | 16   | WIFI_RST   | Reset#low    | I/O/T    |              | GPIO46                 |
-
-
 
 ### IO Conflict table
 
@@ -157,4 +144,4 @@ Detailed information please reference the comparison table.
 | 13   | GPIO     | GPIO19      |              | WIFI_WAKE         |
 | 14   | GPIO     | GPIO48      | CAT1_PWR_H   | WIFI_PWR_H        |
 | 15   | GPIO     | GPIO20      |              | WIFI_RST          |
-| 16   | GPIO     | GPIO46      |              | WIFI_BUSY         |
+| 16   | GPIO     | GPIO46      |              | `WIFI_BUSY`       |
