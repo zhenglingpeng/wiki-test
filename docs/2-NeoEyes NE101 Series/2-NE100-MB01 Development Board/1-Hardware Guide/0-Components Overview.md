@@ -1,6 +1,6 @@
 ## **Product Brief**
 
-本产品是一款低功耗无线 电池版本的抓拍相机方案。基于乐鑫的ESP32-S3模组进行开发，支持2.4G WiFi 和BLE。搭配OV5640 Cameras模组，可拓展Cat-1或WiFi-Halow通讯方式。适用于无线布署的图片抓拍相关场景。并有灵活安装的支架可选。
+本开发板适用于款低功耗无线电池版本抓拍相机方案。基于乐鑫的ESP32-S3模组进行开发，支持2.4G WiFi 和BLE。搭配OV5640 Cameras模组，可拓展Cat-1或WiFi-Halow通讯方式。适用于无线布署的图片抓拍相关场景，并有灵活安装的支架可选。
 
 ## **Main Board Overview**
 
@@ -21,7 +21,7 @@
 
 - 一键抓拍功能
 
-- 支持外部Alarm IO 输入
+- 支持外部Alarm IO 输入，或PIR Module 输入
 
 - 拓展GPIOs,适用于二次开发
 
@@ -37,8 +37,8 @@
 | CMOS Sensor           | OV5640PLCC, 1/4"                |          |
 | Max.Resolution        | 2592*1944                       |          |
 | F.No                  | 2.4                             |          |
-| Focal Length          | 3.97mm                          |          |
-| Focusing distance     | 15cm or 400cm                   | Optional |
+| Focal Length          | 1.79mm ro3.97mm                 | Optional |
+| Focusing distance     | Micro or Normal                 | Optional |
 | FOV(D)                | 59                              |          |
 | TV-Distortion         | 1%                              |          |
 | FPC Connector         | 38.5*12.5mm 24Pins@0.5mm        |          |
@@ -52,16 +52,14 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 | Items                    | Description       |               |
 | CMOS Sensor              | SC200AI, 1/2.8"   |               |
 | Max.Resolution           | 1920*1080         |               |
-| F.No                     | TBD               | Optional LENS |
-| Focal Length             | TBD               | Optional LENS |
-| Focusing distance        | TBD               | Optional LENS |
-| FOV(D)                   | TBD               | Optional LENS |
-| TV-Distortion            | TBD               | Optional LENS |
+| Focal Length             | 2.5mm/3mm/6mm     | Optional LENS |
+| Focusing distance        | Normal            |               |
+| FOV(D)                   | 165/97/59         |               |
 | Communication Interfaces | USB               |               |
 | Operation Temperature    | -20°-- 60°        |               |
 | Storage Temperature      | -40°-- 85°        |               |
 | Dimensions               | 25mm x 23.86mm    |               |
-| Certifications           | /                 |               |
+
 
 ## **Cat-1 Module Overview**
 
@@ -111,8 +109,8 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 
 ### Expansion modules
 
-- WiFi Halow 模组 
-- Cat-1 模组 
+- WiFi Halow  Module
+- Cat-1 Module
 
 ### Mounts and enclosures
 
