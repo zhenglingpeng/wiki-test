@@ -1,10 +1,14 @@
 import Link from "@docusaurus/Link";
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## 开发板概述
 
 NG4500-CB01 是为 NeoEdge NG4500 系列 AI 边缘计算设备设计的高性能开发载板。该载板适用于 NVIDIA Jetson Orin 系列模块（Orin Nano/NX），适用于机器视觉、工业自动化、机器人和 AIoT 等应用场景。
 
-![开发板实物图](/img/Overview/NG45xx/NG45XX_MainBoard_Top.jpg)
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Board/NG4500-CB01_1.png')} alt="主板正面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Board/NG4500-CB01_2.png')} alt="主板背面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
 ## 核心特性
 
@@ -49,15 +53,12 @@ NG4500-CB01开发板提供了全面的开发资源和文档支持，以下是相
 ### 硬件资源
 - [硬件组件说明](./1-Hardware%20Guide/0-Components%20Overview.md) - 详细介绍开发板各组件功能和规格
 - [硬件连接指南](./1-Hardware%20Guide/1-Hardware%20Connection.md) - 提供开发板接口使用和连接方法
-- [PCB设计文档](./1-Hardware%20Guide/2-Schematics%20and%20PCB%20Design.md) - 包含原理图和PCB设计参考资料
-- [扩展模块使用指南](./1-Hardware%20Guide/3-Extension%20Modules.md) - 介绍各类扩展模块的安装和使用方法
 
 ### 软件资源
 - [系统烧录指南](./2-Software%20Guide/0-System%20Flashing%20and%20Initialization.md) - 提供Jetson模块系统烧录的详细步骤
 - [开发环境搭建](./2-Software%20Guide/1-Development%20Environment%20Setup.md) - 指导如何配置开发环境和开发工具
-- [驱动安装指南](./2-Software%20Guide/2-Driver%20Installation%20and%20Updates.md) - 包含各类硬件接口的驱动安装说明
-- [系统配置优化](./2-Software%20Guide/3-System%20Configuration%20and%20Optimization.md) - 提供系统性能优化的配置方法
-- [软件框架与工具](./2-Software%20Guide/4-Software%20Frameworks%20and%20Tools.md) - 支持的开发框架和工具列表
+- [驱动安装与更新](./2-Software%20Guide/1-Driver%20Installation%20and%20Updates/0-Interface&modules%20configure.md) - 包含各类硬件接口的驱动安装说明
+- [软件框架与工具](./2-Software%20Guide/3-Software%20Frameworks%20and%20Tools/0-Docker.md) - 支持的开发框架和工具列表
 
 ### 应用开发
 - [DeepSeek大语言模型部署](../3-Application%20Guide/1-Deepseek-r1.md) - 在NG4500上部署大语言模型的教程

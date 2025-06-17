@@ -1,10 +1,14 @@
 import Link from "@docusaurus/Link";
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## 开发板概述
 
 NE100-CM01 是为 NeoEyes NE101 系列事件相机设计的高性能开发板。该开发板基于 ESP32-S3 模组，具有超低功耗设计，支持多种触发方式的事件图像采集。此主板能够快速实现物联网相机应用的原型设计和定制化，非常适合智慧农业、环境监测、安防监控和野生动物观察等应用场景。
 
-![开发板](/img/Overview/NE101/PCBT.png)
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Board/NE100-MB01_1.png')} alt="主板正面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Board/NE100-MB01_2.png')} alt="主板背面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
 
 ## 核心特性
 
@@ -51,20 +55,14 @@ NE100-CM01 开发板提供了全面的开发资源和文档支持。以下是相
 ### 硬件资源
 - [硬件组件概览](./1-Hardware%20Guide/0-Components%20Overview.md) - 详细介绍开发板组件和规格
 - [硬件连接指南](./1-Hardware%20Guide/1-Hardware%20Connection.md) - 开发板接口使用和连接方法说明
-- [GPIO 扩展指南](./1-Hardware%20Guide/2-GPIO%20Expansion.md) - 16 针 GPIO 扩展接口的使用信息
-- [模块更换指南](./1-Hardware%20Guide/3-Module%20Replacement.md) - 摄像头和通信模块更换说明
 
 ### 软件资源
-- [系统烧录指南](./2-Software%20Guide/0-System%20Flashing.md) - 固件烧录的详细步骤
-- [开发环境搭建](./2-Software%20Guide/1-Development%20Environment.md) - ESP-IDF 开发环境设置指导
-- [低功耗配置](./2-Software%20Guide/2-Low%20Power%20Configuration.md) - 功耗优化说明
-- [API 文档](./2-Software%20Guide/3-API%20Documentation.md) - 软件 API 和库的参考资料
-- [软件框架与工具](./2-Software%20Guide/4-Software%20Frameworks%20and%20Tools.md) - 支持的开发框架和工具
+- [系统烧录与初始化](./2-Software%20Guide/1-System%20Flashing%20and%20Initialization.md) - 固件烧录的详细步骤
+- [开发环境搭建](./2-Software%20Guide/0-Development%20Environment%20Setup.md) - ESP-IDF 开发环境设置指导
 
 ### 应用示例
-- [PIR 传感器示例](../3-Application%20Guide/0-PIR%20Example.md) - 使用 PIR 传感器实现运动检测的示例
-- [MQTT 数据上报](../3-Application%20Guide/1-MQTT%20Example.md) - 实现 MQTT 数据上报的示例
-- [低功耗图像采集](../3-Application%20Guide/2-Low%20Power%20Image%20Capture.md) - 低功耗场景下的图像采集示例
+- [PIR 传感器示例](./2-Software%20Guide/3-example-pir.md) - 使用 PIR 传感器实现运动检测的示例
+- [低功耗图像采集](../3-Application%20Guide/0-low-power-image-acquisition.md) - 低功耗场景下的图像采集示例
 
 ## 快速入门
 
