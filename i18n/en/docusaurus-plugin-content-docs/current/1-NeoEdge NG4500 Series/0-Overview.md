@@ -2,6 +2,7 @@ import Link from "@docusaurus/Link";
 import SupportGrid from '@site/src/components/SupportGrid';
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Overview
 
@@ -19,19 +20,19 @@ The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering si
   {[
     {
       title: 'Large Language Models',
-      imageSrc: require('/img/Overview/NG45xx/LLM.png').default,
+      imageSrc: useBaseUrl('/img/Overview/NG45xx/LLM.png'),
       altText: 'LLM Performance Improvement',
       description: 'LLM performance improvement on NVIDIA Super Developer Kit',
     },
     {
       title: 'Vision Language Models',
-      imageSrc: require('/img/Overview/NG45xx/VLM.png').default,
+      imageSrc: useBaseUrl('/img/Overview/NG45xx/VLM.png'),
       altText: 'VLM Performance Improvement',
       description: 'VLM performance improvement on NVIDIA Super Developer Kit',
     },
     {
       title: 'Vision Transformers',
-      imageSrc: require('/img/Overview/NG45xx/Vision.png').default,
+      imageSrc: useBaseUrl('/img/Overview/NG45xx/Vision.png'),
       altText: 'ViT Performance Improvement',
       description: 'ViT performance improvement on NVIDIA Super Developer Kit',
     }
@@ -74,7 +75,7 @@ The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering si
 - Pre-installed **NVIDIA JetPack 6.0+ SDK**, including complete development environment with CUDA, cuDNN, TensorRT, DeepStream, etc. For system features, see [**Jetpack SDK 6.0**](https://developer.nvidia.com/embedded/jetpack-sdk-60). For system flashing instructions, refer to the [**System Flashing Guide**](./3-Software%20Guide/0-System%20Flashing%20and%20Initialization.md) provided in this wiki.
 
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
-  <img src={require("/img/Overview/NG45xx/Jetpack.png").default} style={{ maxHeight: '300px' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/Jetpack.png")} style={{ maxHeight: '300px' }} />
 </div>
 
 ### Rich Hardware Interfaces
@@ -96,8 +97,8 @@ The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering si
 - **6×SMA Antenna Ports**: Supports external high-gain antennas.
   
   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={require("/img/Overview/NG45xx/Product2.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-  <img src={require("/img/Overview/NG45xx/Product1.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/Product2.png")} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/Product1.png")} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
   </div>
 
 ### Expandability and Flexibility
@@ -117,8 +118,8 @@ The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering si
 - **Video Module Interface**: Supports **4-lane MIPI×2** camera interfaces, allowing simultaneous connection of multiple high-resolution industrial cameras on the carrier board for various edge scenario applications.
   
   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={require("/img/Overview/NG45xx/PCB.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-  <img src={require("/img/Overview/NG45xx/PCB2.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/PCB.jpg")} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/PCB2.jpg")} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
   </div>
 
 ### Durability and Reliability
@@ -132,7 +133,7 @@ The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering si
 - **Excellent Environmental Adaptability**: **Fanless passive cooling architecture and wide-temperature design**, operating temperature range of -25°C to 60°C, storage temperature range of -40°C to 85°C, suitable for various industrial environments.
   
   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>  
-  <img src={require("/img/Overview/NG45xx/Product3.png").default} style={{ maxHeight: '300px' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/Product3.png")} style={{ maxHeight: '300px' }} />
   </div>
 
 ## Product Information
@@ -142,8 +143,8 @@ The NeoEdge NG4500 series supports the NVIDIA Super Developer Kit, delivering si
 The NG4500 series product and carrier board specifications are as follows:
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={require("/img/Overview/NG45xx/Product2.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-  <img src={require("/img/Overview/NG45xx/PCB.jpg").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/Product2.png")} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/PCB.jpg")} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
 </div>
 <table>
   <thead>
@@ -468,19 +469,19 @@ The NG4500 series product and carrier board specifications are as follows:
     const examples = [
       { 
         title: "LLM Chatbot", 
-        image: require("/img/Overview/NG45xx/application/OpenWebUI.png").default, 
+        image: useBaseUrl("/img/Overview/NG45xx/application/OpenWebUI.png"), 
         description: "This guide explains how to use Ollama (a lightweight inference engine) to locally deploy the DeepSeek-R1 large language model on NVIDIA Jetson Orin devices for offline AI interaction, with simple and efficient setup.", 
         path: "Deepseek-r1"
       },
       { 
         title: "Pose Estimation", 
-        image: require("/img/Overview/NG45xx/application/Pose.png").default, 
+        image: useBaseUrl("/img/Overview/NG45xx/application/Pose.png"), 
         description: "This article describes how to run real-time pose estimation using MediaPipe on Jetson Orin platforms (Nano/NX/AGX), with GPU acceleration where supported.", 
         path: "mediapipe"
       },
       { 
         title: "YoLo Object Detection", 
-        image: require("/img/Overview/NG45xx/application/ObjectDetection.png").default, 
+        image: useBaseUrl("/img/Overview/NG45xx/application/ObjectDetection.png"), 
         description: "This tutorial guides you through deploying YOLOv8 models on NVIDIA Jetson Orin platforms using TensorRT for accelerated inference, enabling efficient real-time object detection.", 
         path: "Object Detection"
       }

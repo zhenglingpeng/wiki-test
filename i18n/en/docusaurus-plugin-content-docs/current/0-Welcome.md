@@ -68,7 +68,7 @@ To help you get started quickly, here are some essential resource links:
         <span className="link-icon">🔧</span>
         <span>Development Guide</span>
       </Link>
-      <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Application Guide/example-uvc')} className="link-item">
+      <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Application Guide/low-power-image-acquisition')} className="link-item">
         <span className="link-icon">📱</span>
         <span>Application Guide</span>
       </Link>

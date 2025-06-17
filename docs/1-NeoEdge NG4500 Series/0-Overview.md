@@ -2,6 +2,7 @@ import Link from "@docusaurus/Link";
 import SupportGrid from '@site/src/components/SupportGrid';
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
 # Product Info
@@ -18,19 +19,19 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs�
   {[
     {
       title: 'Large Language Models',
-      imageSrc: require('/img/Overview/NG45xx/LLM.png').default,
+      imageSrc: useBaseUrl('/img/Overview/NG45xx/LLM.png'),
       altText: 'LLM性能提升',
       description: 'LLM 在 NVIDIA Super Developer Kit 上的性能提升',
     },
     {
       title: 'Vision Language Models',
-      imageSrc: require('/img/Overview/NG45xx/VLM.png').default,
+      imageSrc: useBaseUrl('/img/Overview/NG45xx/VLM.png'),
       altText: 'VLM性能提升',
       description: 'VLM 在 NVIDIA Super Developer Kit 上的性能提升',
     },
     {
       title: 'Vision Transformers',
-      imageSrc: require('/img/Overview/NG45xx/Vision.png').default,
+      imageSrc: useBaseUrl('/img/Overview/NG45xx/Vision.png'),
       altText: 'ViT性能提升',
       description: 'ViT 在 NVIDIA Super Developer Kit 上的性能提升',
     }
@@ -68,7 +69,7 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs�
 - 预装 **NVIDIA JetPack 6.0+ SDK**，包含完整开发环境CUDA、cuDNN、TensorRT、DeepStream等，系统特性详见 [**Jetpack SDK 6.0**](https://developer.nvidia.com/embedded/jetpack-sdk-60)，系统烧录教程请参考本wiki中心提供的 [**「系统烧录指南」**](./2-NG4500-CB01%20Development%20Board/2-Software%20Guide/0-System%20Flashing%20and%20Initialization.md)。
 - 支持各种主流AI框架及推理服务部署：TensorFlow/Keras、PyTorch、ONNX Runtime、TensorRT、Ollama、llama.cpp、VLLM、ultralytics等。
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
-  <img src={require("/img/Overview/NG45xx/Jetpack.png").default} style={{ maxHeight: '300px' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/Jetpack.png")} style={{ maxHeight: '300px' }} />
 </div>
 
 ### 硬件接口丰富 (Note: 此部份图改为带标注的图)
@@ -81,8 +82,8 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs�
 - **3.5mm音频接口**：支持麦克风输入、声音输出。
 - **6×SMA天线接口**：支持外接高增益天线。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={require("/img/Overview/NG45xx/Product2.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
-  <img src={require("/img/Overview/NG45xx/Product1.png").default} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/Product2.png")} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/Product1.png")} style={{ maxHeight: '300px', width: '100%', objectFit: 'contain' }} />
 </div>
 
 
@@ -92,7 +93,7 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs�
 - **紧凑坚固的结构**：设备尺寸为160mm × 125mm × 75mm，全金属外壳，支持**桌面放置、壁挂安装、DIN导轨安装**等多种安装方式。
 - **较好的环境适应性**：**无风扇被动散热架构及宽温设计**，工作温度范围-25°C 至 60°C，存储温度-40°C 至 85°C，适应各种工业环境。
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>  
-  <img src={require("/img/Overview/NG45xx/Product3.png").default} style={{ maxHeight: '300px' }} />
+  <img src={useBaseUrl("/img/Overview/NG45xx/Product3.png")} style={{ maxHeight: '300px' }} />
 </div>
 
 
@@ -422,19 +423,19 @@ NG4500系列整机产品和载板的规格信息如下
     const examples = [
       { 
         title: "LLM Chatbot", 
-        image: require("/img/Overview/NG45xx/application/OpenWebUI.png").default, 
+        image: useBaseUrl("/img/Overview/NG45xx/application/OpenWebUI.png"), 
         description: "本指南介绍如何使用 Ollama（轻量推理引擎）在 NVIDIA Jetson Orin 设备上本地部署 DeepSeek-R1 大语言模型，实现离线 AI 交互，安装配置简单高效。", 
         path: "Deepseek-r1"
       },
       { 
         title: "Pose Estimation", 
-        image: require("/img/Overview/NG45xx/application/Pose.png").default, 
+        image: useBaseUrl("/img/Overview/NG45xx/application/Pose.png"), 
         description: "本文介绍如何在 Jetson Orin 平台（Nano / NX / AGX）上使用 MediaPipe 运行实时姿态估计（Pose Estimation），在支持的情况下启用 GPU 加速。", 
         path: "mediapipe"
       },
       { 
         title: "YoLo Object Detection", 
-        image: require("/img/Overview/NG45xx/application/ObjectDetection.png").default, 
+        image: useBaseUrl("/img/Overview/NG45xx/application/ObjectDetection.png"), 
         description: "本教程将指导您如何在 NVIDIA Jetson Orin 平台上部署 YOLOv8 模型，并利用 TensorRT 进行推理加速。通过此过程，您将能够在 Jetson Orin 上高效地运行 YOLOv8，实现实时的目标检测。", 
         path: "Object Detection"
       }

@@ -68,7 +68,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
         <span className="link-icon">🔧</span>
         <span>开发指南</span>
       </Link>
-      <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Application Guide/example-uvc')} className="link-item">
+      <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Application Guide/low-power-image-acquisition')} className="link-item">
         <span className="link-icon">📱</span>
         <span>应用指南</span>
       </Link>
