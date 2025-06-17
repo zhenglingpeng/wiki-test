@@ -262,7 +262,7 @@ NG4500系列整机产品和载板的规格信息如下
 产品外型和支架的尺寸示意如下：
 
 ![NG45_Series_Outline.png](/img/Hardware_Guide/Edge_AI_Box/BracketAndUage/NG45_Series_Outline.png)
-### 产品配件 （Note:图片修整，并内容链接到：Dev-Resources）
+### 产品配件
 
 #### 产品基本配件
 >CamThink NeoEdge NG4500产品系列提供的标准配件如下：
@@ -318,14 +318,14 @@ NG4500系列整机产品和载板的规格信息如下
     },
     {
       image: "/img/Accessories/ng45xx_4g.png",
-      name: <a href="../Hardware%20Dev%20Resources/3-4G%20Module">4G模块+天线</a>,
+      name: <a href="../Hardware%20Dev%20Resources/3-4G%20Module">4G模块</a>,
       quantity: "1",
       description: [
         "Quectel EM05 EM05-G 4G M.2模块，支持欧洲、美国、中国、日本、澳大利亚等主要地区使用"]
     },
     {
       image: "/img/Accessories/ng45xx_5g.png",
-      name: <a href="../Hardware%20Dev%20Resources/4-5G%20Module">5G模块+天线</a>,
+      name: <a href="../Hardware%20Dev%20Resources/4-5G%20Module">5G模块</a>,
       quantity: "1",
       description: ["Quectel RM520N-GL 5G M.2模块，支持全球主要地区使用"]
     },

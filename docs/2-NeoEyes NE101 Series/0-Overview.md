@@ -13,7 +13,7 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 
 ### 硬件特性信息
 >NeoEyes NE101产品由前盖、镜头模组、主板、通讯模块、电池模块等多个功能单元组成。各模块间通过标准化接口连接，便于拆装与维护，支持开发者按需替换、升级或定制特定模块。
-- **分层式结构设计**：采用前/中/后分离的模块化布局，便于快速拆装与功能扩展，支持用户按需DIY改装。如需获取结构设计文件，请参阅[「产品资源」](#产品资源)。
+- **分层式结构设计**：采用前/中/后分离的模块化布局，便于快速拆装与功能扩展，支持用户按需DIY改装。如需获取结构设计文件，请联系我们获取。
 - **多样化安装支持**：结构主体预留丰富的安装孔位，兼容多种支架和外壳扩展方案。配合 CamThink 提供的[「产品配件」](#产品配件)，可灵活部署于不同使用场景。
 - **相机模组可选**：主板支持CPI、USB相机模组，可更换不同规格的镜头，用于满足不同场景的图像采集需求，相机模组更换和支持规格详见[「可换相机模组」](#可换相机模组)。
 - **通讯方案可选**：支持WiFi、Cat-1、WiFi-Halow通讯方案切换，满足不同场景通讯需求，通讯模组更换和支持规格详见[「通讯方案扩展」](#通讯方案扩展)。
@@ -108,17 +108,23 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
       <td>标准距离广角拍摄</td>
     </tr>
     <tr>
-      <td rowSpan="2">USB相机</td>
-      <td>2MP USB模组</td>
-      <td>60°</td>
-      <td>9m</td>
-      <td>远距离拍摄</td>
+      <td rowSpan="3">USB相机</td>
+      <td>SC200AI-51-4M</td>
+      <td>51°</td>
+      <td>4m</td>
+      <td>标准角度拍摄</td>
     </tr>
     <tr>
-      <td>2MP USB模组</td>
-      <td>120°</td>
-      <td>5m</td>
-      <td>标准距离拍摄</td>
+      <td>SC200AI-88-3M</td>
+      <td>88°</td>
+      <td>3m</td>
+      <td>大角度拍摄</td>
+    </tr>
+    <tr>
+      <td>SC200AI-137-2M</td>
+      <td>137°</td>
+      <td>32m</td>
+      <td>广角拍摄</td>
     </tr>
   </tbody>
 </table>
@@ -152,83 +158,85 @@ NE101整机产品规格如下：
   <thead>
     <tr>
       <th style={{ width: '20%' }}>产品型号</th>
-      <th style={{ width: '20%' }}>NE101</th>
-      <th style={{ width: '20%' }}>NE101-L01GL</th>
-      <th style={{ width: '20%' }}>NE101-HL00</th>
-      <th style={{ width: '20%' }}>NE101-HL01</th>
+      <th style={{ width: '16%' }}>NE101</th>
+      <th style={{ width: '16%' }}>NE101-L01GL</th>
+      <th style={{ width: '16%' }}>NE101-L02NA</th>
+      <th style={{ width: '16%' }}>NE101-HL00</th>
+      <th style={{ width: '16%' }}>NE101-HL01</th>
     </tr>
   </thead>
   <tbody style={{ textAlign: 'center' }}>
     <tr>
       <td style={{ width: '20%' }}><strong>通信</strong></td>
-      <td style={{ width: '20%' }}>WiFi</td>
-      <td style={{ width: '20%' }}>Cat.1（全球）</td>
-      <td style={{ width: '20%' }}>WiFi-HaLow（868MHz）</td>
-      <td style={{ width: '20%' }}>WiFi-HaLow（915MHz）</td>
+      <td style={{ width: '16%' }}>WiFi</td>
+      <td style={{ width: '16%' }}>Cat.1（支持全球除北美地区外的其他地区）</td>
+      <td style={{ width: '16%' }}>Cat.1（支持北美地区）</td>
+      <td style={{ width: '16%' }}>WiFi-HaLow（868MHz）</td>
+      <td style={{ width: '16%' }}>WiFi-HaLow（915MHz）</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>MCU</strong></td>
-      <td colSpan="4">ESP32-S3</td>
+      <td colSpan="5">ESP32-S3</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>RAM</strong></td>
-      <td colSpan="4">8MB</td>
+      <td colSpan="5">8MB</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>Flash</strong></td>
-      <td colSpan="4">16MB</td>
+      <td colSpan="5">16MB</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>相机模组</strong></td>
-      <td colSpan="4">OV5640 Module, selectable 120°/60°FOV and near/far focus options</td>
+      <td colSpan="5">OV5640 Module, selectable 120°/60°FOV and near/far focus options</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>补光灯</strong></td>
-      <td colSpan="4">支持</td>
+      <td colSpan="5">支持</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>蓝牙</strong></td>
-      <td colSpan="4">支持</td>
+      <td colSpan="5">支持</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>按键</strong></td>
-      <td colSpan="4"> Snap（主机侧面）, Boot(位于主板), Reset(位于主板)</td>
+      <td colSpan="5"> Snap（主机侧面）, Boot(位于主板), Reset(位于主板)</td>
     </tr>
         <tr>
       <td style={{ width: '20%' }}><strong>存储</strong></td>
-      <td colSpan="4">Micro-TF（位于主板）</td>
+      <td colSpan="5">Micro-TF（位于主板）</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>告警接口</strong></td>
-      <td colSpan="4">Alarm *1（位于主板）</td>
+      <td colSpan="5">Alarm *1（位于主板）</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>扩展IO</strong></td>
-      <td colSpan="4">UART *1、16Pin IO *1（位于主板）</td>
+      <td colSpan="5">UART *1、16Pin IO *1（位于主板）</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>供电</strong></td>
-      <td colSpan="4">电池供电,Type-C供电支持（位于主板）</td>
+      <td colSpan="5">电池供电,Type-C供电支持（位于主板）</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>工作温度</strong></td>
-      <td colSpan="4">-20°C ~ 50°C</td>
+      <td colSpan="5">-20°C ~ 50°C</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>工作湿度</strong></td>
-      <td colSpan="4">0% ~ 90% RH</td>
+      <td colSpan="5">0% ~ 90% RH</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>防护等级</strong></td>
-      <td colSpan="4">IP67</td>
+      <td colSpan="5">IP67</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>认证</strong></td>
-      <td colSpan="4">CE / FCC / RoHs</td>
+      <td colSpan="5">CE / FCC / RoHs</td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>外形尺寸</strong></td>
-      <td colSpan="4">77mm × 77mm × 48mm</td>
+      <td colSpan="5">77mm × 77mm × 48mm</td>
     </tr>
   </tbody>
 </table>
@@ -384,7 +392,7 @@ NE101整机产品规格如下：
         {
           title: "农作物生长监测",
           description: "通过定时拍摄或环境变化触发，记录农作物生长状态，支持远程监测作物长势，每日拍摄10次情况下可续航3年以上，特别适合偏远农田场景。",
-          image: "https://vst.co.jp/wp-content/uploads/2023/12/crop-growth-monitoring.jpg"
+          image: "https://cdn.prod.website-files.com/680a070c3b99253410dd3df5/680a070c3b99253410dd456c_67ed53eff9fc95b4cd07bd73_67dda44b6cac8017c21c4ca8_Crop-monitoring_Fig%2525203.webp"
         },
         {
           title: "畜牧行为分析", 
