@@ -6,7 +6,7 @@
 
 详细引脚分配参考官方文档：：[Jetson Orin NX Series and Jetson Orin Nano Series Pinmux](https://developer.nvidia.com/downloads/jetson-orin-nx-and-orin-nano-series-pinmux-config-template)
 
-- IO 扩展面板接口分配如下：
+- **GPIO硬件接口资源分配:**
 
 | Pin # | Signal Name    | Description                                       | Direction | Pin Type    |
 | ----- | -------------- | ------------------------------------------------- | --------- | ----------- |
@@ -44,7 +44,7 @@ sudo gpioset --mode=wait gpiochip0 144=0
 
 ## UART
 
-**UART 实例与资源分配**
+**UART硬件接口资源分配:**
 
 | Usage on Orin nano/NX | UART Instance | Base Address | Ball Name | Bus Name | DTS status | DTS alias |
 | --------------------- | ------------- | ------------ | --------- | -------- | ---------- | --------- |
@@ -52,15 +52,15 @@ sudo gpioset --mode=wait gpiochip0 144=0
 | RS485                 | UARTA         | 0x03100000   | UART1     | ttyTHS1  | OK         | serial1   |
 | RS232                 | UARTB         | 0x03110000   | UART0     | ttyTHS3  | OK         | serial3   |
 
-- Debug 串口（ttyTCU0）
+- Debug
   
   - **硬件连接**：将 Debug 线连接至 PC。
   
   - **串口参数**：波特率 115200，数据位 8，停止位 1，无奇偶校验，无流控。
-
+  
   - **常用终端工具**：Windows 下可用 PuTTY、Xshell，Linux 下可用 minicom、screen。
 
-- RS232 接口（ttyTHS3）
+- RS232
   
   - 硬件接口定义
   
@@ -69,14 +69,14 @@ sudo gpioset --mode=wait gpiochip0 144=0
   | 99  | UART0_TXD   | Use for uart Ransmit (with 3.3 level shifter)  | Output    | CMOS – 1.8V |
   | 101 | UART0_RXD   | Use for uart  Receive (with 3.3 level shifter) | Input     | CMOS – 1.8V |
   
-  - 连接说明
+  - 硬件连接
     
     - 使用接头1连接 PC，接头2连接 Jetson RS232 的 TX/RX。
     - 确保电平转换正确，避免损坏硬件。
   
   ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_RS232.png)
 
-- RS485 接口（ttyTHS1）
+- RS485
   
   - 硬件接口定义
   
@@ -99,7 +99,7 @@ sudo gpioset --mode=wait gpiochip0 144=0
   gcc -o rs485_test rs485_test.c -lgpiod
   ```
   
-  - 运行示例
+  - 运行&验证示例
   
   ```shell
   sudo ./rs485_test [TTY_DIR] [DE_CHIP] [DE_LINE]
@@ -265,7 +265,7 @@ int main(int argc, char* argv[]) {
 
 ## SPI
 
-- 硬件接口分配
+- 硬件接口定义
 
 | Pin | Signal Name | Description                 | Direction | Pin Type    |
 | --- | ----------- | --------------------------- | --------- | ----------- |
@@ -275,9 +275,9 @@ int main(int argc, char* argv[]) {
 | 110 | SPI1_CS0*   | SPI 1 Chip Select 0         | Bidir     | CMOS – 3.3V |
 | 112 | SPI1_CS1*   | SPI 1 Chip Select 1         | Bidir     | CMOS – 3.3V |
 
-- **硬件连接**：短接 `MOSI` 和 `MISO`，用于回环测试。
+- 硬件连接：短接 `MOSI` 和 `MISO`，用于回环测试。
 
-- **SPI 使能与配置**
+- SPI 使能
   
   - 运行指令，启动配置工具：` sudo python /opt/nvidia/jetson-io/jetson-io.py`
       ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI1.png)
@@ -289,13 +289,13 @@ int main(int argc, char* argv[]) {
       ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI3.png)
   
   - 按空格选择 SPI1 和 SPI3，启用 SPI
-
+    
       ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI4.png)
   
   - 返回并选择 `Save and reboot to reconfigure pins`，重启后生效
       ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI5.png)
 
-- 测试方法，参考如下：
+- 运行&验证示例
 
 ```shell
 # 获取spi源码
@@ -309,14 +309,14 @@ gcc spidev_test.c -o spidev_test
 
 ## CAN
 
-- 硬件接口分配
+- 硬件接口定义
 
 | Pin | Signal Name | Description     | Direction | Pin Type    |
 | --- | ----------- | --------------- | --------- | ----------- |
 | 145 | CAN_TX      | FD CAN Transmit | Output    | CMOS – 3.3V |
 | 143 | CAN_RX      | FD CAN Receive  | Input     | CMOS – 3.3V |
 
-- **硬件连接**：两台设备 CAN 的 D+ 对 D+，D- 对 D-。
+- 硬件连接：两台设备 CAN 的 D+ 对 D+，D- 对 D-。
 
 **软件安装与测试**
 
@@ -327,7 +327,7 @@ sudo apt update
 sudo apt-get install can-utils
 ```
 
-- 测试方法，参考如下：
+- 运行&验证示例
 
 ```shell
 # 查看接口状态
@@ -345,7 +345,7 @@ cansend can0 123#11.22.33.44
 
 ## RTC
 
-基本使用操作
+基本使用操作方法如下：
 
 - 设置 RTC 时间
 
@@ -386,11 +386,13 @@ sudo timedatectl set-ntp false
 
 ## Camera
 
-- 启动和配置摄像头模块的方法，以`imx219`为例，硬件连接如下：
+- 下述内容主要描述启动和配置摄像头模块的方法，以`imx219`为例，硬件连接如下：
   
   ![](/img/NG45XX_SOFTWARE/NG45XX_IMX219.png)
 
-- 通过config-by-hardware.py软件启动摄像头，重启后生效
+- 通过`config-by-hardware.py`脚本启动摄像头，重启后生效
+  
+  - 列出当前支持的硬件模块
 
 ```shell
 # 列出当前支持的硬件模块
@@ -417,15 +419,20 @@ Header 2: Jetson 24pin CSI Connector
   10. Camera IMX477-C
 Header 3: Jetson M.2 Key E Slot
   No hardware configurations found!
+```
 
+- 列出当前支持的硬件模块，以 IMX219 Dual CamThink 为例
+
+```shell
 # 选择并配置 IMX219 Dual CamThink 摄像头模块。 
 # -n 选择Header编号，Camera IMX219 Dual CamThink 是dtbo的overlay-name
 sudo python /opt/nvidia/jetson-io/config-by-hardware.py -n 2='Camera IMX219 Dual CamThink'
 ```
 
-- 接入鼠标键盘，启动终端，运行以下指令：
+- 运行&验证示例，硬件接入USB鼠标键盘，启动终端运行以下指令：
 
 ```shell
+# 安装摄像头必要依赖
 sudo apt update
 sudo apt install -y nvidia-l4t-gstreamer nvidia-l4t-jetson-multimedia-api
 
