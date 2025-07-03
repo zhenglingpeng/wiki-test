@@ -1,10 +1,5 @@
 # 5G Module
-
-**Quectel RM520N 系列 5G 模块**
-
----
-
-## 模组特性
+## 产品特性
 ### **核心功能**
 - **网络制式**：支持 **5G NR Sub-6GHz（SA/NSA）**、**LTE-FDD/TDD**、**WCDMA/HSPA+**。
 - **接口类型**：**M.2 Key B**，支持 **PCIe 3.0 x4** 和 **USB 3.1 Gen2**。
@@ -99,3 +94,14 @@
 
 ---
 
+<img 
+src="/img/Hardware_Dev_Resources/5G_Module/5G_Module.jpg"
+  alt="5G_Module" 
+  style={{
+    width: '60%',
+    maxWidth: '300px',
+    height: 'auto',
+    display: 'block',
+    margin: 'auto'
+  }}
+/>

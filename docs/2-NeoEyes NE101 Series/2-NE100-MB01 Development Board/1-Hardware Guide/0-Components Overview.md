@@ -31,7 +31,7 @@
 
 模组搭配OV5640,分辨率为2592*1944，靶面尺寸为1/4。镜头有D-FOV 120和77度两种可选。并可依场景需求提供微距抓拍及正常抓拍两种对焦版本。
 
-|                       | OV5640  Module                  |          |
+|           Module      | OV5640  Module                  |          |
 | --------------------- | ------------------------------- | -------- |
 | Items                 | Description                     |          |
 | CMOS Sensor           | OV5640PLCC, 1/4"                |          |
@@ -40,14 +40,13 @@
 | Focal Length          | 1.79mm ro3.97mm                 | Optional |
 | Focusing distance     | Micro or Normal                 | Optional |
 | FOV(D)                | 59                              |          |
-| TV-Distortion         | 1%                              |          |
-| FPC Connector         | 38.5*12.5mm 24Pins@0.5mm        |          |
+| FPC Connector         | 38.5*12.5mm，24Pins 0.5mm        |          |
 | Dimensions            | 8.5 x 8.5 x 6.5mm (without FPC) |          |
-| Operation Temperature | -10 -- 65                       |          |
+| Operation Temperature | -10° -- 65°                     |          |
 
 USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺寸为1/2.8“， 镜头接口为M12，可配多种FOV镜头可选。
 
-|                          | USB Camera Module |               |
+|        Module            | USB Camera Module |               |
 | ------------------------ | ----------------- | ------------- |
 | Items                    | Description       |               |
 | CMOS Sensor              | SC200AI, 1/2.8"   |               |
@@ -63,11 +62,9 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 
 ## **Cat-1 Module Overview**
 
-采用 Quectel的EG912系列模组，通过UART与主板进行通讯。
-
-|            | Cat-1 Module                                         |
-| ------------------------ | ------------------------------------------------------------ |
+全球版本（除北美）采用 Quectel的EG912系列模组，通过UART与主板进行通讯。
 | Module                   | Quectel EG912UGL                                             |
+| ------------------------ | ------------------------------------------------------------ |
 | LTE-FDD                  | B1/ 2/ 3/ 4/ 5/ 7/ 8/ 12/ 13/ 17/ 18/ 19/ 20/ 25/ 26/ 28/ 66 |
 | LTE-TDD                  | B34/ 38/ 39/ 40/ 41                                          |
 | GSM                      | B2/ 3/ 5/ 8                                                  |
@@ -79,12 +76,22 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 | Dimensions               | 60mm x 60mm                                                 |
 | Certifications           | CE                                                           |
 
+北美版本采用Quectel的EG915Q-NA模组，通过UART与主板进行通讯
+| Module                   | Quectel EG915Q-NA                                             |
+|:------------------------:|:------------------------------------------------------------:|
+| LTE-FDD                  | B2/B4/B5/B12/B13/B14/B66/B71B2/B4/B5/B12/B13/B14/B66/B71 |
+| Antenna                  | PCB Antenna                                                  |
+| Communication Interfaces | UART                                                         |
+| Power Supply             | DC 4-6V                                                      |
+| Operation Temperature    | -20℃ ~ +60℃                                                  |
+| Storage Temperature      | -40℃ ~ +85℃                                                  |
+| Dimensions               | 60 x 60 mm                                                   |
+| Certifications           | FCC                                                           |
 ## **WiFi Halow Module Overview**
 
-采用 Quectel的FGH100M模组，通过SPI接口与主板进行通讯。
-|                          | WiFi Halow Module          |
-| ------------------------ | -------------------------- |
+采用 Quectel的FGH100M模组，支持868MHz, 915MHz两个频段。通过SPI接口与主板进行通讯。
 | Module                   | Quectel FGH100M            |
+| ------------------------ | -------------------------- |
 | WiFi Protocol            | IEEE 802.11 ah             |
 | Operating Modes          | AP/STA                     |
 | Operation Frequencey     | Sub-1 G: 850–950 MHz       |
@@ -105,7 +112,7 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 
 ### Sensor modules
 
-可通过DI/DO，及RS485,RS232, GPIO来外接各种传感器，如PIR传感器（具体待补充） 
+可通过DI/DO，及RS485,RS232, GPIO来外接各种传感器，如PIR传感器
 
 ### Expansion modules
 
@@ -114,4 +121,4 @@ USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺�
 
 ### Mounts and enclosures
 
-提供灵活安装的支架配件  (待补充)
+提供灵活安装的支架配件,具体参考：[产品安装](../../Overview#产品安装)

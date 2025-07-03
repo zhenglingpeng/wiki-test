@@ -2,13 +2,13 @@
 # Wi-Fi HaLow Module
 
 ## 产品特性
-### 文字说明
-此模组基于FGH100M进行设计，FGH100M是IEEE 802.11ah 标准的远距离、低功耗 Wi-Fi HaLow 模块，支持 Sub-1 GHz 频段通信，适用于物联网（IoT）和智能设备场景。适配于NExxx 系列主板。
+### 方案说明
+此模组基于FGH100M进行设计，FGH100M是IEEE 802.11ah 标准的远距离、低功耗 Wi-Fi HaLow 模块，支持 Sub-1 GHz 频段通信，对应不同国家地区频段会不同，目前可提供868MHz,915MHz两种可选，适用于物联网（IoT）和智能设备场景。
 
 ### 主要特性
-|      |WiFi Halow Module        |                            |
+
+| 1    | Items                  | Description            |
 | ---- | ------------------------ | -------------------------- |
-| 1    | Module                   | Quectel FGH100M            |
 | 2    | WiFi Protocol            | IEEE 802.11 ah             |
 | 3    | Operating Modes          | AP/STA                     |
 | 4    | Operation Frequencey     | Sub-1 G: 850–950 MHz       |
@@ -44,12 +44,17 @@
 | 15   | NC        |                    |          |              |
 | 16   | 3V3       | 3.3 V power supply | POWER    |              |
 
-
-
-## 使用说明
-### 
-
-
 ## 规格尺寸
 
 60x60 mm
+<img 
+src="/img/Hardware_Dev_Resources/WiFi_Halow/wifihalow.jpg"
+  alt="wifihalow" 
+  style={{
+    width: '100%',
+    maxWidth: '300px',
+    height: 'auto',
+    display: 'block',
+    margin: 'auto'
+  }}
+/>

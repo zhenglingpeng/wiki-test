@@ -52,3 +52,14 @@
    - 使用双频天线（2.4GHz/5GHz），通过IPEX接口牢固连接。  
    - 避免天线与金属部件接触，防止信号衰减。
 
+<img 
+src="/img/Hardware_Dev_Resources/WiFi_Module/WiFi_Module.jpg"
+  alt="WiFi_Module" 
+  style={{
+    width: '50%',
+    maxWidth: '300px',
+    height: 'auto',
+    display: 'block',
+    margin: 'auto'
+  }}
+/>
