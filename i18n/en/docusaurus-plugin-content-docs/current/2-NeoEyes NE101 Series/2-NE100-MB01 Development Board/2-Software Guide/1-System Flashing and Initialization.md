@@ -2,7 +2,7 @@
 
 ## Device Flashing Instructions
 
-Default firmware download link: [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101_FCC.zip)
+Default firmware download link: [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
 
 ### Hardware Information
 
