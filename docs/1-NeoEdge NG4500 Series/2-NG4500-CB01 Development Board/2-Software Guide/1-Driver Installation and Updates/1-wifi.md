@@ -1,6 +1,6 @@
 # WIFI
 
-本文档以 Realtek RTL8821CE 为例，介绍 NG4520平 台下 WIFI 驱动的安装与使用方法。
+本文档以 Realtek RTL8821CE 为例，介绍NG4520平台下 WIFI 驱动的安装与使用方法。
 
 ## 安装方式
 
@@ -47,7 +47,7 @@ $ dmesg | grep rtl
 
 1. 代码获取
 - 官方仓库：[GitHub - tomaspinho/rtl8821ce](https://github.com/tomaspinho/rtl8821ce)
-- 或由 WIFI 厂商提供](https://github.com/tomaspinho/rtl8821ce)
+- 寻求与 WiFi 厂商获取相关资源
 2. 目录放置
 
             将源码放置于：

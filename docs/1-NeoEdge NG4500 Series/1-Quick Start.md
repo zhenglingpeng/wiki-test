@@ -28,7 +28,7 @@
   
   ![](/img/NG45XX_SOFTWARE/Quickstart/NG4500_QucikStart4.png)
   
-  5. 将4G/5G模组固定到J15的M.2 Key B 2242, or M.2 Key B 2252 ,并将Sim卡插到J18的Sim卡槽 ，并连接到外置天线（Optional）
+  5. 将4G/5G模组固定到J15的M.2 Key B 2242 ,并将Sim卡插到J18的Sim卡槽 ，并连接到外置天线（Optional）
   
   ![](/img/NG45XX_SOFTWARE/Quickstart/NG4500_QucikStart5.png)
   
@@ -72,23 +72,23 @@
 
 1. 勾选 `接受许可协议`，点击下一步
 
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Licenses.png)
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Licenses_1.png)
 
 2. 设置语言，点击下一步
 
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Language.png)
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Language_1.png)
 
 3. 设置键盘布局，点击下一步
 
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Keyboard.png)
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Keyboard_1.png)
 
 4. 设置时区（例如：`Asia/Shanghai`），点击下一步
 
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Local.png)
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Local_1.png)
 
 5. 配置“您的姓名”和“密码”，点击下一步
 
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration.jpg)
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_1.png)
 
 6. 最后，等待系统安装，自动重启
 
