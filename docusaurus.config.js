@@ -36,7 +36,7 @@ const config = {
   /* 3️⃣  国际化                                         */
   /* -------------------------------------------------- */
   i18n: {
-    defaultLocale: 'zh-Hans',
+    defaultLocale: 'en',
     locales: ['zh-Hans', 'en'],
     localeConfigs: {
       'zh-Hans': { htmlLang: 'zh-Hans', label: '中文' },
@@ -112,7 +112,7 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          { title: 'Wiki',      items: [{ label: 'Wiki', to: '/docs/0-Welcome' }] },
+          { title: 'Wiki',      items: [{ label: 'Wiki', to: '/docs/Welcome' }] },
           { title: 'Community', items: [
               { label: 'Discord', href: 'https://discord.com/invite/6TZb2Y8WKx' },
               { label: 'X',       href: 'https://x.com/CamThinkAI' },
