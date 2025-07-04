@@ -59,8 +59,8 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 - **Cat-1模块规格**：移远EG912UGL，支持LTE FDD/TDD和GSM（除北美外全球支持），尺寸60mm x 60mm。
 - **WiFi HaLow模块规格**：移远FGH100M，基于IEEE 802.11ah协议，用于长距离低功耗连接，尺寸60mm x 60mm。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={useBaseUrl('/img/Overview/NE101/cat1PCBA.png')} alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src={useBaseUrl('/img/Overview/NE101/wifihalow.png')} alt="WiFi HaLow PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/cat1PCBA.jpg')} alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Overview/NE101/wifihalow.jpg')} alt="WiFi HaLow PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 ### 可换相机模组

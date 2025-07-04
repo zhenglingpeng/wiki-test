@@ -46,11 +46,19 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
   ![NG45XX_Bot_IO_Marker](/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_Bot_IO_Marker.png)
 ### Quick connection guide
 
-<font color="#ff0000"> 待补充工程样机的PCBA组件图 (或换成组装图，视频)</font>!!!
-
+<img 
+  src="/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_PCBA_Topt_View.jpg" 
+  alt="NG45XX_PCBA_Topt_View" 
+  style={{
+    width: '50%',
+    maxWidth: '600px',
+    height: 'auto',
+    display: 'block',
+    margin: 'auto'
+  }}
+/>
 1. 确认开发套件所需的清单是否齐全，包括核心模组，载板，风扇及其它周边配件
 2. 将风扇装配到Orin Nano/NX模组上 
-
    - 装配前确认风扇与SoC连接处理涂有导热硅脂
    - 风扇散热器有器件避让槽，安装时注意和模组对齐
    - 风扇固定支架方向要对，且坚固时注意不要磕坏模组上的器件
@@ -58,7 +66,6 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
 3. 将装好风扇的Orin Nano/NX模组,插扣进260 Pins SO-DIMM SOCKET,确认紧扣后，再通过两个螺比，将模组锁到Carried Board。最后风扇电子线接插到PWM FAN Connector
 4. 将4个支撑铜柱分别固定到四个固定孔位上，以支撑DemoKit。或将DemoKit通过外壳套件进行防护
 5. 翻到Carried Board 的底面，将所需的组件装配上去 
-
    - 将 RTC Battery CR1220固定到 BT1的 Holder上（Optional） 
    - 将SSD固定到 J11(x4 Lane) 或 J13 (x1 Lane)的M.2 Key M 2280插槽。建议系统盘装到J11,存储拓展装到J13(可选) 
    - 将WiFi&BT模组固定到J19的 M.2 Key E 2230（Optional）
@@ -70,29 +77,20 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
    - 若有其它模组或报警设备，可通过 J37 FFC Connector 拓展GPIO, SPI, I2C及3V3供电,来实现外部模组的拓展
    - 将调式串口工具连接到 J33的 UART2 接口
 6. HDMI接口连接到外部显示器
-
 7. 将有线鼠标和键标连接到USB Type-A接口中任意两个
-
 8. 将网线连接到 LAN 口中任意一个
-
 9. 将USB Type-C 接口连接到调试电脑
-
 10. 确认以上操作无误后，将电源适配器连接到 DC-JACK，即可开始进行套件开发调试
 
-    **软件烧录和操作参考**：[System Flashing](http://192.168.13.9:3000/docs/Edge%20AI%20Box/NeoEdge%20NG45XX%20Series/Software%20Guide/System%20Flashing%20and%20Initialization)
-
+ **软件烧录和操作参考**：[System Flashing](../Software%20Guide/System%20Flashing%20and%20Initialization)
  ## **Interfaces  and instructions**
-
 There are related interafces detailed decription,which are using on the Board and product. More information please refer "Jetson Orin NX Series and Jetson Orin Nano Series Pinmux". 
-
  **NVMe** 协议：Non-Volatile Memory Express，是一种高性能、高并发的存储协议，专为 SSD 设计。        
 **PCIe**: （Peripheral Component Interconnect Express）是用于高速串行通信的标准接口，广泛应用于计算机内部的各种扩展卡和设备。PCIe传输通过一对差分信号线进行数据传输，每个通道包含两对差分信号线（一个用于发送，一个用于接收）。支持多通道配置，如 x1、x2、x4、x8 等，表示使用的通道数量。如M.2 Key M Port1支持x4, M.2 Key M port2支持x1。
-
 | 特性       | Data Rate     | Orin Nano | Orin NX |
 |:-------- | ------------- |:---------:|:-------:|
 | PCIe 3.0 | 1 GB/s @ Lane | Y         | Y       |
 | PCIe 4.0 | 2GB/s @ Lane  | X         | X       |
-
 ### J11: M.2 Key M (4 Lanes)
 此接口支持4Lanes PCIe,可用于连接SSD。
 | Pin # | Signal Name   | Description                              | Direction | Pin Type          |

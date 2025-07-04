@@ -1,26 +1,20 @@
-### USB-1080P摄像模组技术规格书
-
----
 
 #### **产品特性**   
 本产品为高性能USB接口摄像模组，搭载1/2.7英寸200万像素图像传感器，支持1080P 30fps高清视频输出。
 
 **主要特性**  
-
-|      |                          | USB Camera Module |               |
+| 序号| Items                    | Description       |        备注       |
 | ---- | ------------------------ | ----------------- | ------------- |
-|      | Items                    | Description       |               |
 | 1    | CMOS Sensor              | SC200AI, 1/2.8"   |               |
 | 2    | Max.Resolution           | 1920*1080         |               |
 | 3    | F.No                     |                   | Optional LENS |
 | 4    | Focal Length             | 2.5mm/4mm/6mm     | Optional LENS |
 | 5    | Focusing distance        | 2M/3M/5M          | Optional LENS |
-| 6    | FOV(D)                   | 165/？？/59       | Optional LENS |
+| 6    | FOV(H)                   | 137/88/51         | Optional LENS |
 | 8    | Communication Interfaces | USB               |               |
 | 9    | Operation Temperature    | -20°-- 60°        |               |
 | 10   | Storage Temperature      | -40°-- 85°        |               |
 | 11   | Dimensions               | 25mm*23.86mm      |               |
-| 12   | Certifications           | /                 |               |
 
 ---
 
@@ -50,3 +44,14 @@
 ---
 
 #### **4. 规格尺寸**  
+<img 
+src="/img/Hardware_Dev_Resources/USB_Module/USB_Module_Size.png"
+  alt="USB_Module_Size" 
+  style={{
+    width: '50%',
+    maxWidth: '300px',
+    height: 'auto',
+    display: 'block',
+    margin: 'auto'
+  }}
+/>
