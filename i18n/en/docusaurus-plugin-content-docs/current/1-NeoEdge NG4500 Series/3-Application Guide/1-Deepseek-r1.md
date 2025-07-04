@@ -19,7 +19,6 @@ Guide covers:
 - Running DeepSeek-R1 model  
 - Optional Open WebUI for web interface  
 
-[Image]*Illustration: Web chat interface based on Open WebUI (placeholder)*
 
 ---
 

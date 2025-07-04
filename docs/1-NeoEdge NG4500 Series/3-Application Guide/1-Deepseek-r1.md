@@ -21,8 +21,6 @@
 - 运行 DeepSeek-R1 模型  
 - 使用 Open WebUI 提供网页界面（可选）
 
-【图片】*图示：基于 Open WebUI 的 Web 聊天界面（占位图）*
-
 ---
 
 ## 2. 环境准备
