@@ -1,4 +1,7 @@
 
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 ## 1. 产品特性
 本模组基于EG912U-GL（适用非北美）和EG915Q-NA(适用于北美)开发。
 

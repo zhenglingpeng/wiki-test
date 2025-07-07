@@ -1,3 +1,5 @@
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## 1. 主要特性
 | 特性                  | 说明                                                         |
@@ -75,3 +77,6 @@ src="/img/Hardware_Dev_Resources/SSD/SSD_TopView.jpg"
   }}
 />
 
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_PCBA_Top_View.jpg')} alt="NG45XX_PCBA_Top_View" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>

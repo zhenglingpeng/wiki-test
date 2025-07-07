@@ -7,9 +7,6 @@ More information,please reference official documents.[DeveloperGuide](https://do
 Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, with 260 pins SO-DIMM connector.
 
 ## **PCBA Interfaces**
-
-
-
 ### Top side Interfaces
 
 - DC input from 12 to 36V
@@ -49,10 +46,8 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
   ![NG45XX_Bot_IO_Marker](/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_Bot_IO_Marker.png)
 ### Quick connection guide
 
-  ![NG45XX_PCBA_Top_View](/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_PCBA_Top_View.jpg)
-
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={useBaseUrl('/img/QuickStart/NE101/ne101_11.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_PCBA_Top_View.jpg')} alt="NG45XX_PCBA_Top_View" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 1. 确认开发套件所需的清单是否齐全，包括核心模组，载板，风扇及其它周边配件
 2. 将风扇装配到Orin Nano/NX模组上 
