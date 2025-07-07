@@ -7,7 +7,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 本教程将详细描述NE101的使用说明，涵盖内容，包括设备基本使用、设备配置、以及设备安装。
 
 ## 产品准备
-在开始前请准备NE101设备、5号AA电池*4、十字螺丝刀*1、以及NE101的相关选配件，例如:Cat-1通讯模块、WiFi-Halow通讯模块，如果你还没有NE101设备，可以通过我们的商城进行获取，请点击[「NE101购买地址」](https://www.camthink.ai)。
+在开始前请准备NE101设备、5号AA电池x4、十字螺丝刀x1、以及NE101的相关选配件，例如:Cat-1通讯模块、WiFi-Halow通讯模块，如果你还没有NE101设备，可以通过我们的商城进行获取，请点击[「NE101购买地址」](https://www.camthink.ai)。
 
 ![NE101](/img/QuickStart/NE101/ne101_1.png)
 
@@ -22,16 +22,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 
 ### 设备配置
-对于设备配置，NE101内置WiFi AP提供了一个配置Web供用户对设备的参数和功能进行修改，WiFi AP的SSID名称规则为 **NE101_ABC123**，请保证身边有手机或电脑可以连接NE101提供的WiFi AP来访问Web网页进行配置修改，连接若成功连接WiFi AP可通过**192.168.1.1**访问配置Web页，接下来将详细说明相关操作步骤。
+对于设备配置，NE101内置WiFi AP提供了一个配置Web供用户对设备的参数和功能进行修改，WiFi AP的SSID名称规则为 **NE101_ABC123**，请保证身边有手机或电脑可以连接NE101提供的WiFi AP来访问Web网页进行配置修改，若成功连接WiFi AP可通过**192.168.1.1**访问配置Web页，接下来将详细说明相关操作步骤。
 #### 1、保证NE101处于开机状态
-你可以手指轻按相机右侧的拍照按钮，查看闪光灯是否亮起，如果亮起说明当前机器处于开机状态，如果你是在调试设备，点击拍照按键NE101将会抓取当前页面图像，并通过你配置的MQTT地址上传图像，如果一切配置正常的话，详细配置修改见下方说明。
+你可以手指轻按一下相机右侧的拍照按钮，查看闪光灯是否亮起，如果亮起说明当前机器处于开机状态，如果你是在调试设备，点击拍照按键NE101将会抓取当前页面图像，并通过你配置的MQTT地址上传图像，如果一切配置正常的话，详细配置修改见下方说明。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_6.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 #### 2、开启NE101 WiFi AP 并在手机或电脑上寻找到它
 NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找对应SSID规则为 **NE101_ABC123**的WiFi AP，点击连接它，你无需输入密码，当你正常链接后，即可通过**192.168.1.1**地址在浏览器中访问到NE101的配置Web页，如果你成功了将看到浏览器上的Web页面。
->**在新的固件版本中为了进一步降低NE101的使用功耗，WiFi AP的唤醒逻辑为长按拍照键3s（逻辑改：长按3-5S，且等灯闪2次），直到灯光闪烁亮起，可以参考下方的操作录屏**
+>**在新的固件版本中为了进一步降低NE101的使用功耗，WiFi AP的唤醒逻辑为长按拍照键3s且灯光闪烁2次，可以参考下方的操作录屏**
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_7.gif')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_9.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
@@ -66,7 +66,7 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 </div>
 
 **抓图设置**
->用于设置NE101设备的抓图功能设置，用户可以根据硬件执行扩展PIR传感器等硬件出发设备抓图，详情可见开发文档
+>用于设置NE101设备的抓图功能设置，用户可以根据硬件执行扩展PIR传感器等硬件出发设备抓图
 - 启用排程抓图：开启功能后支持设置设备周期性进行图像抓拍的相关功能设置。
    - 定时抓图模式：支持设置每天定时抓图或周一至周日具体时间点抓图，时间可以设置00:00 - 23:59，最多支持设置8个抓拍时间用于定时图像抓取。
    - 间隔抓图模式：支持设置抓图的时间间隔，用于按照时间间隔进行图像抓取，支持按照分钟、小时、天的时间纬度进行设置，最多仅支持1个规则设置。
@@ -118,7 +118,7 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_13.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
-- **Cat-1网络设置**：NE101 Cat-1版本支持进行网络的设置，你有一些必要的前提条件，分别是所在地区的sim卡，当前NE101 Cat-1版本支持除北美地区以外的其他地区使用，请按照当前地区的所在运营商购置对应的sim卡，下方将会说明如何进行Cat-1网络设置，如何获取Cat-1版本的NE101，可以考虑。
+- **Cat-1网络设置**：NE101 Cat-1版本支持进行网络的设置，你需要有所在地区可用的sim卡，当前NE101 Cat-1版本支持除北美地区以外的其他地区使用，下方将会说明如何进行Cat-1网络设置。
    - 使用螺丝刀打开NE101的设备前盖。
    - 拆卸完成后可以看到设备前面的sim卡槽，在sim卡槽内插入sim卡。
    - 重新安装设备前盖。
@@ -200,7 +200,7 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 也可以将 Base64 数据粘贴至 [Base64图像查看器](https://base64.guru/converter/decode/image) 进行在线预览。
 
 ### 设备重置
-设备重置功能为的操作为长按拍照按钮10s后等待灯光快速闪动5次后即表示设备重置成功，重置后设备系统会恢复出厂设置，请谨慎操作，重置成功后设备等待下次灯光亮起表示系统准备完成，您可以参考[「设备配置」](#设备配置)重新对设备进行配置。
+设备重置的操作为长按拍照按钮10s后等待灯光快速闪动5次后即表示设备重置成功，重置后设备系统会恢复出厂设置，请谨慎操作，重置成功后设备等待下次灯光亮起表示系统准备完成，您可以参考[「设备配置」](#设备配置)重新对设备进行配置。
 
 
 ## 产品安装

@@ -1,5 +1,6 @@
 import React from 'react';
 import Translate from '@docusaurus/Translate';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 interface Accessory {
   image: string;
@@ -60,7 +61,7 @@ const AccessoriesTable: React.FC<AccessoriesTableProps> = ({ accessories }) => {
             <td style={{ padding: '8px', textAlign: 'center', borderBottom: '1px solid #ddd', borderRight: '1px solid #ddd', width: '25%' }}>
               <div style={{ width: '100%', height: '80px', margin: '0 auto' }}>
                 <img 
-                  src={accessory.image} 
+                  src={useBaseUrl(accessory.image)} 
                   alt={typeof accessory.name === 'string' ? accessory.name : 'Product accessory'} 
                   style={{ 
                     width: '100%',

@@ -18,7 +18,7 @@ This project demonstrates an example implementation of a low-power image acquisi
 ## Program Logic
 
 ```mermaid
-flowchart LR
+graph LR
     %% 设置节点样式
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px
     classDef highlight fill:#e1f5fe,stroke:#01579b,stroke-width:2px
@@ -28,10 +28,10 @@ flowchart LR
     A[Device Startup]:::highlight
     B[Device Sleep]:::default
     C1[Wake-up - Timer Triggered]:::default
-    C2[Wake-up - IO Triggered, See "PIR Example"]:::process
+    C2["Wake-up - IO Triggered, See &quot;PIR Example&quot;"]:::process
     D[Capture Image]:::default
     E[Data Processing]:::default
-    E1[AI Recognition, See "Face Recognition Example"]:::process
+    E1["AI Recognition, See &quot;Face Recognition Example&quot;"]:::process
     E2[Image Transmission Only]:::default
     F[MQTT Transmission]:::default
     G[Application Usage]:::highlight
