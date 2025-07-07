@@ -1,3 +1,7 @@
+
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # 5G Module
 ## 产品特性
 ### **核心功能**
@@ -93,15 +97,6 @@
   ```
 
 ---
-
-<img 
-src="/img/Hardware_Dev_Resources/5G_Module/5G_Module.jpg"
-  alt="5G_Module" 
-  style={{
-    width: '60%',
-    maxWidth: '300px',
-    height: 'auto',
-    display: 'block',
-    margin: 'auto'
-  }}
-/>
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Hardware_Dev_Resources/5G_Module/5G_Module.jpg')} alt="5G_Module" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>

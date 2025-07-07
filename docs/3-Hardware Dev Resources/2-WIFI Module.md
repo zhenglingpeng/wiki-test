@@ -1,3 +1,6 @@
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # WiFi Module
 
 **Fn-Link FG6222MPUC-02 技术文档**
@@ -52,14 +55,6 @@
    - 使用双频天线（2.4GHz/5GHz），通过IPEX接口牢固连接。  
    - 避免天线与金属部件接触，防止信号衰减。
 
-<img 
-src="/img/Hardware_Dev_Resources/WiFi_Module/WiFi_Module.jpg"
-  alt="WiFi_Module" 
-  style={{
-    width: '50%',
-    maxWidth: '300px',
-    height: 'auto',
-    display: 'block',
-    margin: 'auto'
-  }}
-/>
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Hardware_Dev_Resources/WiFi_Module/WiFi_Module.jpg')} alt="WiFi_Module" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>

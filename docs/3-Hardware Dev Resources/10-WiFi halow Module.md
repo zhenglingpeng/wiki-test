@@ -1,3 +1,5 @@
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Wi-Fi HaLow Module
 
@@ -47,14 +49,7 @@
 ## 规格尺寸
 
 60x60 mm
-<img 
-src="/img/Hardware_Dev_Resources/WiFi_Halow/wifihalow.jpg"
-  alt="wifihalow" 
-  style={{
-    width: '100%',
-    maxWidth: '300px',
-    height: 'auto',
-    display: 'block',
-    margin: 'auto'
-  }}
-/>
+60*60mm
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Hardware_Dev_Resources/WiFi_Halow/wifihalow.jpg')} alt="wifihalow" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>

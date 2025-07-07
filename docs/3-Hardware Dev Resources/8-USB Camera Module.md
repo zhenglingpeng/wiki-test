@@ -1,4 +1,7 @@
 
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 #### **产品特性**   
 本产品为高性能USB接口摄像模组，搭载1/2.7英寸200万像素图像传感器，支持1080P 30fps高清视频输出。
 
@@ -44,14 +47,6 @@
 ---
 
 #### **4. 规格尺寸**  
-<img 
-src="/img/Hardware_Dev_Resources/USB_Module/USB_Module_Size.png"
-  alt="USB_Module_Size" 
-  style={{
-    width: '50%',
-    maxWidth: '300px',
-    height: 'auto',
-    display: 'block',
-    margin: 'auto'
-  }}
-/>
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Hardware_Dev_Resources/USB_Module/USB_Module_Size.png')} alt="USB_Module_Size" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>

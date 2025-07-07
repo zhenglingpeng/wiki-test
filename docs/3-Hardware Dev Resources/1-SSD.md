@@ -1,3 +1,5 @@
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## 1. 主要特性
 | 特性                  | 说明                                                         |
@@ -63,15 +65,6 @@
 
 ---
 
-<img 
-src="/img/Hardware_Dev_Resources/SSD/SSD_TopView.jpg"
-  alt="SSD_TopView" 
-  style={{
-    width: '50%',
-    maxWidth: '300px',
-    height: 'auto',
-    display: 'block',
-    margin: 'auto'
-  }}
-/>
-
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Hardware_Dev_Resources/SSD/SSD_TopView.jpg')} alt="SSD_TopView" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>
