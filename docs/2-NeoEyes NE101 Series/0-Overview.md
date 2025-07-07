@@ -396,7 +396,7 @@ NE101整机产品规格如下：
         {
           title: "农作物生长监测",
           description: "通过定时拍摄或环境变化触发，记录农作物生长状态，支持远程监测作物长势，每日拍摄10次情况下可续航3年以上，特别适合偏远农田场景。",
-          image: "https://cdn.prod.website-files.com/680a070c3b99253410dd3df5/680a070c3b99253410dd456c_67ed53eff9fc95b4cd07bd73_67dda44b6cac8017c21c4ca8_Crop-monitoring_Fig%2525203.webp"
+          image: useBaseUrl("/img/Overview/NE101/zw.jpg")
         },
         {
           title: "畜牧行为分析", 
@@ -455,13 +455,13 @@ NE101整机产品规格如下：
     const examples = [
       { 
         title: "AI人脸识别", 
-        image: "/img/NE101_example_human_detect_1.png", 
+        image: useBaseUrl("/img/NE101_example_human_detect_1.png"), 
         description: "本示例为如何使用NE101实现一个实时人脸检测的用例，你可以更换成其他所需的AI场景应用。", 
         path: "human-face-detect"
       },
       { 
         title: "低功耗图像采集", 
-        image: "/img/Overview/NE101/lowpower.png", 
+        image: useBaseUrl("/img/Overview/NE101/lowpower.png"), 
         description: "实现NE101低功耗工作模式，每日10次拍摄情况下电池续航可实现3年及以上，可扩展结合传感器完成事件场景抓拍，本项目提供完整项目工程源代码，支持开发者二次开发扩展能力。", 
         path: "low-power-image-acquisition"
       }
@@ -492,7 +492,7 @@ NE101整机产品规格如下：
           <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "1rem" }}>{item.title}</h3>
           <img
             className="no-zoom"
-            src={useBaseUrl(item.image)}
+            src={item.image}
             alt={item.title}
             style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "0", width: "100%" }}
           />
