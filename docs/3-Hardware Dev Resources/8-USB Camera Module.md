@@ -47,15 +47,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ---
 
 #### **4. 规格尺寸**  
-<img 
-src="/img/Hardware_Dev_Resources/USB_Module/USB_Module_Size.png"
-  alt="USB_Module_Size" 
-  style={{
-    width: '50%',
-    maxWidth: '300px',
-    height: 'auto',
-    display: 'block',
-    margin: 'auto'
-  }}
-/>
-
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Hardware_Dev_Resources/USB_Module/USB_Module_Size.png')} alt="USB_Module_Size" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>

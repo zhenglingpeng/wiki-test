@@ -1,3 +1,6 @@
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # OV5640 Camera Module
 
 ## 产品特性

@@ -76,14 +76,6 @@ EG912U/EG915Q专为M2M和IoT应用设计的LTE Cat 1模块，支持无缝网络�
 ## 规格尺寸
 
 60*60mm
-<img 
-src="/img/Hardware_Dev_Resources/Cat_1/cat1PCBA.jpg"
-  alt="cat1PCBA" 
-  style={{
-    width: '50%',
-    maxWidth: '300px',
-    height: 'auto',
-    display: 'block',
-    margin: 'auto'
-  }}
-/>
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Hardware_Dev_Resources/Cat_1/cat1PCBA.jpg')} alt="cat1PCBA" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>

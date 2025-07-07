@@ -1,3 +1,6 @@
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # 4G Module
 ## 产品特性
 Quectel EM05-G 是一款专为 IoT/M2M 应用设计的 LTE Cat 4 模块，支持多网络制式（LTE-FDD/TDD、WCDMA、CDMA 等），采用 M.2 封装，适用于工业路由器、车载设备、数字标牌等场景。其核心特性包括：
@@ -73,15 +76,6 @@ Quectel EM05-G 是一款专为 IoT/M2M 应用设计的 LTE Cat 4 模块，支持
 ### 尺寸说明
 - **尺寸**：42.0 mm（长） × 30.0 mm（宽） × 2.3 mm（高）
 - **安装孔**：4 个 M2 螺纹孔，建议使用导热硅胶垫辅助散热
-  
-<img 
-src="/img/Hardware_Dev_Resources/4G_Module/4G_Module.jpg"
-  alt="4G_Module" 
-  style={{
-    width: '60%',
-    maxWidth: '300px',
-    height: 'auto',
-    display: 'block',
-    margin: 'auto'
-  }}
-/>
+<div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
+  <img src={useBaseUrl('/img/Hardware_Dev_Resources/4G_Module/4G_Module.jpg')} alt="4G_Module" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+</div>

@@ -1,3 +1,6 @@
+import AccessoriesTable from '@site/src/components/AccessoriesTable';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 Camthink provide Raspiberry Camera Module for developer as below:
 
 - **Camera Module v2**
