@@ -139,6 +139,7 @@ $ sudo modprobe rtl8821ce
 查看设备
 
 ```
+$ sudo lspci
 0001:01:00.0 Network controller: Realtek Semiconductor Co., Ltd. RTL8821CE 802.11ac PCIe Wireless Network Adapter
 ```
 
