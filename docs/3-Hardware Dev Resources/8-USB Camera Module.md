@@ -44,10 +44,5 @@
 ---
 
 #### **4. 规格尺寸**  
-<img 
-src="/img/Hardware_Dev_Resources/USB_Module/USB_Module_Size.png"
-  alt="USB_Module_Size" 
-  style={{
-    width: '50%',
-  }}
-/>
+![USB_Module_Size](/img/Hardware_Dev_Resources/USB_Module/USB_Module_Size.png)
+
