@@ -47,8 +47,9 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
 ### Quick connection guide
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={useBaseUrl('/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_PCBA_Top_View.jpg')} alt="NG45XX_PCBA_Top_View" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={('/img/Hardware_Guide/Edge_AI_Box/HardwareConnection/NG45XX_PCBA_Top_View.jpg')} alt="NG45XX_PCBA_Top_View" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
+
 1. 确认开发套件所需的清单是否齐全，包括核心模组，载板，风扇及其它周边配件
 2. 将风扇装配到Orin Nano/NX模组上 
    - 装配前确认风扇与SoC连接处理涂有导热硅脂
