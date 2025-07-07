@@ -49,9 +49,5 @@ src="/img/Hardware_Dev_Resources/USB_Module/USB_Module_Size.png"
   alt="USB_Module_Size" 
   style={{
     width: '50%',
-    maxWidth: '300px',
-    height: '300',
-    display: 'block',
-    margin: 'auto'
   }}
 />
