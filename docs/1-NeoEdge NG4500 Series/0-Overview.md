@@ -466,7 +466,7 @@ NG4500系列整机产品规格信息如下
           <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "1rem" }}>{item.title}</h3>
           <img
             className="no-zoom"
-            src={useBaseUrl(item.image)}
+            src={item.image}
             alt={item.title}
             style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "0", width: "100%" }}
           />
