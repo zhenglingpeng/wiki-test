@@ -99,7 +99,7 @@ NeoEdge NG4500 系列产品支持NVIDIA Super Mode，在大语言模型（LLMs�
 
 ## 产品信息
 ### 产品规格
-NG4500系列整机产品和载板的规格信息如下
+NG4500系列整机产品规格信息如下
 <table>
   <thead>
     <tr>
@@ -240,7 +240,7 @@ NG4500系列整机产品和载板的规格信息如下
     </tr>
     <tr>
       <td><strong>SMA Antenna Connector</strong></td>
-      <td colSpan="4">4-6（4G+WiFi数量为4，5G+WiFi数量为6）</td>
+      <td colSpan="4">6（4G+WiFi使用天线数量为4，5G+WiFi使用天线数量为6）</td>
     </tr>
     <tr>
       <td><strong>Thermal</strong></td>
@@ -265,13 +265,13 @@ NG4500系列整机产品和载板的规格信息如下
 ### 产品配件
 
 #### 产品基本配件
->CamThink NeoEdge NG4500产品系列提供的标准配件如下：
+>CamThink NeoEdge NG4500产品系列提供的主要配件如下：
 
 <AccessoriesTable
   accessories={[
     {
       image: "/img/Accessories/ng45xx_power_adapter.jpg",
-      name: "电源适配器（可选）",
+      name: "电源适配器",
       quantity: "1",
       description: [
         "输入: 100-240V AC",
@@ -282,17 +282,17 @@ NG4500系列整机产品和载板的规格信息如下
       image: "/img/Accessories/ng45xx_power_cable.jpg",
       name: "电源线（可选）",
       quantity: "1",
-      description: ["标准三芯电源线1.5m，默认欧规，可选配其他地区规格"]
+      description: ["标准三芯电源线1.5m，可选配EU/CN/US/AU/UK规格"]
     },
     {
       image: "/img/Accessories/ng45xx_connector.jpg",
-      name: "工业级接线端子（标准配件）",
+      name: "工业级接线端子",
       quantity: "2",
       description: ["16pin公端子*1、8pin公端子*1"]
     },
     {
       image: "/img/Accessories/ng45xx_bracket.jpg",
-      name: "安装支架（标准配件）",
+      name: "安装支架",
       quantity: "2",
       description: ["壁挂安装支架*2、DIN导轨安装支架*1"]
     }
@@ -333,7 +333,7 @@ NG4500系列整机产品和载板的规格信息如下
       image: "/img/Accessories/ng45xx_fan.png",
       name: "风扇",
       quantity: "1",
-      description: ["散热风扇套件, NG4500载板可用"]
+      description: ["散热风扇套件, NG4500-CB01载板可用"]
     },
     {
       image: "/img/Accessories/IMX219.png",
@@ -466,7 +466,7 @@ NG4500系列整机产品和载板的规格信息如下
           <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "1rem" }}>{item.title}</h3>
           <img
             className="no-zoom"
-            src={item.image}
+            src={useBaseUrl(item.image)}
             alt={item.title}
             style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "0", width: "100%" }}
           />

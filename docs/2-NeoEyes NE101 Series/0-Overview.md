@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 ## 产品介绍
 ![NE101](/img/Overview/NE101/NE101.png)
 
-CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功耗智能相机，采用模块化设计理念，具有**超低功耗**（待机功耗小于22uA）的特点。相机支持开发者扩展多种触发拍照方式（PIR/雷达/声音等），可搭配不同传感器模块实现**事件监测图像抓取**根据触发条件自主唤醒并进行图像采集，极大节省功耗。其**开放式硬件架构**允许开发者根据实际需求灵活扩展功能模块，快速完成从原型到商业产品的落地。
+CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功耗智能相机，采用模块化设计理念，具有**超低功耗**的特点。相机支持开发者扩展多种触发拍照方式（PIR/雷达/声音等），可搭配不同传感器模块实现**事件监测图像抓取**根据触发条件自主唤醒并进行图像采集，极大节省功耗。其**开放式硬件架构**允许开发者根据实际需求灵活扩展功能模块，快速完成从原型到商业产品的落地。
 
 ### 硬件特性信息
 >NeoEyes NE101产品由前盖、镜头模组、主板、通讯模块、电池模块等多个功能单元组成。各模块间通过标准化接口连接，便于拆装与维护，支持开发者按需替换、升级或定制特定模块。
@@ -48,6 +48,7 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 - **调试接口**：Type-C和UART用于开发串口调试使用。
 - **补光灯**：补光灯和光敏支持，适合在近距离黑暗环境中采集图像使用。
 - **Alam接口**：2Pin Wafer支持Alarm输入。
+- **PIR接口**：4Pin Wafer支持PIR传感器连接。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Board/NE100-MB01_1.png')} alt="主板正面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/Board/NE100-MB01_2.png')} alt="主板背面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
@@ -56,8 +57,8 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 ### 通讯方案扩展
 >NeoEyes NE101默认支持WiFi通讯传输数据，支持选用LTE Cat-1、WiFi-Halow通讯模块，模块与主板正面pin座子连接即可支持LTE Cat-1或WiFi-Halow通讯，易于硬件的通讯方案更换和扩展，关于模组的更换使用可见[「硬件指南」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md)。
 - **接口与兼容性**：标准PIN座连接，位于主板正面，支持免驱动识别。
-- **Cat-1模块规格**：移远EG912UGL，支持LTE FDD/TDD和GSM（除北美外全球支持），尺寸60mm x 60mm。
-- **WiFi HaLow模块规格**：移远FGH100M，基于IEEE 802.11ah协议，用于长距离低功耗连接，尺寸60mm x 60mm。
+- **Cat-1模块规格**：移远EG912U-GL（全球非北美地区）和移远EG915Q-NA（北美地区），支持LTE FDD/TDD和GSM等，尺寸60mm x 60mm。
+- **WiFi HaLow模块规格**：移远FGH100M，基于IEEE 802.11ah协议，用于长距离低功耗连接，支持868MHz/915MHz，尺寸60mm x 60mm。
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Overview/NE101/cat1PCBA.jpg')} alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/Overview/NE101/wifihalow.jpg')} alt="WiFi HaLow PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
@@ -139,7 +140,7 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 >NeoEyes NE101 设计兼顾户外稳定性与灵活部署能力，适用于多种安装环境和场景
 - **前盖镜头钢化玻璃**：镜头前盖采用高透光钢化玻璃，具备出色的防雨水积聚能力，保障长期户外拍摄效果稳定。
 - **无线与户外部署支持**：支持电池供电、低功耗运行，结合 IP67 级防护设计，适用于各种恶劣环境中的长期部署。
-- **灵活的安装方式**：支持墙面、顶部、立杆等多种安装方式，提供丰富的原装支架和外壳扩展组件，满足多样部署需求，支架规格和主要使用常见可见[产品配件-产品选配配件](#产品选配配件)
+- **灵活的安装方式**：支持墙面、顶部、立杆等多种安装方式，提供丰富的原装支架和外壳扩展组件，满足多样部署需求，支架规格和主要使用常见可见[「产品配件-产品选配配件」](#产品选配配件)
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Overview/NE101/Bracket/1.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/Overview/NE101/Bracket/3.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
@@ -188,7 +189,10 @@ NE101整机产品规格如下：
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>相机模组</strong></td>
-      <td colSpan="5">OV5640 Module, selectable 120°/60°FOV and near/far focus options</td>
+      <td colSpan="5">
+        <p>Default OV5640 Module（120° FOV 3m focus ）</p>
+        <span>More lenses available</span> 
+      </td>
     </tr>
     <tr>
       <td style={{ width: '20%' }}><strong>补光灯</strong></td>
@@ -264,7 +268,7 @@ NE101整机产品规格如下：
       image: "/img/Accessories/Battery.png",
       name: "电池",
       quantity: "4",
-      description: ["AA电池"]
+      description: ["常规5号AA电池"]
     }
   ]}
 />
@@ -488,7 +492,7 @@ NE101整机产品规格如下：
           <h3 style={{ fontSize: "1.5rem", fontWeight: "600", marginBottom: "1rem" }}>{item.title}</h3>
           <img
             className="no-zoom"
-            src={item.image}
+            src={useBaseUrl(item.image)}
             alt={item.title}
             style={{ width: "100%", height: "150px", objectFit: "cover", borderRadius: "0", width: "100%" }}
           />
