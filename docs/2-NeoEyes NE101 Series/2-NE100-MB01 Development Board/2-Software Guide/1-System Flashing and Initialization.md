@@ -2,7 +2,7 @@
 
 ## 设备烧录说明
 
-默认固件获取地址：[lowpower_camera.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101_FCC.zip)
+默认固件获取地址：[lowpower_camera.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
 
 ### 硬件信息
 
@@ -22,9 +22,11 @@
 
 烧录工具下载地址：[flash_download_tool_3.9.3_0.zip](https://github.com/camthink-ai/lowpower_camera/blob/main/tools/flash_download_tool_3.9.3_0.zip)
 
+串口驱动下载地址：[CH341SER.EXE](https://github.com/camthink-ai/lowpower_camera/tree/main/tools/CH341SER.EXE)
+
 ##### 操作步骤：
 
-1. 启动烧录工具
+1. 安装串口驱动，启动烧录工具
    
    ![烧录工具启动界面](/img/NE101_flash_tool.png)
 
@@ -38,7 +40,7 @@
    
    - 先执行ERASE擦除操作
    - 再执行START开始烧录
-   - 等待设备自动重启
+   - 按下重启按键或者拔插usb供电口重启设备
    
    ![烧录过程界面](/img/NE101_flash_tool1.png)
 

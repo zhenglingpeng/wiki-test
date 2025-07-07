@@ -26,7 +26,7 @@ This solution demonstrates how to utilize a **PIR sensor** to achieve intelligen
 #### 1. Quick Deployment Firmware
 
 - Precompiled production firmware download:
-  [PIR Detection Firmware](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101_PIR.zip)
+  [PIR Detection Firmware](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
 
 #### 2. Development Environment Configuration
 

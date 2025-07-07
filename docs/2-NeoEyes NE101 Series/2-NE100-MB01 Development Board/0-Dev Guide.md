@@ -94,7 +94,7 @@ NE100-CM01 开发板提供了全面的开发资源和文档支持。以下是相
 
 - [ESP32-S3 技术参考](https://www.espressif.com/en/products/socs/esp32-s3) - ESP32-S3 官方文档
 - [ESP-IDF 编程指南](https://docs.espressif.com/projects/esp-idf/en/latest/) - Espressif IoT 开发框架文档
-- [GitHub 仓库](https://github.com/Milesight-IoT/ne100-firmware) - 开源固件仓库
+- [GitHub 仓库](https://github.com/camthink-ai/lowpower_camera/tree/main/bin) - 开源固件仓库
 
 如需进一步的技术支持，请联系我们的技术支持团队。
 
