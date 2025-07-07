@@ -55,7 +55,7 @@ graph LR
 
 1. **Pre-compiled Firmware**:
    
-   - Example firmware: [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101_FCC.zip)
+   - Example firmware: [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
 
 2. **Source Code Development**:
    

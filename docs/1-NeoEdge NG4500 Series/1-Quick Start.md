@@ -201,6 +201,9 @@ ls /dev/video*
    - 修改`/opt/nanoowl/examples/tree_demo`文件
    
    ```shell
+   # 打开文件，修改完成后，使用crtl+0回车保存，crtl+X退出
+   $ nano tree_demo.py
+   
    # 屏蔽下面这句代码
    camera = cv2.VideoCapture(CAMERA_DEVICE)
    
@@ -220,12 +223,12 @@ ls /dev/video*
 3. 启动终端，运行测试案例
    
    ```shell
-   python3 tree_demo.py --camera 0 --resolution 1920x1080 ../../data/owl_image_encoder_patch32.engine
+    python3 tree_demo.py --camera 0 --resolution 1920x1080 --port 8080 ../../data/owl_image_encoder_patch32.engine
    ```
 
 4. 查看识别结果
    
-   - 在浏览器地址栏输入当前 NG4511 设备的 IP 地址和端口号（例如：`http://<ip address>:7860`），访问 NanoOWL 的 Web 界面。
+   - 在浏览器地址栏输入当前 NG4511 设备的 IP 地址和端口号（例如：`http://<ip address>:8080`），访问 NanoOWL 的 Web 界面。
    - 在输入框中输入你希望识别的内容，例如：
      - [a face [a nose, an eye, a mouth]]
      - [a table [a keyboard, a pen, a mouse]]

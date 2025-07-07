@@ -17,11 +17,13 @@
 #### 1. 预编译固件
 
 可直接下载最新预编译固件进行快速体验：
-- [human_face_detect.zip](https://github.com/camthink-ai/esp-who/blob/master/bin/human_face_detect.zip)
+
+- [human_face_detect.zip](https://github.com/camthink-ai/esp-who/blob/master/bin)
 
 #### 2. 源码开发环境
 
 如需进行二次开发，需准备以下环境：
+
 - **开发工具**：Visual Studio Code（1.99.2或更高版本）
 - **开发框架**：ESP-IDF插件（v5.4.0或更高版本）
 - **示例代码**：[camthink-ai/esp-who](https://github.com/camthink-ai/esp-who)
@@ -41,6 +43,7 @@
 #### 2. 固件烧录
 
 参考详细烧录指南：
+
 - [系统烧录与初始化](./../NE100-MB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
 
 #### 3. 串口输出解析
@@ -48,11 +51,13 @@
 设备将通过串口输出人脸检测结果（波特率：115200）：
 
 示例输出：
+
 ```
 WhoDetect: 0, bbox: [0.826712, 47, 40, 169, 195], left_eye: [80, 105], left_mouth: [90, 151], nose: [101, 125], right_eye: [123, 99], right_mouth: [126, 146]
 ```
 
 **数据字段说明**：
+
 - **bbox**：人脸边界框信息
   - 格式：[置信度, 左上角x坐标, 左上角y坐标, 宽度, 高度]
 - **left_eye**：左眼坐标(x,y)
@@ -86,17 +91,17 @@ git clone https://github.com/camthink-ai/esp-who
    ![工程目录结构](/img/NE101_human_face_detect_dir.png)
 
 2. 设置目标芯片为ESP32-S3
-
+   
    ![芯片选择界面](/img/NE101_idf_IC.png)
 
 #### 3. 编译与烧录
 
 1. 编译工程
-
+   
    ![编译界面](/img/NE101_idf_build.png)
 
 2. 烧录固件
-
+   
    ![烧录界面](/img/NE101_idf_flash.png)
 
 #### 4. 功能验证
@@ -106,7 +111,9 @@ git clone https://github.com/camthink-ai/esp-who
 ## 参考资源
 
 1. ESP-DL模型量化文档：
+   
    - [GitHub - espressif/esp-dl](https://github.com/espressif/esp-dl?tab=readme-ov-file)
 
 2. 官方示例仓库：
+   
    - [GitHub - espressif/esp-who](https://github.com/espressif/esp-who/tree/master)

@@ -17,7 +17,7 @@ The project is developed using the [ESP-DL](https://github.com/espressif/esp-dl)
 #### 1. Precompiled Firmware
 
 You can directly download the latest precompiled firmware for a quick experience:
-- [human_face_detect.bin](https://github.com/camthink-ai/esp-who/blob/master/bin/human_face_detect.bin)
+- [human_face_detect.bin](https://github.com/camthink-ai/esp-who/blob/master/bin)
 
 #### 2. Source Code Development Environment
 

@@ -38,16 +38,7 @@ cd Linux_for_Tegra/source/
 ./source_sync.sh -t jetson_36.4
 ```
 
-4. 获取下述代码并覆盖原始源代码
-
-```shell
-cd ../..
-mkdir -p gitlab/Linux_for_Tegra
-git clone git@gitlab.milesight.com:ai-developer/aibox/l4t.git  gitlab/Linux_for_Tegra
-cp -r gitlab/Linux_for_Tegra/* Linux_for_Tegra/
-```
-
-5. 部署NVIDIA Tegra组件​​
+4. 部署NVIDIA Tegra组件​​
 
 ```shell
 cd Linux_for_Tegra
@@ -191,8 +182,13 @@ ping google.com
 ```shell
 # 连接到AIBOX
 ssh username@aibox-ip
+# 示例如下：
+ssh  milesight@192.168.1.100
+
 # 执行远程命令
 ssh username@aibox-ip "uname -a"
+# 用例如下：
+ssh  milesight@192.168.1.100 "uname -a"
 ```
 
 ### RDP远程桌面访问
