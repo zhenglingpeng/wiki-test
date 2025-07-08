@@ -26,13 +26,13 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
 ### 超低功耗支持
 >NeoEyes NE101采用先进的低功耗设计理念，适用于周期性图像采集等对续航有严格要求的应用场景，官方软件默认即支持低功耗工作模式，开发者也可基于基础工程灵活扩展功能。
 - **超长续航表现**：在Wi-Fi通信模式下，默认低功耗配置可支持每日拍摄5次，续航超3年（理论值），极大降低运维频率，适用于野外或无持续供电环境，更多功耗测试表现详见下方表格：
-
+<!-- 
   | 通信方式 | 6V电池续航 | 7.2V锂亚电池续航 | 使用建议 |
   |---------|------------|-----------------|----------|
   | Wi-Fi | 2.39年 | 6.20年 | 在7.2V高能电池条件下表现最佳，适合大多数中近距离部署需求 |
   | Halow Wi-Fi | 1.46年 | 4.30年 | 兼顾续航与远距离通信，适合偏远或障碍环境 |
   | Cat.1 | 0.83年 | 2.08年 | 虽支持广域蜂窝网络，但在极低功耗场景中建议搭配外部供电优化使用策略 |
-  > 注：测试条件为每日拍摄10次，电池使用率70%。6V电池为标配AA电池，7.2V锂亚电池为4节38.8Wh规格，其中**锂亚电池暂不支持当前的标准电池仓安装，若有需要可联系我们**。
+  > 注：测试条件为每日拍摄10次，电池使用率70%。6V电池为标配AA电池，7.2V锂亚电池为4节38.8Wh规格，其中**锂亚电池暂不支持当前的标准电池仓安装，若有需要可联系我们**。 -->
 
 - **传感器感知低功耗扩展支持**：支持图像触发模式下的事件唤醒抓拍运行机制（如PIR、雷达、温度等），在非工作状态下进入深度休眠，充分保障系统在不同触发频率下的功耗可控，关于如何扩展传感器事件抓拍的传感器连接的开发案例详见：[「PIR示例」](./2-NE100-MB01%20Development%20Board/2-Software%20Guide/3-example-pir.md)
 
@@ -129,7 +129,7 @@ CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功�
     </tr>
   </tbody>
 </table>
-注：USB相机模组会占用额外IO资源，详见[「硬件指南-硬件连接-16Pin GPIO扩展」](./2-Hardware%20Guide/1-Hardware%20Connection.md)
+注：USB相机模组会占用额外IO资源，详见[「硬件指南-硬件连接-16Pin GPIO扩展」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/1-Hardware%20Connection.md)
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Overview/NE101/sensor1.png')} alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
