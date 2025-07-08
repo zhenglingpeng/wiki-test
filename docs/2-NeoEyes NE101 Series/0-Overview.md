@@ -450,7 +450,7 @@ NE101整机产品规格如下：
   }}
 >
   {(() => {
-    const BASE_URL = "/docs/NeoEyes NE101 Series/Application Guide/";
+    const BASE_URL = "./Application%20Guide/";
 
     const examples = [
       { 

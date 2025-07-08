@@ -418,7 +418,7 @@ NG4500系列整机产品规格信息如下
 >
   {/* 定义一个文档基础路径常量，方便维护 */}
   {(() => {
-    const BASE_URL = "/docs/NeoEdge NG4500 Series/Application Guide/";
+    const BASE_URL = "./Application%20Guide/";
 
     const examples = [
       { 
