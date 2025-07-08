@@ -211,6 +211,20 @@ sudo systemctl start xrdp
 4. 如下图，则为说明进入成功
    ![Remote_Desktop](/img/Remote_Desktop.png)
 
+    5. 补充：如出现闪退问题，可参考以下步骤进行修改 
+
+```shell
+# 配置startwm.sh文件
+sudo vi /etc/xrdp/startwm.sh
+
+# 在文件中补充以下信息
+unset DBUS_SESSION_BUS_ADDRESS
+unset XDG_RUNTIME_DIR
+
+# 保存文件后，重启服务
+sudo systemctl restart xrdp.service
+```
+
 ## 参考
 
 [Kernel Customization — NVIDIA Jetson Linux Developer Guide 1 documentation](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Kernel/KernelCustomization.html)
