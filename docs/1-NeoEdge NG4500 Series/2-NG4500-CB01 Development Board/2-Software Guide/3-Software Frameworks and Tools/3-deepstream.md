@@ -145,7 +145,9 @@ sudo ldconfig
 sudo apt-get install ./deepstream-7.1_7.1.0-1_arm64.deb
 ```
 
-1. **安装 Docker 和 NVIDIA Container Toolkit*：确保系统已安装 Docker 和 NVIDIA Container Toolkt。
+### 方式四： 使用 DeepStream Docker 镜像
+
+1. 安装 Docker 和 NVIDIA Container Toolkit*：确保系统已安装 Docker 和 NVIDIA Container Toolkt。
 
 2. 拉取 DeepStream Docker 镜像：
 

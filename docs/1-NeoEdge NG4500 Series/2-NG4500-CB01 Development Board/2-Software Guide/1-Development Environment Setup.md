@@ -213,15 +213,22 @@ sudo systemctl start xrdp
 
     5. 补充：如出现闪退问题，可参考以下步骤进行修改 
 
-```shell
-# 配置startwm.sh文件
-sudo vi /etc/xrdp/startwm.sh
+配置startwm.sh文件，使用`sudo vi /etc/xrdp/startwm.sh`指令打开文件，并将里面内容替换为如下内容：
 
-# 在文件中补充以下信息
+```shell
+if test -r /etc/profile; then
+        . /etc/profile
+fi
+
 unset DBUS_SESSION_BUS_ADDRESS
 unset XDG_RUNTIME_DIR
 
-# 保存文件后，重启服务
+exec /bin/sh /usr/bin/gnome-session
+```
+
+替换完成后，通过以下指令重启服务：
+
+```shell
 sudo systemctl restart xrdp.service
 ```
 
