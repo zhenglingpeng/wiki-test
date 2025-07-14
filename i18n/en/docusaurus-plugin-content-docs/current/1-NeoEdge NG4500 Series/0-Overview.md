@@ -418,7 +418,7 @@ Product casing and bracket dimension instruction：
 >
   {/* Define a standard document access for convenient maintenance */}
   {(() => {
-    const BASE_URL = "/docs/NeoEdge NG4500 Series/Application Guide/";
+    const BASE_URL = "./Application%20Guide/";
 
     const examples = [
       { 

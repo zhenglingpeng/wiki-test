@@ -450,7 +450,7 @@ NE101 provides a number of bracket accessories, supports multiple installation m
   }}
 >
   {(() => {
-    const BASE_URL = "/docs/NeoEyes NE101 Series/Application Guide/";
+    const BASE_URL = "./Application%20Guide/";
 
     const examples = [
       { 
