@@ -450,18 +450,18 @@ NE101 provides a number of bracket accessories, supports multiple installation m
   }}
 >
   {(() => {
-    const BASE_URL = "/docs/NeoEyes NE101 Series/Application Guide/";
+    const BASE_URL = "./Application%20Guide/";
 
     const examples = [
       { 
         title: "AI Facial Recognition", 
-        image: "/img/NE101_example_human_detect_1.png", 
+        image: useBaseUrl("/img/NE101_example_human_detect_1.png"), 
         description: "This example shows how to use NE101 to implement a real-time facial recognition use case. You can replace it with other AI scenarios.", 
         path: "human-face-detect"
       },
       { 
         title: "Low Power Image Collection", 
-        image: "/img/Overview/NE101/lowpower.png", 
+        image: useBaseUrl("/img/Overview/NE101/lowpower.png"), 
         description: "NE101 supports low-power working mode and maintains 3 years battery life on the setting of 10 shots per day. Its extendability allows the combination of sensors to capture images based on trigger settings. This project provides complete project engineering source code to support developers' secondary development and expansion capabilities.", 
         path: "low-power-image-acquisition"
       }
