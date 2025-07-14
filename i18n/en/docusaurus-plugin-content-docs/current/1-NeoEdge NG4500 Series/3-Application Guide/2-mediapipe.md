@@ -1,11 +1,12 @@
 # Pose Estimation
+
 ---
 
 ## 1. Overview
 
-This document explains how to use **MediaPipe Python API** for real-time **pose estimation** on **Jetson Orin** platforms (Nano/NX/AGX) with GPU acceleration (if supported).
+This guide demonstrates how to perform **real-time pose estimation** on the **Jetson Orin** platform (Nano / NX / AGX) using the **MediaPipe Python API**, with GPU acceleration enabled (if supported).
 
-Pose estimation is widely used in gesture recognition, fitness tracking, HCI, etc.
+Pose estimation is widely used in applications such as gesture recognition, fitness tracking, and human-computer interaction.
 
 ![mediapipe-series-solutions](/img/mediapipe-series-solutions.gif)
 
@@ -15,22 +16,22 @@ Pose estimation is widely used in gesture recognition, fitness tracking, HCI, et
 
 ### Hardware
 
-- Jetson Orin series (Nano, NX, AGX)  
-- USB/CSI camera (optional but recommended)
+- Jetson Orin series (Nano，NX）  
+- USB or CSI camera (Optional but recommended)
 
 ### Software
 
-- **OS**: Ubuntu 20.04/22.04 LTS (JetPack-based)  
-- **JetPack**: Official image (includes CUDA, cuDNN, TensorRT)  
-- **Python**: Recommended 3.8+  
-- **MediaPipe (Python)**: Via pip  
-- **Dependencies**: OpenCV, FFmpeg, GStreamer (for camera/video)  
+- **Operating System**：Ubuntu 20.04 / 22.04 LTS（Base on JetPack）  
+- **JetPack**：Official NVIDIA image (includes CUDA, cuDNN, TensorRT)  
+- **Python**：Version 3.8 or higher recommended  
+- **MediaPipe（Python）**：Install via `pip`  
+- **Dependencies**：OpenCV，FFmpeg，GStreamer(for camera/video support)
 
 ---
 
 ## 3. Environment Setup
 
-### Step 1: Update System and Install Dependencies
+### Step 1: Update the System and Install Dependencies
 
 ```bash
 sudo apt update && sudo apt upgrade
@@ -41,14 +42,14 @@ sudo apt install -y \
     libavcodec-dev libavformat-dev libswscale-dev
 ```
 
-### Step 2: Install Python Packages
+### Step 2：Install Required Python Packages
 
 ```bash
 python3 -m pip install --upgrade pip
 pip3 install mediapipe opencv-python
 ```
 
-For Jetson GPU acceleration, ensure TensorRT/CUDA are enabled and max performance:
+To enable GPU acceleration using TensorRT and CUDA (included with JetPack), and to maximize system performance:
 
 ```bash
 sudo nvpmodel -m 0
@@ -57,7 +58,7 @@ sudo jetson_clocks
 
 ---
 
-## 4. Run Pose Estimation
+## 4. Running Pose Estimation
 
 ![pose](/img/mediapipe_pose_0.png)
 
@@ -87,7 +88,6 @@ cap.release()
 cv2.destroyAllWindows()
 ```
 ![mediapipe_pose_1](/img/mediapipe_pose_1.png)
-
 ---
 
 ## 5. Hand Tracking
@@ -129,29 +129,29 @@ cv2.destroyAllWindows()
 
 ---
 
-## 6. Performance and Optimization
+## 6. Performance and Optimization Tips
 
-| Mode        | FPS (AGX Orin) | GPU Usage | Accelerated |
-|-------------|----------------|-----------|-------------|
-| Default CPU | ~5-10 FPS      | Low       | ❌          |
-| JetPack GPU | ~25-40 FPS     | Medium    | ✅          |
+| Mode       | FPS（AGX Orin） | GPU Usage | Acceleration   |
+| ---------- | --------------- | ----------- | -------- |
+| Default (CPU)  | ~5–10 FPS       | Low           | ❌        |
+| JetPack GPU | ~25–40 FPS      |  Moderate  | ✅        |
 
-### Optimization Tips
+### Tips
 
-- Enable `jetson_clocks` and set `nvpmodel` to max performance  
-- Use OpenCV multithreading for frame capture  
-- Reduce image resolution (e.g., 640x480)  
+- Use `jetson_clocks` and set`nvpmodel` to maximum performance mode  
+- Use multithreaded frame capture with OpenCV  
+- Reduce input resolution (e.g., 640×480) to improve frame rate
 
 ---
 
 ## 7. Troubleshooting
 
-| Issue            | Solution                          |
-|------------------|-----------------------------------|
-| Import errors    | Ensure `mediapipe` is installed   |
-| Camera not opening| Test with `cv2.VideoCapture(0)`   |
-| Low FPS          | Enable GPU, reduce resolution     |
-| No display       | Use `export DISPLAY=:0` for SSH   |
+| Issue           | Solution                                  |
+| -------------- | ----------------------------------- |
+| Import error        | Ensure `mediapipe`  is installed via ` pip`         |
+| Camera not detected     | Manually test with  `cv2.VideoCapture(0)` |
+| Low FPS         | Enable GPU acceleration, lower image resolution, disable drawing       |
+| Cannot display window   | For SSH users, run `export DISPLAY=:0` or use VNC |
 
 ---
 

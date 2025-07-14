@@ -1,30 +1,39 @@
 # WIFI
 
-This document describes the installation and usage instructions for WiFi drivers, using rtl8821 as an example.
+This document provides installation and usage instructions for the Wi-Fi driver on the NeoEdge NG4500-CB01 platform, using the Realtek RTL8821CE module as a reference example.
 
-## Methods
+## Installation Method
 
-There are two approaches for installation and usage:
+The Wi-Fi driver supports two installation methods：
 
-1. Direct installation within the system
-2. Compiling from source code and then flashing
+1. **Direct installation within the system**（recommended, simple and quick）
 
-## In-System Installation
+2. **Compile the driver from source and flash**（suitable for customized scenarios or when the kernel version is incompatible）
 
-Execute the following commands to automatically install the driver after entering the system:
+##  Installation Within the System
+
+**Follow the steps below to install the driver：**
+
+1. Install the driver
 
 ```
 $ sudo apt update
 $ sudo apt install rtl8821ce-dkms
 ```
 
-After completion, execute modprobe:
+2. Load the driver
 
 ```
 $ sudo modprobe rtl8821ce
 ```
 
-Check relevant logs using dmesg to confirm successful driver loading:
+3. Verify driver loading
+
+```
+$ dmesg | grep rtl
+```
+
+          A typical log output might look like this:：
 
 ```
 [   10.805932] rtl8821ce 0001:01:00.0: Adding to iommu group 3
@@ -34,27 +43,28 @@ Check relevant logs using dmesg to confirm successful driver loading:
 [   11.320620] rtl8821ce 0001:01:00.0 wlP1p1s0: renamed from wlan0
 ```
 
-## Source Code Compilation
+## Source Compilation and Installation
 
-### Code Acquisition
+1. Code Acquisition
+- Official git repository：[GitHub - tomaspinho/rtl8821ce](https://github.com/tomaspinho/rtl8821ce)
+- By the Wi-Fi vendor(https://github.com/tomaspinho/rtl8821ce)
+2. Directory Placement
 
-Source code can be obtained from GitHub or provided by the WiFi manufacturer.
+Place the source code in the following path:：
 
-The rtl8821 GitHub repository is available at: [GitHub - tomaspinho/rtl8821ce](https://github.com/tomaspinho/rtl8821ce)
+```
+Linux_for_Tegra/source/nvidia-oot/drivers/net/wireless/realtek/rtl8821ce
+```
 
-### Compilation
+3. Makefile Configuration
 
-Place the source code in the project directory under Linux_for_Tegra/source/nvidia-oot/drivers corresponding to the driver path, for example:
-
-Linux_for_Tegra/source/nvidia-oot/drivers/net/wireless/realtek
-
-Modify the Makefile to include rtl8821ce in the compilation:
+Add the following line to the main Makefile:：
 
 ```
 obj-m += rtl8821ce/
 ```
 
-Modify the driver's Makefile according to actual requirements. The diff for modifying the Makefile in the rtl8821ce directory is as follows:
+Then, modify the Makefile inside the `rtl8821ce` directory as needed to enable TEGRA platform support, for example：
 
 ```
 diff --git a/Makefile b/Makefile
@@ -114,23 +124,26 @@ index 5b5dc9a..01b1e24 100755
  else
 ```
 
-After modification, execute the kernel compilation command or compile the module separately and install it to the rootfs, then proceed with flashing. Refer to previous relevant documents for compilation and flashing instructions.
+4. Compile and Flash
 
-## Usage and Verification
+          Compile the kernel or module, then install the module into the root filesystem and flash the system. For detailed compilation and flashing methods, please refer to the official NVIDIA Jetson documentation.
 
-After system startup, execute modprobe:
+5. Usage and Verification
+
+Use the following command to manually load the driver module:
 
 ```
 $ sudo modprobe rtl8821ce
 ```
 
-Use the lspci command to view devices on the PCI bus:
+Verify that the device is correctly recognized by the PCI subsystem:
 
 ```
+$ sudo lspci
 0001:01:00.0 Network controller: Realtek Semiconductor Co., Ltd. RTL8821CE 802.11ac PCIe Wireless Network Adapter
 ```
 
-The dmesg command shows successful device addition:
+Inspect kernel messages to confirm the driver loaded successfully:
 
 ```
 $ sudo dmesg | grep rtl
@@ -141,11 +154,11 @@ $ sudo dmesg | grep rtl
 [   10.441574] rtl8821ce 0001:01:00.0 wlP1p1s0: renamed from wlan0
 ```
 
-Connect to WiFi:
+Confirm the Wi-Fi interface is up and running from the network settings page
 
 ![RTL8821_wifi_connection1.png](/img/RTL8821_wifi_connection1.png)
 
-Check network devices using ifconfig:
+Run `ifconfig` to  inspect interface configuration and status:
 
 ```
 wlP1p1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
@@ -160,7 +173,7 @@ wlP1p1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0ons 0
 ```
 
-Test network connection using ping:
+Use `ping` to verify external network connectivity:
 
 ```
 $ ping -I wlP1p1s0 www.baidu.com
@@ -170,3 +183,7 @@ PING www.baidu.com(2409:8c20:6:1d55:0:ff:b09c:7d77 (2409:8c20:6:1d55:0:ff:b09c:7
 64 bytes from 2409:8c20:6:1d55:0:ff:b09c:7d77 (2409:8c20:6:1d55:0:ff:b09c:7d77): icmp_seq=3 ttl=48 time=80.5 ms
 64 bytes from 2409:8c20:6:1d55:0:ff:b09c:7d77 (2409:8c20:6:1d55:0:ff:b09c:7d77): icmp_seq=4 ttl=48 time=86.1 ms
 ```
+
+---
+
+Note: For other Wi-Fi chipsets, please refer to the corresponding vendor documentation and kernel adaptation process.

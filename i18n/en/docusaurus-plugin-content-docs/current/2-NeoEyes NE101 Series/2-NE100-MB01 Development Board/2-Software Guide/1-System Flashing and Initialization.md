@@ -1,81 +1,83 @@
 # System Flashing
 
-## Device Flashing Instructions
+## Flash the firmware
 
-Default firmware download link: [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
+Download Firmware from：[lowpower_camera.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101_FCC.zip)
 
-### Hardware Information
+### Info
 
-- Main Control Chip: ESP32-S3
-- Development Framework: ESP-IDF v5.1.6
+- Main controller chip：ESP32-S3
+- Development framework：ESP-IDF v5.1.6
 
-Official reference document: [ESP-IDF v5.1 Programming Guide](https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32s3/get-started/windows-setup.html)
+Official reference documentation：[ESP-IDF v5.1 Programming Guide](https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32s3/get-started/windows-setup.html)
 
 ### Recommended Flashing Methods
 
-#### 1. VSCode Plugin Flashing (Recommended)
+#### 1. Flashing with VSCode Plugin (Recommended)
 
-- Integrates code editing, compilation, and flashing functionalities
-- Development environment setup reference: [Development Environment Setup Guide](./Development%20Environment%20Setup)
+- Provides integrated code editing, compilation, and flashing features
+- For environment setup, please refer to：[Development Environment Setup Guide](./Development%20Environment%20Setup)
 
-#### 2. Standalone Flashing Tool
+#### 2. Flashing Tool
 
-Flashing tool download link: [flash_download_tool_3.9.3_0.zip](https://github.com/camthink-ai/lowpower_camera/blob/main/tools/flash_download_tool_3.9.3_0.zip)
+You can download the flashing tool here：[flash_download_tool_3.9.3_0.zip](https://github.com/camthink-ai/lowpower_camera/blob/main/tools/flash_download_tool_3.9.3_0.zip)
 
-##### Operation Steps:
+Serial driver download from：[CH341SER.EXE](https://github.com/camthink-ai/lowpower_camera/tree/main/tools/CH341SER.EXE)
 
-1. Launch the flashing tool
+##### Flashing Steps：
+
+1. Install the serial driver and launch the flashing tool.
    
-   ![Flashing tool launch interface](/img/NE101_flash_tool.png)
+   ![flash_tool](/img/NE101_flash_tool.png)
 
-2. Configure flashing parameters:
+2. Configure Flashing Parameters：
    
-   - Select the firmware file
-   - Set the Flash address
-   - Choose the corresponding COM port
+   - Select firmware files
+   - Set the flash addresses
+   - Choose the COM port
 
-3. Execute flashing:
+3. Execute Flashing：
    
-   - First, perform the ERASE operation
-   - Then, execute START to begin flashing
-   - Wait for the device to automatically restart
+    - Click ERASE to wipe the chip at first
+    - Then, click START to flash
+    - Press the reset button or reconnect the USB power to reboot the device
    
-   ![Flashing process interface](/img/NE101_flash_tool1.png)
+   ![flashing tool interface](/img/NE101_flash_tool1.png)
 
-## OTA Wireless Upgrade Guide
+## OTA Firmware Updates Guide
 
-### Upgrade Steps
+### Getting Start
 
 1. **Enter Configuration Mode**
    
-   - Press the device function button to enter configuration mode
-   - Connect to the device WiFi hotspot (SSID: NE101_XXXXXX)
+   - Press and hold the device button to enter configuration mode.
+   - Connect to the device Wi-Fi hotspot（SSID：`NE101_XXXXXX`）
 
-2. **Upload the Upgrade Package**
+2. **Upgrade the Firmware Package**
    
-   - Access the device web interface (http://192.168.1.1)
-   - Navigate to "Device Maintenance" → "Firmware Upgrade"
-   - Select the upgrade file and upload it
+   - Access the device web interface at（http://192.168.1.1）
+   - Navigate to Device Maintenance → Firmware Upgrade
+   - After clicking the `Browse` to select the firmware package, click `Upgrade` to upload it.
    
-   ![OTA upgrade interface](/img/NE101_ota.png)
+   ![OTA Upgrade](/img/NE101_ota.png)
 
 3. **Wait for the Upgrade to Complete**
    
    - The system will automatically verify and install the new firmware
-   - After the upgrade is complete, the WiFi will automatically reconnect
+   - After the upgrade is completed, the Wi-Fi will reconnect automatically
    
-   ![Upgrade progress interface](/img/NE101_ota2.png)
+   ![upgrade interface](/img/NE101_ota2.png)
 
 4. **Verify Version Information**
    
-   - Confirm the new version number on the device information page
-   - Check whether all functional modules are operating normally
+   - Check the new firmware version on the Device Maintenance page
+   - Confirm that all functional modules are operating correctly
    
-   ![Version information interface](/img/NE101_ota3.png)
+   ![Device information](/img/NE101_ota3.png)
 
 ### Notes
 
-1. Ensure a stable power supply during the upgrade process
+1. Ensure stable power supply during the upgrade process
 2. It is recommended to back up important configurations before upgrading
 3. If the upgrade fails, the device will automatically roll back to the last available version
 4. The complete upgrade log can be viewed through the serial monitor

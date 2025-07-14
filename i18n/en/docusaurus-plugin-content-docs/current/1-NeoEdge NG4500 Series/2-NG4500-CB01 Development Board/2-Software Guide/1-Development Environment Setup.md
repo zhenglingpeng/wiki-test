@@ -1,203 +1,197 @@
 # Development Environment Setup
 
-This chapter details the **setup of the Jetson Orin NX development environment**, covering the complete process from **local development environment configuration** to **remote debugging and desktop access**, aiming to help developers efficiently build a development system suitable for embedded AI edge computing devices.
+This chapter details the development environment setup process for **NG4520**, including local environment configuration, source code deployment, cross-compilation, kernel and device tree updates, as well as remote debugging and desktop access. It aims to help developers efficiently build a development ecosystem for embedded AI edge computing devices.
 
 ## 1. Local Source Code Development Environment Setup
 
 ### Prerequisites
 
-- Ubuntu host (recommended: 20.04/22.04 LTS, >100GB space, for cross-compilation)
-
-- Install necessary tools as follows:
+- Ubuntu host (recommended 20.04/22.04 LTS, >100 GB space for cross-compilation
+- Install essential development tools:
 
 ```shell
-sudo apt update  
-sudo apt install git-core build-essential bc flex bison libssl-dev  
+sudo apt update 
+sudo apt install git-core build-essential bc flex bison libssl-dev
 ```
 
 ### Source Code Deployment
 
-1. Download and extract the Linux_for_Tegra source code:
+1. Download and unzip the Linux_for_Tegra source code.
 
 ```shell
-wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/release/Jetson_Linux_R36.4.0_aarch64.tbz2  
-tar xf Jetson_Linux_R36.4.0_aarch64.tbz2  
+wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/release/Jetson_Linux_R36.4.0_aarch64.tbz2
+tar xf Jetson_Linux_R36.4.0_aarch64.tbz2 
 ```
 
-2. Download and extract the filesystem:
+2. Download and unzip the file system
 
 ```shell
-wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/release/Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2  
-sudo tar xpf Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2 -C Linux_for_Tegra/rootfs/  
+wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/release/Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2
+sudo tar xpf Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2 -C Linux_for_Tegra/rootfs/
 ```
 
-3. Pull the kernel source code:
+3. Pulling kernel source code
 
 ```shell
-cd Linux_for_Tegra/source/  
-./source_sync.sh -t jetson_36.4  
+cd Linux_for_Tegra/source/
+./source_sync.sh -t jetson_36.4
 ```
 
-4. Fetch the following code and overwrite the original source:
+4. Deploying NVIDIA Tegra components​​
 
 ```shell
-cd ../..  
-mkdir -p gitlab/Linux_for_Tegra  
-git clone git@gitlab.milesight.com:ai-developer/aibox/l4t.git gitlab/Linux_for_Tegra  
-cp -r gitlab/Linux_for_Tegra/* Linux_for_Tegra/  
+cd Linux_for_Tegra
+sudo ./apply_binaries.sh
 ```
 
-5. Deploy NVIDIA Tegra components:
+### Cross-compilation toolchain deployment
+
+Download and unzip the cross-compilation toolchain
 
 ```shell
-cd Linux_for_Tegra  
-sudo ./apply_binaries.sh  
+wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2
+mkdir -p $HOME/l4t-gcc
+tar xf aarch64--glibc--stable-2022.08-1.tar.bz2 -C $HOME/l4t-gcc
 ```
 
-### Cross-Compilation Toolchain Deployment
+### Compilation Method
 
-Download and extract the cross-compilation toolchain:
+**Environmental Variables Configuration**: the following environment variables need to be configured before each new terminal compilation:
 
 ```shell
-wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2  
-mkdir -p $HOME/l4t-gcc  
-tar xf aarch64--glibc--stable-2022.08-1.tar.bz2 -C $HOME/l4t-gcc  
+cd Linux_for_Tegra/source
+export CROSS_COMPILE=$HOME/l4t-gcc/aarch64--glibc--stable-2022.08-1/bin/aarch64-buildroot-linux-gnu-
+export KERNEL_HEADERS=$PWD/kernel/kernel-jammy-src
+export INSTALL_MOD_PATH=$PWD/Linux_for_Tegra/rootfs/
 ```
 
-### Compilation Methods
-
-Before compiling, configure the environment variables (required for each new terminal session):
+**Complete compilation method (with kernel, module, device tree)**
 
 ```shell
-cd Linux_for_Tegra/source  
-export CROSS_COMPILE=$HOME/l4t-gcc/aarch64--glibc--stable-2022.08-1/bin/aarch64-buildroot-linux-gnu-  
-export KERNEL_HEADERS=$PWD/kernel/kernel-jammy-src  
-export INSTALL_MOD_PATH=$PWD/Linux_for_Tegra/rootfs/  
+./nvbuild.sh
 ```
 
-**Full Compilation (includes kernel, modules, and device tree):**
+**Separate Compilation Method**
+
+1. Compile the kernel
 
 ```shell
-./nvbuild.sh 
-```
-
-**Partial Compilation Methods:**
-
-1. Compile the kernel:
-
-```shell
-cd Linux_for_Tegra/source  
+cd Linux_for_Tegra/source
 ./nvbuild.sh -o $PWD/kernel_output  
 ```
 
-2. Compile Out-of-Tree Modules:
+2. Compile Out-of-Tree Modules
 
 ```shell
-cd Linux_for_Tegra/source  
-make modules  
+cd Linux_for_Tegra/source
+make modules
 
-# Install module drivers into rootfs  
-sudo -E make modules_install  
+# Install the module driver to the rootfs
+sudo -E make modules_install
 ```
 
-3. Compile the device tree:
+3. Compile device tree
 
 ```shell
-cd Linux_for_Tegra/source  
-make dtbs  
+cd Linux_for_Tegra/source
+make dtbs
 ```
 
-### Updating the Kernel and Device Tree (Without Flashing)
+### Update kernel and device tree (non-flash method)
 
-1. Check the `/boot/extlinux/extlinux.conf` file to confirm the paths of the current IMAGE and DTB (see LINUX and FDT entries in the example below):
+1.  Review the documentation `/boot/extlinux/extlinux.conf` to confirm the paths to the IMAGE and DTB currently used by the device, as shown below with the location information behind LINUX and FDT.
 
 ```shell
-TIMEOUT 30  
-DEFAULT primary  
+TIMEOUT 30
+DEFAULT primary
 
-MENU TITLE L4T boot options  
+MENU TITLE L4T boot options
 
-LABEL primary  
-      MENU LABEL primary kernel  
-      LINUX /boot/Image  
-      FDT /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb  
-      INITRD /boot/initrd  
-      APPEND ${cbootargs} root=PARTUUID=756c2935-3ec5-487a-96c8-424f306ca235 rw rootwait rootfstype=ext4 mminit_loglevel=4 console=ttyTCU0,115200 firmware_class.path=/etc/firmware fbcon=map:0 nospectre_bhb video=efifb:off console=tty0  
-      OVERLAYS /boot/tegra234-p3767-camera-p3768-imx678-C.dtbo  
+LABEL primary
+      MENU LABEL primary kernel
+      LINUX /boot/Image
+      FDT /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb
+      INITRD /boot/initrd
+      APPEND ${cbootargs} root=PARTUUID=756c2935-3ec5-487a-96c8-424f306ca235 rw rootwait rootfstype=ext4 mminit_loglevel=4 console=ttyTCU0,115200 firmware_class.path=/etc/firmware fbcon=map:0 nospectre_bhb video=efifb:off console=tty0
+      OVERLAYS /boot/tegra234-p3767-camera-p3768-imx678-C.dtbo
 ```
 
-2. Back up the original kernel image:
+2. Make a backup of the original kernel image
 
 ```shell
-sudo cp /boot/Image /boot/Image.backup  
-sudo cp /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb.backup  
+sudo cp /boot/Image /boot/Image.backup
+sudo cp /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb.backup
 ```
 
-3. Use `scp` to copy the newly compiled IMAGE and DTB to the paths above:
+3. Copy the compiled IMAGE and DTB via the `scp` command to the above paths and replace them.
 
 ```shell
-sudo cp $HOME/Image /boot/Image.backup  
-sudo cp $HOME/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb  
+sudo cp $HOME/Image /boot/Image.backup
+sudo cp $HOME/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb
 ```
 
-## 2. Remote Debugging Methods
+## 2. Remote debugging method 
 
-### Prerequisites
+### Pre-conditions
 
-Complete the AIBOX network configuration as follows:
+The **Network Configuration** for the AIBOX needs to be completed with the following configuration steps:
 
-1. Click the **Ethernet** icon in the top-right corner → Select **"Wired Settings"**.
+1. Click on the top right corner of the desktop **Ethernet** → select **"Wired Settings"**
 
-![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Setting.png) 
+![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Setting.png)
 
-2. In the network settings window, select the current wired connection.
+2. In the Network Settings pop-up window, select the current wired network connection.
 
-3. Click the `gear` icon for detailed settings:
+3. Click on the `gear` icon to enter detailed settings
    
-   - Under the `IPv4` tab, select `Manual` configuration.
+   - Under the `IPv4` tab, select `Manual` configuration.
    
    - Enter the static IP address, subnet mask, and gateway. For example:
      
-     - **Address**: `192.168.231.100`
+     - **Address**: `192.168.231.100` 
      
-     - **Netmask**: `255.255.255.0`
+     - **Netmask**: `255.255.255.0` 
      
-     - **Gateway**: `192.168.231.1`
+     - **Gateway**: `192.168.231.1` 
    
-   - In the DNS section, enter DNS server addresses (e.g., `8.8.8.8` and `8.8.4.4`).
+   - In the DNS section, enter the DNS server address, for example: `8.8.8.8` 和 `8.8.4.4`
    
-   - Click `Apply` to save the settings.
+   - Click `Apply` save settings.
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Setting_Network.png)
 
-4. Restart the network to apply the new settings.
+4. When the configuration is complete, reboot the network to apply the new settings.
 
-**Network Verification**
+**Network Authentication**
 
-5. Open a terminal and verify connectivity with:
+5. Open a terminal and verify that the network is working by using the following commands
 
 ```shell
-
+ping google.com
 ```
 
 ### SSH Access
 
-1. On a Windows PC, press `Win + R` to open the "Run" dialog.
+1. On a Windows computer, press `win+R` to open the `Run` dialog box.
 
-2. Enter `powershell` and press **Enter**.
+2. Input `powershell`，and then press ​**​Enter​**​
 
-3. Connect to the AIBOX via SSH:
+3. Connect to AIBOX via SSH using the following commands:
 
 ```shell
-# Connect to AIBOX  
-ssh username@aibox-ip  
-# Execute remote commands  
-ssh username@aibox-ip "uname -a"  
-```
+# Connect to AIBOX
+ssh username@aibox-ip
+# Example:
+ssh milesight@192.168.1.100
 
-### RDP Remote Desktop Access
+# Execute remote command
+ssh username@aibox-ip "uname -a"
+# Usage example:
+ssh milesight@192.168.1.100 "uname -a"
 
-1. Start the JETSON terminal and install the following:
+### RDP remote desktop access
+
+1. Start the JETSON terminal and install the following：
 
 ```shell
 sudo apt update
@@ -206,17 +200,37 @@ sudo systemctl enable xrdp
 sudo systemctl start xrdp
 ```
 
-2. Then, on Windows, start "Remote Desktop Connection" and enter the IP address of the JETSON.
+2. Open Remote Desktop Connection on Windows and enter Jetson's IP address.
 
-    ![Remote_Desktop_IP](/img/Remote_Desktop_IP.png)
-
-3. Click "Connect" and enter the username and password.
+3. Click “Connect” and enter your account password.
    
    ![Remote_Desktop_Login](/img/Remote_Desktop_Login.png)
 
-4. If you see the screen below, it indicates a successful connection.
+4. The following picture shows that the access is successful:
    ![Remote_Desktop](/img/Remote_Desktop.png)
 
-#### References
+5.Additional Notes: Resolving Application Crash Issues
+
+To resolve potential crash issues, modify the`sudo vi /etc/xrdp/startwm.sh` configuration file，replace the file content with the following:
+
+```shell
+if test -r /etc/profile; then
+        . /etc/profile
+fi
+
+unset DBUS_SESSION_BUS_ADDRESS
+unset XDG_RUNTIME_DIR
+
+exec /bin/sh /usr/bin/gnome-session
+```
+
+Save the file and restart the XRDP service with the command：
+
+```shell
+sudo systemctl restart xrdp.service
+```
+
+
+## Reference
 
 [Kernel Customization — NVIDIA Jetson Linux Developer Guide 1 documentation](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Kernel/KernelCustomization.html)

@@ -1,212 +1,214 @@
-# Ollama  
 
----  
 
-This guide explains how to install, update, configure, and uninstall **Ollama** on NVIDIA **Jetson Orin** devices. Ollama supports running large language model (LLM) inference locally with CUDA acceleration and is optimized for Jetson hardware.  
+# Ollama
 
----  
+---
 
-## 1. Overview  
+This guide describes how to install, update, configure, and uninstall **Ollama** on **NVIDIA Jetson Orin** devices. Ollama enables local inference for large language models (LLMs) with CUDA acceleration, and is optimized specifically for Jetson hardware.
 
-- Fast local inference  
-- CUDA acceleration support  
-- Model version management  
-- Simple command-line tool with optional WebUI  
+---
 
-This document covers:  
+## 1.Overview
 
-- Installation via script or Docker  
-- Running models  
-- Version updates  
-- Optional remote access configuration  
-- Complete uninstallation methods  
+- Fast local LLM inference
+- CUDA acceleration support
+- Built-in model version management
+- Simple CLI tool with optional WebUI
 
-![overview](/img/NG45XX_ollama_overview.png)  
+This guide covers:
 
----  
+- Installation via script or Docker
+- Running models
+- Updating Ollama and models
+- Optional remote access setup
+- Complete uninstallation procedure
 
-## 2. System Requirements  
+![overview](/img/NG45XX_ollama_overview.png)
 
-### Hardware Requirements  
+---
 
-| Component | Minimum Requirement               |  
-| --------- | --------------------------------- |  
-| Device    | Jetson Orin Nano / NX / AGX       |  
-| RAM       | ≥ 8GB for small/medium models     |  
-| Storage   | ≥ 10GB for models and cache       |  
+## 2. System Requirements
 
-### Software Requirements  
+### Hardware
 
-- Ubuntu 20.04 or 22.04 (JetPack-based)  
-- JetPack 5.1.1+ (pre-installed with CUDA, cuDNN, TensorRT)  
-- Python 3.8+ (optional)  
-- Docker (optional, for containerized mode)  
+| Component | Minimum Requirement                        |
+| --- | --------------------------- |
+| Device  | Jetson Orin Nano / NX  |
+| Memory  | ≥ 8GB (for running small to medium models)             |
+| Storage  | ≥ 10GB (for model and cache storage)  |
 
----  
+### Software
 
-## 3. Installing Ollama  
+- Ubuntu 20.04 or 22.04（based on JetPack）
+- JetPack 5.1.1+ (includes CUDA, cuDNN, TensorRT)
+- Python 3.8+ (optional)
+- Docker(optional, for containerized deployment)
 
-### Method A: Script Installation (Recommended)  
+---
 
-Run the official installation script:  
+## 3. Installing Ollama
 
-```bash  
-curl -fsSL https://ollama.com/install.sh | sh  
-```  
+### Method A: Script Installation (Recommended)
 
-- Installs CLI binary and background service  
-- CUDA support is enabled by default on Jetson  
+Run the official installation script：
 
-### Method B: Docker-Based Installation (Optional)  
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
 
-```bash  
-sudo docker run --runtime nvidia --rm --network=host \  
-  -v ~/ollama:/ollama \  
-  -e OLLAMA_MODELS=/ollama \  
-  dustynv/ollama:r36.4.0  
-```  
+- Installs the CLI binary and background service.
+- CUDA support is enabled by default on Jetson devices.
 
-> 🧩 Maintained by the Jetson community (dustynv) and optimized for JetPack environments  
+### Method B: Docker-Based Installation (Optional)
 
----  
+```bash
+sudo docker run --runtime nvidia --rm --network=host \
+  -v ~/ollama:/ollama \
+  -e OLLAMA_MODELS=/ollama \
+  dustynv/ollama:r36.4.0
+```
 
-## 4. Basic Usage  
+> 🧩 This Docker image is maintained by Jetson community contributor dustynv, optimized for JetPack environments.
 
-### Common Commands  
+---
 
-```bash  
-ollama serve         # Start Ollama background service  
+## 4.Usage
+
+### Common Commands
+
+```bash
+ollama serve         # Start the Ollama background service  
 ollama run           # Run a model  
-ollama pull          # Pull a model from the repository  
+ollama pull          # Download a model from the registry  
 ollama list          # List installed models  
-ollama show          # Show model information  
+ollama show          # Display model information  
 ollama rm            # Remove a model  
-ollama help          # View command help  
-```  
+ollama help          # Show help menu
+```
 
-### Check Version  
+###  Check Version
 
-```bash  
-ollama -v  
-# Example: ollama version 0.5.7  
-```  
+```bash
+ollama -v
+# Sample：ollama version 0.5.7
+```
 
-### Start Service (if not auto-started)  
+### Start the Service (If Not Auto-Started)
 
-```bash  
-ollama serve &  
-```  
+```bash
+ollama serve &
+```
 
----  
+---
 
-## 5. Optional: Enable Remote Access  
+## 5.  (Optional) Enable Remote Access
 
-To allow external devices to access the Ollama service:  
+To allow external devices to access the Ollama service:
 
-1. Edit the systemd service file:  
+1.Edit the systemd service file：
    
-   ```bash  
-   sudo nano /etc/systemd/system/ollama.service  
-   ```  
+   ```bash
+   sudo nano /etc/systemd/system/ollama.service
+   ```
 
-2. Add the following under the `[Service]` section:  
+2. Add the following lines under the `[Service]` section:
    
-   ```ini  
-   Environment="OLLAMA_HOST=0.0.0.0"  
-   Environment="OLLAMA_ORIGINS=*"  
-   ```  
+   ```ini
+   Environment="OLLAMA_HOST=0.0.0.0"
+   Environment="OLLAMA_ORIGINS=*"
+   ```
 
-3. Reload and restart the service:  
+3. Reload and restart the service:
    
-   ```bash  
-   sudo systemctl daemon-reload  
-   sudo systemctl restart ollama  
-   ```  
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl restart ollama
+   ```
 
----  
+---
 
-## 6. Running Models  
+## 6. Running 
 
-Use the `ollama run` command to start model inference:  
+Use the  `ollama run` command to start model inference:
 
-```bash  
-ollama run deepseek-r1:7b  
-```  
+```bash
+ollama run deepseek-r1:7b
+```
 
-- More models available at: [https://ollama.com/search](https://ollama.com/search)  
-- First run downloads the model; subsequent runs use local cache  
+- More available models refer to：[https://ollama.com/search](https://ollama.com/search)
+- The model will be downloaded on first run and cached locally for future use.
 
----  
+---
 
-## 7. Updating Ollama  
+## 7. Update
 
-Update to the latest version:  
+Update to the Latest Version：
 
-```bash  
-curl -fsSL https://ollama.com/install.sh | sh  
-```  
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
 
-### Optional: Install a Specific Version  
+### (Optional) Install a Specific Version
 
-Specify the version to install:  
+To install a specific version, specify the version number like this：
 
-```bash  
-curl -fsSL https://ollama.com/install.sh | OLLAMA_VERSION=0.1.32 sh  
-```  
+```bash
+curl -fsSL https://ollama.com/install.sh | OLLAMA_VERSION=0.1.32 sh
+```
 
----  
+---
 
-## 8. Uninstalling Ollama  
+## 8. Uninstall
 
-### Remove Service  
+### Stop and Remove the System Service
 
-```bash  
-sudo systemctl stop ollama  
-sudo systemctl disable ollama  
-sudo rm /etc/systemd/system/ollama.service  
-```  
+```bash
+sudo systemctl stop ollama
+sudo systemctl disable ollama
+sudo rm /etc/systemd/system/ollama.service
+```
 
-### Delete Executable  
+### Remove the Executable
 
-```bash  
-sudo rm $(which ollama)  
-```  
+```bash
+sudo rm $(which ollama)
+```
 
-(Ollama is typically installed in `/usr/local/bin`, `/usr/bin`, or `/bin`)  
+（Note: Ollama is typically installed in`/usr/local/bin`、`/usr/bin` or `/bin`）
 
-### Delete Model Files and User Account  
+### Delete Model Files and User Account
 
-```bash  
-sudo rm -r /usr/share/ollama  
-sudo userdel ollama  
-sudo groupdel ollama  
-```  
+```bash
+sudo rm -r /usr/share/ollama
+sudo userdel ollama
+sudo groupdel ollama
+```
 
----  
+---
 
-## 9. Troubleshooting  
+## 9. Troubleshooting
 
-| Issue                     | Solution                                  |  
-| ------------------------- | ----------------------------------------- |  
-| Port 11434 unresponsive   | Restart `ollama serve` or reload systemd  |  
-| Installation failed       | Ensure curl is installed and connected; retry with `sudo` |  
-| Unable to uninstall       | Use `which ollama` to locate and delete   |  
-| Out of Memory (OOM)       | Try smaller models (e.g., `1.5b`, `7b`) or add swap space |  
+| Issue        | Solution                         |
+| ----------- | -------------------------------- |
+| Port 11434 not responding | Restart`ollama serve` or reload the system service |
+| Installation failed      | Ensure curl is installed and you have internet access; try using  `sudo`    |
+| Unable to uninstall Ollamaollama | Use `which ollama`  to locate the actual path, then delete it manually |
+| Out of Memory (OOM) error   | Try using a smaller model （e.g., `1.5b` or `7b`），or add swap space |
 
----  
+---
 
-## 10. Appendix  
+## 10. Appendix 
 
-### Path Reference  
+### Path References
 
-| Purpose                | Path                                   |  
-| ---------------------- | -------------------------------------- |  
-| Ollama executable      | `/usr/local/bin/ollama`               |  
-| Model cache            | `~/ollama/` or `/usr/share/ollama`     |  
-| Service configuration  | `/etc/systemd/system/ollama.service`  |  
+| Purpose        | 	Path                                 |
+| ------------ | ------------------------------------ |
+| Ollama executable | `/usr/local/bin/ollama`              |
+| Model cache        | `~/ollama/` or`/usr/share/ollama`    |
+| Service configuration      | `/etc/systemd/system/ollama.service` |
 
-### References  
+### References
 
-- [Ollama Official Website](https://ollama.com/)  
-- [GitHub Repository](https://github.com/ollama/ollama)  
-- [Jetson Community Forum](https://forums.developer.nvidia.com/)
+- [Ollama  Official Website](https://ollama.com/)
+- [Ollama GitHub Repository](https://github.com/ollama/ollama)
+- [NVIDIA Jetson Community Forum](https://forums.developer.nvidia.com/)

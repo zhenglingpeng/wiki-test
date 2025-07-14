@@ -1,76 +1,104 @@
 # USB Video Streaming
 
 ## Overview
-This example demonstrates how to achieve real-time video streaming via the UVC protocol, based on the ESP32-S3 development platform.
+This section describes how to using UVC to Implement live Video Streaming via the UVC Protocol Based on the ESP32-S3.
 
-### Technical Background
-**UVC (USB Video Class)** is a standard protocol defined by USB-IF, with key features including:
-- Support for high-resolution image capture
-- Plug-and-play compatibility
-- Standardized control interface
-- Simplified hardware design
+### Key Features
 
-## Preparations
+**UVC(USB Video Class)** is a protocol defined and maintained by the USB Implementers Forum (USB-IF).
+Key features include:：
 
-### Hardware Requirements
-- ESP32-S3 development board
-- UVC-compliant camera module
-- USB Type-C data cable
+- Support for High-resolution image captuure
+- Driverless operation with true plug-and-play functionality
+- Standardized interface for seamless cross-device integration
+- Broad host compatibility across major operating systems
 
-### Software Resources
-1. **Precompiled Firmware**:
-   [usb_camera_mic_spk.bin](https://github.com/camthink-ai/iot_samples/blob/main/bin/usb_camera_mic_spk.bin)
+## Preparation
 
-2. **Source Code Development**:
-   ```bash
-   git clone https://github.com/camthink-ai/iot_samples
-   ```
+### Hardware
 
-## Function Verification
+- NE100-MB01 Dev Board
+- UVC USB Camera Module 
+
+### Software 
+
+#### 1. Firmware
+
+- Download pre-compiled firmware for use：[lowpower_camera/bin/NE_101_UVC](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
+
+#### 2. Environment Requirements
+
+- **IDE Software**：Visual Studio Code（v1.99.2+）
+- **Development Framework**：ESP-IDF Extension（v5.1.6）
+- **Example Repository**： [lowpower_camera](https://github.com/camthink-ai/lowpower_camera.git)
+
+## Verify the video stream
 
 ### Using Precompiled Firmware
-1. **Device Connection**:
-   - Connect the development board to the UVC camera module
-   - Refer to the [Hardware Connection Guide](../Hardware%20Guide/Hardware%20Connection)
 
-2. **Firmware Flashing**:
-   Refer to the method in: [System Flashing](./../Software%20Guide/System%20Flashing%20and%20Initialization)
-
-3. **Function Testing**:
-   - Connect to the WiFi hotspot `ESP32S3-UVC`
-   - Access http://192.168.4.1
-   - Verify video stream display
-
-   ![UVC video stream](/img/NE101_example_uvc1.png)
-
-### Source Code Development Verification
-1. **Project Configuration**:
-   - Open `examples/usb/host/usb_camera_mic_spk` with VS Code
-
-   ![Project Directory](/img/NE101_uvc_dir.png)
-
-2. **Chip Selection**:
-   Set the target to ESP32-S3
-
-   ![Chip Selection](/img/NE101_idf_IC.png)
-
-3. **Compilation and Flashing**:
-
-   ![Compilation Process](/img/NE101_idf_build.png)
+1. **Hardware Connection**：
    
-   ![Flashing Process](/img/NE101_idf_flash.png)
+   - Connect the UVC camera module to the development board
+   - For More details please refer to [the Hardware Connection Guide](../Hardware%20Guide/Hardware%20Connection)
+
+2. **Firmware flashing**：
+   Refer to the below to flash the firmware：
+   
+    [the System Flashing and Initialization Guide](./../Software%20Guide/System%20Flashing%20and%20Initialization)
+
+3. **Check the video streaming output**：
+   
+   - Press and hold the camera button to enter configuration mode.
+   - Access the web management interface at http://192.168.1.1, as shown in the figure below.
+   - Check if the video streaming displays correctly.
+   
+   ![Wifi Connection](/img/NE101_wifi_connect.png)
+   ![device Interface](/img/NE101_web.png)
+   ![UVC Video Streaming](/img/NE101_web_cam.png)
+
+### Using Source Code Development
+
+#### 1. Clone the repository using the following command
+
+```bash
+git clone https://github.com/camthink-ai/lowpower_camera.git
+```
+
+#### 2.Project setup ：
+
+Open the directory in VS Code
+
+![Project Root Directory](/img/NE101_code_dir.png)
+
+#### 3. Configuration ：
+
+Open the `camera.h file` located in the `/main` directory and enable the UVC feature.
+
+![Sensitivity Settings](/img/NE101_example_uvc1.png)
+
+#### 4. Compile and deploy the source code
+
+1. Select esp32s3 as the target chip.：
+
+![Esp32s3 selection](/img/NE101_idf_IC.png)
+
+2. Select the build button to compile the source code. 
+
+![Showing build output](/img/NE101_idf_build.png)
+
+3. Select the flash button to upload the generated firmware to the device：
+
+![screenshot showing flashing process](/img/NE101_idf_flash.png)
+
+#### 5. Check the video streaming output
+
+Same with using precompiled firmware
 
 ## Notes
-1. **Protocol Limitations**:
-   - ESP32-S3 only supports USB 1.1
-   - Ensure the camera is compatible with USB 1.1 standards
 
-2. **Performance Optimization**:
-   - Set the frame buffer size appropriately
-   - Recommended resolution is 640x480@30fps
+**Protocol Limitations:**：
 
-3. **Debugging Tips**:
-   - Use `idf.py monitor` to view logs
-   - Check the quality of the USB connection
+- The ESP32-S3 only supports USB 1.1.
+- Ensure that the camera is compatible with the USB 1.1 standard.
 
-> Tip: It is recommended to keep the serial monitor active during development to capture any abnormal information promptly.
+> Tip: During development, it is recommended to keep serial port monitoring enabled to capture any abnormal information in a timely manner.

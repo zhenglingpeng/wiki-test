@@ -28,7 +28,7 @@ flowchart LR
     A[设备启动]:::highlight
     B[设备休眠]:::default
     C1[唤醒 - 定时触发]:::default
-    C2[唤醒 - IO触发<br>见「PIR示例」]:::process
+    C2[唤醒 - IO触发<br />见「PIR示例」]:::process
     D[抓取图像]:::default
     E[数据处理]:::default
     E1[AI识别<br>见「人脸识别示例」]:::process

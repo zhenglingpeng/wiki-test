@@ -2,111 +2,118 @@
 
 ## Overview
 
-This example implements human face detection based on deep learning, providing developers with an extensible foundational framework for developing various face recognition-related applications.
+This example demonstrates human face detection based on deep learning and provides a lightweight, extensible framework for face-related applications.
 
-The project is developed using the [ESP-DL](https://github.com/espressif/esp-dl) deep learning library, which offers powerful deep learning interfaces for ESP-WHO, enabling rich AIoT application scenarios when combined with various peripherals.
+The project is developed using the[ESP-DL](https://github.com/espressif/esp-dl) library,which offers deep learning capabilities within the ESP-WHO framework. With support for different hardware modules, it can be used in various AIoT scenarios.
 
-## Preparation
+## Development Preparation
 
-### Hardware Requirements
+### Hardware
 
-- Development board supporting camera modules (recommended ESP32-S3 series)
+- NE100-MB01 Development Board
 
-### Software Preparation
+### Software
 
-#### 1. Precompiled Firmware
+#### 1. Firmware：
 
-You can directly download the latest precompiled firmware for a quick experience:
-- [human_face_detect.bin](https://github.com/camthink-ai/esp-who/blob/master/bin)
+Download pre-compiled firmware for use：
 
-#### 2. Source Code Development Environment
+- [human_face_detect.zip](https://github.com/camthink-ai/esp-who/blob/master/bin)
 
-For further development, prepare the following environment:
-- **Development Tool**: Visual Studio Code (version 1.99.2 or higher)
-- **Development Framework**: ESP-IDF plugin (version 5.4.0 or higher)
-- **Example Code**: [camthink-ai/esp-who](https://github.com/camthink-ai/esp-who)
+#### 2. Environment Requirements
 
-> **Important Note**: Ensure to complete the environment setup according to the [Development Environment Configuration Guide](./../Software%20Guide/Development%20Environment%20Setup).
+To perform secondary development, make sure the following：
 
-## Function Verification
+- **IDE Software**：Visual Studio Code（v1.99.2+）
+- **Development Framework**：ESP-IDF Extension（v5.1.6）
+- **Example Repository**：[camthink-ai/esp-who](https://github.com/camthink-ai/esp-who)
 
-### Precompiled Firmware Testing Process
+> **Important**：Please follow the [Development Environment Setup Guide](./../NE100-MB01%20Development%20Board/Software%20Guide/Development%20Environment%20Setup) to complete the initial configuration.
 
-#### 1. Device Connection
+## Functionality Verification
 
-Use a Type-C data cable to connect the development board to your PC.
+### Using Precompiled Firmware
 
-![NE101 Main Board Interface Diagram](/img/NE101_Main_Board2.png)
+#### 1. Hardware Connection
 
-#### 2. Firmware Flashing
+Connect the development board to PC using a Type-C cable.
 
-Refer to the detailed flashing guide:
-- [System Flashing and Initialization](./../Software%20Guide/System%20Flashing%20and%20Initialization)
+![NE101 interface](/img/NE101_Main_Board2.png)
 
-#### 3. Serial Output Parsing
+#### 2. Firmware flashing
 
-The device will output face detection results via serial port (baud rate: 115200):
+Refer to the detailed flashing guide：
 
-Example output:
+- [System Flashing and Initialization](./../NE100-MB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
+
+#### 3. UART Output Analysis
+
+The device outputs face detection results via the serial port (baud rate: 115200)：
+
+Example Code:
+
 ```
 WhoDetect: 0, bbox: [0.826712, 47, 40, 169, 195], left_eye: [80, 105], left_mouth: [90, 151], nose: [101, 125], right_eye: [123, 99], right_mouth: [126, 146]
 ```
 
-**Data Field Explanation**:
-- **bbox**: Face bounding box information
-  - Format: [confidence, top-left x-coordinate, top-left y-coordinate, width, height]
-- **left_eye**: Left eye coordinates (x, y)
-- **right_eye**: Right eye coordinates (x, y)
-- **nose**: Nose coordinates (x, y)
-- **left_mouth**: Left mouth corner coordinates (x, y)
-- **right_mouth**: Right mouth corner coordinates (x, y)
+**Field Descriptions**：
 
-#### 4. Function Verification
+- **bbox**：Face bounding box information
+  - Format：[confidence, top-left x, top-left y, width, height]
+- **left_eye**：Coordinates of the left eye(x,y)
+- **right_eye**： Coordinates of the right eye (x,y) 
+- **nose**：Coordinates of the nose(x,y)
+- **left_mouth**：Coordinates of the left mouth corner(x,y)
+- **right_mouth**：Coordinates of the right mouth corner(x,y)
 
-1. Aim the camera at a face or a face photo.
-2. Observe the face feature point data output by the serial port.
-3. Try moving the camera to verify dynamic detection effects.
+#### 4. Performance Test
 
-![Static Face Detection Diagram](/img/NE101_example_human_detect_1.png)
+1. Point the camera at a real human face or a face image.
+2. Observe the serial output for facial landmark data.
+3. Move the camera around to test dynamic face detection performance.
 
-![Dynamic Face Detection Effect Diagram](/img/NE101_example_human_detect.gif)
+![Static Illustration of Face Detection](/img/NE101_example_human_detect_1.png)
 
-### Source Code Development Verification Process
+![Real-Time Face Detection Example](/img/NE101_example_human_detect.gif)
 
-#### 1. Obtain the Source Code
+### Source Code Development
+
+#### 1. Clone the repository using the following command
 
 ```bash
 git clone https://github.com/camthink-ai/esp-who
 ```
 
-#### 2. Project Configuration
+#### 2. Project setup
 
-1. Open the project in VS Code: `examples/human_face_detect`
+1. Open the directory in VS Code：`examples/human_face_detect`
    
-   ![Project Directory Structure](/img/NE101_human_face_detect_dir.png)
+   ![Project Root Directory](/img/NE101_human_face_detect_dir.png)
 
-2. Set the target chip to ESP32-S3.
+2. Select esp32-s3 as the target chip：
+   
+   ![芯片选择界面](/img/NE101_idf_IC.png)
 
-   ![Chip Selection Interface](/img/NE101_idf_IC.png)
+#### 3. Compile and deploy the source code
 
-#### 3. Compilation and Flashing
+1. Select the build button to compile the source code：
+   
+   ![Esp32s3 selection](/img/NE101_idf_build.png)
 
-1. Compile the project.
+2. Select the flash button to upload the generated firmware to the device：
+   
+   ![Showing build output](/img/NE101_idf_flash.png)
 
-   ![Compilation Interface](/img/NE101_idf_build.png)
+#### 4. Performance Test
 
-2. Flash the firmware.
+Same with using precompiled firmware
 
-   ![Flashing Interface](/img/NE101_idf_flash.png)
+## References
 
-#### 4. Function Verification
-
-The verification method is the same as for the precompiled firmware, refer to the previous steps.
-
-## Reference Resources
-
-1. ESP-DL Model Quantization Documentation:
+1. ESP-DL Model Quantization Documentation：
+   
    - [GitHub - espressif/esp-dl](https://github.com/espressif/esp-dl?tab=readme-ov-file)
 
-2. Official Example Repository:
+2. Official Example Repository：
+   
    - [GitHub - espressif/esp-who](https://github.com/espressif/esp-who/tree/master)
