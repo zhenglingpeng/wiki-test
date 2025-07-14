@@ -1,55 +1,52 @@
-Here are the translations of the requested files while maintaining the original markdown format and structure:
-
----
-
 # jtop
 ---
 ## 1. Overview
 
-**jtop** is a Jetson-specific command-line monitoring tool developed by Raffaello Bonghi. Written in Python, it provides an interactive interface similar to `htop`, displaying real-time system status information including CPU, GPU, memory, fan, and power consumption on Jetson devices.
+This guide describes the installation, configuration, and advanced usage of jtop on Jetson platforms. **jtop** is a Jetson-specific command-line monitoring tool developed by Raffaello Bonghi. Written in Python, it offers an htop-like interactive interface for real-time monitoring of system resources such as CPU, GPU, memory, fan speed, and power consumption.
 
-Key features:
-- Real-time monitoring of CPU, GPU, memory, fan, and power consumption
-- Control NVPModel, power modes, fan speed, `jetson_clocks`, etc.
-- Python API support for integration into custom applications
-- Docker environment compatibility
-- No superuser privileges required to run
+**Key Features include：**
 
----
-
-## 2. System Requirements
-
-| Component        | Requirement                                |
-|------------------|-------------------------------------------|
-| Jetson Hardware  | Orin Nano / NX / AGX                      |
-| OS               | Ubuntu 20.04 or 22.04 (JetPack-based)     |
-| JetPack Version  | Recommended JetPack ≥ 5.1.1               |
-| Python Version   | Python 3.x                                |
-| pip              | Installed                                 |
-| Network          | Required for jetson-stats installation    |
+- Monitoring of CPU, GPU, Memory, Engines, fan
+- Control NVP model, fan speed, jetson_clocks
+- Importable in a python script
+- Dockerizable in a container
+- No super user privileges required
 
 ---
 
-## 3. Installing jtop
+## 2. Requirements
 
-### A. Pre-installation Preparation
+| Component             | Requirement                              |
+|------------------|--------------------------------------|
+| Jetson Hardware      | Orin Nano / NX                 |
+| Operating System         | Ubuntu 20.04 or 22.04(JetPack-based) |
+| JetPack Version     | JetPack ≥ 5.1.1 (recommended)                |
+| Python Version   | Python 3.x                            |
+| pip              | Required to installed                            |
+| Network        | Required to install jetson-stats                |
 
-Ensure system is updated and pip is installed:
+---
+
+## 3. Installation
+
+### A. Prerequisites
+
+Ensure the system is up to date and that `pip` is installed：
 
 ```bash
 sudo apt update
 sudo apt install python3-pip -y
 ```
 
-### B. Install jetson-stats (includes jtop)
+### B. Installing jetson-stats (includes jtop)
 
-Install jetson-stats using pip:
+Using `pip` to install the `jetson-stats`：
 
 ```bash
 sudo pip3 install -U jetson-stats
 ```
 
-After installation, reboot or relogin for changes to take effect:
+After installation, it is recommended to reboot the system or log out and re-login to apply environment changes：
 
 ```bash
 sudo reboot
@@ -57,9 +54,9 @@ sudo reboot
 
 ---
 
-## 4. Running jtop
+## 4. Launching jtop
 
-Launch jtop in terminal:
+Execute the following command to start `jtop` ：
 
 ```bash
 jtop
@@ -67,14 +64,15 @@ jtop
 
 ![jtop](/img/jtop.gif)
 
-jtop provides multiple pages, switch using arrow keys or Tab:
-- **ALL**: All system information
-- **GPU**: GPU usage
-- **CPU**: CPU usage
-- **MEM**: Memory and swap space
-- **ENG**: Engine status
-- **CTRL**: Control jetson_clocks, nvpmodel, fan, etc.
-- **INFO**: System and library information
+The interface provides multiple views, navigable via arrow keys or the`Tab` key：
+
+- **ALL**：Displays an overview of system metrics
+- **GPU**：Monitors GPU utilization
+- **CPU**：Displays CPU usage
+- **MEM**：Displays memory and swap usage
+- **ENG**：Reports the status of compute engines
+- **CTRL**：Control of jetson_clocks、nvpmodel、fan settings
+- **INFO**：System information and library versions
 
 ---
 
@@ -82,29 +80,29 @@ jtop provides multiple pages, switch using arrow keys or Tab:
 
 ### A. Check jtop Status
 
-For troubleshooting, check and repair jtop status:
+To verify the integrity and status of `jtop`  and its associated components:
 
 ```bash
 sudo jtop --health
 ```
 
-### B. Restore Default Configuration
+### B. Reset Jetson Configuration
 
-Reset Jetson configuration (including jetson_clocks, fan, nvpmodel, etc.):
+To restore key runtime parameters (including jetson_clocks, power mode, and fan settings）to default values：
 
 ```bash
 jtop --restore
 ```
 
-### C. Change Color Theme
+### C. Customizing Color Themes
 
-Modify jtop color theme:
+To enable enhanced color filters for better terminal visibility：
 
 ```bash
 jtop --color-filter
 ```
 
-Or add to `.bashrc`:
+Or add the following to `.bashrc` ：
 
 ```bash
 export JTOP_COLOR_FILTER=True
@@ -112,9 +110,9 @@ export JTOP_COLOR_FILTER=True
 
 ---
 
-## 6. Python API Example
+## 6. Python API Integration
 
-jtop provides Python API for integration into custom applications:
+`jtop` provides a simple Python API to access real-time system information from your Jetson device. It’s useful for monitoring, automation scripts, or integrating into your own applications:
 
 ```python
 from jtop import jtop
@@ -126,12 +124,12 @@ with jtop() as jetson:
 
 ---
 
-## 7. Using jtop in Docker
+## 7. Running jtop in Docker
 
-Run jtop in Docker container:
+To use jtop inside a Docker container：
 
-1. Install jetson-stats on both host and container.
-2. Mount `/run/jtop.sock` when running container:
+1. Make sure jetson-stats is installed both on the host and inside the container.
+2. Mount the socket file `/run/jtop.sock`when starting the container：
 
 ```bash
 docker run --rm -it -v /run/jtop.sock:/run/jtop.sock rbonghi/jetson_stats:latest
@@ -141,17 +139,19 @@ docker run --rm -it -v /run/jtop.sock:/run/jtop.sock rbonghi/jetson_stats:latest
 
 ## 8. Troubleshooting
 
-| Issue                | Solution                                  |
-|----------------------|-------------------------------------------|
-| jtop won't start     | Ensure jetson-stats is installed and reboot |
-| Permission errors    | Run jtop with `sudo` or check user permissions |
-| Can't get GPU info   | Verify NVIDIA drivers are properly installed |
-| jtop fails in Docker | Ensure `/run/jtop.sock` is mounted and jetson-stats is installed in container |
+| Issue                 | Solution                                        |
+|----------------------|--------------------------------------------------|
+| jtop fails to launch         | Ensure jetson-stats is installed and reboot the system  |
+| Permission denied errors            | Run with`sudo` or verify user permissions       |
+| Unable to retrieve GPU metrics    | Confirm NVIDIA drivers are installed and environment are correctly configured  |
+| jtop not working in Docke| Check that `/run/jtop.sock`，is correctly mounted and jetson-stats is installed inside the container |
 
 ---
 
 ## 9. References
 
-- Official Docs: [https://rnext.it/jetson_stats](https://rnext.it/jetson_stats)
-- GitHub: [https://github.com/rbonghi/jetson_stats](https://github.com/rbonghi/jetson_stats)
-- NVIDIA Forum: [https://forums.developer.nvidia.com](https://forums.developer.nvidia.com)
+- Official Docs：[https://rnext.it/jetson_stats](https://rnext.it/jetson_stats)
+- GitHub Repo：[https://github.com/rbonghi/jetson_stats](https://github.com/rbonghi/jetson_stats)
+- NVIDIA Developer Forum：[https://forums.developer.nvidia.com](https://forums.developer.nvidia.com)
+
+---

@@ -1,42 +1,42 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Low Power Image Acquisition
+# Low-Power Image Acquisition
 
-## Application Introduction
+## Overview
 
-This project demonstrates an example implementation of a low-power image acquisition camera based on NE101 hardware features. The software engineering implements application logic supporting low-power working modes, communication management, MQTT management, data transmission, and more, suitable for use in image acquisition scenarios. Based on this project, developers can combine sensor data collection for acquisition decisions or integrate local AI algorithms for richer application extensions.
+This project provides a sample implementation of a low-power image capture system based on the NE101 hardware platform. It integrates application-level features such as low-power mode support, communication and MQTT management, and data transmission, making it well-suited for image acquisition scenarios. Developers can further extend the project by incorporating sensor-based data evaluation or local AI algorithms to enable more advanced and customized applications.
 
 ## Key Features
 
-- Ultra-low power design, supporting long-term battery-powered operation
-- Flexible wake-up mechanisms, supporting both timing and sensor triggers
-- Complete image acquisition and data transmission process
-- Open extension interfaces, supporting AI and sensor function extensions
-  - For sensor extension, see ["PIR Example"](../NE100-MB01%20Development%20Board/Software%20Guide/example-pir)
-  - For AI extension, see ["Face Recognition Example"](./human-face-detect)
+- Ultra-low power，suitable for long-term battery-powered operation
+- Flexible wake-up mechanisms，including timer-based and sensor-triggered wake-up
+- Complete image acquisition and data transmission workflow
+- Open expansion interfaces for AI and sensor module integration
+  - Sensor integration example[「PIR Sensor」](../NE100-MB01%20Development%20Board/Software%20Guide/example-pir)
+  - AI integration example:[「Human Face Detection」](./human-face-detect)
 
 ## Program Logic
 
 ```mermaid
-graph LR
-    %% 设置节点样式
+flowchart LR
+    %% Node Styles
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px
     classDef highlight fill:#e1f5fe,stroke:#01579b,stroke-width:2px
     classDef process fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
 
-    %% 定义节点
-    A[Device Startup]:::highlight
-    B[Device Sleep]:::default
-    C1[Wake-up - Timer Triggered]:::default
-    C2["Wake-up - IO Triggered, See &quot;PIR Example&quot;"]:::process
+    %% Nodes
+    A[Startup]:::highlight
+    B[ Sleep]:::default
+    C1[Wake-up - Timer Trigger]:::default
+    C2[Wake-up - IO Trigger<br />「PIR Sensor」]:::process
     D[Capture Image]:::default
     E[Data Processing]:::default
-    E1["AI Recognition, See &quot;Face Recognition Example&quot;"]:::process
+    E1[AI integration<br />「Human Face Detection」]:::process
     E2[Image Transmission Only]:::default
     F[MQTT Transmission]:::default
-    G[Application Usage]:::highlight
+    G[Client-side Application]:::highlight
 
-    %% 连接关系
+    %%  Flow
     A --> B
     B --> C1
     B --> C2
@@ -53,179 +53,179 @@ graph LR
 
 ## Software Resources
 
-1. **Pre-compiled Firmware**:
+1. **Firmware**：
    
-   - Example firmware: [lowpower_camera bin](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
+   - Download pre-compiled firmware for use：[lowpower_camera.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin/NE_101_FCC.zip)
 
-2. **Source Code Development**:
+2. **Development Environment**：
    
-   - Latest Visual Studio Code (1.99.2 or above)
-   - ESP-IDF plugin (v5.1.6 version)
-   - Example code repository [lowpower_camera](https://github.com/camthink-ai/lowpower_camera.git)
+   - Latest version of Visual Studio Code (v1.99.2 or later)
+   - ESP-IDF extension (v5.1.6)
+   - Example project repository [lowpower_camera](https://github.com/camthink-ai/lowpower_camera.git)
 
-### Using Pre-compiled Firmware Update
+### Pre-compiled Firmware
 
-1. **Device Connection**
+1. **Using Precompiled Firmware**
    
-   Complete hardware connection guide: [Hardware Connection Guide](.././Hardware%20Guide/Hardware%20Connection)
+   For More details please refer to [the Hardware Connection Guide](./../NE100-MB01%20Development%20Board/Hardware%20Guide/Hardware%20Connection)
 
-2. **Device Flashing**
+2. **Firmware flashing**
    
-   For flashing instructions, refer to: [System Flashing](./../Software%20Guide/System%20Flashing%20and%20Initialization)
+   Refer to the below to flash the firmware：[System Flashing](./../NE100-MB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
 
 ### Using Source Code Development
 
-1. **Get Source Code**
+1. **Clone the repository using the following command**
    
    ```bash
    git clone https://github.com/camthink-ai/lowpower_camera.git
    ```
 
-2. **Open Project**
+2. **Project setup**
    
-   Open the project directory with VS Code
+   Open the directory in VS Code：
    
    ![NE101_code_dir.png](/img/NE101_code_dir.png)
 
-3. **Build**
+3. **Select the build button to compile the source code**
    
    ![NE101_idf_build.png](/img/NE101_idf_build.png)
 
-4. **Flash**
+4. **Select the flash button to upload the generated firmware to the device**
    
    ![NE101_idf_flash.png](/img/NE101_idf_flash.png)
 
 ## Software Description
 
-This section introduces the software function modules in the project, including image adjustment, capture settings, data reporting, and other core functions. Through the configuration and use of these function modules, a complete low-power image acquisition application process can be implemented.
+This section introduces the core functional modules included in the project, including image adjustment, capture settings, data reporting, and other core functions. By configuring and utilizing these modules, developers can implement a complete low-power image acquisition workflow tailored to various application scenarios.
 
-### Software Functions
+### Functions
 
-The software functions include the following main parts:
+The software includes the following key functional modules:
 
-- Image adjustment: For controlling image parameters such as brightness, contrast, saturation
-- Capture settings: Supporting multiple capture modes including timed capture and alarm-triggered capture
-- Data reporting: Uploading image data to the server via MQTT protocol
-- Device maintenance: Providing device management and maintenance functions
+- Image Adjustment：Used to control image parameters such as brightness, contrast, and saturation.
+- capture Settings：Supports multiple capture modes including scheduled shooting and event-triggered shooting (e.g., alarm input).
+- Data Reporting：Uploads image data to the server via the MQTT protocol.
+- Device Maintenance：Provides management and maintenance functionalities for the device.
 
-The following will detail the specific parameters and usage methods of each function module.
+The following sections will detail the usage for each function.
 
 #### Image Adjustment
 
 - **Supplement Light**
-  - Option: `Always off`
+  - Option：`Always off`
 - **Brightness**
-  - Adjustable range: Slider control (Current value: 0)
+  - Adjustable via slider (Current value: 0)
 - **Contrast**
-  - Adjustable range: Slider control (Current value: 0)
+  - Adjustable via slider (Current value: 0)
 - **Saturation**
-  - Adjustable range: Slider control (Current value: 2)
+  - Adjustable via slider (Current value: 2)
 - **Flip Horizontal**
-  - Switch status: Enabled
+  - Toggle: Enabled
 - **Flip Vertical**
-  - Switch status: Enabled
-- **Default Button**
-  - Function: Reset image parameters to default values
+  - Toggle: Enabled
+- **Reset to Default**
+  - Reset image parameters to default values
     <img src={useBaseUrl('/img/Overview/NE101/Software/1.png')} alt="Image Adjustment" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Capture Setting
 
 - **Enable Scheduled Capture**
-  - Switch status: Enabled
+  - Toggle: Enabled
 - **Capture Mode**
-  - Current setting: `Timed Capture`
+  - Current setting：`Timed Capture`
 - **Time Setting**
-  - Capture times:
+  - Capture times：
     - Daily 09:00
     - Daily 10:00
     - Daily 11:00
     - Daily 12:00
 - **Enable Alarm-In Capture**
-  - Switch status: Disabled
+  - Toggle:Disabled
 - **Enable Capture Button**
-  - Switch status: Enabled
+  - Toggle: Enabled
     <img src={useBaseUrl('/img/Overview/NE101/Software/2.png')} alt="Capture Setting" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Data Report
 
-- **Host**: `192.168.44.80`
-- **MQTT Port**: `1884`
-- **Topic**: `left`
-- **Client ID**: `HNezYuG6EVzNjJ6PAQZ0`
-- **QoS**: `QoS 0`
-- **Username / Password**: Empty
-- **Save Button**
-  - Save data reporting related configuration
+- **Host**：`192.168.44.80`
+- **MQTT Port**：`1884`
+- **Topic**：`left`
+- **Client ID**：`HNezYuG6EVzNjJ6PAQZ0`
+- **QoS**：`QoS 0`
+- **Username / Password**：Empty
+- **Save**
+  - Save and upload the related configuration settings.
     <img src={useBaseUrl('/img/Overview/NE101/Software/3.png')} alt="Data Report" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Device Maintenance
 
-- **Device Name**: `NE101 Sensing Camera 01`
-- **MAC Address**: `D8:3B:DA:4E:10:88`
-- **Battery**: `100%`
-- **Hardware Version**: `V1.0`
-- **Firmware Version**: `NE_101.1.0.1`
+- **Device Name**：`NE101 Sensing Camera 01`
+- **MAC Address**：`D8:3B:DA:4E:10:88`
+- **Battery**：`100%`
+- **Hardware Version**：`V1.0`
+- **Firmware Version**：`NE_101.1.0.1`
 - **Upgrade Firmware**
-  - Upgrade through local firmware file upload
+  - Upgrade by uploading the firmware file locally.
     <img src={useBaseUrl('/img/Overview/NE101/Software/4.png')} alt="Device Maintenance" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Connection
 
 - **Supported Network Types**
-  - Wi-Fi: Supports 2.4GHz/5GHz dual-band connection
-  - WiFi HaLow: Supports 868MHz/915MHz long-range connection
-  - Cat.1: Supports global cellular network connection
-- **Network Configuration Features**
-  - Wi-Fi network list display
-    - Signal strength indicator (RSSI)
-    - Encryption type display (WPA/WPA2/WPA3)
-    - Real-time connection status update
-  - WiFi HaLow specific configuration
-    - Region selection (Europe/North America)
+  - Wi-Fi：Supports dual-band 2.4GHz/5GHz connections
+  - WiFi HaLow：Supports long-range connectivity at 868MHz/915MHz
+  - Cat.1：Supports global cellular network 
+- **Network Configuration**
+  - Wi-Fi
+    - Received Signal strength indicator （RSSI）
+    - Wi-Fi security protocols（WPA/WPA2/WPA3）
+    - Real-time connection status updates
+  - WiFi HaLow
+    - Region selection (Europe / North America)
     - Automatic frequency band adaptation
-  - Cat.1 cellular network settings
-    - APN configuration
+  - Cat.1 Cellular Network
+    - APN
     - SIM card status display
 - **Network Management**
-  - One-click refresh: Quick scan for available networks
-  - Auto reconnect: Automatic recovery after network interruption
+  - One-click Refresh：Quickly scan for available networks
+  - Auto Reconnect：Automatically restore connection after network interruption
 
 <img src={useBaseUrl('/img/Overview/NE101/Software/5.png')} alt="WLAN Connection" style={{height: "300px", display: "block", margin: "20px auto"}} />
 
 #### Sleep Mode
 
 - **Sleep Mode Button**
-  - Function: One-click switch device to low-power sleep state
+  - Function: Instantly switches the device into low-power sleep mode
 
-### Software Usage Instructions
+### Software Usage
 
-For software usage instructions, see [Quick Start](../1-Quick%20Start.md)
+For basic setup and usage instructions, please refer to [the Quick Start Guide.](../1-Quick%20Start.md)
 
-## Application Instructions
+## Description
 
-> The NE101's characteristic as a low-power image acquisition device is its strong lifecycle for image capture. Below explains how to use and apply the data collected by the device with a simple example.
+> The NE101 is a low-power image capture AI Camera designed for long-term, continuous operation. The following section provides a basic example of how to apply and utilize the captured image data.
 
-### Receiving MQTT Data with MQTTX
+### Receiving MQTT Data via MQTTX
 
-To verify if the device's data reporting function is working properly, you can use an MQTT client tool (such as [MQTTX](https://mqttx.app/)) for data reception testing.
+To verify that the device is correctly reporting data, you can use an MQTT client tool such as [MQTTX](https://mqttx.app/)）to receive and view MQTT messages.
 
-#### Step-by-Step Instructions
+#### Step-by-Step
 
-> Ensure that the MQTTX server and NE101 are in the same network environment
+> Ensure that both the MQTTX client and the NE101 device are on the same network.
 
-1. Open MQTTX, click `New Connection`.
-2. Set the following connection parameters:
-   - **Host**: `192.168.44.80`
-   - **Port**: `1884`
-   - **Client ID**: Any string, e.g., `mqttx-client-01`
-   - **Topic**: `left`
-   - **Username / Password**: Empty
-3. After connecting, subscribe to Topic `left`.
-4. When the device captures image data, it will publish messages to this Topic via MQTT.
+1. Open MQTTX and click`New Connection`。
+2. Configure the following parameters：
+   - **Host**：`192.168.44.80`
+   - **Port**：`1884`
+   - **Client ID**：any string, e.g., `mqttx-client-01`
+   - **Topic**：`left`
+   - **Username / Password**：Empty
+3. Click Connect, then subscribe to topic `left`
+4. Once the NE101 captures an image, it will publish data to this topic via MQTT.
 
-#### Data Format Description
+#### Message Payload Format
 
-The MQTT message payload sent by the device is in JSON format, as shown below:
+The payload of the MQTT message is in JSON format, as shown below:
 
 ```json
 {
@@ -244,21 +244,21 @@ The MQTT message payload sent by the device is in JSON format, as shown below:
 
 #### Field Descriptions
 
-- `ts`: Timestamp (milliseconds)
-- `devName`: Device name
-- `devMac`: Device MAC address
-- `battery`: Battery level (percentage)
-- `snapType`: Image capture type (e.g., `Button`, `Scheduled`, `PIR`, etc.)
-- `localtime`: Local time (string format)
-- `imageSize`: Image size (in bytes)
-- `image`: Base64 encoded JPEG image data, prefixed with `data:image/jpeg;base64,`
+- `ts`：Timestamp in milliseconds
+- `devName`：Device name
+- `devMac`：Device MAC address
+- `battery`：Battery level (%)
+- `snapType`：Capture type (e.g., `Button`, `Scheduled`, `PIR` ）
+- `localtime`：Local time in string format
+- `imageSize`：Image size in bytes
+- `image`：Base64-encoded JPEG image data (prefixed with `data:image/jpeg;base64,`
 
-#### Visualization Suggestions
+#### Visualization Tip
 
-Use Base64 image data for quick preview in web pages or tools:
+You can quickly preview the Base64 image in a web browser using:
 
 ```html
 <img src="data:image/jpeg;base64,...">
 ```
 
-You can also paste the Base64 data into [Base64 Image Viewer](https://base64.guru/converter/decode/image) for online preview.
+Or paste the Base64 string into an online [Base64 Image Viewer](https://base64.guru/converter/decode/image)  for instant preview.

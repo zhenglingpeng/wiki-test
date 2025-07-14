@@ -4,80 +4,80 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Welcome
 
-Welcome to the **CamThink Wiki Center**!
+Welcome onboard **CamThink Wiki Center**！
 
-We're thrilled to have you join our community, the best place to explore and understand edge AI perception technologies. Whether you're a beginner or an experienced developer, you'll find valuable resources and support here.
+We’re excited to have you join our community, the best place for you to learn about and explore edge AI technology. We hope that you'll find useful resources and support here, no matter you're a beginner or an experienced developer.
 
-## CamThink: Redefining Possibilities for Edge Intelligence
+## CamThink, Fueling Imagination to Edge Intelligence
 
-**CamThink** is a brand dedicated to providing developers with diverse **open hardware** and **open-source software** solutions. We specialize in building **edge AI perception kits** with real-world applicability, focusing on delivering multidimensional sensing capabilities including vision, audio, and environmental data. Our mission is to enable AI to better understand the world and drive the advancement of edge intelligence technologies. As a sub-brand of Milesight, CamThink inherits its strong R&D capabilities and global support network, ensuring product reliability and continuous innovation.
+**CamThink** is a brand that provides developers with a variety of **open-architecture hardware** and **open-source software**. We are committed to building an **edge AI perception suite** that can be widely used in the real world. Our focus is on providing multi-dimensional perception capabilities such as visual, audio and environmental data, aiming to allow AI to understand the world more comprehensively and promote the popularization and development of edge intelligence technology. As a sub-brand of Milesight, CamThink inherits its strong R&D capabilities and global support network, providing a strong guarantee for product reliability and continuous innovation.
 
-## Quick Access
-To help you get started quickly, here are some essential resource links:
-{/* Product card container */}
+## Quick Start
+To help you get started quickly, here are some links to important resources:
+{/* product card container */}
 <div className="product-card-container">
 
-  {/* NeoEdge NG4500 Series product card */}
+  {/* NeoEdge NG4500 series product card */}
   <div className="product-card">
     <div className="product-header">
       <img src={useBaseUrl('img/Overview/NG45xx/NG45XX.png')} alt="NeoEdge NG45XX" className="product-image"/>
-      <h3 className="product-title">Edge AI Box NG45xx</h3>
+      <h3 className="product-title">NeoEdge NG4500 Edge AI Computing Box</h3>
     </div>
     <p className="product-description">
-      High-performance edge computing device based on NVIDIA Jetson platform, ideal for complex AI inference and multimodal data processing scenarios.
+      High-performance edge computing device based on NVIDIA® Jetson platform, suitable for complex AI reasoning and multi-modal data processing scenarios.
     </p>
     <div className="product-links">
       <Link to={useBaseUrl('docs/NeoEdge NG4500 Series/Overview')} className="link-item">
         <span className="link-icon">📖</span>
-        <span>Product Overview</span>
+        <span>product overview</span>
       </Link>
       <Link to={useBaseUrl('docs/NeoEdge NG4500 Series/Quick Start')} className="link-item">
         <span className="link-icon">🚀</span>
-        <span>Quick Start</span>
+        <span>quick start</span>
       </Link>
       <Link to={useBaseUrl('docs/NeoEdge NG4500 Series/NG4500-CB01 Development Board/Dev Guide')} className="link-item">
         <span className="link-icon">🔧</span>
-        <span>Development Guide</span>
+        <span>dev. guide</span>
       </Link>
       <Link to={useBaseUrl('docs/NeoEdge NG4500 Series/Application Guide/Deepseek-r1')} className="link-item">
         <span className="link-icon">📱</span>
-        <span>Application Guide</span>
+        <span>application guide</span>
       </Link>
     </div>
   </div>
 
-  {/* NeoEyes NE101 Series product card */}
+  {/* NeoEyes NE101 series product card */}
   <div className="product-card">
     <div className="product-header">
       <img src={useBaseUrl('img/Overview/NE101/NE101.png')} alt="NeoEyes NE101" className="product-image"/>
-      <h3 className="product-title">NeoEyes NE101 Smart Camera</h3>
+      <h3 className="product-title">NeoEyes NE101 Low Power Consumption Camera</h3>
     </div>
     <p className="product-description">
-      Lightweight intelligent camera supporting edge vision analysis and wireless connectivity, perfect for IoT and lightweight AI applications.
+      A lightweight vision AI camera that supports image analysis on the edge and wireless connectivity, and is suitable for IoT and lightweight edge AI application scenarios.
     </p>
     <div className="product-links">
       <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Overview')} className="link-item">
         <span className="link-icon">📖</span>
-        <span>Product Overview</span>
+        <span>product overview</span>
       </Link>
       <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Quick Start')} className="link-item">
         <span className="link-icon">🚀</span>
-        <span>Quick Start</span>
+        <span>quick start</span>
       </Link>
       <Link to={useBaseUrl('docs/NeoEyes NE101 Series/NE100-MB01 Development Board/Dev Guide')} className="link-item">
         <span className="link-icon">🔧</span>
-        <span>Development Guide</span>
+        <span>dev. guide</span>
       </Link>
       <Link to={useBaseUrl('docs/NeoEyes NE101 Series/Application Guide/low-power-image-acquisition')} className="link-item">
         <span className="link-icon">📱</span>
-        <span>Application Guide</span>
+        <span>application guide</span>
       </Link>
     </div>
   </div>
 
 </div>
 
-{/* Product card styling */}
+{/* product card template */}
 <style>
 {`
   .product-card-container {
@@ -157,4 +157,3 @@ To help you get started quickly, here are some essential resource links:
   }
 `}
 </style>
-
