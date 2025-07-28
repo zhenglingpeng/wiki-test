@@ -112,13 +112,13 @@ Camera Module OV5640 support 8-bit paralle input interface. The IOs of main boar
 > Note: 1. Set the CAM_PWR pin high before use; 2. A light intensity of 0% to 100% corresponds to an output voltage of 0 to 2.5V.
 
 ### TF Card IOs
-| PIN# | Pin Name  | Functions       | Pin Type | Pull Up/Down | ESP32-S3 PINs |
-| ---- | --------- | --------------- | -------- | ------------ | ------------- |
-| 31   | CMD       | SDIO_CMD(MOSI)  | O        | PU 10K       | GPIO38        |
-| 32   | CLK       | SDIO_CLK(CLK)   | O        | PU 10K       | GPIO39        |
-| 33   | DAT0      | SDIO_DA0(MISO)  | I        | PU 10K       | GPIO40        |
-| 34   | CD        | SDIO_IRQ(INT)   | I        | PU 1M        | GPIO41        |
-> Note: 1. Set the TF_PWR pin high before use; 2. Cannot be used simultaneously with WiFi-Halow and 4G Cat1 modules due to pin conflicts.
+| PIN# | Pin Name  | Functions  | Pin Type | Pull Up/Down | ESP32-S3 PINs |
+| ---- | --------- | ---------- | -------- | ------------ | ------------- |
+| 31   | CMD       | SDIO_CMD   | O        | PU 10K       | GPIO38        |
+| 32   | CLK       | SDIO_CLK   | O        | PU 10K       | GPIO39        |
+| 33   | DAT0      | SDIO_DA0   | I        | PU 10K       | GPIO40        |
+| 34   | CD        | SDIO_IRQ   | I        | PU 1M        | GPIO41        |
+> Note: 1. Set the TF_PWR pin high before use; 2. Please use MMC 1-bit mode protocol driver; 3. Cannot be used simultaneously with WiFi-Halow and 4G Cat1 modules due to pin conflicts.
 
 ### Other IOs
 | PIN# | Pin Name  | Functions    | Pin Type | Pull Up/Down | ESP32-S3 PINs |
