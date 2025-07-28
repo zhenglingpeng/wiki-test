@@ -259,7 +259,7 @@ NE101整机产品规格如下：
 
 ### 产品配件
 
-#### 产品标准配件
+<!-- #### 产品标准配件
 >CamThink Event Camera NeoEyes NE101产品系列提供的标准配件如下：
 
 <AccessoriesTable
@@ -271,7 +271,7 @@ NE101整机产品规格如下：
       description: ["常规5号AA电池"]
     }
   ]}
-/>
+/> -->
 
 #### 产品选配配件
 
@@ -334,15 +334,15 @@ NE101整机产品规格如下：
     },
     {
       image: "/img/Overview/NE101/wifihalow.png",
-      name: "WiFi-Halow通讯模块+天线",
+      name: "WiFi-Halow通讯模块",
       quantity: "1",
-      description: ["可自行通过主板插槽装配，支持868/915频段选择"]
+      description: ["可自行通过主板插槽装配，支持868/915频段版本选择"]
     },
     {
       image: "/img/Overview/NE101/cat1PCBA.png",
-      name: "Cat.1通讯模块+天线",
+      name: "Cat.1通讯模块",
       quantity: "1",
-      description:["可自行通过主板插槽装配，当前仅支持全球版本可选"]
+      description:["可自行通过主板插槽装配，支持全球版本或北美版本可选"]
     },
   ]}
 />

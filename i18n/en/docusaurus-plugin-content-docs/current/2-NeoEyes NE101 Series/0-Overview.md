@@ -259,7 +259,7 @@ NE101 provides a number of bracket accessories, supports multiple installation m
 
 ### Product Accessories
 
-#### Product Standard Accessories
+<!-- #### Product Standard Accessories
 >CamThink Event Camera NeoEyes NE101 series provides following standard accessories:
 
 <AccessoriesTable
@@ -273,7 +273,7 @@ NE101 provides a number of bracket accessories, supports multiple installation m
   ]}
 />
 
-#### Product Optional Accessories
+#### Product Optional Accessories -->
 
 >CamThink Event Camera NeoEyes NE101 series provides following optional accessories:
 
@@ -336,13 +336,13 @@ NE101 provides a number of bracket accessories, supports multiple installation m
       image: "/img/Overview/NE101/wifihalow.png",
       name: "Wi-Fi-Halow wireless module and antenna",
       quantity: "1",
-      description: ["It can be assembled through the motherboard slot, and it supports 868/915 frequency band selection."]
+      description: ["Can be installed via the motherboard slot; supports 868/915 MHz frequency band versions."]
     },
     {
       image: "/img/Overview/NE101/cat1PCBA.png",
       name: "Cat.1 wireless module and antenna",
       quantity: "1",
-      description:["It can be assembled through the motherboard slot, and it supports global version only"]
+      description: ["Can be installed via the motherboard slot; supports both global and North America versions."]
     },
   ]}
 />
