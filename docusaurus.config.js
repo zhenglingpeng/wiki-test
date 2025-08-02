@@ -9,7 +9,7 @@ const BASE_URL  = process.env.BASE_URL  // 手动覆盖优先
   ?? (IS_GITHUB ? '/wiki-test/' : '/');
 
 const SITE_URL  = process.env.SITE_URL  // 手动覆盖优先
-  ?? (IS_GITHUB ? 'https://zhenglingpeng.github.io' : 'http://42.');
+  ?? (IS_GITHUB ? 'https://zhenglingpeng.github.io' : 'http://42.194.138.11');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -24,6 +24,7 @@ const config = {
   /* GitHub / Cloudflare 共用（由上方动态注入） */
   url: SITE_URL,
   baseUrl: BASE_URL,
+
 
   /* GitHub Pages 部署 (org/user & repo) — 不在 GitHub 可忽略 */
   organizationName: 'zhenglingpeng',
