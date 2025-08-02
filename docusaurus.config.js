@@ -9,7 +9,7 @@ const BASE_URL  = process.env.BASE_URL  // 手动覆盖优先
   ?? (IS_GITHUB ? '/wiki-test/' : '/');
 
 const SITE_URL  = process.env.SITE_URL  // 手动覆盖优先
-  ?? (IS_GITHUB ? 'https://zhenglingpeng.github.io' : 'https://docs.camthink.ai');
+  ?? (IS_GITHUB ? 'https://zhenglingpeng.github.io' : 'http://42.');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
