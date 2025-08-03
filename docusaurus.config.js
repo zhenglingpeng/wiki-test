@@ -4,12 +4,33 @@ import { themes as prismThemes } from 'prism-react-renderer';
 /* -------------------------------------------------- */
 /* 1️⃣  环境检测 / 动态变量                             */
 /* -------------------------------------------------- */
-const IS_GITHUB = process.env.GITHUB_ACTIONS === 'true';
-const BASE_URL  = process.env.BASE_URL  // 手动覆盖优先
-  ?? (IS_GITHUB ? '/wiki-test/' : '/');
+// 环境检测逻辑
+const IS_GITHUB_ACTIONS = process.env.GITHUB_ACTIONS === 'true';
+const IS_GITHUB_PAGES = process.env.GITHUB_PAGES === 'true' || IS_GITHUB_ACTIONS;
+const IS_LOCAL_DEV = process.env.NODE_ENV === 'development';
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-const SITE_URL  = process.env.SITE_URL  // 手动覆盖优先
-  ?? (IS_GITHUB ? 'https://zhenglingpeng.github.io' : 'http://42.194.138.11');
+// 部署环境判断
+const DEPLOY_ENV = process.env.DEPLOY_ENV || 
+  (IS_GITHUB_ACTIONS ? 'github' : 
+   IS_LOCAL_DEV ? 'local' : 'production');
+
+// URL 配置（优先级：环境变量 > 自动检测 > 默认值）
+const BASE_URL = process.env.BASE_URL || 
+  (IS_GITHUB_PAGES ? '/wiki-test/' : '/');
+
+const SITE_URL = process.env.SITE_URL || 
+  (IS_GITHUB_PAGES ? 'https://zhenglingpeng.github.io' : 
+   IS_LOCAL_DEV ? 'http://localhost:3000' : 'http://42.194.138.11');
+
+// 调试信息
+console.log('🔧 部署环境检测:');
+console.log(`  - GITHUB_ACTIONS: ${IS_GITHUB_ACTIONS}`);
+console.log(`  - GITHUB_PAGES: ${IS_GITHUB_PAGES}`);
+console.log(`  - NODE_ENV: ${process.env.NODE_ENV}`);
+console.log(`  - DEPLOY_ENV: ${DEPLOY_ENV}`);
+console.log(`  - BASE_URL: ${BASE_URL}`);
+console.log(`  - SITE_URL: ${SITE_URL}`);
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {

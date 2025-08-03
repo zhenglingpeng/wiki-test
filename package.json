@@ -6,12 +6,16 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
+    "build:github": "GITHUB_ACTIONS=true GITHUB_PAGES=true DEPLOY_ENV=github BASE_URL=/wiki-test/ SITE_URL=https://zhenglingpeng.github.io docusaurus build",
+    "build:local": "NODE_ENV=development DEPLOY_ENV=local BASE_URL=/ SITE_URL=http://localhost:3000 docusaurus build",
+    "build:production": "NODE_ENV=production DEPLOY_ENV=production BASE_URL=/ SITE_URL=http://42.194.138.11 docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@docusaurus/plugin-client-redirects": "3.6.1",
