@@ -28,8 +28,15 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      # 4. 构建 Docusaurus 静态网站
-      - name: Build website
+      # 4. 构建 Docusaurus 静态网站 (GitHub Pages 版本)
+      - name: Build website for GitHub Pages
+        env:
+          NODE_ENV: production
+          GITHUB_ACTIONS: true
+          GITHUB_PAGES: true
+          DEPLOY_ENV: github
+          BASE_URL: /wiki-test/
+          SITE_URL: https://zhenglingpeng.github.io
         run: yarn build
 
       # 5. 部署到 GitHub Pages
@@ -44,7 +51,18 @@ jobs:
           commit_message: |
             docs: deploy ${{ github.sha }} via GitHub Actions
 
-      # 6. 使用 rsync 部署到云服务器
+      # 6. 构建 Docusaurus 静态网站 (服务器版本)
+      - name: Build website for Cloud Server
+        env:
+          NODE_ENV: production
+          GITHUB_ACTIONS: true
+          GITHUB_PAGES: false
+          DEPLOY_ENV: production
+          BASE_URL: /
+          SITE_URL: ${{ secrets.SERVER_URL }}
+        run: yarn build
+
+      # 7. 使用 rsync 部署到云服务器
       - name: Deploy to Cloud Server via SSH (rsync)
         uses: burnett01/rsync-deployments@5.2
         with:
