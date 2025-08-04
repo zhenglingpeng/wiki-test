@@ -125,7 +125,7 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          { title: 'Wiki',      items: [{ label: 'Wiki', to: '/docs/Welcome' }] },
+          { title: 'Wiki',      items: [{ label: 'Wiki', to: '/docs' }] },
           { title: 'Community', items: [
               { label: 'Discord', href: 'https://discord.com/invite/6TZb2Y8WKx' },
               { label: 'X',       href: 'https://x.com/CamThinkAI' },
