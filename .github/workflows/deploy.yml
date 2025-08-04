@@ -59,7 +59,7 @@ jobs:
           GITHUB_PAGES: false
           DEPLOY_ENV: production
           BASE_URL: /
-          SITE_URL: ${{ secrets.SERVER_URL }}
+          SITE_URL: http://42.194.138.11:3002
         run: yarn build
 
       # 7. 使用 rsync 部署到云服务器
