@@ -2,6 +2,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 
 
+
 /* -------------------------------------------------- */
 /* 1️⃣  环境检测 / 动态变量                             */
 /* -------------------------------------------------- */
@@ -13,7 +14,7 @@ const SITE_URL  = process.env.SITE_URL  // 手动覆盖优先
   ?? (IS_GITHUB ? 'https://zhenglingpeng.github.io' : 'https://42.194.138.11:3002');
 
 
-  
+
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -30,12 +31,14 @@ const config = {
   baseUrl: BASE_URL,
 
 
+
   /* GitHub Pages 部署 (org/user & repo) — 不在 GitHub 可忽略 */
   organizationName: 'zhenglingpeng',
   projectName: 'wiki-test',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+
 
   /* -------------------------------------------------- */
   /* 3️⃣  国际化                                         */
