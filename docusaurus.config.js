@@ -1,23 +1,59 @@
 // @ts-check
 import { themes as prismThemes } from 'prism-react-renderer';
 
-
-
-
 /* -------------------------------------------------- */
 /* 1️⃣  环境检测 / 动态变量                             */
 /* -------------------------------------------------- */
 const IS_GITHUB = process.env.GITHUB_ACTIONS === 'true';
-const BASE_URL  = process.env.BASE_URL  // 手动覆盖优先
-  ?? (IS_GITHUB ? '/wiki-test/' : '/');
+const IS_GITHUB_ENV = process.env.DEPLOY_ENV === 'github';
+const BASE_URL = process.env.BASE_URL  // 手动覆盖优先
+  ?? (IS_GITHUB && IS_GITHUB_ENV ? '/wiki-documents/' : '/');
 
-const SITE_URL  = process.env.SITE_URL  // 手动覆盖优先
-  ?? (IS_GITHUB ? 'https://zhenglingpeng.github.io' : 'https://42.194.138.11:3002');
-
-
-
+const SITE_URL = process.env.SITE_URL  // 手动覆盖优先
+  ?? (IS_GITHUB && IS_GITHUB_ENV ? 'https://camthink-ai.github.io' : 'https://wiki.camthink.ai');
+console.log('BASE_URL---------', BASE_URL);
+console.log('SITE_URL---------', SITE_URL);
 
 /** @type {import('@docusaurus/types').Config} */
+const SHOULD_ENABLE_GTAG = process.env.NODE_ENV === 'production';
+
+const configuredPlugins = [
+  'docusaurus-plugin-image-zoom',
+  [
+    '@easyops-cn/docusaurus-search-local',
+    {
+      hashed: true,
+      language: ['en', 'zh'],
+      highlightSearchTermsOnTargetPage: true,
+      explicitSearchResultPath: true,
+      docsRouteBasePath: '/',
+      indexDocs: true,
+      indexBlog: false,
+      docsDir: 'docs',
+    },
+  ],
+  [ '@docusaurus/plugin-client-redirects',
+    {
+      redirects: [
+        {
+          from: '/',
+          to: '/docs',
+        },
+      ],
+    }
+  ],
+];
+
+if (SHOULD_ENABLE_GTAG) {
+  configuredPlugins.push([
+    '@docusaurus/plugin-google-gtag',
+    {
+      trackingID: 'G-8XB41LWC1W',
+      anonymizeIP: true,
+    },
+  ]);
+}
+
 const config = {
   /* -------------------------------------------------- */
   /* 2️⃣  站点信息                                       */
@@ -32,14 +68,12 @@ const config = {
   baseUrl: BASE_URL,
 
 
-
   /* GitHub Pages 部署 (org/user & repo) — 不在 GitHub 可忽略 */
-  organizationName: 'zhenglingpeng',
-  projectName: 'wiki-test',
+  organizationName: 'camthink-ai',
+  projectName: 'wiki-documents',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-
 
   /* -------------------------------------------------- */
   /* 3️⃣  国际化                                         */
@@ -49,39 +83,14 @@ const config = {
     locales: ['zh-Hans', 'en'],
     localeConfigs: {
       'zh-Hans': { htmlLang: 'zh-Hans', label: '中文' },
-      en:       { htmlLang: 'en-US',   label: 'English' },
+      en: { htmlLang: 'en-US', label: 'English' },
     },
   },
 
   /* -------------------------------------------------- */
-  /* 4️⃣  插件 / 主题                                     */
-  /* -------------------------------------------------- */
-  plugins: [
-    'docusaurus-plugin-image-zoom',
-    [
-      '@easyops-cn/docusaurus-search-local',
-      {
-        hashed: true,
-        language: ['en', 'zh'],
-        highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true,
-        docsRouteBasePath: '/',
-        indexDocs: true,
-        indexBlog: false,
-        docsDir: 'docs',
-      },
-    ],
-    [ '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          {
-            from: '/',
-            to: '/docs',
-          },
-        ],
-      }
-    ]
-  ],
+/* 4️⃣  插件 / 主题                                     */
+/* -------------------------------------------------- */
+  plugins: configuredPlugins,
   markdown: { mermaid: true },
   themes: ['@docusaurus/theme-mermaid'],
 
@@ -117,9 +126,14 @@ const config = {
           href: '/docs',
         },
         items: [
-          // { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Docs' },
-          { href: 'https://github.com/camthink-ai',            position: 'right', label: 'GitHub' },
-          { type: 'localeDropdown',                            position: 'right' },
+          {
+            href: 'https://www.camthink.ai/store/',
+            position: 'right',
+            label: '🛍️ Store',
+            className: 'store-button'
+          },
+          { href: 'https://github.com/camthink-ai', position: 'right', label: 'GitHub' },
+          { type: 'localeDropdown', position: 'right' },
         ],
       },
       zoom: {
@@ -132,17 +146,79 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          { title: 'Wiki',      items: [{ label: 'Wiki', to: '/docs' }] },
-          { title: 'Community', items: [
+          {
+            title: 'Wiki', items: [
+              { label: 'Home', to: '/docs' },
+              { label: 'NG4500', to: '/docs/neoedge-ng4500-series/overview' },
+              { label: 'NE101', to: '/docs/neoeyes-ne101-series/overview' },
+            ]
+          },
+          {
+            title: 'Community', items: [
               { label: 'Discord', href: 'https://discord.com/invite/6TZb2Y8WKx' },
-              { label: 'X',       href: 'https://x.com/CamThinkAI' },
+              { label: 'X', href: 'https://x.com/CamThinkAI' },
+              { label: 'Youtube', href: 'https://www.youtube.com/@CamThink' },
             ],
           },
-          { title: 'More',      items: [{ label: 'GitHub', href: 'https://github.com/camthink-ai' }] },
+          {
+            title: 'More', items: [
+              { label: 'WebSite', href: 'https://www.camthink.ai' },
+              { label: 'Store', href: 'https://www.camthink.ai/store/' },
+              { label: 'GitHub', href: 'https://github.com/camthink-ai' }
+            ]
+          },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} CamThink.ai All rights reserved.`,
       },
       prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
+      announcementBar: {
+        id: 'support_us',
+        content:
+          `<div class="announcement-bar">
+    <div class="announcement-content">
+        <div class="announcement-carousel">
+            <div class="announcement-track">
+                <div class="announcement-text">
+                <b>
+              🎉NE301 Launch! Pre-order Now – Save 20% Until Nov 14. Ship in Dec.
+               <a href="https://www.camthink.ai/store/ne301" target="_blank" class="announcement-link">
+          👉 Learn More
+                </a>
+              </b>
+                </div>
+               <div class="announcement-text">
+                <b>
+             Enjoy 40% off the upgraded Neoeyes NE101! Complete the form to get yours for $39.9.
+              <a href="https://near.tl/sm/uCT0JnK9e" target="_blank" class="announcement-link">
+          👉 Learn More
+                </a>
+              </b>
+                </div>
+                <!-- 重复一份 无缝循环 -->
+                  <div class="announcement-text">
+                <b>
+              🎉NE301 Launch! Pre-order Now – Save 20% Until Nov 14. Ship in Dec.
+               <a href="https://www.camthink.ai/store/ne301" target="_blank" class="announcement-link">
+          👉 Learn More
+                </a>
+              </b>
+                </div>
+                 <div class="announcement-text">
+                <b>
+             Enjoy 40% off the upgraded Neoeyes NE101! Complete the form to get yours for $39.9.
+              <a href="https://near.tl/sm/uCT0JnK9e" target="_blank" class="announcement-link">
+          👉 Learn More
+                </a>
+              </b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+`,
+        textColor: '#091E42',
+        isCloseable: false,
+      },
     }),
 };
 
