@@ -10,7 +10,7 @@ const BASE_URL = process.env.BASE_URL  // 手动覆盖优先
   ?? (IS_GITHUB && IS_GITHUB_ENV ? '/wiki-documents/' : '/');
 
 const SITE_URL = process.env.SITE_URL  // 手动覆盖优先
-  ?? (IS_GITHUB && IS_GITHUB_ENV ? 'https://camthink-ai.github.io' : 'https://wiki.camthink.ai');
+  ?? (IS_GITHUB && IS_GITHUB_ENV ? 'https://camthink-ai.github.io' : 'http://42.194.138.11:3002');
 console.log('BASE_URL---------', BASE_URL);
 console.log('SITE_URL---------', SITE_URL);
 
