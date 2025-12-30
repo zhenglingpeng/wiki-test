@@ -11,11 +11,7 @@ const BASE_URL = process.env.BASE_URL  // 手动覆盖优先
 
 const SITE_URL = process.env.SITE_URL  // 手动覆盖优先
   ?? (IS_GITHUB && IS_GITHUB_ENV ? 'https://zhenglingpeng.github.io' : 'http://42.194.138.11:3002');
-console.log('BASE_URL---------', BASE_URL);
-console.log('SITE_URL---------', SITE_URL);
 
-/** @type {import('@docusaurus/types').Config} */
-const SHOULD_ENABLE_GTAG = process.env.NODE_ENV === 'production';
 
 const configuredPlugins = [
   'docusaurus-plugin-image-zoom',
@@ -44,15 +40,15 @@ const configuredPlugins = [
   ],
 ];
 
-if (SHOULD_ENABLE_GTAG) {
+if (SITE_URL === 'http://42.194.138.11:3002') {
   configuredPlugins.push([
-    '@docusaurus/plugin-google-gtag',
+    '@docusaurus/plugin-google-tag-manager',
     {
-      trackingID: 'G-8XB41LWC1W',
-      anonymizeIP: true,
+      containerId: 'GTM-123',
     },
   ]);
 }
+
 
 const config = {
   /* -------------------------------------------------- */
