@@ -1,4 +1,4 @@
-name: Deploy Docusaurus (Automated Pages, Manual Server)
+name: Deploy Docusaurus (Automated Test Server, Manual Production)
 
 on:
   # 1. 自动触发：当代码推送到 main 分支时
@@ -28,15 +28,24 @@ permissions:
 
 jobs:
   # =======================================================
-  # JOB 1: 自动部署到 GitHub Pages
+  # JOB 1: 自动部署到内网测试服务器
   # 此 Job 仅在 push 事件发生时运行
   # =======================================================
-  deploy_to_github_pages:
-    name: 🚀 Deploy to GitHub Pages
+  deploy_to_test_server:
+    name: 🧪 Deploy to Test Server (192.168.93.222:9000)
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
     steps:
+      # 0. 显示部署信息
+      - name: 0. Display deployment info
+        run: |
+          echo "🧪 开始部署到内网测试服务器"
+          echo "🌐 目标服务器: 192.168.93.222:9000"
+          echo "👤 触发用户: ${{ github.actor }}"
+          echo "🔖 提交 SHA: ${{ github.sha }}"
+          echo "📅 触发时间: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+      
       # 1. 检出源码
       - name: 1. Checkout repository
         uses: actions/checkout@v3
@@ -52,28 +61,27 @@ jobs:
       - name: 3. Install dependencies
         run: yarn install --frozen-lockfile
 
-      # 4. 构建 Docusaurus 静态网站 (GitHub Pages 版本)
-      - name: 4. Build website for GitHub Pages
+      # 4. 构建 Docusaurus 静态网站 (内网测试服务器版本)
+      - name: 4. Build website for Test Server
         env:
           NODE_ENV: production
           GITHUB_ACTIONS: true
-          GITHUB_PAGES: true
-          DEPLOY_ENV: github
-          BASE_URL: /wiki-test/
-          SITE_URL: https://zhenglingpeng.github.io
+          GITHUB_PAGES: false
+          DEPLOY_ENV: test
+          BASE_URL: /
+          SITE_URL: http://192.168.93.222:9000
         run: yarn build
 
-      # 5. 部署到 GitHub Pages
-      - name: 5. Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      # 5. 使用 rsync 部署到内网测试服务器
+      - name: 5. Deploy to Test Server via SSH (rsync)
+        uses: burnett01/rsync-deployments@5.2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          publish_branch: gh-pages
-          user_name: GitHub Action
-          user_email: action@github.com
-          commit_message: |
-            docs: deploy ${{ github.sha }} via GitHub Actions
+          switches: -avzr --delete
+          path: ./build/
+          remote_path: ${{ secrets.TEST_SERVER_PATH }}
+          remote_host: ${{ secrets.TEST_SERVER_HOST }}
+          remote_user: ${{ secrets.TEST_SERVER_USER }}
+          remote_key: ${{ secrets.TEST_SERVER_SSH_KEY }}
 
   # =======================================================
   # JOB 2: 手动部署到云服务器
