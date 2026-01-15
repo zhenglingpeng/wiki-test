@@ -4,13 +4,14 @@ import { themes as prismThemes } from 'prism-react-renderer';
 /* -------------------------------------------------- */
 /* 1️⃣  环境检测 / 动态变量                             */
 /* -------------------------------------------------- */
-const IS_GITHUB = process.env.GITHUB_ACTIONS === 'true';
-const IS_GITHUB_ENV = process.env.DEPLOY_ENV === 'github';
-const BASE_URL = process.env.BASE_URL  // 手动覆盖优先
-  ?? (IS_GITHUB && IS_GITHUB_ENV ? '/wiki-documents/' : '/');
-
-const SITE_URL = process.env.SITE_URL  // 手动覆盖优先
-  ?? (IS_GITHUB && IS_GITHUB_ENV ? 'https://zhenglingpeng.github.io' : 'http://42.194.138.11:3002');
+const DEPLOY_ENV = process.env.DEPLOY_ENV || 'local';
+const BASE_URL = process.env.BASE_URL ?? '/';
+// 根据部署环境设置默认 SITE_URL
+const SITE_URL = process.env.SITE_URL ?? (
+  DEPLOY_ENV === 'test' ? 'http://192.168.93.222:9000' :
+  DEPLOY_ENV === 'production' ? 'http://42.194.138.11:3002' :
+  '/'
+);
 
 
 const configuredPlugins = [
@@ -40,16 +41,6 @@ const configuredPlugins = [
   ],
 ];
 
-if (SITE_URL === 'http://42.194.138.11:3002') {
-  configuredPlugins.push([
-    '@docusaurus/plugin-google-tag-manager',
-    {
-      containerId: 'GTM-123',
-    },
-  ]);
-}
-
-
 const config = {
   /* -------------------------------------------------- */
   /* 2️⃣  站点信息                                       */
@@ -59,14 +50,9 @@ const config = {
     'Through detailed documentation, practical tutorials, and active community support, we help developers leverage open hardware for AI project development and innovation.',
   favicon: 'img/favicon.ico',
 
-  /* GitHub / Cloudflare 共用（由上方动态注入） */
+  /* 站点 URL 配置（由环境变量动态注入） */
   url: SITE_URL,
   baseUrl: BASE_URL,
-
-
-  /* GitHub Pages 部署 (org/user & repo) — 不在 GitHub 可忽略 */
-  organizationName: 'camthink-ai',
-  projectName: 'wiki-documents',
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -112,6 +98,10 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // 测试环境添加 noindex，避免被搜索引擎收录
+      metadata: DEPLOY_ENV === 'test'
+        ? [{ name: 'robots', content: 'noindex, nofollow' }]
+        : [],
       image: 'img/Camthink-logo.png',
       navbar: {
         title: '',

@@ -66,10 +66,9 @@ jobs:
         env:
           NODE_ENV: production
           GITHUB_ACTIONS: true
-          GITHUB_PAGES: false
           DEPLOY_ENV: test
           BASE_URL: /
-          SITE_URL: http://192.168.93.222:9000
+          SITE_URL: http://42.194.138.11:3002
         run: yarn build
 
       # 5. 使用 rsync 部署到内网测试服务器
@@ -83,7 +82,6 @@ jobs:
           remote_user: ${{ secrets.TEST_SERVER_USER }}
           remote_key: ${{ secrets.TEST_SERVER_SSH_KEY }}
           
-
   # =======================================================
   # JOB 2: 手动部署到云服务器
   # 此 Job 仅在 workflow_dispatch (手动点击按钮) 事件发生时运行
@@ -119,19 +117,18 @@ jobs:
       - name: 3. Install dependencies
         run: yarn install --frozen-lockfile
 
-      # 6. 构建 Docusaurus 静态网站 (服务器版本)
-      - name: 6. Build website for Cloud Server
+      # 4. 构建 Docusaurus 静态网站 (生产服务器版本)
+      - name: 4. Build website for Production Server
         env:
           NODE_ENV: production
           GITHUB_ACTIONS: true
-          GITHUB_PAGES: false
           DEPLOY_ENV: production
           BASE_URL: /
           SITE_URL: http://42.194.138.11:3002
         run: yarn build
 
-      # 7. 使用 rsync 部署到云服务器
-      - name: 7. Deploy to Cloud Server via SSH (rsync)
+      # 5. 使用 rsync 部署到云服务器
+      - name: 5. Deploy to Production Server via SSH (rsync)
         uses: burnett01/rsync-deployments@5.2
         with:
           switches: -avzr --delete
