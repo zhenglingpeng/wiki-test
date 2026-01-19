@@ -8,20 +8,6 @@ on:
       
   # 2. 手动触发：在 GitHub Actions 页面显示"Run workflow"按钮
   workflow_dispatch:
-    inputs:
-      deploy_confirm:
-        description: '🚀 确认部署到云服务器'
-        required: true
-        type: choice
-        options:
-          - '✅ 确认部署'
-          - '❌ 取消'
-        default: '❌ 取消'
-      deploy_note:
-        description: '📝 部署备注（可选）'
-        required: false
-        type: string
-        default: '手动触发部署'
 
 permissions:
   contents: write
@@ -90,7 +76,7 @@ jobs:
     name: ☁️ Deploy to Cloud Server (Manual)
     runs-on: ubuntu-latest
     # 仅在 Actions 页面点击"Run workflow"按钮时运行，且用户确认部署
-    if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_confirm == '✅ 确认部署'
+    if: github.event_name == 'workflow_dispatch'
 
     steps:
       # 0. 显示部署信息
